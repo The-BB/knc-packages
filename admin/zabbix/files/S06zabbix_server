@@ -1,0 +1,22 @@
+#!/bin/sh
+
+ENABLED=yes
+
+DESC="Zabbix server"
+PROCS="zabbix_server"
+PROG="/opt/sbin/$PROCS"
+
+pre_cmd() {
+    { [ -d "/opt/var/log/zabbix-server" ] || \
+    mkdir -pm 0750 /opt/var/log/zabbix-server ; }
+    chown -R zabbix-server:zabbix-server /opt/var/log/zabbix-server ;
+    { [ -d "/opt/var/run/zabbix-server" ] || \
+    mkdir -pm 0750 /opt/var/run/zabbix-server ; }
+    chown -R zabbix-server:zabbix-server /opt/var/run/zabbix-server ;
+}
+
+PRECMD="pre_cmd"
+ARGS="-c /opt/etc/$PROCS.conf"
+PREARGS=""
+
+. /opt/etc/init.d/rc.func

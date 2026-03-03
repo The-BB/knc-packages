@@ -13,7 +13,7 @@
  
 --- a/src/go/Makefile.in
 +++ b/src/go/Makefile.in
-@@ -396,8 +396,8 @@ top_srcdir = @top_srcdir@
+@@ -399,8 +399,8 @@ top_srcdir = @top_srcdir@
  EXTRA_DIST = .
  BUILD_TIME = `date +%H:%M:%S`
  BUILD_DATE = `date +"%b %_d %Y"`

@@ -29,7 +29,25 @@
  
  ### Option: LogFileSize
  #	Maximum size of log file in MB.
-@@ -278,15 +278,15 @@ Hostname=Zabbix server
+@@ -288,7 +288,7 @@ Hostname=Zabbix server
+ #	Path to unix socket for external plugin communications.
+ #
+ # Mandatory: no
+-# Default:/tmp/agent.plugin.sock
++# Default:/opt/var/run/agent.plugin.sock
+ # PluginSocket=
+ 
+ ####### USER-DEFINED MONITORED PARAMETERS #######
+@@ -332,7 +332,7 @@ Hostname=Zabbix server
+ # Default:
+ # ControlSocket=
+ 
+-ControlSocket=/tmp/agent.sock
++ControlSocket=/opt/var/run/agent.sock
+ 
+ ####### TLS-RELATED PARAMETERS #######
+ 
+@@ -543,12 +543,12 @@ Include=./zabbix_agent2.d/plugins.d/*.co
  
  ### Option: Include
  #	You may include individual files or all files in a directory in the configuration file.
@@ -46,27 +64,6 @@
 +# Include=/opt/etc/zabbix_agent2.userparams.conf
 +# Include=/opt/etc/zabbix_agent2.conf.d/
 +# Include=/opt/etc/zabbix_agent2.conf.d/*.conf
- 
- ### Option:PluginTimeout
- #	Timeout for connections with external plugins.
-@@ -300,7 +300,7 @@ Hostname=Zabbix server
- #	Path to unix socket for external plugin communications.
- #
- # Mandatory: no
--# Default:/tmp/agent.plugin.sock
-+# Default:/opt/var/run/agent.plugin.sock
- # PluginSocket=
- 
- ####### USER-DEFINED MONITORED PARAMETERS #######
-@@ -344,7 +344,7 @@ Hostname=Zabbix server
- # Default:
- # ControlSocket=
- 
--ControlSocket=/tmp/agent.sock
-+ControlSocket=/opt/var/run/agent.sock
- 
- ####### TLS-RELATED PARAMETERS #######
- 
 --- a/src/go/conf/zabbix_web_service.conf
 +++ b/src/go/conf/zabbix_web_service.conf
 @@ -18,7 +18,7 @@
@@ -80,7 +77,7 @@
  #	Maximum size of log file in MB.
 --- a/src/go/internal/agent/options_nix.go
 +++ b/src/go/internal/agent/options_nix.go
-@@ -19,7 +19,7 @@ package agent
+@@ -18,7 +18,7 @@ package agent
  
  type AgentOptions struct {
  	LogType                  string   `conf:"optional,default=file"`
@@ -89,7 +86,7 @@
  	LogFileSize              int      `conf:"optional,range=0:1024,default=1"`
  	DebugLevel               int      `conf:"optional,range=0:5,default=3"`
  	PidFile                  string   `conf:"optional"`
-@@ -64,7 +64,7 @@ type AgentOptions struct {
+@@ -63,7 +63,7 @@ type AgentOptions struct {
  	TLSCipherAll             string   `conf:"optional"`
  	TLSCipherAll13           string   `conf:"optional"`
  	ExternalPluginTimeout    int      `conf:"optional,name=PluginTimeout,range=1:30"`
@@ -100,7 +97,7 @@
  
 --- a/src/go/pkg/pidfile/pidfile_nix.go
 +++ b/src/go/pkg/pidfile/pidfile_nix.go
-@@ -26,7 +26,7 @@ import (
+@@ -25,7 +25,7 @@ import (
  
  func createPidFile(pid int, path string) (file *os.File, err error) {
  	if path == "" {
