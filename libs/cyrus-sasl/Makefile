@@ -4,7 +4,6 @@
 # This is free software, licensed under the GNU General Public License v2.
 # See /LICENSE for more information.
 #
-# XXX db bumped
 
 include $(TOPDIR)/rules.mk
 
@@ -38,7 +37,7 @@ endef
 
 define Package/libsasl2
   $(call Package/libsasl2/Default)
-  DEPENDS:=+libopenssl
+  DEPENDS:=+libopenssl #+USE_GLIBC:libcrypt-compat
   TITLE+= (libraries)
 endef
 
