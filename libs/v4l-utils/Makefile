@@ -130,8 +130,8 @@ define Package/v4l-utils/install
 endef
 
 define Package/edid-decode/install
-	$(INSTALL_DIR) $(1)/usr/bin
-	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/usr/bin/edid-decode $(1)/usr/bin/
+	$(INSTALL_DIR) $(1)/opt/bin
+	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/opt/bin/edid-decode $(1)/opt/bin/
 endef
 
 $(eval $(call BuildPackage,libv4l))
