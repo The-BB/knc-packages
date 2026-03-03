@@ -41,7 +41,11 @@ CMAKE_OPTIONS += \
 	-DWEBP_BUILD_WEBPMUX=OFF \
 	-DWEBP_BUILD_EXTRAS=OFF
 
-ifneq ($(findstring arm,$(CONFIG_ARCH)),)
+# Entware specifics(?) aarch64
+# .../libwebp-1.5.0/src/dsp/enc_neon.c:974:37: error: invalid initializer
+# .../libwebp-1.5.0/src/dsp/enc_neon.c:975:37: error: invalid initializer
+# .../libwebp-1.5.0/src/dsp/enc_neon.c:976:37: error: invalid initializer
+ifneq ($(or $(findstring aarch64,$(CONFIG_ARCH)),$(findstring arm,$(CONFIG_ARCH))),)
 ifeq ($(findstring neon,$(CONFIG_CPU_TYPE)),)
 CMAKE_OPTIONS += -DWEBP_ENABLE_SIMD=OFF
 endif
