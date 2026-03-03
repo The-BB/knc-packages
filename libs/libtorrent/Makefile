@@ -43,6 +43,9 @@ define Package/libtorrent/description
  official client.
 endef
 
+# Entware specifics: GCC-8.x (add CXXFLAGS)
+TARGET_CXXFLAGS += -std=c++17
+
 CONFIGURE_ARGS += \
 	--enable-shared \
 	--enable-static \
@@ -51,7 +54,8 @@ CONFIGURE_ARGS += \
 	--disable-instrumentation \
 	--with-epoll \
 	--with-zlib=$(STAGING_DIR)/opt \
-	--without-kqueue
+	--without-kqueue \
+	CXXFLAGS="$(TARGET_CXXFLAGS)"
 
 CONFIGURE_VARS = \
 	ax_cv_cxx_compile_cxx17=yes
