@@ -8,13 +8,13 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=apache
-PKG_VERSION:=2.4.62
+PKG_VERSION:=2.4.65
 PKG_RELEASE:=1
 PKG_SOURCE_NAME:=httpd
 
 PKG_SOURCE:=$(PKG_SOURCE_NAME)-$(PKG_VERSION).tar.bz2
 PKG_SOURCE_URL:=@APACHE/httpd/
-PKG_HASH:=674188e7bf44ced82da8db522da946849e22080d73d16c93f7f4df89e25729ec
+PKG_HASH:=58b8be97d9940ec17f7656c0c6b9f41b618aac468b894b534148e3296c53b8b3
 
 PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_SOURCE_NAME)-$(PKG_VERSION)
 
@@ -141,7 +141,7 @@ $(call Package/apache/Default)
   # and is only accessible by root and the group apache. This way apache
   # can access the SUID binary "suexec" contained within while others
   # cannot.
-  FILE_MODES:=/opt/lib/apache2/suexec_dir:root:root:0750
+  FILE_MODES:=/opt/lib/apache2/suexec_dir:root:apache:0750
 endef
 
 define Package/apache-suexec/description
