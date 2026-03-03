@@ -6,6 +6,7 @@
 #
 # Entware specific: base.config
 # perl-dev package (with headers only) for native perl modules building added
+# drop +USE_GLIBC:libcrypt-compat
 
 include $(TOPDIR)/rules.mk
 
@@ -61,9 +62,9 @@ define Package/perl
   SUBMENU:=Perl
   SECTION:=lang
   CATEGORY:=Languages
-  TITLE:=The Perl intepreter
+  TITLE:=The Perl interpreter
   URL:=http://www.perl.com/
-  DEPENDS:= +USE_GLIBC:libbsd +PERL_THREADS:libpthread @!arc #+USE_GLIBC:libcrypt-compat
+  DEPENDS:= +USE_GLIBC:libbsd +PERL_THREADS:libpthread @!arc
 endef
 
 define Package/perl/description
