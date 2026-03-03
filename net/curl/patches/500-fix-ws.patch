@@ -4,7 +4,7 @@
 
 --- a/lib/curl_trc.h
 +++ b/lib/curl_trc.h
-@@ -162,6 +162,12 @@ void Curl_trc_ws(struct Curl_easy *data,
+@@ -175,6 +175,12 @@ void Curl_trc_ws(struct Curl_easy *data,
  #if !defined(CURL_DISABLE_WEBSOCKETS) && !defined(CURL_DISABLE_HTTP)
  #define CURL_TRC_WS    Curl_trc_ws
  #endif
