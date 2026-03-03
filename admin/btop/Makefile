@@ -1,12 +1,12 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=btop
-PKG_VERSION:=1.4.4
-PKG_RELEASE:=1
+PKG_VERSION:=1.4.6
+PKG_RELEASE:=2
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL=https://codeload.github.com/aristocratos/btop/tar.gz/v$(PKG_VERSION)?
-PKG_HASH:=98d464041015c888c7b48de14ece5ebc6e410bc00ca7bb7c5a8010fe781f1dd8
+PKG_HASH:=4beb90172c6acaac08c1b4a5112fb616772e214a7ef992bcbd461453295a58be
 
 PKG_MAINTAINER:=Tianling Shen <cnsztl@immortalwrt.org>
 PKG_LICENSE:=Apache-2.0
@@ -23,7 +23,7 @@ define Package/btop
   CATEGORY:=Administration
   TITLE:=A monitor of resources
   URL:=https://github.com/aristocratos/btop
-  DEPENDS:=+libstdcpp @!GCC_USE_VERSION_8
+  DEPENDS:=+libstdcpp
 endef
 
 define Package/btop/description
@@ -37,19 +37,18 @@ BTOP_LDFLAGS:=-pthread -DFMT_HEADER_ONLY -D_FILE_OFFSET_BITS=64
 MAKE_FLAGS+= \
 	PLATFORM=Linux \
 	OPTFLAGS="$(TARGET_CXXFLAGS)" \
-	LDCXXFLAGS="$(TARGET_LDFLAGS) $(BTOP_LDFLAGS)" \
-	PREFIX=/opt
+	LDCXXFLAGS="$(TARGET_LDFLAGS) $(BTOP_LDFLAGS)"
 
 define Package/btop/install
-	$(INSTALL_DIR) $(1)/opt/bin
-	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/opt/bin/btop $(1)/opt/bin/
-	$(INSTALL_DIR) $(1)/opt/share
-	$(CP) $(PKG_INSTALL_DIR)/opt/share/btop $(1)/opt/share/
+	$(INSTALL_DIR) $(1)/usr/bin
+	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/usr/local/bin/btop $(1)/usr/bin/
+	$(INSTALL_DIR) $(1)/usr/share
+	$(CP) $(PKG_INSTALL_DIR)/usr/local/share/btop $(1)/usr/share/
 
-	$(INSTALL_DIR) $(1)/opt/etc/profile.d
-	$(CP) $(CURDIR)/files/btop.sh $(1)/opt/etc/profile.d/
-#	$(INSTALL_DIR) $(1)/etc/uci-defaults
-#	$(CP) $(CURDIR)/files/btop.uci $(1)/etc/uci-defaults/90-btop-migrate-alias
+	$(INSTALL_DIR) $(1)/etc/profile.d
+	$(CP) $(CURDIR)/files/btop.sh $(1)/etc/profile.d/
+	$(INSTALL_DIR) $(1)/etc/uci-defaults
+	$(CP) $(CURDIR)/files/btop.uci $(1)/etc/uci-defaults/90-btop-migrate-alias
 endef
 
 $(eval $(call BuildPackage,btop))
