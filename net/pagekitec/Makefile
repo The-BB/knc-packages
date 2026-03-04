@@ -16,10 +16,12 @@ PKG_SOURCE_URL:=https://github.com/pagekite/libpagekite.git
 PKG_SOURCE_PROTO:=git
 PKG_SOURCE_VERSION:=v$(PKG_VERSION)
 
+include $(INCLUDE_DIR)/package.mk
+
 PKG_FIXUP:=autoreconf
 PKG_INSTALL:=1
 
-include $(INCLUDE_DIR)/package.mk
+CONFIGURE_ARGS += --without-java
 
 define Package/pagekitec/default
   SECTION:=net
@@ -71,8 +73,6 @@ endef
 #define Package/pagekitec/conffiles
 #/etc/config/pagekitec
 #endef
-
-CONFIGURE_ARGS += --without-java
 
 define Build/Configure
 	(cd $(PKG_BUILD_DIR); ./autogen.sh );
