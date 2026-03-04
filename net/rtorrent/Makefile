@@ -80,8 +80,13 @@ ifeq ($(BUILD_VARIANT),rpc)
 CONFIGURE_ARGS += --with-xmlrpc-c
 endif
 
-CONFIGURE_VARS = \
+# checking for XMLRPC-C... failed
+# configure: error: Could not compile XMLRPC-C test.
+CONFIGURE_VARS += \
 	ax_cv_cxx_compile_cxx17=yes
+
+# Entware specifics: GCC-8.x (add CXXFLAGS)
+TARGET_CXXFLAGS += -std=c++17
 
 define Package/rtorrent/install
 	$(INSTALL_DIR) $(1)/opt/bin
