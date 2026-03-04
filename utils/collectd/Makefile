@@ -11,7 +11,8 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=collectd
 PKG_VERSION:=5.12.0
-PKG_RELEASE:=54
+# libxml2
+PKG_RELEASE:=55
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.bz2
 PKG_SOURCE_URL:=https://collectd.org/files/ \
@@ -268,7 +269,8 @@ CONFIGURE_ARGS+= \
 	--enable-daemon \
 	--with-nan-emulation \
 	--with-libyajl=no \
-	--without-perl-bindings
+	--without-perl-bindings \
+	--without-libstatgrab
 
 CONFIGURE_VARS+= \
 	CFLAGS="$$$$CFLAGS $(FPIC)" \
