@@ -8,13 +8,14 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=mstflint
-PKG_VERSION:=4.32.0
+PKG_VERSION:=4.35.0
+PKG_SUBVERSION:=1
 PKG_RELEASE:=1
 
-PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION)-1.tar.gz
-PKG_SOURCE_URL:=https://github.com/Mellanox/$(PKG_NAME)/releases/download/v$(PKG_VERSION)-1
-PKG_SOURCE_DATE:=2025-05-08
-PKG_HASH:=74db217a49f5efbd29b00ac8bc19d18e3407409cea37ac4e0c63dad95b8ca076
+PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION)-$(PKG_SUBVERSION).tar.gz
+PKG_SOURCE_URL:=https://github.com/Mellanox/$(PKG_NAME)/releases/download/v$(PKG_VERSION)-$(PKG_SUBVERSION)
+PKG_SOURCE_DATE:=2026-02-22
+PKG_HASH:=a138686f9298cd057371bc9bb2673e97b5b3e4b022b91ce1f6538533664c112d
 
 PKG_MAINTAINER:=Til Kaiser <mail@tk154.de>
 PKG_LICENSE:=GPL-2.0-only
@@ -28,7 +29,7 @@ include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/nls.mk
 
 define Package/mstflint
-  SECTION:=Utilities
+  SECTION:=utils
   CATEGORY:=Utilities
   TITLE:=Mellanox Firmware Burning and Diagnostics Tools
   URL:=https://github.com/Mellanox/mstflint
@@ -132,6 +133,7 @@ define Package/mstflint/install
 ifeq ($(CONFIG_PACKAGE_MSTFLINT_INCLUDE_PYTHON),y)
 	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/usr/bin/mstfwreset $(1)/usr/bin/
 	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/usr/bin/mstfwtrace $(1)/usr/bin/
+	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/usr/bin/mstgenerate_pgcb_commands $(1)/usr/bin/
 	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/usr/bin/mstprivhost $(1)/usr/bin/
 	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/usr/bin/mstresourcedump $(1)/usr/bin/
 	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/usr/bin/mstresourceparse $(1)/usr/bin/
