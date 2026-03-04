@@ -35,6 +35,7 @@ define Package/tesseract
 endef
 
 TARGET_CFLAGS:=$(filter-out -O%,$(TARGET_CFLAGS)) -O3
+TARGET_CXXFLAGS += -I$(STAGING_DIR)/opt/include/leptonica
 
 CMAKE_OPTIONS += \
 	-DAUTO_OPTIMIZE=OFF \
