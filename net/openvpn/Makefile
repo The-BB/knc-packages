@@ -10,7 +10,7 @@ include $(TOPDIR)/rules.mk
 PKG_NAME:=openvpn
 
 PKG_VERSION:=2.6.14
-PKG_RELEASE:=1
+PKG_RELEASE:=5
 
 PKG_SOURCE_URL:=\
 	https://build.openvpn.net/downloads/releases/ \
@@ -92,11 +92,6 @@ define Build/Configure
 	)
 endef
 
-define Package/openvpn-$(BUILD_VARIANT)/conffiles
-/opt/etc/openvpn
-/opt/etc/openvpn.user
-endef
-
 define Package/openvpn-$(BUILD_VARIANT)/install
 	$(INSTALL_DIR) \
 		$(1)/opt/sbin \
@@ -108,36 +103,30 @@ define Package/openvpn-$(BUILD_VARIANT)/install
 		$(PKG_INSTALL_DIR)/opt/sbin/openvpn \
 		$(1)/opt/sbin/
 
-	$(INSTALL_BIN) \
-		files/S20openvpn \
-		$(1)/opt/etc/init.d
+#	$(INSTALL_BIN) \
+#		files/lib/netifd/proto/openvpn.sh \
+#		$(1)/lib/netifd/proto/
 
 #	$(INSTALL_BIN) \
-#		files/usr/libexec/openvpn-hotplug \
-#		$(1)/usr/libexec/openvpn-hotplug
-
-#	$(INSTALL_DATA) \
-#		files/lib/functions/openvpn.sh \
-#		$(1)/lib/functions/openvpn.sh
-
-#	$(INSTALL_DATA) \
-#		files/etc/hotplug.d/openvpn/01-user \
-#		$(1)/etc/hotplug.d/openvpn/01-user
-
-#	$(INSTALL_DATA) \
-#		files/etc/openvpn.user \
-#		$(1)/etc/openvpn.user
+#		files/etc/uci-defaults/60_openvpn_migrate.sh \
+#		$(1)/etc/uci-defaults/
 
 #	$(INSTALL_DATA) \
 #		files/openvpn.options \
 #		$(1)/usr/share/openvpn/openvpn.options
 
-#	$(INSTALL_CONF) files/openvpn.config \
-#		$(1)/etc/config/openvpn
+#	$(INSTALL_BIN) \
+#		files/up.uc files/down.uc files/route-pre-down.uc files/route-up.uc \
+#		files/ipchange.uc \
+#		files/client-connect.uc files/client-disconnect.uc files/client-crresponse.uc \
+#		files/auth-user-pass-verify.uc files/tls-verify.uc \
+#		$(1)/usr/share/openvpn/
 
 	$(INSTALL_DATA) \
-		files/openvpn.upgrade \
+		files/openvpn.sysupgrade \
 		$(1)/opt/lib/upgrade/keep.d/openvpn
+
+	$(INSTALL_BIN) files/S20openvpn $(1)/opt/etc/init.d
 endef
 
 $(eval $(call BuildPackage,openvpn-openssl))
