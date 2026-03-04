@@ -1,11 +1,11 @@
-commit 90dfd41b51332e531c7e5bd2f473457d43724d40 (HEAD -> master, origin/master, origin/HEAD)
-Author: Robert Marko <robimarko@gmail.com>
-Date:   Sun Jul 27 19:56:29 2025 +0200
+commit 3dd1f337ebb04c38c385a379730f10ee3fa7a305 (HEAD -> master, origin/master, origin/HEAD)
+Author: Patrick Hemmen <jummo4@yahoo.de>
+Date:   Tue Feb 10 21:38:23 2026 +0100
 
-    atop: update to 2.12.0
+    ddns-scripts: change servercow.de to new dns api
     
-    2.11.0 will not compile with GCC15, so update to 2.12.0.
-    It also fixes CVE-2025-31160.
+    The previous way to update dns records at servercow.de was replaced
+    with a https based dns api. The new dns api is documented at
+    https://wiki.servercow.de/de/domains/dns_api/api-syntax/#einfuhrung
     
-    Fixes: #27085
-    Signed-off-by: Robert Marko <robimarko@gmail.com>
+    Signed-off-by: Patrick Hemmen <jummo4@yahoo.de>
