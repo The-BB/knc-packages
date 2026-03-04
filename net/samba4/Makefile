@@ -1,9 +1,12 @@
 # Based partially on (wongsyrone/hbl0307106015) versions
+
+# Entware specific: remove deps USE_GLIBC:libcrypt-compat
+
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=samba
-PKG_VERSION:=4.22.3
-PKG_RELEASE:=2
+PKG_VERSION:=4.22.7
+PKG_RELEASE:=3
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:= \
@@ -13,7 +16,7 @@ PKG_SOURCE_URL:= \
 		http://www.nic.funet.fi/index/samba/pub/samba/stable/ \
 		http://samba.mirror.bit.nl/samba/ftp/stable/ \
 		https://download.samba.org/pub/samba/stable/
-PKG_HASH:=8fd7092629a3596d935cd7567d934979f94272918ec3affd0cc807934ecf22ba
+PKG_HASH:=12195811d4542f661536e9055b44d58c53020412beafaae205e227bf72f6a497
 
 PKG_BUILD_FLAGS:=gc-sections
 
@@ -31,10 +34,8 @@ PKG_CONFIG_DEPENDS:= \
 	CONFIG_SAMBA4_SERVER_QUOTAS \
 	CONFIG_SAMBA4_SERVER_VFS \
 	CONFIG_SAMBA4_SERVER_VFSX \
-	CONFIG_SAMBA4_SERVER_AD_DC
-#	CONFIG_PACKAGE_kmod-fs-btrfs \
-#	CONFIG_PACKAGE_kmod-fs-xfs \
-#	CONFIG_KERNEL_IO_URING
+	CONFIG_SAMBA4_SERVER_AD_DC \
+	CONFIG_KERNEL_IO_URING
 
 PYTHON3_PKG_BUILD:=0
 
@@ -64,12 +65,29 @@ endef
 define Package/samba4-libs
   $(call Package/samba4/Default)
   TITLE+= libs
-  DEPENDS:= +libtirpc +libreadline +libpopt +libcap +zlib +libgnutls +libtasn1 +libuuid +libopenssl +libpthread \
+  DEPENDS:= \
+	+(arm||armeb||mips||mipsel||powerpc):libatomic \
+	+libcap \
+	+libgnutls \
+	+libopenssl \
+	+libpopt \
+	+libreadline \
+	+libtasn1 \
+	+libtirpc \
+	+libuuid \
+	+zlib \
+	+KERNEL_IO_URING:liburing \
 	+PACKAGE_icu:icu \
 	+PACKAGE_libpam:libpam \
-	+SAMBA4_SERVER_VFS:attr \
+	+SAMBA4_SERVER_AD_DC:acl \
+	+(SAMBA4_SERVER_AD_DC||SAMBA4_SERVER_VFS):attr \
+	+SAMBA4_SERVER_AD_DC:jansson \
+	+SAMBA4_SERVER_AD_DC:libarchive \
 	+SAMBA4_SERVER_AVAHI:libavahi-client \
-	+SAMBA4_SERVER_AD_DC:python3-cryptodome +SAMBA4_SERVER_AD_DC:python3-markdown +SAMBA4_SERVER_AD_DC:python3-dns +SAMBA4_SERVER_AD_DC:libopenldap +SAMBA4_SERVER_AD_DC:jansson +SAMBA4_SERVER_AD_DC:libarchive +SAMBA4_SERVER_AD_DC:acl +SAMBA4_SERVER_AD_DC:attr
+	+SAMBA4_SERVER_AD_DC:libopenldap \
+	+SAMBA4_SERVER_AD_DC:python3-cryptodome \
+	+SAMBA4_SERVER_AD_DC:python3-dns \
+	+SAMBA4_SERVER_AD_DC:python3-markdown
 endef
 
 define Package/samba4-server
@@ -129,19 +147,12 @@ define Package/samba4-utils/description
   Utilities collection
 endef
 
+TARGET_CFLAGS += -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64
 TARGET_CFLAGS += $(FPIC) -std=gnu17
-TARGET_LDFLAGS += -Wl,--as-needed
+TARGET_LDFLAGS += -Wl,--as-needed $(if $(filter arm armeb mips mipsel powerpc,$(ARCH)),-latomic)
+
 # dont mess with sambas private rpath!
 RSTRIP:=:
-
-TARGET_CFLAGS += -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64
-
-# Entware specifics: @(mips||mipsel)
-# Build failed
-#  -> task in 'krb5' failed with exit status 1 (run with -v to display more information)
-ifeq ($(ARCH),$(filter $(ARCH),mips mipsel))
-TARGET_LDFLAGS += -latomic
-endif
 
 CONFIGURE_VARS += \
 	CPP="$(TARGET_CROSS)cpp" \
@@ -177,61 +188,69 @@ CONFIGURE_ARGS:=configure $(CONFIGURE_ARGS)
 HOST_CONFIGURE_ARGS:=configure $(HOST_CONFIGURE_ARGS)
 
 CONFIGURE_ARGS += \
-		--hostcc="$(HOSTCC)" \
-		--cross-compile \
-		--cross-answers=cross-answers.txt \
-		--disable-cups \
-		--disable-iprint \
-		--disable-cephfs \
-		--disable-fault-handling \
-		--disable-glusterfs \
-		--disable-spotlight \
-		--enable-fhs \
-		--without-automount \
-		--without-iconv \
-		--without-lttng \
-		--without-pam \
-		--without-systemd \
-		--without-utmp \
-		--without-dmapi \
-		--without-fam \
-		--without-gettext \
-		--without-regedit \
-		--without-gpgme
+	--cross-compile \
+	--cross-answers=cross-answers.txt \
+	--disable-cephfs \
+	--disable-cups \
+	--disable-fault-handling \
+	--disable-glusterfs \
+	--disable-iprint \
+	--disable-spotlight \
+	--enable-fhs \
+	--hostcc="$(HOSTCC)" \
+	--with-lockdir=/opt/var/lock/samba \
+	--with-logfilebase=/opt/var/log/samba \
+	--with-piddir=/opt/var/run/samba \
+	--with-privatedir=/opt/etc/samba \
+	--without-automount \
+	--without-dmapi \
+	--without-fam \
+	--without-gettext \
+	--without-gpgme \
+	--without-iconv \
+	--without-kernel-keyring \
+	--without-lttng \
+	--without-pam \
+	--without-regedit \
+	--without-systemd \
+	--without-utmp
 
 HOST_CONFIGURE_ARGS += \
-		--hostcc="$(HOSTCC)" \
-		--disable-cups \
-		--disable-iprint \
-		--disable-cephfs \
-		--disable-fault-handling \
-		--disable-glusterfs \
-		--disable-spotlight \
-		--disable-rpath \
-		--disable-rpath-install \
-		--disable-rpath-private-install \
-		--enable-fhs \
-		--without-automount \
-		--without-iconv \
-		--without-lttng \
-		--without-pam \
-		--without-systemd \
-		--without-utmp \
-		--without-dmapi \
-		--without-fam \
-		--without-gettext \
-		--without-regedit \
-		--without-gpgme
-
-HOST_CONFIGURE_ARGS += --disable-avahi --without-quotas --without-acl-support --without-winbind \
-	--without-ad-dc --without-json --without-libarchive --disable-python --nopyc --nopyo \
-	--without-ads --without-ldap --without-ldb-lmdb
-
-CONFIGURE_ARGS += \
-		--with-lockdir=/opt/var/lock/samba \
-		--with-logfilebase=/opt/var/log/samba \
-		--with-piddir=/opt/var/run/samba \
-		--with-privatedir=/opt/etc/samba
+	--enable-fhs \
+	--disable-avahi \
+	--disable-cups \
+	--disable-cephfs \
+	--disable-fault-handling \
+	--disable-glusterfs \
+	--disable-iprint \
+	--disable-python \
+	--disable-rpath \
+	--disable-rpath-install \
+	--disable-rpath-private-install \
+	--disable-spotlight \
+	--hostcc="$(HOSTCC)" \
+	--nopyc \
+	--nopyo \
+	--without-acl-support \
+	--without-ad-dc \
+	--without-ads \
+	--without-automount \
+	--without-dmapi \
+	--without-fam \
+	--without-gettext \
+	--without-gpgme \
+	--without-iconv \
+	--without-json \
+	--without-ldap \
+	--without-ldb-lmdb \
+	--without-libarchive \
+	--without-lttng \
+	--without-pam \
+	--without-quotas \
+	--without-regedit \
+	--without-systemd \
+	--without-utmp \
+	--without-winbind
 
 # features
 ifeq ($(CONFIG_SAMBA4_SERVER_QUOTAS),y)
@@ -246,10 +265,23 @@ else
 endif
 
 ifeq ($(CONFIG_SAMBA4_SERVER_AD_DC),y)
-	CONFIGURE_ARGS += --without-winbind --without-ldb-lmdb --with-acl-support
+	CONFIGURE_ARGS += \
+		--with-acl-support \
+		--without-ldb-lmdb \
+		--without-winbind
 else
-	CONFIGURE_ARGS += --without-winbind --without-ads --without-ldap --without-ldb-lmdb --without-ad-dc \
-		--without-json --without-libarchive --disable-python --nopyc --nopyo --without-acl-support
+	CONFIGURE_ARGS += \
+		--disable-python \
+		--nopyc \
+		--nopyo \
+		--without-acl-support \
+		--without-ads \
+		--without-ad-dc \
+		--without-json \
+		--without-ldap \
+		--without-ldb-lmdb \
+		--without-libarchive \
+		--without-winbind
 endif
 
 SAMBA4_PDB_MODULES :=pdb_smbpasswd,pdb_tdbsam,
@@ -257,10 +289,9 @@ SAMBA4_AUTH_MODULES :=auth_builtin,auth_sam,auth_unix,
 SAMBA4_VFS_MODULES :=vfs_default,
 SAMBA4_VFS_MODULES_SHARED :=auth_script,
 # always build if kernel supports io_uring
-# XXX IO_URING since Linux 5.1
-#ifdef CONFIG_KERNEL_IO_URING
-#	SAMBA4_VFS_MODULES_SHARED :=$(SAMBA4_VFS_MODULES_SHARED)vfs_io_uring,
-#endif
+ifdef CONFIG_KERNEL_IO_URING
+	SAMBA4_VFS_MODULES_SHARED :=$(SAMBA4_VFS_MODULES_SHARED)vfs_io_uring,
+endif
 ifeq ($(CONFIG_SAMBA4_SERVER_VFS),y)
 	SAMBA4_VFS_MODULES_SHARED :=$(SAMBA4_VFS_MODULES_SHARED)vfs_fruit,vfs_shadow_copy2,vfs_recycle,vfs_fake_perms,vfs_readonly,vfs_cap,vfs_offline,vfs_crossrename,vfs_catia,vfs_streams_xattr,vfs_xattr_tdb,vfs_widelinks,
 ifeq ($(CONFIG_SAMBA4_SERVER_QUOTAS),y)
@@ -304,9 +335,9 @@ SYSTEM_PRIVATE_BUNDLED_LIBS:=talloc,tevent,tevent-util,texpect,tdb,ldb,tdr,cmock
 SYSTEM_BUNDLED_LIBS:=
 PYTHON_BUNDLED_LIBS:=pytalloc-util.cpython-$(PY_VER),pyldb-util.cpython-$(PY_VER)
 # CONFIGURE_ARGS += --builtin-libraries=talloc,tevent,tevent-util,texpect,tdb,ldb,tdr,cmocka,com_err
-#ifdef CONFIG_KERNEL_IO_URING
-#	SYSTEM_BUNDLED_LIBS:=,uring
-#endif
+ifdef CONFIG_KERNEL_IO_URING
+	SYSTEM_BUNDLED_LIBS:=,uring
+endif
 ifeq ($(CONFIG_SAMBA4_SERVER_AD_DC),y)
 	CONFIGURE_ARGS += --bundled-libraries=NONE,$(SYSTEM_PRIVATE_BUNDLED_LIBS)$(SYSTEM_BUNDLED_LIBS),$(PYTHON_BUNDLED_LIBS)
 else
@@ -324,7 +355,7 @@ HOST_CONFIGURE_VARS+= \
 CONFIGURE_VARS += \
 	PATH="$(STAGING_DIR_HOSTPKG)/bin:$(STAGING_DIR_HOSTPKG)/usr/bin:$(PATH)"
 
-# we need hostpkg bin and target config	
+# we need hostpkg bin and target config
 ifeq ($(CONFIG_SAMBA4_SERVER_AD_DC),y)
 	CONFIGURE_VARS += \
 		PYTHON_CONFIG="$(STAGING_DIR)/host/bin/$(PYTHON3)-config"
