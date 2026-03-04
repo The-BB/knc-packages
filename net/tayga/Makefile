@@ -3,12 +3,17 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=tayga
-PKG_VERSION:=0.9.5
-PKG_RELEASE:=1
+PKG_VERSION:=0.9.6
+PKG_RELEASE:=2
 
-PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
-PKG_SOURCE_URL:=https://codeload.github.com/apalrd/tayga/tar.gz/$(PKG_VERSION)?
-PKG_HASH:=d44cc1158f60623d1bcd245f811957a162092c8f5e725489438de12e5500ae49
+# XXX Entware specific: switch to zst src
+#PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
+#PKG_SOURCE_URL:=https://codeload.github.com/apalrd/tayga/tar.gz/$(PKG_VERSION)?
+PKG_MIRROR_HASH:=d1f8f63db5a7fd47cc1ac66da532c703e7ca477cbf5cf7c6083a1e7628b15452
+PKG_SOURCE_PROTO:=git
+PKG_SOURCE_URL:=https://github.com/apalrd/tayga.git
+PKG_SOURCE_VERSION:=97930df66fd7352f208480070edaeb8043846d6b
+PKG_SOURCE_DATE:=2026-01-27
 PKG_LICENSE:=GPL-2.0-or-later
 PKG_LICENSE_FILES:=COPYING
 
@@ -22,7 +27,7 @@ define Package/tayga
   DEPENDS:=+ip @IPV6
   TITLE:=Out-of-kernel stateless NAT64 implementation
   URL:=https://github.com/apalrd/tayga/
-  MAINTAINER:=Ondrej Caletka <ondrej@caletka.cz>
+  MAINTAINER:=Goetz Goerisch <ggoerisch@gmail.com>
 endef
 
 define Package/tayga/description
