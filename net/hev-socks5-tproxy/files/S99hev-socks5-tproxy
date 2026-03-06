@@ -1,11 +1,12 @@
 #!/bin/sh
 
 ENABLED=yes
-PROCS=hev-socks5-tproxy
+
+DESC="HevSocks5TProxy"
+PROCS="hev-socks5-tproxy"
+PROG="/opt/bin/$PROCS"
+
 ARGS="/opt/etc/$PROCS/main.yml"
 PREARGS=""
-DESC=$PROCS
-
-PATH=/opt/sbin:/opt/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
 . /opt/etc/init.d/rc.func
