@@ -10,7 +10,7 @@ include $(TOPDIR)/rules.mk
 PKG_NAME:=openvpn
 
 PKG_VERSION:=2.6.14
-PKG_RELEASE:=5
+PKG_RELEASE:=7
 
 PKG_SOURCE_URL:=\
 	https://build.openvpn.net/downloads/releases/ \
@@ -93,38 +93,42 @@ define Build/Configure
 endef
 
 define Package/openvpn-$(BUILD_VARIANT)/install
-	$(INSTALL_DIR) \
-		$(1)/opt/sbin \
-		$(1)/opt/etc/init.d \
-		$(1)/opt/etc/openvpn \
-		$(1)/opt/lib/upgrade/keep.d
-
+	$(INSTALL_DIR) $(1)/opt/sbin
 	$(INSTALL_BIN) \
 		$(PKG_INSTALL_DIR)/opt/sbin/openvpn \
 		$(1)/opt/sbin/
 
+#	$(INSTALL_DIR) $(1)/lib/netifd/proto
 #	$(INSTALL_BIN) \
 #		files/lib/netifd/proto/openvpn.sh \
 #		$(1)/lib/netifd/proto/
 
+#	$(INSTALL_DIR) $(1)/etc/uci-defaults
 #	$(INSTALL_BIN) \
 #		files/etc/uci-defaults/60_openvpn_migrate.sh \
 #		$(1)/etc/uci-defaults/
 
+#	$(INSTALL_DIR) $(1)/usr/share/openvpn
 #	$(INSTALL_DATA) \
-#		files/openvpn.options \
-#		$(1)/usr/share/openvpn/openvpn.options
-
+#		files/usr/share/openvpn/openvpn.options \
+#		$(1)/usr/share/openvpn/
 #	$(INSTALL_BIN) \
-#		files/up.uc files/down.uc files/route-pre-down.uc files/route-up.uc \
-#		files/ipchange.uc \
-#		files/client-connect.uc files/client-disconnect.uc files/client-crresponse.uc \
-#		files/auth-user-pass-verify.uc files/tls-verify.uc \
+#		files/usr/share/openvpn/up.uc \
+#		files/usr/share/openvpn/down.uc \
+#		files/usr/share/openvpn/route-pre-down.uc \
+#		files/usr/share/openvpn/route-up.uc \
+#		files/usr/share/openvpn/ipchange.uc \
+#		files/usr/share/openvpn/client-connect.uc \
+#		files/usr/share/openvpn/client-disconnect.uc \
+#		files/usr/share/openvpn/client-crresponse.uc \
+#		files/usr/share/openvpn/auth-user-pass-verify.uc \
+#		files/usr/share/openvpn/tls-verify.uc \
 #		$(1)/usr/share/openvpn/
 
+	$(INSTALL_DIR) $(1)/opt/lib/upgrade/keep.d
 	$(INSTALL_DATA) \
-		files/openvpn.sysupgrade \
-		$(1)/opt/lib/upgrade/keep.d/openvpn
+		files/lib/upgrade/keep.d/openvpn \
+		$(1)/opt/lib/upgrade/keep.d/
 
 	$(INSTALL_BIN) files/S20openvpn $(1)/opt/etc/init.d
 endef
