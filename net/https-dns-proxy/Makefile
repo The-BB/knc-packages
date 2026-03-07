@@ -6,7 +6,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=https-dns-proxy
 PKG_VERSION:=2025.12.29
-PKG_RELEASE:=1
+PKG_RELEASE:=4
 
 PKG_SOURCE_PROTO:=git
 PKG_SOURCE_URL:=https://github.com/aarond10/https_dns_proxy/
@@ -29,10 +29,16 @@ define Package/https-dns-proxy
 	CATEGORY:=Network
 	TITLE:=DNS Over HTTPS Proxy
 	SUBMENU:=IP Addresses and Names
-	URL:=https://github.com/stangri/https-dns-proxy/
-	DEPENDS:=+libcares +libcurl +libev +ca-bundle +jsonfilter +resolveip
-	DEPENDS+=+!BUSYBOX_DEFAULT_GREP:grep
-	DEPENDS+=+!BUSYBOX_DEFAULT_SED:sed
+	URL:=https://github.com/mossdef-org/https-dns-proxy/
+	DEPENDS:= \
+		+libcares \
+		+libcurl \
+		+libev \
+		+ca-bundle \
+		+jsonfilter \
+		+resolveip \
+		+!BUSYBOX_DEFAULT_GREP:grep \
+		+!BUSYBOX_DEFAULT_SED:sed
 	CONFLICTS:=https_dns_proxy
 endef
 
