@@ -1,11 +1,11 @@
-commit 3dd1f337ebb04c38c385a379730f10ee3fa7a305 (HEAD -> master, origin/master, origin/HEAD)
-Author: Patrick Hemmen <jummo4@yahoo.de>
-Date:   Tue Feb 10 21:38:23 2026 +0100
+commit 0f574b5f5ba466817adb87ecff49cc0a3ec3e333 (HEAD -> master, origin/master, origin/HEAD)
+Author: Yanase Yuki <dev@zpc.st>
+Date:   Wed Jan 14 17:03:02 2026 +0900
 
-    ddns-scripts: change servercow.de to new dns api
+    bridge-utils: remove package
     
-    The previous way to update dns records at servercow.de was replaced
-    with a https based dns api. The new dns api is documented at
-    https://wiki.servercow.de/de/domains/dns_api/api-syntax/#einfuhrung
+    bridge-utils is obsolete software because ip command has
+    bridge functionality. And OpenWrt uses BusyBox's brctl
+    by default, so most users will not be affected by this change.
     
-    Signed-off-by: Patrick Hemmen <jummo4@yahoo.de>
+    Signed-off-by: Yanase Yuki <dev@zpc.st>
