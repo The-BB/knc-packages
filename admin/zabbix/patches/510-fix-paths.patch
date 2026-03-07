@@ -45,7 +45,7 @@
  		log_file_cfg.log_type_str = zbx_strdup(log_file_cfg.log_type_str, ZBX_OPTION_LOGTYPE_FILE);
 --- a/src/zabbix_proxy/proxy.c
 +++ b/src/zabbix_proxy/proxy.c
-@@ -541,19 +541,19 @@ static void	zbx_set_defaults(void)
+@@ -543,19 +543,19 @@ static void	zbx_set_defaults(void)
  		zbx_config_dbhigh->config_dbhost = zbx_strdup(zbx_config_dbhigh->config_dbhost, "localhost");
  
  	if (NULL == zbx_config_snmptrap_file)
@@ -70,7 +70,7 @@
  #endif
  	if (NULL == config_externalscripts)
  		config_externalscripts = zbx_strdup(config_externalscripts, DEFAULT_EXTERNAL_SCRIPTS_PATH);
-@@ -577,7 +577,7 @@ static void	zbx_set_defaults(void)
+@@ -579,7 +579,7 @@ static void	zbx_set_defaults(void)
  		log_file_cfg.log_type_str = zbx_strdup(log_file_cfg.log_type_str, ZBX_OPTION_LOGTYPE_FILE);
  
  	if (NULL == config_socket_path)
@@ -81,7 +81,7 @@
  		config_forks[ZBX_PROCESS_TYPE_IPMIMANAGER] = 1;
 --- a/src/zabbix_server/server.c
 +++ b/src/zabbix_server/server.c
-@@ -641,10 +641,10 @@ static void	zbx_set_defaults(void)
+@@ -647,10 +647,10 @@ static void	zbx_set_defaults(void)
  		zbx_config_dbhigh->config_dbhost = zbx_strdup(zbx_config_dbhigh->config_dbhost, "localhost");
  
  	if (NULL == zbx_config_snmptrap_file)
@@ -94,7 +94,7 @@
  
  	if (NULL == zbx_config_alert_scripts_path)
  		zbx_config_alert_scripts_path = zbx_strdup(zbx_config_alert_scripts_path, DEFAULT_ALERT_SCRIPTS_PATH);
-@@ -653,13 +653,13 @@ static void	zbx_set_defaults(void)
+@@ -659,13 +659,13 @@ static void	zbx_set_defaults(void)
  		CONFIG_LOAD_MODULE_PATH = zbx_strdup(CONFIG_LOAD_MODULE_PATH, DEFAULT_LOAD_MODULE_PATH);
  
  	if (NULL == zbx_config_tmpdir)
@@ -111,7 +111,7 @@
  #endif
  	if (NULL == config_externalscripts)
  		config_externalscripts = zbx_strdup(config_externalscripts, DEFAULT_EXTERNAL_SCRIPTS_PATH);
-@@ -682,7 +682,7 @@ static void	zbx_set_defaults(void)
+@@ -688,7 +688,7 @@ static void	zbx_set_defaults(void)
  		log_file_cfg.log_type_str = zbx_strdup(log_file_cfg.log_type_str, ZBX_OPTION_LOGTYPE_FILE);
  
  	if (NULL == CONFIG_SOCKET_PATH)

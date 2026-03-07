@@ -28,7 +28,7 @@
  
  ### Option: LogFileSize
  #	Maximum size of log file in MB.
-@@ -540,4 +542,4 @@ User=zabbix-agent
+@@ -542,4 +544,4 @@ User=zabbix-agent
  
  # Include=/usr/local/etc/zabbix_agentd.userparams.conf
  # Include=/usr/local/etc/zabbix_agentd.conf.d/*.conf
