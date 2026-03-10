@@ -1,11 +1,9 @@
-commit 0f574b5f5ba466817adb87ecff49cc0a3ec3e333 (HEAD -> master, origin/master, origin/HEAD)
-Author: Yanase Yuki <dev@zpc.st>
-Date:   Wed Jan 14 17:03:02 2026 +0900
+commit f52f1864a8705f0f91f305749f7ef2df7c1b1f68 (HEAD -> master, origin/master, origin/HEAD)
+Author: Vladimir Ulrich <admin@evl.su>
+Date:   Mon Mar 9 07:55:37 2026 +0300
 
-    bridge-utils: remove package
+    zoneinfo: updated to 2026a release
     
-    bridge-utils is obsolete software because ip command has
-    bridge functionality. And OpenWrt uses BusyBox's brctl
-    by default, so most users will not be affected by this change.
+    Updated package version and file hashes.
     
-    Signed-off-by: Yanase Yuki <dev@zpc.st>
+    Signed-off-by: Vladimir Ulrich <admin@evl.su>
