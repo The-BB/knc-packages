@@ -9,7 +9,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=pciutils
 PKG_VERSION:=3.14.0
-PKG_RELEASE:=1
+PKG_RELEASE:=2
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.xz
 PKG_SOURCE_URL:=@KERNEL/software/utils/pciutils
@@ -28,6 +28,7 @@ define Package/pciutils
   TITLE:=Linux PCI Utilities
   URL:=http://mj.ucw.cz/pciutils.shtml
   DEPENDS:=+libkmod +libpci +pciids
+  ALTERNATIVES:=200:/opt/bin/lspci:/opt/libexec/lspci-pciutils
 endef
 
 define Package/pciutils/description
@@ -71,8 +72,8 @@ define Build/InstallDev
 endef
 
 define Package/pciutils/install
-	$(INSTALL_DIR) $(1)/opt/sbin $(1)/opt/bin
-	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/opt/bin/lspci $(1)/opt/bin
+	$(INSTALL_DIR) $(1)/opt/sbin $(1)/opt/libexec
+	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/opt/bin/lspci $(1)/opt/libexec/lspci-pciutils
 	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/opt/sbin/setpci $(1)/opt/sbin/
 endef
 
