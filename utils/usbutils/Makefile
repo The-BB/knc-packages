@@ -4,13 +4,12 @@
 # This is free software, licensed under the GNU General Public License v2.
 # See /LICENSE for more information.
 #
-# Entware specific: ALTERNATIVES
 
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=usbutils
 PKG_VERSION:=017
-PKG_RELEASE:=1
+PKG_RELEASE:=2
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.xz
 PKG_SOURCE_URL:=@KERNEL/linux/utils/usb/usbutils
@@ -32,17 +31,16 @@ define Package/usbutils
   DEPENDS:=+libusb-1.0 +libudev +librt +libpthread +usbids
   TITLE:=USB devices listing utilities
   URL:=http://www.linux-usb.org/
-  ALTERNATIVES:=300:/opt/bin/lsusb:/opt/libexec/lsusb
+  ALTERNATIVES:=200:/opt/bin/lsusb:/opt/libexec/lsusb-usbutils
 endef
 
 CONFIGURE_ARGS+= \
 	--datadir=/opt/share/hwdata
 
 define Package/usbutils/install
-	$(INSTALL_DIR) $(1)/opt/bin
+	$(INSTALL_DIR) $(1)/opt/bin $(1)/opt/libexec
+	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/opt/bin/lsusb $(1)/opt/libexec/lsusb-usbutils
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/usbreset $(1)/opt/bin/
-	$(INSTALL_DIR) $(1)/opt/libexec
-	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/opt/bin/lsusb $(1)/opt/libexec/
 endef
 
 $(eval $(call BuildPackage,usbutils))
