@@ -1,7 +1,8 @@
-commit ff0e55a2a32dfa513775044bf5c217bf3a11beb2 (HEAD -> master, origin/master, origin/HEAD)
-Author: Harin Lee <me@harin.net>
-Date:   Wed Mar 11 20:20:01 2026 +0900
+commit 04f59914515e044ff066ce0c7d92aee726da4752 (HEAD -> master, origin/master, origin/HEAD)
+Author: George Sapkin <george@sapk.in>
+Date:   Thu Mar 12 19:59:23 2026 +0200
 
-    mwan3: bump PKG_VERSION to 2.12.1
+    sqlite3: bump to 3.52.0
     
-    Signed-off-by: Harin Lee <me@harin.net>
+    Changes: https://sqlite.org/releaselog/3_52_0.html
+    Signed-off-by: George Sapkin <george@sapk.in>
