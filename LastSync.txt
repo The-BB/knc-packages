@@ -1,16 +1,11 @@
-commit 6e95bdf1b97cd8e2e817cef7765a6539cf904080 (HEAD -> master, origin/master, origin/HEAD)
+commit 27b6ad53b9e56c38b7a99e123584c562e8ba1b5a (HEAD -> master, origin/master, origin/HEAD)
 Author: Alexandru Ardelean <alex@shruggie.ro>
-Date:   Wed Mar 11 16:31:37 2026 +0200
+Date:   Sat Mar 14 10:32:45 2026 +0200
 
-    python-pytz: bump to 2026.1
+    treewide: add Alexandru Ardelean as co-maintainer
     
-    Updated timezone data to 2026.1 release.
-    
-    Full release notes:
-    https://github.com/stub42/pytz/blob/master/src/CHANGES.rst
-    
-    pytz 2026.1 requires setuptools as build backend but it was not
-    declared as a build dependency, causing the build to fail with
-    'setuptools.build_meta:__legacy__ is not available'.
+    Add 'Alexandru Ardelean <ardeleanalex@gmail.com>' as co-maintainer
+    alongside Jan Pavlinec <jan.pavlinec1@gmail.com> for all packages
+    where Jan Pavlinec is listed as maintainer.
     
     Signed-off-by: Alexandru Ardelean <alex@shruggie.ro>
