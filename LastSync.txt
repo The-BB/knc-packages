@@ -1,8 +1,16 @@
-commit 04f59914515e044ff066ce0c7d92aee726da4752 (HEAD -> master, origin/master, origin/HEAD)
-Author: George Sapkin <george@sapk.in>
-Date:   Thu Mar 12 19:59:23 2026 +0200
+commit 6e95bdf1b97cd8e2e817cef7765a6539cf904080 (HEAD -> master, origin/master, origin/HEAD)
+Author: Alexandru Ardelean <alex@shruggie.ro>
+Date:   Wed Mar 11 16:31:37 2026 +0200
 
-    sqlite3: bump to 3.52.0
+    python-pytz: bump to 2026.1
     
-    Changes: https://sqlite.org/releaselog/3_52_0.html
-    Signed-off-by: George Sapkin <george@sapk.in>
+    Updated timezone data to 2026.1 release.
+    
+    Full release notes:
+    https://github.com/stub42/pytz/blob/master/src/CHANGES.rst
+    
+    pytz 2026.1 requires setuptools as build backend but it was not
+    declared as a build dependency, causing the build to fail with
+    'setuptools.build_meta:__legacy__ is not available'.
+    
+    Signed-off-by: Alexandru Ardelean <alex@shruggie.ro>
