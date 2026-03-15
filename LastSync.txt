@@ -1,11 +1,12 @@
-commit 27b6ad53b9e56c38b7a99e123584c562e8ba1b5a (HEAD -> master, origin/master, origin/HEAD)
-Author: Alexandru Ardelean <alex@shruggie.ro>
-Date:   Sat Mar 14 10:32:45 2026 +0200
+commit a7f33871e9b199eb311e46c386b60084b42cb27a (HEAD -> master, origin/master, origin/HEAD)
+Author: Fabrice Fontaine <fontaine.fabrice@gmail.com>
+Date:   Fri Mar 13 23:28:56 2026 +0100
 
-    treewide: add Alexandru Ardelean as co-maintainer
+    python-pyopenssl: fix PKG_CPE_ID
     
-    Add 'Alexandru Ardelean <ardeleanalex@gmail.com>' as co-maintainer
-    alongside Jan Pavlinec <jan.pavlinec1@gmail.com> for all packages
-    where Jan Pavlinec is listed as maintainer.
+    cpe:/a:pyopenssl:pyopenssl is the correct CPE ID for python-pyopenssl:
+    https://nvd.nist.gov/products/cpe/search/results?keyword=cpe:2.3:a:pyopenssl:pyopenssl
     
-    Signed-off-by: Alexandru Ardelean <alex@shruggie.ro>
+    Fixes: ceadbcbb64de727c3a974e552d9a723d532e4e40 (treewide: add PKG_CPE_ID for cvescanner)
+    
+    Signed-off-by: Fabrice Fontaine <fontaine.fabrice@gmail.com>
