@@ -1,12 +1,9 @@
-commit a7f33871e9b199eb311e46c386b60084b42cb27a (HEAD -> master, origin/master, origin/HEAD)
-Author: Fabrice Fontaine <fontaine.fabrice@gmail.com>
-Date:   Fri Mar 13 23:28:56 2026 +0100
+commit 5fc21a109b75bfff04b147a35a5547d0e140ce59 (HEAD -> master, origin/master, origin/HEAD)
+Author: Rosen Penev <rosenp@gmail.com>
+Date:   Fri Mar 13 19:15:23 2026 -0700
 
-    python-pyopenssl: fix PKG_CPE_ID
+    dante: fix usaage with musl
     
-    cpe:/a:pyopenssl:pyopenssl is the correct CPE ID for python-pyopenssl:
-    https://nvd.nist.gov/products/cpe/search/results?keyword=cpe:2.3:a:pyopenssl:pyopenssl
+    Need to disable this function as it's unusable on musl.
     
-    Fixes: ceadbcbb64de727c3a974e552d9a723d532e4e40 (treewide: add PKG_CPE_ID for cvescanner)
-    
-    Signed-off-by: Fabrice Fontaine <fontaine.fabrice@gmail.com>
+    Signed-off-by: Rosen Penev <rosenp@gmail.com>
