@@ -9,7 +9,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=dante
 PKG_VERSION:=1.4.4
-PKG_RELEASE:=2
+PKG_RELEASE:=3
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=http://www.inet.no/dante/files/
@@ -33,9 +33,10 @@ CONFIGURE_ARGS += \
 	--with-sockd-conf=/opt/etc/sockd.conf \
 	--with-pidfile=/opt/var/run/sockd.pid
 
+#disable sched_setscheduler as it's actually unusable.
 CONFIGURE_VARS += \
-	ac_cv_search_pam_start="" \
-	ac_cv_func_sched_setscheduler=no
+	$(if $(CONFIG_USE_MUSL),ac_cv_func_sched_setscheduler=no) \
+	ac_cv_search_pam_start=""
 
 TARGET_CFLAGS += $(if $(CONFIG_USE_MUSL),-I"$(STAGING_DIR)/opt/include/tirpc")
 
