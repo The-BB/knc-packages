@@ -1,12 +1,11 @@
-commit a2f69280895b43f6328fb3481a0066dd77e96c28 (HEAD -> master, origin/master, origin/HEAD)
-Author: Stan Grishin <stangri@melmac.ca>
-Date:   Mon Mar 9 23:58:08 2026 +0000
+commit e0ab7d0dfa9f8aab44578238f17d63038214fc0e (HEAD -> master, origin/master, origin/HEAD)
+Author: Sander van Deijck <sander@vandeijck.com>
+Date:   Fri Mar 13 20:24:03 2026 +0100
 
-    pbr: update to 1.2.2-r12
+    openvpn: update to 2.6.19
     
-    * fix: detect/support point-to-point interfaces in dynamic routing mode
-    * fix: avoid IPv4/IPv6 address collisions on Tor policies
-    * fix: do not set triggers on boot when service is disabled in config
-    * fix: more robust forward stop/enable
+    Update the openvpn package to the latest version in
+    the 2.6.x branch while development of the 2.7.x branch
+    become stable enough to merge.
     
-    Signed-off-by: Stan Grishin <stangri@melmac.ca>
+    Signed-off-by: Sander van Deijck <sander@vandeijck.com>
