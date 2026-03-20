@@ -200,7 +200,12 @@ ifeq ($(CONFIG_USE_GLIBC),y)
   TARGET_LDFLAGS += -lbsd
 endif
 
-# FIXME mips: .../cpp_int.hpp:836:7: error: statement is not a constant expression
+# XXX musl: Error: branch out of range
+ifeq ($(CONFIG_USE_MUSL),y)
+  TARGET_CXXFLAGS:=$(filter-out -O%,$(TARGET_CXXFLAGS)) -Os
+endif
+
+# XXX mips: .../cpp_int.hpp:836:7: error: statement is not a constant expression
 TARGET_CXXFLAGS += -std=c++17
 
 define Package/kea-libs/install
