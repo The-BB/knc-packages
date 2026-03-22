@@ -12,14 +12,14 @@ include $(TOPDIR)/rules.mk
 include ../python3-version.mk
 
 PKG_NAME:=python3
-PKG_RELEASE:=2
+PKG_RELEASE:=1
 PKG_VERSION:=$(PYTHON3_VERSION).$(PYTHON3_VERSION_MICRO)
 
 PKG_SOURCE:=Python-$(PKG_VERSION).tar.xz
 PKG_SOURCE_URL:=https://www.python.org/ftp/python/$(PKG_VERSION)
-PKG_HASH:=ed5ef34cda36cfa2f3a340f07cac7e7814f91c7f3c411f6d3562323a866c5c66
+PKG_HASH:=a97d5549e9ad81fe17159ed02c68774ad5d266c72f8d9a0b5a9c371fe85d902b
 
-PKG_MAINTAINER:=Alexandru Ardelean <ardeleanalex@gmail.com>, Alexandru Ardelean <ardeleanalex@gmail.com>
+PKG_MAINTAINER:=Alexandru Ardelean <ardeleanalex@gmail.com>
 PKG_LICENSE:=Python-2.0.1 0BSD
 PKG_LICENSE_FILES:=LICENSE Doc/copyright.rst Doc/license.rst Modules/_ctypes/darwin/LICENSE Modules/_ctypes/libffi_osx/LICENSE Modules/expat/COPYING
 PKG_CPE_ID:=cpe:/a:python:python
@@ -42,7 +42,7 @@ PKG_BUILD_DIR:=$(BUILD_DIR)/Python-$(PKG_VERSION)
 HOST_BUILD_DIR:=$(BUILD_DIR_HOST)/Python-$(PKG_VERSION)
 
 PKG_BUILD_DEPENDS:=bluez python3/host python-build/host python-installer/host python-wheel/host
-HOST_BUILD_DEPENDS:=bzip2/host libffi/host
+HOST_BUILD_DEPENDS:=bzip2/host libffi/host readline/host
 
 include $(INCLUDE_DIR)/host-build.mk
 include $(INCLUDE_DIR)/package.mk
@@ -71,7 +71,7 @@ endef
 define Package/libpython3
 $(call Package/python3/Default)
   TITLE+= core library
-  DEPENDS:=+libpthread +libatomic
+  DEPENDS:=+(mips||mipsel):libatomic
   ABI_VERSION:=$(PYTHON3_VERSION)
 endef
 
@@ -97,7 +97,7 @@ endef
 define Package/python3-light
 $(call Package/python3/Default)
   TITLE+= light installation
-  DEPENDS:=+python3-base +libbz2 +zlib # +USE_GLIBC:libcrypt-compat
+  DEPENDS:=+python3-base +libbz2 +zlib +libzstd
 endef
 
 define Package/python3-light/config
@@ -310,6 +310,7 @@ endif
 
 # Bypass configure test
 HOST_CONFIGURE_VARS += \
+	LIBREADLINE_LIBS='-L$(STAGING_DIR_HOSTPKG)/lib -lreadline -lncurses' \
 	py_cv_module__tkinter=n/a
 #	ac_cv_working_openssl_hashlib=yes
 
@@ -321,7 +322,6 @@ HOST_MAKE_VARS += \
 endif
 
 HOST_CONFIGURE_ARGS += \
-	--with-readline=no \
 	--enable-optimizations \
 	--disable-test-modules \
 	--with-ensurepip=upgrade \

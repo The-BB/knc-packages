@@ -1,6 +1,6 @@
 --- a/configure.ac
 +++ b/configure.ac
-@@ -5255,7 +5255,7 @@ fi
+@@ -5280,7 +5280,7 @@ fi
  # header definition prevents usage - autoconf doesn't use the headers), or
  # raise an error if used at runtime. Force these symbols off.
  if test "$ac_sys_system" != "iOS" ; then
