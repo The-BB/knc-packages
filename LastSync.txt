@@ -1,11 +1,10 @@
-commit e0ab7d0dfa9f8aab44578238f17d63038214fc0e (HEAD -> master, origin/master, origin/HEAD)
-Author: Sander van Deijck <sander@vandeijck.com>
-Date:   Fri Mar 13 20:24:03 2026 +0100
+commit 3132319ea4cd8badd034aa187a3091986a51d7af (HEAD -> master, origin/master, origin/HEAD)
+Author: Wei-Ting Yang <williamatcg@gmail.com>
+Date:   Thu Mar 5 19:51:52 2026 +0800
 
-    openvpn: update to 2.6.19
+    ffmpeg: document BUILD_PATENTED in package description
     
-    Update the openvpn package to the latest version in
-    the 2.6.x branch while development of the 2.7.x branch
-    become stable enough to merge.
+    Add a note indicating that patented codecs and technologies are
+    available when CONFIG_BUILD_PATENTED=y.
     
-    Signed-off-by: Sander van Deijck <sander@vandeijck.com>
+    Signed-off-by: Wei-Ting Yang <williamatcg@gmail.com>
