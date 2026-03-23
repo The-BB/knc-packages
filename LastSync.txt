@@ -1,10 +1,10 @@
-commit 3132319ea4cd8badd034aa187a3091986a51d7af (HEAD -> master, origin/master, origin/HEAD)
-Author: Wei-Ting Yang <williamatcg@gmail.com>
-Date:   Thu Mar 5 19:51:52 2026 +0800
+commit f35120faced48a4bb848907a0abe6350edd07390 (HEAD -> master, origin/master, origin/HEAD)
+Author: Tianling Shen <cnsztl@immortalwrt.org>
+Date:   Thu Mar 12 16:33:20 2026 +0800
 
-    ffmpeg: document BUILD_PATENTED in package description
+    libtorrent-rasterbar: add boost as dependency for python package
     
-    Add a note indicating that patented codecs and technologies are
-    available when CONFIG_BUILD_PATENTED=y.
+    `boost-python3` will be only selectable after `boost` is selected,
+    so add `boost` to dependencies as well.
     
-    Signed-off-by: Wei-Ting Yang <williamatcg@gmail.com>
+    Signed-off-by: Tianling Shen <cnsztl@immortalwrt.org>
