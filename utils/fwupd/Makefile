@@ -46,7 +46,6 @@ define Package/fwupd/Default
 	+libsqlite3 \
 	+libcurl \
 	+liblzma \
-	+FWUPD_PLUGIN_FLASHROM:libflashrom \
 	+FWUPD_LIBDRM:libdrm \
 	+FWUPD_CBOR:libcbor \
 	+FWUPD_PLUGIN_MODEMMANAGER:modemmanager \
