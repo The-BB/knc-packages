@@ -1,21 +1,15 @@
-commit 24cd935ac8d48f1e17ccc45e73ad538b60f20985 (HEAD -> master, origin/master, origin/HEAD)
+commit 7e5c87e074e3647ed1bda0316f09c1726714162d (HEAD -> master, origin/master, origin/HEAD)
 Author: Alexandru Ardelean <alex@shruggie.ro>
-Date:   Mon Mar 23 18:34:53 2026 +0000
+Date:   Sun Mar 22 07:39:38 2026 +0000
 
-    python-setuptools-scm: bump to 10.0.1
+    micropython: bump to 1.27.0
     
-    v10.0.0 is a major release with these key changes:
-    - Drop Python 3.8 and 3.9 support; minimum is now Python 3.10
-    - Depend on vcs-versioning for core version inference logic, allowing
-      other build backends to reuse it without a setuptools dependency
-    - Version files (write_to, version_file) are now written to the build
-      directory during build_py instead of the source tree during version
-      inference, enabling builds from read-only source directories
+    Also update micropython-lib to v1.27.0. Switch micropython-lib from a
+    git source to the release tarball from:
+    https://github.com/micropython/micropython-lib/releases/tag/v1.27.0
     
-    v10.0.1 fixes the release pipeline tooling only (no functional changes).
+    MPY_VERSION remains at 6, no ABI change.
     
-    Full release notes:
-    https://github.com/pypa/setuptools-scm/releases/tag/setuptools-scm-v10.0.0
+    Adjusted patches.
     
-    Co-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>
     Signed-off-by: Alexandru Ardelean <alex@shruggie.ro>
