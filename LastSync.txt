@@ -1,10 +1,21 @@
-commit f35120faced48a4bb848907a0abe6350edd07390 (HEAD -> master, origin/master, origin/HEAD)
-Author: Tianling Shen <cnsztl@immortalwrt.org>
-Date:   Thu Mar 12 16:33:20 2026 +0800
+commit 24cd935ac8d48f1e17ccc45e73ad538b60f20985 (HEAD -> master, origin/master, origin/HEAD)
+Author: Alexandru Ardelean <alex@shruggie.ro>
+Date:   Mon Mar 23 18:34:53 2026 +0000
 
-    libtorrent-rasterbar: add boost as dependency for python package
+    python-setuptools-scm: bump to 10.0.1
     
-    `boost-python3` will be only selectable after `boost` is selected,
-    so add `boost` to dependencies as well.
+    v10.0.0 is a major release with these key changes:
+    - Drop Python 3.8 and 3.9 support; minimum is now Python 3.10
+    - Depend on vcs-versioning for core version inference logic, allowing
+      other build backends to reuse it without a setuptools dependency
+    - Version files (write_to, version_file) are now written to the build
+      directory during build_py instead of the source tree during version
+      inference, enabling builds from read-only source directories
     
-    Signed-off-by: Tianling Shen <cnsztl@immortalwrt.org>
+    v10.0.1 fixes the release pipeline tooling only (no functional changes).
+    
+    Full release notes:
+    https://github.com/pypa/setuptools-scm/releases/tag/setuptools-scm-v10.0.0
+    
+    Co-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>
+    Signed-off-by: Alexandru Ardelean <alex@shruggie.ro>
