@@ -1,15 +1,24 @@
-commit 7e5c87e074e3647ed1bda0316f09c1726714162d (HEAD -> master, origin/master, origin/HEAD)
+commit a7f33e7daf5f533957ef5540bceabf5d132b5848 (HEAD -> master, origin/master, origin/HEAD)
 Author: Alexandru Ardelean <alex@shruggie.ro>
-Date:   Sun Mar 22 07:39:38 2026 +0000
+Date:   Mon Mar 23 18:39:26 2026 +0000
 
-    micropython: bump to 1.27.0
+    python-pycparser: bump to 3.0
     
-    Also update micropython-lib to v1.27.0. Switch micropython-lib from a
-    git source to the release tarball from:
-    https://github.com/micropython/micropython-lib/releases/tag/v1.27.0
+    v3.0 removes the dependency on PLY by rewriting pycparser with a
+    hand-written lexer and recursive-descent parser for C. No API changes
+    or functionality changes - the same AST is produced as before.
     
-    MPY_VERSION remains at 6, no ABI change.
+    Other changes:
+    - Drop EOL Python 3.8 and 3.9 support (minimum now 3.10)
+    - Add support for Python 3.14
     
-    Adjusted patches.
+    Since PLY is no longer used:
+    - Remove python-ply from PKG_BUILD_DEPENDS and HOST_BUILD_DEPENDS
+    - Remove +python3-ply from package DEPENDS
+    - Remove 001-use-external-ply.patch (no longer needed)
     
+    Full release notes:
+    https://github.com/eliben/pycparser/releases/tag/release_v3.00
+    
+    Co-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>
     Signed-off-by: Alexandru Ardelean <alex@shruggie.ro>
