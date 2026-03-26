@@ -1,24 +1,9 @@
-commit a7f33e7daf5f533957ef5540bceabf5d132b5848 (HEAD -> master, origin/master, origin/HEAD)
-Author: Alexandru Ardelean <alex@shruggie.ro>
-Date:   Mon Mar 23 18:39:26 2026 +0000
+commit 7f2db0e900581fdcbe47a0960fc8f664bbf49072 (HEAD -> master, origin/master, origin/HEAD)
+Author: Jean Thomas <jean.thomas@wifirst.fr>
+Date:   Thu Mar 26 10:12:13 2026 +0100
 
-    python-pycparser: bump to 3.0
+    python-poetry-core: bump to 2.3.1
     
-    v3.0 removes the dependency on PLY by rewriting pycparser with a
-    hand-written lexer and recursive-descent parser for C. No API changes
-    or functionality changes - the same AST is produced as before.
+    Bump to latest available version.
     
-    Other changes:
-    - Drop EOL Python 3.8 and 3.9 support (minimum now 3.10)
-    - Add support for Python 3.14
-    
-    Since PLY is no longer used:
-    - Remove python-ply from PKG_BUILD_DEPENDS and HOST_BUILD_DEPENDS
-    - Remove +python3-ply from package DEPENDS
-    - Remove 001-use-external-ply.patch (no longer needed)
-    
-    Full release notes:
-    https://github.com/eliben/pycparser/releases/tag/release_v3.00
-    
-    Co-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>
-    Signed-off-by: Alexandru Ardelean <alex@shruggie.ro>
+    Signed-off-by: Jean Thomas <jean.thomas@wifirst.fr>
