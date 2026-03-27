@@ -1,9 +1,10 @@
-commit 7f2db0e900581fdcbe47a0960fc8f664bbf49072 (HEAD -> master, origin/master, origin/HEAD)
-Author: Jean Thomas <jean.thomas@wifirst.fr>
-Date:   Thu Mar 26 10:12:13 2026 +0100
+commit 11412702c9da7da630a8657a49a39e2796ea4e00 (HEAD -> master, origin/master, origin/HEAD)
+Author: Qin Guang <topeqin@gmail.com>
+Date:   Thu Mar 26 12:45:49 2026 +0000
 
-    python-poetry-core: bump to 2.3.1
+    tar: fix typo in LDFLAGS variable name
     
-    Bump to latest available version.
+    LDLAGS -> LDFLAGS, fixes linker flags not being passed correctly.
     
-    Signed-off-by: Jean Thomas <jean.thomas@wifirst.fr>
+    Fixes: 94e7fbdda ("tar: import from oldpackages and upgrade to 1.28")
+    Signed-off-by: Qin Guang <topeqin@gmail.com>
