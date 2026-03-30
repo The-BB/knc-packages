@@ -1,32 +1,11 @@
-commit 6bb05a2487ad6d622171259f8a1e1b7abf8b5c1b (HEAD -> master, origin/master, origin/HEAD)
+commit 32c73213f2c652e1aeebb7d10b6f4cb5eb3146c4 (HEAD -> master, origin/master, origin/HEAD)
 Author: Alexandru Ardelean <alex@shruggie.ro>
-Date:   Mon Mar 23 18:43:56 2026 +0000
+Date:   Tue Mar 10 12:32:38 2026 +0000
 
-    python-pyopenssl: bump to 26.0.0
+    python-rtslib-fb: add some basic tests
     
-    Notable changes since 23.3.0:
+    These are a massive help for keeping things stable on the
+    mid-to-longterm when updating packages.
+    We might even feel comfortable partially automating the process.
     
-    v26.0.0:
-    - Drop Python 3.7 support
-    - Minimum cryptography version is now 46.0.0
-    - Security fix: properly raise an error if a DTLS cookie callback
-      returned a cookie longer than DTLS1_COOKIE_LENGTH bytes, previously
-      resulting in a buffer-overflow (CVE-2026-27459)
-    - Security fix: Context.set_tlsext_servername_callback now handles
-      exceptions raised in the callback instead of silently swallowing
-      them (CVE-2026-27448)
-    - Added support for using aws-lc instead of OpenSSL
-    - Added OpenSSL.SSL.Connection.get_group_name
-    
-    v25.x:
-    - Added OpenSSL.SSL.Context.set_tls13_ciphersuites
-    - Added OpenSSL.SSL.Connection.set_info_callback
-    - Added OpenSSL.SSL.Context.clear_mode
-    - pyOpenSSL now sets SSL_MODE_ACCEPT_MOVING_WRITE_BUFFER by default
-    - typing-extensions added as a runtime dependency (for Python < 3.13)
-    
-    Full changelog:
-    https://www.pyopenssl.org/en/stable/changelog.html
-    
-    Co-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>
     Signed-off-by: Alexandru Ardelean <alex@shruggie.ro>
