@@ -43,19 +43,22 @@
  	} else {
  	    if (pl->login_limit_def < source) {
  		return;
-@@ -1229,10 +1239,12 @@ static int setup_limits(pam_handle_t *pa
+@@ -1227,6 +1237,7 @@ static int setup_limits(pam_handle_t *pa
+         retval |= LOGIN_ERR;
+     }
  
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(3,5,0)
      if (pl->nonewprivs) {
  #ifdef __linux__
-+#if LINUX_VERSION_CODE >= KERNEL_VERSION(3,5,0)
  	if (prctl(PR_SET_NO_NEW_PRIVS, 1, 0, 0, 0) < 0) {
- 	    pam_syslog(pamh, LOG_ERR, "Could not set prctl(PR_SET_NO_NEW_PRIVS): %m");
- 	    retval |= LIMIT_ERR;
- 	}
-+#endif
- #else
+@@ -1237,6 +1248,7 @@ static int setup_limits(pam_handle_t *pa
  	pam_syslog(pamh, LOG_INFO, "Setting 'nonewprivs' not supported on this OS");
  #endif
+     }
++#endif
+ 
+     return retval;
+ }
 --- a/modules/pam_setquota/pam_setquota.c
 +++ b/modules/pam_setquota/pam_setquota.c
 @@ -11,7 +11,9 @@
