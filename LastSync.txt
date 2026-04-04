@@ -1,18 +1,12 @@
-commit d6d7d2325aac8ed2680470e3b56b2dca830efb53 (HEAD -> master, origin/master, origin/HEAD)
-Author: Noah Meyerhans <frodo@morgul.net>
-Date:   Sat Mar 28 11:31:50 2026 -0400
+commit 47ce75da3d24e273f625ab8c794940af72cc18f4 (HEAD -> master, origin/master, origin/HEAD)
+Author: Michał Kępień <michal@isc.org>
+Date:   Fri Apr 3 12:26:26 2026 +0200
 
-    bind: bump to 9.20.21
+    knot-resolver: drop LMDB build workaround
     
-    Fixes several security issues:
+    Drop the meson.build workaround needed before commit
+    8aa78ebebfb6727c46334a69e32fc76576376a09, which fixed the
+    underlying issue.
     
-    - CVE-2026-1519 Fix unbounded NSEC3 iterations when validating
-      referrals to unsigned delegations.
-    - CVE-2026-3104 Fix memory leaks in code preparing DNSSEC proofs of
-      non-existence.
-    - CVE-2026-3119 Prevent a crash in code processing queries containing
-      a TKEY record.
-    - CVE-2026-3591 Fix a stack use-after-return flaw in SIG(0) handling
-      code.
-    
-    Signed-off-by: Noah Meyerhans <frodo@morgul.net>
+    Link: https://github.com/openwrt/packages/pull/29047
+    Signed-off-by: Michał Kępień <michal@isc.org>
