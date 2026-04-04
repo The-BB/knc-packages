@@ -9,7 +9,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=fwupd
 PKG_VERSION:=2.1.1
-PKG_RELEASE:=1
+PKG_RELEASE:=2
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.xz
 PKG_SOURCE_URL:=https://github.com/fwupd/fwupd/releases/download/$(PKG_VERSION)
@@ -36,21 +36,6 @@ define Package/fwupd/Default
   CATEGORY:=Utilities
   TITLE:=fwupd
   URL:=https://fwupd.org
-  DEPENDS:= \
-	+glib2 \
-	+dbus \
-	+libxmlb \
-	+libjcat \
-	+libprotobuf-c \
-	+libusb-1.0 \
-	+libsqlite3 \
-	+libcurl \
-	+liblzma \
-	+FWUPD_LIBDRM:libdrm \
-	+FWUPD_CBOR:libcbor \
-	+FWUPD_PLUGIN_MODEMMANAGER:modemmanager \
-	+FWUPD_PLUGIN_MODEMMANAGER:libqmi \
-	+FWUPD_PLUGIN_MODEMMANAGER:libmbim
 endef
 
 define Package/fwupd/Default/description
@@ -61,6 +46,22 @@ endef
 define Package/fwupd-libs
   $(call Package/fwupd/Default)
   TITLE:=fwupd-libs
+  DEPENDS:= \
+	+glib2 \
+	+dbus \
+	+libxmlb \
+	+libjcat \
+	+libprotobuf-c \
+	+libusb-1.0 \
+	+libsqlite3 \
+	+libcurl \
+	+liblzma \
+	+FWUPD_PLUGIN_FLASHROM:libflashrom \
+	+FWUPD_LIBDRM:libdrm \
+	+FWUPD_CBOR:libcbor \
+	+FWUPD_PLUGIN_MODEMMANAGER:modemmanager \
+	+FWUPD_PLUGIN_MODEMMANAGER:libqmi \
+	+FWUPD_PLUGIN_MODEMMANAGER:libmbim
 endef
 
 define Package/fwupd-libs/description
