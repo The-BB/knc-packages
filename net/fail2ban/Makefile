@@ -13,7 +13,7 @@ PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=https://codeload.github.com/fail2ban/fail2ban/tar.gz/$(PKG_VERSION)?
 PKG_HASH:=474fcc25afdaf929c74329d1e4d24420caabeea1ef2e041a267ce19269570bae
 
-PKG_MAINTAINER:=
+PKG_MAINTAINER:=Alexandru Ardelean <ardeleanalex@gmail.com>
 PKG_LICENSE:=GPL-2.0-or-later
 PKG_LICENSE_FILES:=COPYING
 PKG_CPE_ID:=cpe:/a:fail2ban:fail2ban
@@ -34,7 +34,6 @@ define Package/fail2ban
   +iptables \
   +python3-light \
   +python3-ctypes \
-  +python3-email \
   +python3-logging \
   +python3-sqlite3 \
   +python3-urllib
