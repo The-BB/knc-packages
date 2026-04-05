@@ -1,12 +1,15 @@
-commit 47ce75da3d24e273f625ab8c794940af72cc18f4 (HEAD -> master, origin/master, origin/HEAD)
-Author: Michał Kępień <michal@isc.org>
-Date:   Fri Apr 3 12:26:26 2026 +0200
+commit e0a12562b7bfd36348135cecd83073e89ebe2921 (HEAD -> master, origin/master, origin/HEAD)
+Author: Alexandru Ardelean <alex@shruggie.ro>
+Date:   Thu Apr 2 19:16:31 2026 +0300
 
-    knot-resolver: drop LMDB build workaround
+    python3: merge python3-email into python3-urllib
     
-    Drop the meson.build workaround needed before commit
-    8aa78ebebfb6727c46334a69e32fc76576376a09, which fixed the
-    underlying issue.
+    As we're seeing in various test.sh scrip runs, importing 'email' fails
+    with not finding 'urllib' and vice-versa.
     
-    Link: https://github.com/openwrt/packages/pull/29047
-    Signed-off-by: Michał Kępień <michal@isc.org>
+    Then via a7e96ec91 ("python3-email: add python3-urllib as dependency")
+    I created a circular dependency.
+    So, might as well merge the two packages into one (named python3-urllib)
+    and updates all dependencies to pull python3-urllib.
+    
+    Signed-off-by: Alexandru Ardelean <alex@shruggie.ro>
