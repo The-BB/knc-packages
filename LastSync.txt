@@ -1,15 +1,13 @@
-commit 2b817a493a1ba0df5da628d1ba0fc5708366022a (HEAD -> master, origin/master, origin/HEAD)
-Author: Joshua Criss <owlsy@outlook.com.au>
-Date:   Sat Apr 4 23:50:15 2026 +1100
+commit 48354f0b9f308801013d2ca609eb67de6703e4f1 (HEAD -> master, origin/master, origin/HEAD)
+Author: John Audia <therealgraysky@proton.me>
+Date:   Sun Apr 5 11:29:28 2026 -0400
 
-    attendedsysupgrade-common: shorten Makefile desc
+    openssh: update to 10.3p1
     
-    Current description is getting
-    cut off and is formatted incorrectly
-    in LuCI when viewing packages.
-    Rewrote description to shorten,
-    correct and provide a more
-    concise description that will
-    work in LuCI.
+    Changelog: https://www.openssh.com/txt/release-10.3
     
-    Signed-off-by: Joshua Criss <owlsy@outlook.com.au>
+    Build system: x86/64
+    Build-tested: x86/64-glibc
+    Run-tested: x86/64-glibc
+    
+    Signed-off-by: John Audia <therealgraysky@proton.me>
