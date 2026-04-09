@@ -5,12 +5,13 @@
 # This is free software, licensed under the GNU General Public License v2.
 # See /LICENSE for more information.
 #
+# Entware specific: no prefix r before $(PKG_RELEASE)
 
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=bind
 PKG_VERSION:=9.20.21
-PKG_RELEASE:=1
+PKG_RELEASE:=2
 USERID:=bind=57:bind=57
 
 PKG_MAINTAINER:=Noah Meyerhans <frodo@morgul.net>
@@ -49,6 +50,7 @@ define Package/bind/Default
   SECTION:=net
   CATEGORY:=Network
   DEPENDS:=+bind-libs +@OPENSSL_WITH_EC
+  EXTRA_DEPENDS:=bind-libs (=$(PKG_VERSION)-r$(PKG_RELEASE))
   TITLE:=bind
   URL:=https://www.isc.org/software/bind
   SUBMENU:=IP Addresses and Names
@@ -78,6 +80,7 @@ define Package/bind-server
   TITLE+= DNS server
   DEPENDS+= +libcap \
 	+bind-rndc
+  EXTRA_DEPENDS+=, bind-rndc (=$(PKG_VERSION)-r$(PKG_RELEASE))
 endef
 
 define Package/bind-server/config
@@ -87,6 +90,7 @@ endef
 define Package/bind-server-filter-aaaa
   $(call Package/bind-server)
   DEPENDS:=bind-server
+  EXTRA_DEPENDS:=bind-server (=$(PKG_VERSION)-r$(PKG_RELEASE))
   TITLE+= filter AAAA plugin
 endef
 
@@ -98,7 +102,7 @@ endef
 define Package/bind-tools
   $(call Package/bind/Default)
   TITLE+= administration tools (all)
-	DEPENDS:= \
+  DEPENDS:= \
 	+bind-check \
 	+bind-dig \
 	+bind-nslookup \
@@ -106,6 +110,14 @@ define Package/bind-tools
 	+bind-host \
 	+bind-rndc \
 	+bind-ddns-confgen
+  EXTRA_DEPENDS:= \
+	bind-check (=$(PKG_VERSION)-r$(PKG_RELEASE)), \
+	bind-dig (=$(PKG_VERSION)-r$(PKG_RELEASE)), \
+	bind-nslookup (=$(PKG_VERSION)-r$(PKG_RELEASE)), \
+	bind-dnssec (=$(PKG_VERSION)-r$(PKG_RELEASE)), \
+	bind-host (=$(PKG_VERSION)-r$(PKG_RELEASE)), \
+	bind-rndc (=$(PKG_VERSION)-r$(PKG_RELEASE)), \
+	bind-ddns-confgen (=$(PKG_VERSION)-r$(PKG_RELEASE))
 endef
 
 define Package/bind-rndc
