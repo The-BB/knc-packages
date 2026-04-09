@@ -1,48 +1,11 @@
-commit cf5b39f8c3ac90d6ca01cea041683586c190d9a1 (HEAD -> master, origin/master, origin/HEAD)
-Author: Alexandru Ardelean <alex@shruggie.ro>
-Date:   Sun Apr 5 15:23:27 2026 +0300
+commit 5bdf4cc7f18a4bfe82d85d119e7eb324c2a892bb (HEAD -> master, origin/master, origin/HEAD)
+Author: Sandro Jäckel <sandro.jaeckel@gmail.com>
+Date:   Tue Apr 7 23:06:36 2026 +0200
 
-    python-orjson: update to 3.11.8, add test.sh
+    tailscale: update to 1.96.4
     
-    Update to 3.11.8 to fix the build error with Python 3.14
+    Changelog: https://tailscale.com/changelog#2026-03-27
+    Changelog: https://tailscale.com/changelog#2026-03-19
+    Changelog: https://tailscale.com/changelog#2026-03-18
     
-    ```
-      --- stderr
-      error: the configured Python interpreter version (3.14) is newer than PyO3's maximum supported version (3.13)
-      = help: please check if an updated version of PyO3 is available. Current version: 0.23.0-dev
-      = help: set PYO3_USE_ABI3_FORWARD_COMPATIBILITY=1 to suppress this check and build anyway using the stable ABI
-    warning: build failed, waiting for other jobs to finish...
-    ðŸ’¥ maturin failed
-    ```
-    
-    orjson imports uuid.py at module init to look up uuid.UUID type;
-    python3-uuid is a separate package not included in python3-light,
-    causing a segfault when python3-uuid is absent. Add it as an explicit
-    dependency to fix the crash on all architectures.
-    
-    Crash is:
-    ```
-    importing orjson...
-    Fatal Python error: Segmentation fault
-    
-    Current thread 0xecf37c64 [python3] (most recent call first):
-      File "<frozen importlib._bootstrap>", line 491 in _call_with_frames_removed
-      File "<frozen importlib._bootstrap_external>", line 1061 in exec_module
-      File "<frozen importlib._bootstrap>", line 938 in _load_unlocked
-      File "<frozen importlib._bootstrap>", line 1342 in _find_and_load_unlocked
-      File "<frozen importlib._bootstrap>", line 1371 in _find_and_load
-      File "/usr/lib/python3.14/site-packages/orjson/__init__.py", line 8 in <module>
-      File "<frozen importlib._bootstrap>", line 491 in _call_with_frames_removed
-      File "<frozen importlib._bootstrap_external>", line 759 in exec_module
-      File "<frozen importlib._bootstrap>", line 938 in _load_unlocked
-      File "<frozen importlib._bootstrap>", line 1342 in _find_and_load_unlocked
-      File "<frozen importlib._bootstrap>", line 1371 in _find_and_load
-      File "<stdin>", line 5 in <module>
-    
-    Current thread's C stack trace (most recent call first):
-      <cannot get C stack on this system>
-    Segmentation fault (core dumped)
-    Test failed
-    ```
-    
-    Signed-off-by: Alexandru Ardelean <alex@shruggie.ro>
+    Signed-off-by: Sandro Jäckel <sandro.jaeckel@gmail.com>
