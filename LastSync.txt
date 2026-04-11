@@ -1,11 +1,10 @@
-commit 5bdf4cc7f18a4bfe82d85d119e7eb324c2a892bb (HEAD -> master, origin/master, origin/HEAD)
-Author: Sandro Jäckel <sandro.jaeckel@gmail.com>
-Date:   Tue Apr 7 23:06:36 2026 +0200
+commit f534f48ab8f8c57d2a12bf7eb2e0278bc1ac5705 (HEAD -> master, origin/master, origin/HEAD)
+Author: Daniel F. Dickinson <dfdpublic@wildtechgarden.ca>
+Date:   Wed Apr 8 04:48:23 2026 -0400
 
-    tailscale: update to 1.96.4
+    radicale3: update to 3.7.0
     
-    Changelog: https://tailscale.com/changelog#2026-03-27
-    Changelog: https://tailscale.com/changelog#2026-03-19
-    Changelog: https://tailscale.com/changelog#2026-03-18
+    Bump version and add placeholder for new [sharing]
+    section/capability.
     
-    Signed-off-by: Sandro Jäckel <sandro.jaeckel@gmail.com>
+    Signed-off-by: Daniel F. Dickinson <dfdpublic@wildtechgarden.ca>
