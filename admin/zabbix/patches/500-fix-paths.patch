@@ -70,6 +70,15 @@
  
  ### Option: SocketDir
  #	IPC socket directory.
+@@ -616,7 +614,7 @@ Timeout=4
+ #
+ # Mandatory: no
+ # Default:
+-FpingLocation=/usr/bin/fping
++FpingLocation=/opt/bin/fping
+ 
+ ### Option: Fping6Location
+ #	Location of fping6.
 --- a/ui/locale/add_new_language.sh
 +++ b/ui/locale/add_new_language.sh
 @@ -1,4 +1,4 @@
