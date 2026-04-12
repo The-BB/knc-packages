@@ -1,10 +1,18 @@
-commit f534f48ab8f8c57d2a12bf7eb2e0278bc1ac5705 (HEAD -> master, origin/master, origin/HEAD)
-Author: Daniel F. Dickinson <dfdpublic@wildtechgarden.ca>
-Date:   Wed Apr 8 04:48:23 2026 -0400
+commit 79f2db6cc597eb2799bab02682d5f639f28c584a (HEAD -> master, origin/master, origin/HEAD)
+Author: Dirk Brenken <dev@brenken.org>
+Date:   Sat Apr 11 18:43:09 2026 +0200
 
-    radicale3: update to 3.7.0
+    banip: update 1.8.5-2
     
-    Bump version and add placeholder for new [sharing]
-    section/capability.
+    * fixed two issues in the mail template, reported in the forum
+    * tweak the f_report function
+    * changed the f_actual function to reduce subshell calls
+    * further optimize the monitor function:
+      * fixed a possible RDAP rate-limit race condition,
+        serialize the rdap_tsfile via flock
+      * block_cache bounded growth, when the cache reaches 500
+        entries it resets to empty, preventing unbounded string growth
+        in the monitor loop
+    * set the printf format string in single quotes (overall)
     
-    Signed-off-by: Daniel F. Dickinson <dfdpublic@wildtechgarden.ca>
+    Signed-off-by: Dirk Brenken <dev@brenken.org>
