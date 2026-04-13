@@ -1,18 +1,8 @@
-commit 79f2db6cc597eb2799bab02682d5f639f28c584a (HEAD -> master, origin/master, origin/HEAD)
-Author: Dirk Brenken <dev@brenken.org>
-Date:   Sat Apr 11 18:43:09 2026 +0200
+commit 7e99a65d720f829b247893aa511bf035af85cd40 (HEAD -> master, origin/master, origin/HEAD)
+Author: George Sapkin <george@sapk.in>
+Date:   Sun Apr 12 01:21:31 2026 +0300
 
-    banip: update 1.8.5-2
+    sqlite3: bump to 3.53.0
     
-    * fixed two issues in the mail template, reported in the forum
-    * tweak the f_report function
-    * changed the f_actual function to reduce subshell calls
-    * further optimize the monitor function:
-      * fixed a possible RDAP rate-limit race condition,
-        serialize the rdap_tsfile via flock
-      * block_cache bounded growth, when the cache reaches 500
-        entries it resets to empty, preventing unbounded string growth
-        in the monitor loop
-    * set the printf format string in single quotes (overall)
-    
-    Signed-off-by: Dirk Brenken <dev@brenken.org>
+    Changes: https://sqlite.org/releaselog/3_53_0.html
+    Signed-off-by: George Sapkin <george@sapk.in>
