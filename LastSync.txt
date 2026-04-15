@@ -1,10 +1,9 @@
-commit c3fc621e25ec104a7a1a5fec7ad9e040c5e1789f (HEAD -> master, origin/master, origin/HEAD)
-Author: Alexandru Ardelean <alex@shruggie.ro>
-Date:   Mon Apr 13 05:51:13 2026 +0000
+commit 9e7cb54a094d87e16c33bc398a53f3a88f059b87 (HEAD -> master, origin/master, origin/HEAD)
+Author: Olivier Poitrey <rs@nextdns.io>
+Date:   Mon Apr 13 02:01:07 2026 +0000
 
-    python-service-identity: update to 24.2.0; add test.sh
+    nextdns: update to version 1.47.2
     
-    Bump version 23.1.0 -> 24.2.0.
-    Add test.sh to verify module imports and key symbols.
+    Update nextdns package to upstream version 1.47.2
     
-    Signed-off-by: Alexandru Ardelean <alex@shruggie.ro>
+    Signed-off-by: Olivier Poitrey <rs@nextdns.io>
