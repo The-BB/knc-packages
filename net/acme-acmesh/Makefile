@@ -9,7 +9,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=acme-acmesh
 PKG_VERSION:=3.1.2
-PKG_RELEASE:=1
+PKG_RELEASE:=2
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=https://codeload.github.com/acmesh-official/acme.sh/tar.gz/$(PKG_VERSION)?
@@ -43,15 +43,16 @@ define Build/Compile
 endef
 
 define Package/acme-acmesh/install
-	$(INSTALL_DIR) $(1)/usr/lib/acme/client
-	$(INSTALL_BIN) $(PKG_BUILD_DIR)/acme.sh $(1)/usr/lib/acme/client
-	$(INSTALL_BIN) ./files/hook.sh $(1)/usr/lib/acme/hook
+	$(INSTALL_DIR) $(1)/opt/lib/acme/client
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/acme.sh $(1)/opt/lib/acme/client
+	$(INSTALL_BIN) ./files/hook.sh $(1)/opt/lib/acme/hook
+	$(SED) 's,^#!.*sh,#!/bin/sh,' $(1)/opt/lib/acme/client/acme.sh
 endef
 
 define Package/acme-acmesh-dnsapi
   SECTION:=net
   CATEGORY:=Network
-  DEPENDS:=+acme-acmesh
+  DEPENDS:=+acme
   TITLE:=DNS API integration for ACME (Letsencrypt) client
   PKGARCH:=all
 endef
@@ -61,8 +62,9 @@ define Package/acme-acmesh-dnsapi/description
 endef
 
 define Package/acme-acmesh-dnsapi/install
-	$(INSTALL_DIR) $(1)/usr/lib/acme/client/dnsapi
-	$(INSTALL_DATA) $(PKG_BUILD_DIR)/dnsapi/*.sh $(1)/usr/lib/acme/client/dnsapi
+	$(INSTALL_DIR) $(1)/opt/lib/acme/client/dnsapi
+	$(INSTALL_DATA) $(PKG_BUILD_DIR)/dnsapi/*.sh $(1)/opt/lib/acme/client/dnsapi
+	$(SED) 's,^#!.*sh,#!/bin/sh,' $(1)/opt/lib/acme/client/dnsapi/*.sh
 endef
 
 $(eval $(call BuildPackage,acme-acmesh))

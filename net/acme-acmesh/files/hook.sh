@@ -1,14 +1,14 @@
 #!/bin/sh
 set -u
-ACME=/usr/lib/acme/client/acme.sh
+ACME=/opt/lib/acme/client/acme.sh
 LOG_TAG=acme-acmesh
-NOTIFY=/usr/lib/acme/notify
+NOTIFY=/opt/lib/acme/notify
 
 # shellcheck source=net/acme/files/functions.sh
-. /usr/lib/acme/functions.sh
+. /opt/lib/acme/functions.sh
 
 # Needed by acme.sh
-export CURL_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt
+export CURL_CA_BUNDLE=/opt/etc/ssl/certs/ca-certificates.crt
 export NO_TIMESTAMP=1
 
 link_certs() {
