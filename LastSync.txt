@@ -1,10 +1,26 @@
-commit 2255c65fa1f59b3f7579dba1a0c8e35a3c99e19e (HEAD -> master, origin/master, origin/HEAD)
-Author: Florian Eckert <fe@dev.tdt.de>
-Date:   Mon Jun 23 14:42:44 2025 +0200
+commit bd02a7b2ee29842a5e16d2ef573cea30cfa7cbc8 (HEAD -> master, origin/master, origin/HEAD)
+Author: Alexandru Ardelean <alex@shruggie.ro>
+Date:   Thu Apr 9 08:36:57 2026 +0300
 
-    openvpn: make the packages dependency clearer
+    python-pyproject-metadata: update to 0.11.0
     
-    No functional changes, so the PKG_RELEASE version number has not been
-    incremented.
+    Update package to 0.11.0.
     
-    Signed-off-by: Florian Eckert <fe@dev.tdt.de>
+    Changes since 0.9.1:
+    
+    0.10.0:
+    - Added support for PEP 794 (METADATA 2.5) import-names and
+      import-namespaces fields
+    - Dropped Python 3.7 support
+    - Fixed minimum required version of packaging dependency
+    
+    0.11.0:
+    - Refactored internals to separate conversion and validation, yielding
+      better error messages
+    - Added downstream project testing in CI
+    - Removed lingering PEP 621 terminology in favor of pyproject.toml
+      terminology
+    
+    Apply dos2unix
+    
+    Signed-off-by: Alexandru Ardelean <alex@shruggie.ro>
