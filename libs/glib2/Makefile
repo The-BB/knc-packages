@@ -9,7 +9,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=glib2
 PKG_VERSION:=2.82.0
-PKG_RELEASE:=1
+PKG_RELEASE:=2
 
 PKG_SOURCE:=glib-$(PKG_VERSION).tar.xz
 PKG_SOURCE_URL:=@GNOME/glib/$(basename $(PKG_VERSION))
@@ -67,6 +67,9 @@ COMP_ARGS+=-Dintrospection=disabled
 
 # set runtime dir to /var/run
 COMP_ARGS+=-Druntime_dir=/opt/var/run
+
+# default feature=auto see meson_options.txt
+COMP_ARGS+=-Dlibelf=disabled
 
 # XXX Entware specific?
 # default feature=auto see meson_options.txt
