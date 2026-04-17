@@ -1,12 +1,10 @@
-commit 420d966267efdc34e52fcadc75fe40b246cbb9ea (HEAD -> master, origin/master, origin/HEAD)
-Author: Dirk Brenken <dev@brenken.org>
-Date:   Thu Apr 16 22:13:13 2026 +0200
+commit 30535ff1a9c4ab2cb9acf21d705155a04688e3e9 (HEAD -> master, origin/master, origin/HEAD)
+Author: Alexandru Ardelean <alex@shruggie.ro>
+Date:   Thu Apr 16 19:41:01 2026 +0300
 
-    banip: release 1.8.6-1
+    python-lru-dict: update to 1.4.1; add test.sh
     
-    * fixed the initialization of the banIP rundir (reported in the forum)
-    * sanitize possible windows line endings in local block- and allowlist
-    * refine the cpu/core detection
-    * code clean-up/linting
+    Add PYPI_SOURCE_NAME:=lru_dict as the sdist tarball filename
+    uses underscores while PYPI_NAME uses hyphens.
     
-    Signed-off-by: Dirk Brenken <dev@brenken.org>
+    Signed-off-by: Alexandru Ardelean <alex@shruggie.ro>
