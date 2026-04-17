@@ -1,26 +1,12 @@
-commit bd02a7b2ee29842a5e16d2ef573cea30cfa7cbc8 (HEAD -> master, origin/master, origin/HEAD)
-Author: Alexandru Ardelean <alex@shruggie.ro>
-Date:   Thu Apr 9 08:36:57 2026 +0300
+commit 420d966267efdc34e52fcadc75fe40b246cbb9ea (HEAD -> master, origin/master, origin/HEAD)
+Author: Dirk Brenken <dev@brenken.org>
+Date:   Thu Apr 16 22:13:13 2026 +0200
 
-    python-pyproject-metadata: update to 0.11.0
+    banip: release 1.8.6-1
     
-    Update package to 0.11.0.
+    * fixed the initialization of the banIP rundir (reported in the forum)
+    * sanitize possible windows line endings in local block- and allowlist
+    * refine the cpu/core detection
+    * code clean-up/linting
     
-    Changes since 0.9.1:
-    
-    0.10.0:
-    - Added support for PEP 794 (METADATA 2.5) import-names and
-      import-namespaces fields
-    - Dropped Python 3.7 support
-    - Fixed minimum required version of packaging dependency
-    
-    0.11.0:
-    - Refactored internals to separate conversion and validation, yielding
-      better error messages
-    - Added downstream project testing in CI
-    - Removed lingering PEP 621 terminology in favor of pyproject.toml
-      terminology
-    
-    Apply dos2unix
-    
-    Signed-off-by: Alexandru Ardelean <alex@shruggie.ro>
+    Signed-off-by: Dirk Brenken <dev@brenken.org>
