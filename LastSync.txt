@@ -1,10 +1,10 @@
-commit 30535ff1a9c4ab2cb9acf21d705155a04688e3e9 (HEAD -> master, origin/master, origin/HEAD)
+commit 0f833b1b9cf5156a4bf72a45ad72ab12891c4974 (HEAD -> master, origin/master, origin/HEAD)
 Author: Alexandru Ardelean <alex@shruggie.ro>
-Date:   Thu Apr 16 19:41:01 2026 +0300
+Date:   Thu Apr 16 21:12:30 2026 +0300
 
-    python-lru-dict: update to 1.4.1; add test.sh
+    python3-drf-nested-routers: update to 0.95.0; add test.sh
     
-    Add PYPI_SOURCE_NAME:=lru_dict as the sdist tarball filename
-    uses underscores while PYPI_NAME uses hyphens.
+    Add PYPI_SOURCE_NAME:=drf_nested_routers as the 0.95.0 sdist
+    uses underscores in the filename.
     
     Signed-off-by: Alexandru Ardelean <alex@shruggie.ro>
