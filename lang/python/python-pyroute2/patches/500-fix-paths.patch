@@ -1,6 +1,6 @@
 --- a/pyroute2/config/__init__.py
 +++ b/pyroute2/config/__init__.py
-@@ -108,7 +108,7 @@ AF_NETLINK = getattr(socket, 'AF_NETLINK
+@@ -117,7 +117,7 @@ AF_NETLINK = getattr(socket, 'AF_NETLINK
  data_plugins_pkgs = []
  data_plugins_path = []
  
@@ -11,7 +11,7 @@
      'pyroute2.netlink.exceptions': 'pyroute2.netlink.exceptions'
 --- a/pyroute2/netlink/rtnl/ifinfmsg/__init__.py
 +++ b/pyroute2/netlink/rtnl/ifinfmsg/__init__.py
-@@ -582,7 +582,7 @@ class ifinfbase(object):
+@@ -583,7 +583,7 @@ class ifinfbase(object):
  
      class netns_fd(nla):
          fields = [('value', 'I')]
