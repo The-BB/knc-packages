@@ -1,9 +1,29 @@
-commit d3d6900ef6bec00bf39290f9bd55c5a3dc359035 (HEAD -> master, origin/master, origin/HEAD)
-Author: Philip Prindeville <philipp@redfish-solutions.com>
-Date:   Sun Apr 19 15:02:39 2026 -0600
+commit ccd69a148f85b86c1024fd318f23b4392aa778b5 (HEAD -> master, origin/master, origin/HEAD)
+Author: Alexandru Ardelean <alex@shruggie.ro>
+Date:   Thu Apr 16 21:15:27 2026 +0300
 
-    libjemalloc: update to 5.3.1
+    python3-django-cors-headers: update to 4.9.0; add test.sh
     
-    Routine version bump.  Lots of bugfixes and optimizations.
+    Major changes since 3.10.0:
     
-    Signed-off-by: Philip Prindeville <philipp@redfish-solutions.com>
+    4.0:
+    - add CORS_ALLOW_PRIVATE_NETWORK setting for Local Network Access spec support
+    - add async middleware support, reducing overhead on async views
+    - remove deprecated CORS_REPLACE_HTTPS_REFERER and CorsPostCsrfMiddleware
+    - remove three header names from default allowed list (accept-encoding, dnt, origin)
+    
+    4.3:
+    - fix access-control-allow-credentials header not being omitted on
+      non-allowed responses
+    
+    4.6:
+    - drop support for Django 3.2 through 4.1
+    
+    4.9:
+    - add Django 6.0 support
+    - tighten validation of sequence-type settings (e.g. CORS_ALLOW_METHODS)
+    
+    Add PYPI_SOURCE_NAME:=django_cors_headers as the 4.x sdist uses
+    underscores in the filename.
+    
+    Signed-off-by: Alexandru Ardelean <alex@shruggie.ro>
