@@ -1,29 +1,11 @@
-commit ccd69a148f85b86c1024fd318f23b4392aa778b5 (HEAD -> master, origin/master, origin/HEAD)
-Author: Alexandru Ardelean <alex@shruggie.ro>
-Date:   Thu Apr 16 21:15:27 2026 +0300
+commit 7c106734e8c1fe8f8c49fbf630d8e28f454d4432 (HEAD -> master, origin/master, origin/HEAD)
+Author: Stan Grishin <stangri@melmac.ca>
+Date:   Tue Apr 21 19:11:41 2026 +0000
 
-    python3-django-cors-headers: update to 4.9.0; add test.sh
+    pbr: update to 1.2.2-r14
     
-    Major changes since 3.10.0:
+    fix: avoid unnecessary dnsmasq restarts (thanks @egc112)
+    fix: insert, not add dns policies to ensure higher priority than the DNS
+         hijack rules (thanks @egc112)
     
-    4.0:
-    - add CORS_ALLOW_PRIVATE_NETWORK setting for Local Network Access spec support
-    - add async middleware support, reducing overhead on async views
-    - remove deprecated CORS_REPLACE_HTTPS_REFERER and CorsPostCsrfMiddleware
-    - remove three header names from default allowed list (accept-encoding, dnt, origin)
-    
-    4.3:
-    - fix access-control-allow-credentials header not being omitted on
-      non-allowed responses
-    
-    4.6:
-    - drop support for Django 3.2 through 4.1
-    
-    4.9:
-    - add Django 6.0 support
-    - tighten validation of sequence-type settings (e.g. CORS_ALLOW_METHODS)
-    
-    Add PYPI_SOURCE_NAME:=django_cors_headers as the 4.x sdist uses
-    underscores in the filename.
-    
-    Signed-off-by: Alexandru Ardelean <alex@shruggie.ro>
+    Signed-off-by: Stan Grishin <stangri@melmac.ca>
