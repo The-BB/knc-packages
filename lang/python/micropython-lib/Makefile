@@ -110,7 +110,7 @@ define Build/Compile
 endef
 
 define Package/micropython-lib/install
-	$(call MicroPythonLib/Install,,$(MICROPYTHON_MPY_VERSION),$(1)/usr/lib/micropython)
+	$(call MicroPythonLib/Install,,$(MICROPYTHON_MPY_VERSION),$(1)/opt/lib/micropython)
 endef
 
 define Package/micropython-lib-src/install
@@ -118,14 +118,14 @@ define Package/micropython-lib-src/install
 endef
 
 define Package/micropython-lib-unix/install
-	$(call MicroPythonLib/Install,unix-ffi-index,$(MICROPYTHON_MPY_VERSION),$(1)/usr/lib/micropython/unix)
+	$(call MicroPythonLib/Install,unix-ffi-index,$(MICROPYTHON_MPY_VERSION),$(1)/opt/lib/micropython/unix)
 
-	$(INSTALL_DIR) $(1)/usr/bin
-	$(INSTALL_BIN) ./files/micropython-unix $(1)/usr/bin/
+	$(INSTALL_DIR) $(1)/opt/bin
+	$(INSTALL_BIN) ./files/micropython-unix $(1)/opt/bin/
 endef
 
 define Package/micropython-lib-unix-src/install
-	$(call MicroPythonLib/Install,unix-ffi-index,py,$(1)/usr/lib/micropython/unix)
+	$(call MicroPythonLib/Install,unix-ffi-index,py,$(1)/opt/lib/micropython/unix)
 endef
 
 $(eval $(call BuildPackage,micropython-lib))
