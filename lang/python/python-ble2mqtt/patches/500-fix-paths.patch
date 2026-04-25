@@ -1,0 +1,11 @@
+--- a/ble2mqtt/__main__.py
++++ b/ble2mqtt/__main__.py
+@@ -142,7 +142,7 @@ async def amain(config):
+ 
+ 
+ def main():
+-    os.environ.setdefault('BLE2MQTT_CONFIG', '/etc/ble2mqtt.json')
++    os.environ.setdefault('BLE2MQTT_CONFIG', '/opt/etc/ble2mqtt.json')
+     config = {}
+     if os.path.exists(os.environ['BLE2MQTT_CONFIG']):
+         try:
