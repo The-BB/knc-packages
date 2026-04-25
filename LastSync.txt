@@ -1,11 +1,9 @@
-commit 7c106734e8c1fe8f8c49fbf630d8e28f454d4432 (HEAD -> master, origin/master, origin/HEAD)
-Author: Stan Grishin <stangri@melmac.ca>
-Date:   Tue Apr 21 19:11:41 2026 +0000
+commit 0d952684b7762304470350465b64a37eec7640cd (HEAD -> master, origin/master, origin/HEAD)
+Author: Alexandru Ardelean <alex@shruggie.ro>
+Date:   Fri Apr 24 20:28:27 2026 +0300
 
-    pbr: update to 1.2.2-r14
+    semodule-utils: add test.sh
     
-    fix: avoid unnecessary dnsmasq restarts (thanks @egc112)
-    fix: insert, not add dns policies to ensure higher priority than the DNS
-         hijack rules (thanks @egc112)
+    Add a bit of smoke testing for the CI.
     
-    Signed-off-by: Stan Grishin <stangri@melmac.ca>
+    Signed-off-by: Alexandru Ardelean <alex@shruggie.ro>
