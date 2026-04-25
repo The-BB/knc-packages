@@ -70,29 +70,35 @@ define Package/augeas-lenses-tests/description
 endef
 
 define Build/InstallDev
-	$(INSTALL_DIR) $(1)/usr/include
-	$(CP) $(PKG_INSTALL_DIR)/usr/include/* $(1)/usr/include/
-	$(INSTALL_DIR) $(1)/usr/lib
-	$(CP) $(PKG_INSTALL_DIR)/usr/lib/* $(1)/usr/lib/
-	$(INSTALL_DIR) $(1)/usr/lib/pkgconfig
-	$(CP) $(PKG_INSTALL_DIR)/usr/lib/pkgconfig/* $(1)/usr/lib/pkgconfig/
+	$(INSTALL_DIR) $(1)/opt/include
+	$(CP) $(PKG_INSTALL_DIR)/opt/include/* $(1)/opt/include/
+	$(INSTALL_DIR) $(1)/opt/lib
+	$(CP) $(PKG_INSTALL_DIR)/opt/lib/* $(1)/opt/lib/
+	$(INSTALL_DIR) $(1)/opt/lib/pkgconfig
+	$(CP) $(PKG_INSTALL_DIR)/opt/lib/pkgconfig/* $(1)/opt/lib/pkgconfig/
 endef
 
 define Package/augeas/install
-	$(INSTALL_DIR) $(1)/usr/bin
-	$(CP) $(PKG_INSTALL_DIR)/usr/bin/* $(1)/usr/bin/
-	$(INSTALL_DIR) $(1)/usr/lib/
-	$(CP) $(PKG_INSTALL_DIR)/usr/lib/* $(1)/usr/lib/
+	$(INSTALL_DIR) $(1)/opt/bin
+	$(CP) $(PKG_INSTALL_DIR)/opt/bin/* $(1)/opt/bin/
+	$(INSTALL_DIR) $(1)/opt/lib/
+	$(CP) $(PKG_INSTALL_DIR)/opt/lib/* $(1)/opt/lib/
+	# strip buildroot
+	$(SED) 's,-L$(ICONV_PREFIX)/lib,,; \
+		s,-L$(INTL_PREFIX)/lib,,; \
+		s,-L$(STAGING_DIR)/opt/lib,,g; \
+		s,$(TOOLCHAIN_DIR),/opt,g' \
+			$(1)/opt/lib/*.la
 endef
 
 define Package/augeas-lenses/install
-	$(INSTALL_DIR) $(1)/usr/share/augeas/lenses/dist
-	$(CP) $(PKG_INSTALL_DIR)/usr/share/augeas/lenses/dist/* $(1)/usr/share/augeas/lenses/dist/
+	$(INSTALL_DIR) $(1)/opt/share/augeas/lenses/dist
+	$(CP) $(PKG_INSTALL_DIR)/opt/share/augeas/lenses/dist/* $(1)/opt/share/augeas/lenses/dist/
 endef
 
 define Package/augeas-lenses-tests/install
-	$(INSTALL_DIR) $(1)/usr/share/augeas/lenses/dist/tests
-	$(CP) $(PKG_INSTALL_DIR)/usr/share/augeas/lenses/dist/tests/* $(1)/usr/share/augeas/lenses/dist/tests
+	$(INSTALL_DIR) $(1)/opt/share/augeas/lenses/dist/tests
+	$(CP) $(PKG_INSTALL_DIR)/opt/share/augeas/lenses/dist/tests/* $(1)/opt/share/augeas/lenses/dist/tests
 endef
 
 $(eval $(call BuildPackage,augeas))
