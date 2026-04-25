@@ -119,22 +119,22 @@ define Build/Install
 endef
 
 define Build/InstallDev
-	$(INSTALL_DIR) $(1)/usr/include
-	$(CP) $(PKG_INSTALL_DIR)/usr/include/gpiod.h $(1)/usr/include/
+	$(INSTALL_DIR) $(1)/opt/include
+	$(CP) $(PKG_INSTALL_DIR)/opt/include/gpiod.h $(1)/opt/include/
 
-	$(INSTALL_DIR) $(1)/usr/lib
-	$(CP) $(PKG_INSTALL_DIR)/usr/lib/libgpiod.{so*,a} $(1)/usr/lib/
+	$(INSTALL_DIR) $(1)/opt/lib
+	$(CP) $(PKG_INSTALL_DIR)/opt/lib/libgpiod.{so*,a} $(1)/opt/lib/
 
-	$(INSTALL_DIR) $(1)/usr/lib/pkgconfig
-	$(CP) $(PKG_INSTALL_DIR)/usr/lib/pkgconfig/libgpiod.pc $(1)/usr/lib/pkgconfig/
+	$(INSTALL_DIR) $(1)/opt/lib/pkgconfig
+	$(CP) $(PKG_INSTALL_DIR)/opt/lib/pkgconfig/libgpiod.pc $(1)/opt/lib/pkgconfig/
 
     ifneq ($(CONFIG_PACKAGE_libgpiodcxx),)
-	$(CP) $(PKG_INSTALL_DIR)/usr/include/gpiodcxx $(1)/usr/include/
-	$(CP) $(PKG_INSTALL_DIR)/usr/include/gpiod.hpp $(1)/usr/include/
+	$(CP) $(PKG_INSTALL_DIR)/opt/include/gpiodcxx $(1)/opt/include/
+	$(CP) $(PKG_INSTALL_DIR)/opt/include/gpiod.hpp $(1)/opt/include/
 
-	$(CP) $(PKG_INSTALL_DIR)/usr/lib/libgpiodcxx.{so*,a} $(1)/usr/lib/
+	$(CP) $(PKG_INSTALL_DIR)/opt/lib/libgpiodcxx.{so*,a} $(1)/opt/lib/
 
-	$(CP) $(PKG_INSTALL_DIR)/usr/lib/pkgconfig/libgpiodcxx.pc $(1)/usr/lib/pkgconfig/
+	$(CP) $(PKG_INSTALL_DIR)/opt/lib/pkgconfig/libgpiodcxx.pc $(1)/opt/lib/pkgconfig/
     endif
 
     ifneq ($(CONFIG_PACKAGE_python3-gpiod),)
@@ -144,22 +144,22 @@ define Build/InstallDev
 endef
 
 define Package/libgpiod/install
-	$(INSTALL_DIR) $(1)/usr/lib
-	$(CP) $(PKG_INSTALL_DIR)/usr/lib/libgpiod.so.* $(1)/usr/lib/
+	$(INSTALL_DIR) $(1)/opt/lib
+	$(CP) $(PKG_INSTALL_DIR)/opt/lib/libgpiod.so.* $(1)/opt/lib/
 endef
 
 define Package/libgpiodcxx/install
-	$(INSTALL_DIR) $(1)/usr/lib
-	$(CP) $(PKG_INSTALL_DIR)/usr/lib/libgpiodcxx.so.* $(1)/usr/lib/
+	$(INSTALL_DIR) $(1)/opt/lib
+	$(CP) $(PKG_INSTALL_DIR)/opt/lib/libgpiodcxx.so.* $(1)/opt/lib/
 endef
 
 define Package/gpiod-tools/install
-	$(INSTALL_DIR) $(1)/usr/bin
-	$(CP) $(PKG_INSTALL_DIR)/usr/bin/* $(1)/usr/bin/
+	$(INSTALL_DIR) $(1)/opt/bin
+	$(CP) $(PKG_INSTALL_DIR)/opt/bin/* $(1)/opt/bin/
 endef
 
 define Py3Package/python3-gpiod/install
-	# this empty define prevent installing tools from /usr/bin
+	# this empty define prevent installing tools from /opt/bin
 endef
 
 $(eval $(call BuildPackage,libgpiod))
