@@ -1,9 +1,9 @@
-commit 9d1c4d20dfb78dc8ef58f25f5451465e2f85dd07 (HEAD -> master, origin/master, origin/HEAD)
-Author: Philip Prindeville <philipp@redfish-solutions.com>
-Date:   Sun Apr 26 11:32:00 2026 -0600
+commit 2482fdd481529ae949b0611418c65029904fdce8 (HEAD -> master, origin/master, origin/HEAD)
+Author: Rishabh <rishabhshah2005@gmail.com>
+Date:   Mon Apr 20 23:13:49 2026 +0530
 
-    strongswan: update to 6.0.6
+    keepalived: bump PKG_RELEASE to 3
     
-    No significant functional changes.
+    Bump PKG_RELEASE from 2 to 3.
     
-    Signed-off-by: Philip Prindeville <philipp@redfish-solutions.com>
+    Signed-off-by: Rishabh <rishabhshah2005@gmail.com>
