@@ -10,7 +10,7 @@ PKG_NAME:=python-aio-mqtt-mod
 PKG_VERSION:=0.4.0
 PKG_RELEASE:=1
 
-PYPI_NAME:=aio-mqtt-mod
+PYPI_NAME:=aio_mqtt_mod
 PKG_HASH:=14784b0deedc9e91ef0980046c03cecff685b6e4364b6f3a66d41bca4b98b58f
 
 PKG_MAINTAINER:=Quintin Hill <stuff@quintin.me.uk>
