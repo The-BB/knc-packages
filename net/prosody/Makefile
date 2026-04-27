@@ -13,7 +13,7 @@ PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=https://prosody.im/downloads/source
-PKG_HASH:=1dc0c3dcebdf26e579aff3c320d72e93495e295b832dd37163447d8a71c34ff1
+PKG_HASH:=47d712273c2f29558c412f6cdaec073260bbc26b7dda243db580330183d65856
 
 PKG_MAINTAINER:=Thomas Heil <heil@terminal-consulting.de>
 PKG_LICENSE:=MIT/X11
@@ -29,7 +29,7 @@ define Package/prosody
   SECTION:=net
   CATEGORY:=Network
   SUBMENU:=Instant Messaging
-  DEPENDS:=+luafilesystem +libidn +luaexpat +luasec +libopenssl +libidn +liblua +luabitop
+  DEPENDS:=+icu +luafilesystem +luaexpat +luasec +libopenssl +libidn +liblua +luabitop
   TITLE:=XMPP server
   URL:=https://prosody.im/
   USERID:=prosody=54:prosody=54
@@ -58,7 +58,7 @@ define Build/Configure
 		--with-lua-include="$(STAGING_DIR)/opt/include" \
 		--with-lua-lib="$(STAGING_DIR)/opt/lib" \
 		--cflags="$(TARGET_CFLAGS)" \
-		--ldflags="$(TARGET_LDFLAGS) -llua -lm -ldl -shared" \
+		--ldflags="$(TARGET_LDFLAGS) -llua -lm -ldl" \
 		--c-compiler="$(TARGET_CC)" \
 		--datadir="/opt/etc/prosody/data" \
 	)
@@ -84,8 +84,8 @@ define Package/prosody/install
 	$(INSTALL_DATA) $(PKG_INSTALL_DIR)/opt/lib/prosody/modules/*.lua $(1)/opt/lib/prosody/modules/
 	$(INSTALL_DIR) $(1)/opt/lib/prosody/modules/adhoc
 	$(INSTALL_DATA) $(PKG_INSTALL_DIR)/opt/lib/prosody/modules/adhoc/*.lua $(1)/opt/lib/prosody/modules/adhoc/
-	$(INSTALL_DIR) $(1)/opt/lib/prosody/modules/mod_s2s
-	$(INSTALL_DATA) $(PKG_INSTALL_DIR)/opt/lib/prosody/modules/mod_s2s/*.lua $(1)/opt/lib/prosody/modules/mod_s2s/
+	#$(INSTALL_DIR) $(1)/usr/lib/prosody/modules/mod_s2s
+	#$(INSTALL_DATA) $(PKG_INSTALL_DIR)/usr/lib/prosody/modules/mod_s2s/*.lua $(1)/usr/lib/prosody/modules/mod_s2s/
 	$(INSTALL_DIR) $(1)/opt/lib/prosody/modules/muc
 	$(INSTALL_DATA) $(PKG_INSTALL_DIR)/opt/lib/prosody/modules/muc/*.lua $(1)/opt/lib/prosody/modules/muc/
 	$(INSTALL_DIR) $(1)/opt/lib/prosody/modules/mod_pubsub
