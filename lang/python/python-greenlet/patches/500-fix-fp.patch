@@ -1,0 +1,17 @@
+src/greenlet/platform/switch_mips_unix.h: In function 'int slp_switch()':
+src/greenlet/platform/switch_mips_unix.h:52:1: error: $fp cannot be used in 'asm' here
+   52 | }
+      | ^
+
+---
+
+--- a/src/greenlet/platform/switch_mips_unix.h
++++ b/src/greenlet/platform/switch_mips_unix.h
+@@ -17,6 +17,7 @@
+ #define REGS_TO_SAVE "$16", "$17", "$18", "$19", "$20", "$21", "$22", \
+        "$23", "$30"
+ __attribute__((nomips16))
++__attribute__((optimize("omit-frame-pointer")))
+ static int
+ slp_switch(void)
+ {
