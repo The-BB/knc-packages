@@ -61,13 +61,14 @@ CONFIGURE_ARGS += --enable-ssl
 endif
 
 define Package/spamassassin/conffiles
-/etc/mail/spamassassin
+/opt/etc/mail/spamassassin
 endef
 
 define Build/Configure
 	$(call perlmod/Configure,,)
 	$(call Build/Configure/Default)
 	( cd "$(PKG_BUILD_DIR)/$(CONFIGURE_PATH)" && ./version.h.pl --with-version=$(PKG_SOURCE_VERSION) )
+	$(SED) 's,/etc/opt,/opt/etc,;s,/var/opt,/opt/var,' $(PKG_BUILD_DIR)/Makefile
 endef
 
 define Build/Compile
@@ -77,21 +78,22 @@ endef
 
 define Package/spamassassin/install
 	$(call perlmod/Install,$(1),Mail/SpamAssassin auto/Mail/SpamAssassin)
-	$(INSTALL_DIR) $(1)/usr/bin
-	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/usr/bin/sa-awl $(1)/usr/bin
-	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/usr/bin/sa-learn $(1)/usr/bin
-	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/usr/bin/sa-compile $(1)/usr/bin
-	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/usr/bin/spamassassin $(1)/usr/bin
-	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/usr/bin/sa-update $(1)/usr/bin
-	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/usr/bin/spamd $(1)/usr/bin
-	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/usr/bin/sa-check_spamd $(1)/usr/bin
-	$(INSTALL_DIR) $(1)/etc/mail/spamassassin
-	$(INSTALL_CONF) $(PKG_INSTALL_DIR)/etc/mail/spamassassin/* $(1)/etc/mail/spamassassin
+	$(INSTALL_DIR) $(1)/opt/bin
+	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/opt/bin/sa-awl $(1)/opt/bin
+	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/opt/bin/sa-learn $(1)/opt/bin
+	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/opt/bin/sa-compile $(1)/opt/bin
+	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/opt/bin/spamassassin $(1)/opt/bin
+	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/opt/bin/sa-update $(1)/opt/bin
+	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/opt/bin/spamd $(1)/opt/bin
+	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/opt/bin/sa-check_spamd $(1)/opt/bin
+	$(SED) 's,^#!.*perl,#!/opt/bin/perl,' $(1)/opt/bin/s*
+	$(INSTALL_DIR) $(1)/opt/etc/mail/spamassassin
+	$(INSTALL_CONF) $(PKG_INSTALL_DIR)/opt/etc/mail/spamassassin/* $(1)/opt/etc/mail/spamassassin
 endef
 
 define Package/spamc/install
-	$(INSTALL_DIR) $(1)/usr/bin
-	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/usr/bin/spamc $(1)/usr/bin
+	$(INSTALL_DIR) $(1)/opt/bin
+	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/opt/bin/spamc $(1)/opt/bin
 endef
 
 Package/spamc-ssl/install = $(Package/spamc/install)

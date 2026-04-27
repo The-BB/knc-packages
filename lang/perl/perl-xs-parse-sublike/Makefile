@@ -45,8 +45,8 @@ define Package/perl-xs-parse-sublike/install
 endef
 
 define Build/InstallDev
-	$(INSTALL_DIR) $(1)/usr/share/perl/include
-	$(CP) $(PKG_BUILD_DIR)/share/include/XSParseSublike.h $(1)/usr/share/perl/include/
+	$(INSTALL_DIR) $(1)/opt/share/perl/include
+	$(CP) $(PKG_BUILD_DIR)/share/include/XSParseSublike.h $(1)/opt/share/perl/include/
 endef
 
 $(eval $(call BuildPackage,perl-xs-parse-sublike))

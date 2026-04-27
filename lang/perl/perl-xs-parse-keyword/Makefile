@@ -45,9 +45,9 @@ define Package/perl-xs-parse-keyword/install
 endef
 
 define Build/InstallDev
-	$(INSTALL_DIR) $(1)/usr/share/perl/include
-	$(CP) $(PKG_BUILD_DIR)/share-infix/include/XSParseInfix.h $(1)/usr/share/perl/include/
-	$(CP) $(PKG_BUILD_DIR)/share-keyword/include/XSParseKeyword.h $(1)/usr/share/perl/include/
+	$(INSTALL_DIR) $(1)/opt/share/perl/include
+	$(CP) $(PKG_BUILD_DIR)/share-infix/include/XSParseInfix.h $(1)/opt/share/perl/include/
+	$(CP) $(PKG_BUILD_DIR)/share-keyword/include/XSParseKeyword.h $(1)/opt/share/perl/include/
 endef
 
 $(eval $(call BuildPackage,perl-xs-parse-keyword))

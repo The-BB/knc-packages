@@ -45,12 +45,12 @@ define Build/Configure
 	# Prepare a library directory where we can link against lusb-0.1(as
 	# opposed to -lusb) to avoid confusion at runtime
 	mkdir $(PKG_BUILD_DIR)/syslib
-	$(LN) $(STAGING_DIR)/usr/lib/libusb.so $(PKG_BUILD_DIR)/syslib/libusb-0.1.so
+	$(LN) $(STAGING_DIR)/opt/lib/libusb.so $(PKG_BUILD_DIR)/syslib/libusb-0.1.so
 	
 	# Generate _Inline
 	$(call perlmod/Compile,config,LIBUSB_LIBDIR=$(PKG_BUILD_DIR)/syslib \
 	                              _INLINE_C_NO_COMPILE_=1 \
-	                              _INLINE_C_SYSTEM_TYPEMAP_=$(STAGING_DIR)/usr/lib/perl5/$(PERL_VERSION)/ExtUtils/typemap)
+	                              _INLINE_C_SYSTEM_TYPEMAP_=$(STAGING_DIR)/opt/lib/perl5/$(PERL_VERSION)/ExtUtils/typemap)
 	$(call perlmod/Compile,dynamic,_INLINE_C_NO_COMPILE_=1)
 	
 	# Configure _Inline
