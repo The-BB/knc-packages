@@ -1,9 +1,9 @@
-commit 0d952684b7762304470350465b64a37eec7640cd (HEAD -> master, origin/master, origin/HEAD)
-Author: Alexandru Ardelean <alex@shruggie.ro>
-Date:   Fri Apr 24 20:28:27 2026 +0300
+commit 9d1c4d20dfb78dc8ef58f25f5451465e2f85dd07 (HEAD -> master, origin/master, origin/HEAD)
+Author: Philip Prindeville <philipp@redfish-solutions.com>
+Date:   Sun Apr 26 11:32:00 2026 -0600
 
-    semodule-utils: add test.sh
+    strongswan: update to 6.0.6
     
-    Add a bit of smoke testing for the CI.
+    No significant functional changes.
     
-    Signed-off-by: Alexandru Ardelean <alex@shruggie.ro>
+    Signed-off-by: Philip Prindeville <philipp@redfish-solutions.com>
