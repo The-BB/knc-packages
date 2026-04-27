@@ -11,7 +11,7 @@ PKG_NAME:=python-sentry-sdk
 PKG_VERSION:=2.57.0
 PKG_RELEASE:=1
 
-PYPI_NAME:=entry_sdk
+PYPI_NAME:=sentry_sdk
 PKG_HASH:=4be8d1e71c32fb27f79c577a337ac8912137bba4bcbc64a4ec1da4d6d8dc5199
 
 PKG_MAINTAINER:=Josef Schlehofer <pepe.schlehofer@gmail.com>
