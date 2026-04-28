@@ -1,9 +1,9 @@
-commit 2482fdd481529ae949b0611418c65029904fdce8 (HEAD -> master, origin/master, origin/HEAD)
-Author: Rishabh <rishabhshah2005@gmail.com>
-Date:   Mon Apr 20 23:13:49 2026 +0530
+commit 49a852ff9d51c33d017dd674704d0020c9238411 (HEAD -> master, origin/master, origin/HEAD)
+Author: John Audia <therealgraysky@proton.me>
+Date:   Fri Apr 24 16:36:50 2026 -0400
 
-    keepalived: bump PKG_RELEASE to 3
+    snort3: update to 3.12.2.0
     
-    Bump PKG_RELEASE from 2 to 3.
+    Changelog: https://github.com/snort3/snort3/releases/tag/3.12.2.0
     
-    Signed-off-by: Rishabh <rishabhshah2005@gmail.com>
+    Signed-off-by: John Audia <therealgraysky@proton.me>
