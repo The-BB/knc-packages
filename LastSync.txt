@@ -1,9 +1,30 @@
-commit 49a852ff9d51c33d017dd674704d0020c9238411 (HEAD -> master, origin/master, origin/HEAD)
-Author: John Audia <therealgraysky@proton.me>
-Date:   Fri Apr 24 16:36:50 2026 -0400
+commit 459ceca6573808f6e8bd36e8f7ba165dcb389efd (HEAD -> master, origin/master, origin/HEAD)
+Author: Josef Schlehofer <pepe.schlehofer@gmail.com>
+Date:   Wed Apr 29 00:12:20 2026 +0200
 
-    snort3: update to 3.12.2.0
+    unzip: refresh patches
     
-    Changelog: https://github.com/snort3/snort3/releases/tag/3.12.2.0
+    Fixes:
+    ```
+    2026-04-28T14:55:09.6675796Z '/builder/build_dir/target-aarch64_generic_musl/unzip-6.0/unzip60/patches/0001-fix-heap-based-buffer-overflow-in-the-CRC32-verifica.patch' -> '/feed/utils/unzip/patches/0001-fix-heap-based-buffer-overflow-in-the-CRC32-verifica.patch'
+    2026-04-28T14:55:09.6707616Z '/builder/build_dir/target-aarch64_generic_musl/unzip-6.0/unzip60/patches/0002-fix-heap-based-buffer-overflow-in-the-test_compr_eb-.patch' -> '/feed/utils/unzip/patches/0002-fix-heap-based-buffer-overflow-in-the-test_compr_eb-.patch'
+    2026-04-28T14:55:09.6739766Z '/builder/build_dir/target-aarch64_generic_musl/unzip-6.0/unzip60/patches/0003-fix-heap-based-buffer-overflow-in-the-getZip64Data-f.patch' -> '/feed/utils/unzip/patches/0003-fix-heap-based-buffer-overflow-in-the-getZip64Data-f.patch'
+    2026-04-28T14:55:09.6770773Z '/builder/build_dir/target-aarch64_generic_musl/unzip-6.0/unzip60/patches/0004-fix-out-of-bounds-read-or-write-and-crash.patch' -> '/feed/utils/unzip/patches/0004-fix-out-of-bounds-read-or-write-and-crash.patch'
+    2026-04-28T14:55:09.6802381Z '/builder/build_dir/target-aarch64_generic_musl/unzip-6.0/unzip60/patches/0005-fix-heap-based-buffer-over-read-and-application-cras.patch' -> '/feed/utils/unzip/patches/0005-fix-heap-based-buffer-over-read-and-application-cras.patch'
+    2026-04-28T14:55:09.6832719Z '/builder/build_dir/target-aarch64_generic_musl/unzip-6.0/unzip60/patches/0006-fix-infinite-loop-because-of-an-empty-bzip2-data.patch' -> '/feed/utils/unzip/patches/0006-fix-infinite-loop-because-of-an-empty-bzip2-data.patch'
+    2026-04-28T14:55:09.6863943Z '/builder/build_dir/target-aarch64_generic_musl/unzip-6.0/unzip60/patches/0007-fix-error-to-prevent-unsigned-overflow.patch' -> '/feed/utils/unzip/patches/0007-fix-error-to-prevent-unsigned-overflow.patch'
+    2026-04-28T14:55:09.6895530Z '/builder/build_dir/target-aarch64_generic_musl/unzip-6.0/unzip60/patches/0008-fix-buffer-overflow-in-the-list_files-function.patch' -> '/feed/utils/unzip/patches/0008-fix-buffer-overflow-in-the-list_files-function.patch'
+    2026-04-28T14:55:09.6926806Z '/builder/build_dir/target-aarch64_generic_musl/unzip-6.0/unzip60/patches/0009-fix-buffer-overflow-in-the-zi_short-function.patch' -> '/feed/utils/unzip/patches/0009-fix-buffer-overflow-in-the-zi_short-function.patch'
+    2026-04-28T14:55:09.6958683Z '/builder/build_dir/target-aarch64_generic_musl/unzip-6.0/unzip60/patches/0010-unix.c-Remove-build-date.patch' -> '/feed/utils/unzip/patches/0010-unix.c-Remove-build-date.patch'
+    2026-04-28T14:55:09.6990350Z '/builder/build_dir/target-aarch64_generic_musl/unzip-6.0/unzip60/patches/0011-fix-heap-based-buffer-overflow-in-the-password-prote.patch' -> '/feed/utils/unzip/patches/0011-fix-heap-based-buffer-overflow-in-the-password-prote.patch'
+    2026-04-28T14:55:09.7023549Z '/builder/build_dir/target-aarch64_generic_musl/unzip-6.0/unzip60/patches/012-fix-gcc15-build.patch' -> '/feed/utils/unzip/patches/012-fix-gcc15-build.patch'
+    2026-04-28T14:55:09.7047649Z make[2]: Leaving directory '/feed/utils/unzip'
+    2026-04-28T14:55:09.7051724Z time: package/feeds/packages_ci/unzip/refresh#1.41#1.81#2.76
+    2026-04-28T14:55:09.7059428Z make[1]: Leaving directory '/builder'
+    2026-04-28T14:55:09.7071281Z ##[endgroup]
+    2026-04-28T14:55:09.7104892Z Dirty patches detected, please refresh and review the diff
+    ```
     
-    Signed-off-by: John Audia <therealgraysky@proton.me>
+    Fixes: f9e7e2db94a768d24201df27c4b619e724f95536  ("unzip: add valid patche headers and missing CVE informations")
+    
+    Signed-off-by: Josef Schlehofer <pepe.schlehofer@gmail.com>
