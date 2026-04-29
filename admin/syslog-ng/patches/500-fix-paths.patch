@@ -50,7 +50,7 @@
  	[ -f /etc/resolv.conf ] && cp /etc/resolv.conf ${tmpdir}/sys.resolv.conf
  	[ -f /etc/hosts ] && cp /etc/hosts ${tmpdir}/sys.hosts
  	printf "Done\n"
-@@ -933,13 +933,13 @@ acquire_running_syslog_config() {
+@@ -935,13 +935,13 @@ acquire_running_syslog_config() {
  }
  
  fhs_set_linux () {
@@ -71,7 +71,7 @@
  }
  
  fhs_set_unix () {
-@@ -1152,7 +1152,7 @@ detect_env_linux () {
+@@ -1154,7 +1154,7 @@ detect_env_linux () {
  		dist="SUSE LINUX"
  	else
  		echo "Unknown or unsupported Linux distribution!"
@@ -80,7 +80,7 @@
  	fi
  }
  
-@@ -1165,7 +1165,7 @@ detect_env () {
+@@ -1167,7 +1167,7 @@ detect_env () {
  	if [ -x /opt/syslog-ng/bin/loggen ] ; then
  		syslogfhs=unix
  		echo "Unix-like FHS detected"
