@@ -1,30 +1,18 @@
-commit 459ceca6573808f6e8bd36e8f7ba165dcb389efd (HEAD -> master, origin/master, origin/HEAD)
-Author: Josef Schlehofer <pepe.schlehofer@gmail.com>
-Date:   Wed Apr 29 00:12:20 2026 +0200
+commit 8238e4ddfa37ce29ed78997c311eb85eca11eca0 (HEAD -> master, origin/master, origin/HEAD)
+Author: Alexandru Ardelean <alex@shruggie.ro>
+Date:   Tue Apr 28 08:40:36 2026 +0300
 
-    unzip: refresh patches
+    lua-openssl: fix CMake Lua detection in build
     
-    Fixes:
-    ```
-    2026-04-28T14:55:09.6675796Z '/builder/build_dir/target-aarch64_generic_musl/unzip-6.0/unzip60/patches/0001-fix-heap-based-buffer-overflow-in-the-CRC32-verifica.patch' -> '/feed/utils/unzip/patches/0001-fix-heap-based-buffer-overflow-in-the-CRC32-verifica.patch'
-    2026-04-28T14:55:09.6707616Z '/builder/build_dir/target-aarch64_generic_musl/unzip-6.0/unzip60/patches/0002-fix-heap-based-buffer-overflow-in-the-test_compr_eb-.patch' -> '/feed/utils/unzip/patches/0002-fix-heap-based-buffer-overflow-in-the-test_compr_eb-.patch'
-    2026-04-28T14:55:09.6739766Z '/builder/build_dir/target-aarch64_generic_musl/unzip-6.0/unzip60/patches/0003-fix-heap-based-buffer-overflow-in-the-getZip64Data-f.patch' -> '/feed/utils/unzip/patches/0003-fix-heap-based-buffer-overflow-in-the-getZip64Data-f.patch'
-    2026-04-28T14:55:09.6770773Z '/builder/build_dir/target-aarch64_generic_musl/unzip-6.0/unzip60/patches/0004-fix-out-of-bounds-read-or-write-and-crash.patch' -> '/feed/utils/unzip/patches/0004-fix-out-of-bounds-read-or-write-and-crash.patch'
-    2026-04-28T14:55:09.6802381Z '/builder/build_dir/target-aarch64_generic_musl/unzip-6.0/unzip60/patches/0005-fix-heap-based-buffer-over-read-and-application-cras.patch' -> '/feed/utils/unzip/patches/0005-fix-heap-based-buffer-over-read-and-application-cras.patch'
-    2026-04-28T14:55:09.6832719Z '/builder/build_dir/target-aarch64_generic_musl/unzip-6.0/unzip60/patches/0006-fix-infinite-loop-because-of-an-empty-bzip2-data.patch' -> '/feed/utils/unzip/patches/0006-fix-infinite-loop-because-of-an-empty-bzip2-data.patch'
-    2026-04-28T14:55:09.6863943Z '/builder/build_dir/target-aarch64_generic_musl/unzip-6.0/unzip60/patches/0007-fix-error-to-prevent-unsigned-overflow.patch' -> '/feed/utils/unzip/patches/0007-fix-error-to-prevent-unsigned-overflow.patch'
-    2026-04-28T14:55:09.6895530Z '/builder/build_dir/target-aarch64_generic_musl/unzip-6.0/unzip60/patches/0008-fix-buffer-overflow-in-the-list_files-function.patch' -> '/feed/utils/unzip/patches/0008-fix-buffer-overflow-in-the-list_files-function.patch'
-    2026-04-28T14:55:09.6926806Z '/builder/build_dir/target-aarch64_generic_musl/unzip-6.0/unzip60/patches/0009-fix-buffer-overflow-in-the-zi_short-function.patch' -> '/feed/utils/unzip/patches/0009-fix-buffer-overflow-in-the-zi_short-function.patch'
-    2026-04-28T14:55:09.6958683Z '/builder/build_dir/target-aarch64_generic_musl/unzip-6.0/unzip60/patches/0010-unix.c-Remove-build-date.patch' -> '/feed/utils/unzip/patches/0010-unix.c-Remove-build-date.patch'
-    2026-04-28T14:55:09.6990350Z '/builder/build_dir/target-aarch64_generic_musl/unzip-6.0/unzip60/patches/0011-fix-heap-based-buffer-overflow-in-the-password-prote.patch' -> '/feed/utils/unzip/patches/0011-fix-heap-based-buffer-overflow-in-the-password-prote.patch'
-    2026-04-28T14:55:09.7023549Z '/builder/build_dir/target-aarch64_generic_musl/unzip-6.0/unzip60/patches/012-fix-gcc15-build.patch' -> '/feed/utils/unzip/patches/012-fix-gcc15-build.patch'
-    2026-04-28T14:55:09.7047649Z make[2]: Leaving directory '/feed/utils/unzip'
-    2026-04-28T14:55:09.7051724Z time: package/feeds/packages_ci/unzip/refresh#1.41#1.81#2.76
-    2026-04-28T14:55:09.7059428Z make[1]: Leaving directory '/builder'
-    2026-04-28T14:55:09.7071281Z ##[endgroup]
-    2026-04-28T14:55:09.7104892Z Dirty patches detected, please refresh and review the diff
-    ```
+    The CMakeLists.txt first tries FindLuaJIT.cmake which uses
+    NO_DEFAULT_PATH with hardcoded host paths, so it always fails in
+    cross-compilation. The fallback find_package(Lua REQUIRED) may also
+    fail to find a flat sysroot layout where lua.h lives at
+    /usr/include/lua.h rather than a versioned subdirectory.
     
-    Fixes: f9e7e2db94a768d24201df27c4b619e724f95536  ("unzip: add valid patche headers and missing CVE informations")
+    Explicitly pass LUA_INCLUDE_DIR and LUA_LIBRARY to CMake to bypass
+    both finders, and depend on +liblua (the library package) instead of
+    +lua to ensure Build/InstallDev runs and Lua headers are present in
+    the staging directory before this package builds.
     
-    Signed-off-by: Josef Schlehofer <pepe.schlehofer@gmail.com>
+    Signed-off-by: Alexandru Ardelean <alex@shruggie.ro>
