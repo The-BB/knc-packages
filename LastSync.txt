@@ -1,18 +1,24 @@
-commit 8238e4ddfa37ce29ed78997c311eb85eca11eca0 (HEAD -> master, origin/master, origin/HEAD)
+commit 20873ba57e0354051eac2e0fce4d7b4dd141b440 (HEAD -> master, origin/master, origin/HEAD)
 Author: Alexandru Ardelean <alex@shruggie.ro>
-Date:   Tue Apr 28 08:40:36 2026 +0300
+Date:   Tue Apr 28 08:01:56 2026 +0300
 
-    lua-openssl: fix CMake Lua detection in build
+    glib2: split package into separate libraries
     
-    The CMakeLists.txt first tries FindLuaJIT.cmake which uses
-    NO_DEFAULT_PATH with hardcoded host paths, so it always fails in
-    cross-compilation. The fallback find_package(Lua REQUIRED) may also
-    fail to find a flat sysroot layout where lua.h lives at
-    /usr/include/lua.h rather than a versioned subdirectory.
+    Existing package contains five libraries, some of which are > 1MB. Allow
+    packages which depend on only some of them to only pull in the ones they
+    need by splitting this package into finer-grained packages. Transition
+    can be done piecemeal as depending on glib2 will still pull in all the
+    libraries.
     
-    Explicitly pass LUA_INCLUDE_DIR and LUA_LIBRARY to CMake to bypass
-    both finders, and depend on +liblua (the library package) instead of
-    +lua to ensure Build/InstallDev runs and Lua headers are present in
-    the staging directory before this package builds.
+    The original split commit (6bb0d6bd2) had a typo: the glib2 meta-package
+    used 'DEPENDS:+glib2-gthread +glib2-gio' (missing '='), which caused
+    the meta-package to have no effective dependencies. This meant packages
+    declaring '+glib2' did not get the sub-packages installed, causing APK
+    dependency checks to fail for all glib2 libraries across ~60 packages.
     
+    This re-applies the split with 'DEPENDS:=+glib2-gthread +glib2-gio'
+    (correct assignment syntax), so the meta-package properly pulls in all
+    sub-packages for consumers that still declare '+glib2'.
+    
+    Signed-off-by: Alexandru Ardelean <ardeleanalex@gmail.com>
     Signed-off-by: Alexandru Ardelean <alex@shruggie.ro>
