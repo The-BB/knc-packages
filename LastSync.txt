@@ -1,24 +1,13 @@
-commit 20873ba57e0354051eac2e0fce4d7b4dd141b440 (HEAD -> master, origin/master, origin/HEAD)
-Author: Alexandru Ardelean <alex@shruggie.ro>
-Date:   Tue Apr 28 08:01:56 2026 +0300
+commit d114f46db11ad1639d9b8c59489182ab9583c092 (HEAD -> master, origin/master, origin/HEAD)
+Author: micpf <micpf@westermo.com>
+Date:   Wed Apr 15 18:30:17 2026 +0200
 
-    glib2: split package into separate libraries
+    libfastjson: add missing runtime dependency on libm
     
-    Existing package contains five libraries, some of which are > 1MB. Allow
-    packages which depend on only some of them to only pull in the ones they
-    need by splitting this package into finer-grained packages. Transition
-    can be done piecemeal as depending on glib2 will still pull in all the
-    libraries.
+    libfastjson uses modf() from libm but does not declare the dependency.
+    With BIND_NOW (CONFIG_PKG_RELRO_FULL), this can cause the dynamic linker
+    to process libfastjson's relocations before libm's GOT is set up,
+    triggering a crash in libm's IFUNC resolver on PowerPC.
     
-    The original split commit (6bb0d6bd2) had a typo: the glib2 meta-package
-    used 'DEPENDS:+glib2-gthread +glib2-gio' (missing '='), which caused
-    the meta-package to have no effective dependencies. This meant packages
-    declaring '+glib2' did not get the sub-packages installed, causing APK
-    dependency checks to fail for all glib2 libraries across ~60 packages.
-    
-    This re-applies the split with 'DEPENDS:=+glib2-gthread +glib2-gio'
-    (correct assignment syntax), so the meta-package properly pulls in all
-    sub-packages for consumers that still declare '+glib2'.
-    
-    Signed-off-by: Alexandru Ardelean <ardeleanalex@gmail.com>
-    Signed-off-by: Alexandru Ardelean <alex@shruggie.ro>
+    Fixes: https://github.com/openwrt/packages/issues/29160
+    Signed-off-by: micpf <micpf@westermo.com>
