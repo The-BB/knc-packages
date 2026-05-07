@@ -11,7 +11,7 @@ PROG="/opt/sbin/$PROCS"
 
 PID_FILE="/opt/var/run/$PROCS.pid"
 
-pre_cmd() {
+start_pre() {
   rm -f "$PID_FILE"
   for i in \
     /opt/var/lib/ntp \
@@ -24,7 +24,7 @@ pre_cmd() {
   done
 }
 
-PRECMD="pre_cmd"
+PRECMD="start_pre"
 ARGS="\
 -c /opt/etc/ntp.conf \
 -f /opt/var/lib/ntp/ntp.drift \
