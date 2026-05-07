@@ -8,7 +8,7 @@ PROG="/opt/sbin/$PROCS"
 
 PID_FILE="/opt/var/run/$PROCS.pid"
 
-pre_cmd() {
+start_pre() {
   rm -f "$PID_FILE"
   . /opt/lib/functions.sh
   group_exists www-data || group_add www-data 33
@@ -24,7 +24,7 @@ pre_cmd() {
   done
 }
 
-PRECMD="pre_cmd"
+PRECMD="start_pre"
 ARGS="-f /opt/etc/$PROCS/$PROCS.conf"
 PREARGS=""
 
