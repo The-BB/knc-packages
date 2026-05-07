@@ -8,7 +8,7 @@ PROG="/opt/sbin/$PROCS"
 
 TANG_DB_DIR="/opt/share/tang/db"
 
-pre_cmd() {
+start_pre() {
   [ -d "$TANG_DB_DIR" ] || mkdir -pm 0750 "$TANG_DB_DIR"
   KEYS=$(find "$TANG_DB_DIR" -maxdepth 1 -name "*.jw*" 2>/dev/null | wc -l)
   if [ -z "${KEYS}" ] || [ "${KEYS}" = "0" ]; then # if db is empty generate new key pair
@@ -17,7 +17,7 @@ pre_cmd() {
   chown -R tang "$TANG_DB_DIR"
 }
 
-PRECMD="pre_cmd"
+PRECMD="start_pre"
 ARGS="-p 9090 -l $TANG_DB_DIR"
 PREARGS=""
 
