@@ -8,7 +8,7 @@ PROG="/opt/sbin/$PROCS"
 
 PID_FILE="/opt/var/run/$PROCS/$PROCS.pid"
 
-pre_cmd() {
+start_pre() {
   for i in \
     /opt/var/cache/bind \
     /opt/var/lib/bind \
@@ -22,7 +22,7 @@ pre_cmd() {
   done
 }
 
-PRECMD="pre_cmd"
+PRECMD="start_pre"
 ARGS="-u bind -c /opt/etc/bind/$PROCS.conf"
 PREARGS=""
 
