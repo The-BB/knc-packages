@@ -6,7 +6,7 @@ DESC="Tor daemon"
 PROCS="tor"
 PROG="/opt/sbin/$PROCS"
 
-pre_cmd() {
+start_pre() {
   [ -d "/opt/var/lib/$PROCS" ] || {
     mkdir -pm 0700 /opt/var/lib/"$PROCS"
     chown -R "$PROCS":"$PROCS" /opt/var/lib/"$PROCS"
@@ -18,7 +18,7 @@ pre_cmd() {
   }
 }
 
-PRECMD="pre_cmd"
+PRECMD="start_pre"
 ARGS="-f /opt/etc/$PROCS/torrc"
 PREARGS=""
 
