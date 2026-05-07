@@ -1,9 +1,10 @@
-commit 7c83b19c73ef1301d20f3dc62fd9fe145ec7da3f (HEAD -> master, origin/master, origin/HEAD)
-Author: Alan Feng <fthasdd@largerworld.cc>
-Date:   Tue May 5 16:17:43 2026 +0800
+commit 76f50a0b80a9bc5325e25bb4689c2d62c08d6bd6 (HEAD -> master, origin/master, origin/HEAD)
+Author: Alexandru Ardelean <alex@shruggie.ro>
+Date:   Wed Apr 22 12:07:58 2026 +0300
 
-    nebula: bump version to 1.10.3
+    zlog: update to 1.2.18
     
-    changelog: https://github.com/slackhq/nebula/compare/v1.9.7...v1.10.3
+    Changelog:
+    - Fix CVE-2024-22857 security vulnerability
     
-    Signed-off-by: Alan Feng <fthasdd@largerworld.cc>
+    Signed-off-by: Alexandru Ardelean <alex@shruggie.ro>
