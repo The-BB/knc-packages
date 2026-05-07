@@ -8,7 +8,7 @@ PROG="/opt/sbin/$PROCS"
 
 PID_FILE="/opt/var/run/$PROCS.pid"
 
-pre_cmd() {
+start_pre() {
   rm -f "$PID_FILE"
   for i in \
     /opt/var/spool/cron/atjobs \
@@ -25,7 +25,7 @@ pre_cmd() {
   }
 }
 
-PRECMD="pre_cmd"
+PRECMD="start_pre"
 ARGS=""
 PREARGS=""
 
