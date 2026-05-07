@@ -6,7 +6,7 @@ DESC="Zabbix agent daemon"
 PROCS="zabbix_agentd"
 PROG="/opt/sbin/$PROCS"
 
-pre_cmd() {
+start_pre() {
   . /opt/lib/functions.sh
   user_exists zabbix || user_add zabbix 53
   group_exists zabbix || group_add zabbix 53
@@ -17,7 +17,7 @@ pre_cmd() {
   }
 }
 
-PRECMD="pre_cmd"
+PRECMD="start_pre"
 ARGS="-c /opt/etc/$PROCS.conf"
 PREARGS=""
 
