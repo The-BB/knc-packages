@@ -9,7 +9,7 @@ PROG="/opt/bin/$PROCS"
 PID_FILE="/opt/var/run/$PROCS/$PROCS.pid"
 LIMIT="20"
 
-pre_cmd() {
+start_pre() {
   rm -f "$PID_FILE"
   [ -d "/opt/var/run/$PROCS" ] || \
   mkdir -pm 0750 /opt/var/run/"$PROCS"
@@ -18,7 +18,7 @@ pre_cmd() {
   --datadir=/opt/srv/mysql > /dev/null 2>&1
 }
 
-PRECMD="pre_cmd"
+PRECMD="start_pre"
 ARGS=""
 PREARGS=""
 
