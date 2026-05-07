@@ -1,17 +1,19 @@
 --- a/include/builddefs.in
 +++ b/include/builddefs.in
-@@ -13,7 +13,7 @@ OPTIMIZER = @opt_build@
+@@ -13,8 +13,8 @@ OPTIMIZER = @opt_build@
  MALLOCLIB = @malloc_lib@
  LOADERFLAGS = @LDFLAGS@
  LTLDFLAGS = @LDFLAGS@
 -CFLAGS = @CFLAGS@ -D_FILE_OFFSET_BITS=64 -D_TIME_BITS=64 -Wno-address-of-packed-member
+-CXXFLAGS = @CXXFLAGS@ -D_FILE_OFFSET_BITS=64 -D_TIME_BITS=64 -Wno-address-of-packed-member
 +CFLAGS = @CFLAGS@ -D_FILE_OFFSET_BITS=64 -D_TIME_BITS=64
++CXXFLAGS = @CXXFLAGS@ -D_FILE_OFFSET_BITS=64 -D_TIME_BITS=64
  BUILD_CFLAGS = @BUILD_CFLAGS@ -D_FILE_OFFSET_BITS=64 -D_TIME_BITS=64
  
  # make sure we don't pick up whacky LDFLAGS from the make environment and
 --- a/include/xfs_inode.h
 +++ b/include/xfs_inode.h
-@@ -23,6 +23,14 @@ struct inode;
+@@ -54,6 +54,14 @@ struct inode;
  #define I_DIRTY_TIME		0
  #define I_DIRTY_TIME_EXPIRED	0
  
@@ -28,7 +30,7 @@
  
 --- a/libxfs/xfs_fs.h
 +++ b/libxfs/xfs_fs.h
-@@ -322,7 +322,15 @@ typedef struct xfs_growfs_rt {
+@@ -330,7 +330,15 @@ typedef struct xfs_growfs_rt {
   * Structures returned from ioctl XFS_IOC_FSBULKSTAT & XFS_IOC_FSBULKSTAT_SINGLE
   */
  typedef struct xfs_bstime {
