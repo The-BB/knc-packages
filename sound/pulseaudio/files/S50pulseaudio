@@ -8,7 +8,7 @@ PROG="/opt/bin/$PROCS"
 
 PID_FILE="/opt/var/run/pulse/pid"
 
-pre_cmd() {
+start_pre() {
   rm -f "$PID_FILE"
   for i in \
     /opt/var/lib/pulse \
@@ -21,7 +21,7 @@ pre_cmd() {
   done
 }
 
-PRECMD="pre_cmd"
+PRECMD="start_pre"
 ARGS="\
 --system \
 --daemonize \
