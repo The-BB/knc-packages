@@ -8,13 +8,13 @@ PROG="/opt/bin/$PROCS"
 
 PID_FILE="/opt/var/run/dbus/dbus.pid"
 
-pre_cmd() {
+start_pre() {
   rm -f "$PID_FILE"
   [ -d "/opt/var/run/dbus" ] || \
   mkdir -pm 0750 /opt/var/run/dbus
 }
 
-PRECMD="pre_cmd"
+PRECMD="start_pre"
 ARGS="--system"
 PREARGS=""
 
