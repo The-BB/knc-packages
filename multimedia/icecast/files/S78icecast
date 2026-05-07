@@ -6,14 +6,14 @@ DESC="Icecast streaming media server"
 PROCS="icecast"
 PROG="/opt/bin/$PROCS"
 
-pre_cmd() {
+start_pre() {
   [ -d "/opt/var/log/$PROCS" ] || {
     mkdir -pm 0750 /opt/var/log/"$PROCS"
     chown "$PROCS":"$PROCS" /opt/var/log/"$PROCS"
   }
 }
 
-PRECMD="pre_cmd"
+PRECMD="start_pre"
 ARGS="-c /opt/etc/$PROCS.xml -b"
 PREARGS=""
 
