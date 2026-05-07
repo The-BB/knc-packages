@@ -6,7 +6,7 @@ DESC="Aria2 service"
 PROCS="aria2c"
 PROG="/opt/bin/$PROCS"
 
-pre_cmd() {
+start_pre() {
   for i in \
     /opt/downloads/aria2 \
     /opt/var/lib/aria2
@@ -21,7 +21,7 @@ pre_cmd() {
   chown -R aria2:aria2 /opt/var/lib/aria2/session.dat
 }
 
-PRECMD="pre_cmd"
+PRECMD="start_pre"
 ARGS="--conf-path=/opt/etc/aria2.conf"
 PREARGS=""
 
