@@ -13,20 +13,20 @@
  
 --- a/src/main-user.c
 +++ b/src/main-user.c
-@@ -47,7 +47,7 @@
- #include <script-list.h>
+@@ -48,7 +48,7 @@
  #include <ccan/list/list.h>
  
+ #ifndef OCSERV_FW_SCRIPT
 -#define OCSERV_FW_SCRIPT "/usr/libexec/ocserv-fw"
 +#define OCSERV_FW_SCRIPT "/opt/libexec/ocserv-fw"
+ #endif
  
- #define APPEND_TO_STR(str, val) \
- 	do { \
+ #define APPEND_TO_STR(str, val)                                           \
 --- a/src/occtl/ctl.h
 +++ b/src/occtl/ctl.h
 @@ -1,7 +1,7 @@
  #ifndef CTL_H
- # define CTL_H
+ #define CTL_H
  
 -#define OCCTL_UNIX_SOCKET "/var/run/occtl.socket"
 +#define OCCTL_UNIX_SOCKET "/opt/var/run/occtl.socket"
@@ -48,7 +48,7 @@
 +#define MAXMINDDB_LOCATION_CITY "/opt/share/GeoIP/GeoLite2-City.mmdb"
  #endif
  
- #define pMMDB_close         MMDB_close
+ #define pMMDB_close MMDB_close
 --- a/src/ocpasswd/ocpasswd.c
 +++ b/src/ocpasswd/ocpasswd.c
 @@ -36,7 +36,7 @@

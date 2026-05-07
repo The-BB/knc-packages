@@ -1,13 +1,10 @@
-commit d114f46db11ad1639d9b8c59489182ab9583c092 (HEAD -> master, origin/master, origin/HEAD)
-Author: micpf <micpf@westermo.com>
-Date:   Wed Apr 15 18:30:17 2026 +0200
+commit 76f50a0b80a9bc5325e25bb4689c2d62c08d6bd6 (HEAD -> master, origin/master, origin/HEAD)
+Author: Alexandru Ardelean <alex@shruggie.ro>
+Date:   Wed Apr 22 12:07:58 2026 +0300
 
-    libfastjson: add missing runtime dependency on libm
+    zlog: update to 1.2.18
     
-    libfastjson uses modf() from libm but does not declare the dependency.
-    With BIND_NOW (CONFIG_PKG_RELRO_FULL), this can cause the dynamic linker
-    to process libfastjson's relocations before libm's GOT is set up,
-    triggering a crash in libm's IFUNC resolver on PowerPC.
+    Changelog:
+    - Fix CVE-2024-22857 security vulnerability
     
-    Fixes: https://github.com/openwrt/packages/issues/29160
-    Signed-off-by: micpf <micpf@westermo.com>
+    Signed-off-by: Alexandru Ardelean <alex@shruggie.ro>
