@@ -160,11 +160,11 @@ PROG="/opt/sbin/$$PROCS"
 
 PID_FILE="/opt/var/run/$$PROCS.pid"
 
-pre_cmd() {
+start_pre() {
   rm -f "$$PID_FILE"
 }
 
-PRECMD="pre_cmd"
+PRECMD="start_pre"
 ARGS="-a 127.0.0.1:65053 -p $$PID_FILE -d -R $$srv"
 PREARGS=""
 
