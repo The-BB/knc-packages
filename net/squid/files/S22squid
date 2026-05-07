@@ -8,7 +8,7 @@ PROG="/opt/sbin/$PROCS"
 
 PID_FILE="/opt/var/run/$PROCS"
 
-pre_cmd() {
+start_pre() {
   rm -f "$PID_FILE"
   for i in \
     /opt/var/cache/"$PROCS" \
@@ -29,7 +29,7 @@ pre_cmd() {
   chown -R "$PROCS":"$PROCS" /opt/var/cache/"$PROCS"/ssldb
 }
 
-PRECMD="pre_cmd"
+PRECMD="start_pre"
 ARGS=""
 PREARGS=""
 
