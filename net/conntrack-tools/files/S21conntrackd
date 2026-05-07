@@ -6,11 +6,11 @@ DESC="Connection tracking userspace daemon"
 PROCS="conntrackd"
 PROG="/opt/sbin/$PROCS"
 
-pre_cmd() {
+start_pre() {
   rm -f /opt/var/lock/conntrack.lock
 }
 
-PRECMD="pre_cmd"
+PRECMD="start_pre"
 ARGS="-d -C /opt/etc/$PROCS/$PROCS.conf"
 PREARGS=""
 
