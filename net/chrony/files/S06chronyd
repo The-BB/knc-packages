@@ -8,7 +8,7 @@ PROG="/opt/sbin/$PROCS"
 
 PID_FILE="/opt/var/run/chrony/$PROCS.pid"
 
-pre_cmd() {
+start_pre() {
   rm -f "$PIF_FILE"
   for i in \
     /opt/var/lib/chrony \
@@ -22,7 +22,7 @@ pre_cmd() {
   done
 }
 
-PRECMD="pre_cmd"
+PRECMD="start_pre"
 ARGS=""
 PREARGS=""
 
