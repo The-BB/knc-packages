@@ -8,7 +8,7 @@ PROG="/opt/sbin/$PROCS"
 
 PID_FILE="/opt/var/run/cups/$PROCS.pid"
 
-pre_cmd() {
+start_pre() {
   rm -f "$PID_FILE"
   . /opt/lib/functions.sh
   group_exists lpadmin || group_add lpadmin 115
@@ -17,7 +17,7 @@ pre_cmd() {
   user_exists sys || user_add sys 3
 }
 
-PRECMD="pre_cmd"
+PRECMD="start_pre"
 ARGS=""
 PREARGS=""
 
