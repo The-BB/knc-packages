@@ -6,7 +6,7 @@ DESC="OpenVPN"
 PROCS="openvpn"
 PROG="/opt/sbin/$PROCS"
 
-pre_cmd() {
+start_pre() {
 # Make sure IP forwarding is enabled
   grep -q '1' /proc/sys/net/ipv4/ip_forward || \
   echo 1 > /proc/sys/net/ipv4/ip_forward
@@ -22,7 +22,7 @@ pre_cmd() {
 #fi
 }
 
-PRECMD="pre_cmd"
+PRECMD="start_pre"
 ARGS="--daemon --cd /opt/etc/$PROCS --config $PROCS.conf"
 PREARGS=""
 
