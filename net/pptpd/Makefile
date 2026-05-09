@@ -28,7 +28,7 @@ define Package/pptpd
   CATEGORY:=Network
   DEPENDS:=+ppp
   TITLE:=PopTop pptp server
-  URL:=http://poptop.sourceforge.net/
+  URL:=https://poptop.sourceforge.net/
   SUBMENU:=VPN
 endef
 
