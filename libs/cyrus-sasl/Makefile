@@ -5,6 +5,8 @@
 # See /LICENSE for more information.
 #
 
+# Entware specific: remove deps USE_GLIBC:libcrypt-compat
+
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=cyrus-sasl
@@ -32,12 +34,12 @@ define Package/libsasl2/Default
   SECTION:=libs
   CATEGORY:=Libraries
   TITLE:=A general purpose authentication library
-  URL:=http://asg.web.cmu.edu/sasl/
+  URL:=https://github.com/cyrusimap/cyrus-sasl
 endef
 
 define Package/libsasl2
   $(call Package/libsasl2/Default)
-  DEPENDS:=+libopenssl #+USE_GLIBC:libcrypt-compat
+  DEPENDS:=+libopenssl
   TITLE+= (libraries)
 endef
 
