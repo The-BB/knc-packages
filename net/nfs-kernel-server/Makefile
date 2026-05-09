@@ -42,14 +42,14 @@ define Package/nfs-kernel-server/Default
 	CATEGORY:=Network
 	SUBMENU:=Filesystem
 	DEPENDS:=+libblkid +libuuid +libtirpc +libxml2
-	URL:=http://nfs.sourceforge.net/
+	URL:=https://nfs.sourceforge.net/
 endef
 
 define Package/nfs-utils/Default
 	SECTION:=utils
 	CATEGORY:=Utilities
 	SUBMENU:=Filesystem
-	URL:=http://nfs.sourceforge.net/
+	URL:=https://nfs.sourceforge.net/
 endef
 
 define Package/nfs-kernel-server
