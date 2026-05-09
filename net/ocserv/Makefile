@@ -4,7 +4,8 @@
 # This is free software, licensed under the GNU General Public License v2.
 # See /LICENSE for more information.
 #
-# Entware specific: no seccomp
+
+# Entware specific: remove deps USE_GLIBC:libcrypt-compat
 
 include $(TOPDIR)/rules.mk
 
@@ -38,7 +39,7 @@ define Package/ocserv
   CATEGORY:=Network
   SUBMENU:=VPN
   TITLE:=OpenConnect VPN server
-  URL:=http://www.infradead.org/ocserv/
+  URL:=https://ocserv.openconnect-vpn.net/
   MAINTAINER:=Nikos Mavrogiannopoulos <n.mavrogiannopoulos@gmail.com>
   DEPENDS:= +OCSERV_RADIUS:libradcli +OCSERV_SECCOMP:libseccomp +libgnutls +certtool +libncurses +libreadline +OCSERV_PAM:libpam +OCSERV_PROTOBUF:libprotobuf-c +OCSERV_LIBOATH:liboath +libev
   USERID:=ocserv=72:ocserv=72
