@@ -5,6 +5,8 @@
 # See /LICENSE for more information.
 #
 
+# Entware specific: remove deps USE_GLIBC:libcrypt-compat
+
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=libpam
@@ -32,8 +34,7 @@ define Package/libpam
   SECTION:=libs
   CATEGORY:=Libraries
   TITLE:=the Linux-PAM libraries and modules.
-  URL:=http://www.kernel.org/pub/linux/libs/pam
-#  DEPENDS:= +USE_GLIBC:libcrypt-compat
+  URL:=https://github.com/linux-pam/linux-pam
 endef
 
 define Package/libpam/description
