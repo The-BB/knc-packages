@@ -27,7 +27,7 @@ include $(INCLUDE_DIR)/package.mk
 define Package/net-snmp/Default
   SECTION:=net
   CATEGORY:=Network
-  URL:=http://www.net-snmp.org/
+  URL:=https://www.net-snmp.org/
 endef
 
 define Package/net-snmp/Default/description
