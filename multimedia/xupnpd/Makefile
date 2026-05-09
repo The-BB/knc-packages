@@ -1,3 +1,5 @@
+# Entware specific: remove deps USE_GLIBC:libcrypt-compat
+
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=xupnpd
@@ -28,9 +30,9 @@ endef
 define Package/xupnpd
   SECTION:=multimedia
   CATEGORY:=Multimedia
-  DEPENDS:= +liblua +libopenssl #+USE_GLIBC:libcrypt-compat
+  DEPENDS:= +liblua +libopenssl
   TITLE:=eXtensible UPnP agent
-  URL:=http://xupnpd.org/
+  URL:=https://github.com/clark15b/xupnpd
 endef
 
 define Package/xupnpd/conffiles
