@@ -54,7 +54,7 @@ define Package/keepalived
   SECTION:=net
   CATEGORY:=Network
   TITLE:=VRRP with failover and monitoring daemon for LVS clusters
-  URL:=http://www.keepalived.org/
+  URL:=https://www.keepalived.org/
   DEPENDS:= \
     @!LINUX_3_2 \
     +libnl-genl \
