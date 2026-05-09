@@ -5,6 +5,8 @@
 # See /LICENSE for more information.
 #
 
+# Entware specific: remove deps USE_GLIBC:libcrypt-compat
+
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=dante
@@ -12,7 +14,7 @@ PKG_VERSION:=1.4.4
 PKG_RELEASE:=3
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
-PKG_SOURCE_URL:=http://www.inet.no/dante/files/
+PKG_SOURCE_URL:=https://www.inet.no/dante/files/
 PKG_HASH:=1973c7732f1f9f0a4c0ccf2c1ce462c7c25060b25643ea90f9b98f53a813faec
 
 PKG_MAINTAINER:=David Yang <mmyangfl@gmail.com>
@@ -50,8 +52,7 @@ endef
 
 define Package/dante/default
   TITLE:=Dante SOCKS
-  URL:=http://www.inet.no/dante/
-#  DEPENDS:= +USE_GLIBC:libcrypt-compat
+  URL:=https://www.inet.no/dante/
 endef
 
 define Package/dante/default/description
