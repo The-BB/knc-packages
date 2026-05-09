@@ -1,9 +1,12 @@
-commit 5e70ed855f429660e92d9b7e6d73dca6b9d96f47 (HEAD -> master, origin/master, origin/HEAD)
-Author: Jianhui Zhao <zhaojh329@gmail.com>
-Date:   Thu May 7 22:02:29 2026 +0800
+commit cd8f538795ad38ad711b314d56fc9557ceda66da (HEAD -> master, origin/master, origin/HEAD)
+Author: Daniel Golle <daniel@makrotopia.org>
+Date:   Fri May 8 21:11:56 2026 +0100
 
-    lua-ffi: update to 1.2.0
+    libdrm: update to 2.4.133
     
-    changelog: https://github.com/zhaojh329/lua-ffi/releases/tag/v1.2.0
+    Bump from 2.4.123 to current upstream stable. Required by recent
+    Mesa, weston, wlroots and other graphics-stack consumers
+    (wlroots 0.20+ explicitly requires libdrm >= 2.4.129).
     
-    Signed-off-by: Jianhui Zhao <zhaojh329@gmail.com>
+    Link: https://dri.freedesktop.org/libdrm/
+    Signed-off-by: Daniel Golle <daniel@makrotopia.org>
