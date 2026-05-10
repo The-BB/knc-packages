@@ -1,12 +1,9 @@
-commit cd8f538795ad38ad711b314d56fc9557ceda66da (HEAD -> master, origin/master, origin/HEAD)
-Author: Daniel Golle <daniel@makrotopia.org>
-Date:   Fri May 8 21:11:56 2026 +0100
+commit 5b591156ce9c17a34f63188f4fb02b715b33eac3 (HEAD -> master, origin/master, origin/HEAD)
+Author: Hannu Nyman <hannu.nyman@iki.fi>
+Date:   Sun May 10 15:57:34 2026 +0300
 
-    libdrm: update to 2.4.133
+    haveged: update to 1.9.20
     
-    Bump from 2.4.123 to current upstream stable. Required by recent
-    Mesa, weston, wlroots and other graphics-stack consumers
-    (wlroots 0.20+ explicitly requires libdrm >= 2.4.129).
+    Update to version 1.9.20.
     
-    Link: https://dri.freedesktop.org/libdrm/
-    Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+    Signed-off-by: Hannu Nyman <hannu.nyman@iki.fi>
