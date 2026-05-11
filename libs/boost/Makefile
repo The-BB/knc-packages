@@ -11,13 +11,13 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=boost
-PKG_VERSION:=1.90.0
+PKG_VERSION:=1.91.0
 PKG_SOURCE_VERSION:=$(subst .,_,$(PKG_VERSION))
-PKG_RELEASE:=3
+PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NAME)_$(PKG_SOURCE_VERSION).tar.bz2
 PKG_SOURCE_URL:=https://archives.boost.io/release/$(PKG_VERSION)/source @SF/$(PKG_NAME)/$(PKG_NAME)/$(PKG_VERSION)
-PKG_HASH:=49551aff3b22cbc5c5a9ed3dbc92f0e23ea50a0f7325b0d198b705e8ee3fc305
+PKG_HASH:=de5e6b0e4913395c6bdfa90537febd9028ea4c0735d2cdb0cd9b45d5f51264f5
 
 PKG_MAINTAINER:=Carlos M. Ferreira <carlosmf.pt@gmail.com>
 PKG_LICENSE:=BSL-1.0
@@ -297,7 +297,7 @@ define Package/boost-test
 	$(call Package/boost/Default)
 	TITLE+= (test)
 	HIDDEN:=1
-	DEPENDS+=+boost-timer
+	DEPENDS+=+boost-timer +boost-regex
 endef
 
 define Build/Configure
@@ -347,7 +347,7 @@ $(eval $(call DefineBoostLibrary,contract,atomic chrono container date_time thre
 $(eval $(call DefineBoostLibrary,coroutine,chrono context thread,,!boost-coroutine-exclude))
 $(eval $(call DefineBoostLibrary,date_time))
 #$(eval $(call DefineBoostLibrary,exception,,))
-$(eval $(call DefineBoostLibrary,fiber,coroutine filesystem,,!boost-fiber-exclude))
+$(eval $(call DefineBoostLibrary,fiber,coroutine filesystem regex,,!boost-fiber-exclude))
 $(eval $(call DefineBoostLibrary,filesystem,atomic))
 $(eval $(call DefineBoostLibrary,graph))
 $(eval $(call DefineBoostLibrary,iostreams,random regex,,,zlib liblzma libbz2 libzstd))
