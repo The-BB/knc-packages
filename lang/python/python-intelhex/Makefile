@@ -6,7 +6,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-intelhex
 PKG_VERSION:=2.3.0
-PKG_RELEASE:=1
+PKG_RELEASE:=2
 
 PYPI_NAME:=intelhex
 PKG_HASH:=892b7361a719f4945237da8ccf754e9513db32f5628852785aea108dcd250093
@@ -31,6 +31,16 @@ endef
 define Package/python3-intelhex/description
   This work implements an intelhex Python library to read, write, create from
   scratch and manipulate data from Intel HEX file format.
+endef
+
+BINS:=bin2hex hex2bin hex2dump hexdiff hexinfo hexmerge
+
+define Py3Package/python3-intelhex/install
+	$(INSTALL_DIR) $(1)/opt/bin
+	for bin in $(BINS); do \
+		$(CP) $(PKG_INSTALL_DIR)/opt/bin/$$$$bin.py \
+			$(1)/opt/bin/$$$${bin}; \
+	done
 endef
 
 $(eval $(call Py3Package,python3-intelhex))
