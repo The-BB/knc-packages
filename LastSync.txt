@@ -1,12 +1,21 @@
-commit 636c12c1247f183ddfbb71623d2daa95b5062b56 (HEAD -> master, origin/master, origin/HEAD)
-Author: Russell Senior <russell@personaltelco.net>
-Date:   Sun May 10 08:36:55 2026 -0700
+kcommit 594c400781eaa53b86a204591b4d7141bd62f34e (HEAD -> master, origin/master, origin/HEAD)
+Author: Daniel Golle <daniel@makrotopia.org>
+Date:   Fri May 8 18:21:34 2026 +0100
 
-    scons: recent update failed to update a patch
+    libinput: update to 1.31.1
     
-    The recent commit 048a5088c515f737fecfd797807c9dfa6302fc0f updated
-    scons to 4.10.1, but neglected to correct a version related path in
-    a patch. This fixes that oversight, so that scons hostpkg builds
-    again. Also, fix up fuzz in the patches.
+    Update from 1.28.1, spanning the 1.29.x, 1.30.x and 1.31.x release
+    series.
     
-    Signed-off-by: Russell Senior <russell@personaltelco.net>
+    Highlights:
+     * 1.31.0: New 'high-resolution scroll' API and per-device button
+       debouncing improvements; tablet pad mode support reworked.
+     * 1.30.0: Added support for new touchpad and tablet device quirks;
+       improved gesture detection on multi-touch devices.
+     * 1.29.0: New configuration knobs for trackpoint acceleration and
+       improved palm detection.
+     * Continuous bug fixes and updated device quirks throughout.
+    
+    Link: https://gitlab.freedesktop.org/libinput/libinput/-/tags/1.31.1
+    Link: https://wayland.freedesktop.org/libinput/doc/latest/
+    Signed-off-by: Daniel Golle <daniel@makrotopia.org>
