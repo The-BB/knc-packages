@@ -6,7 +6,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-pyelftools
 PKG_VERSION:=0.32
-PKG_RELEASE:=1
+PKG_RELEASE:=2
 
 PYPI_NAME:=pyelftools
 PKG_HASH:=6de90ee7b8263e740c8715a925382d4099b354f29ac48ea40d840cf7aa14ace5
@@ -34,10 +34,18 @@ define Package/python3-pyelftools
   TITLE:=Library for analyzing ELF files and DWARF debugging information
   URL:=https://pypi.org/project/pyelftools
   DEPENDS:=+python3-light +python3-logging
+  ALTERNATIVES:=100:/opt/bin/readelf.py:/opt/libexec/python-readelf
 endef
 
 define Package/python3-pyelftools/description
 Library for analyzing ELF files and DWARF debugging information
+endef
+
+define Py3Package/python3-pyelftools/install
+	$(INSTALL_DIR) $(1)/opt/libexec
+	$(CP) $(PKG_INSTALL_DIR)/opt/bin/readelf.py $(1)/opt/libexec/python-readelf
+	$(call Python3/FixShebang,$(1)/opt/libexec/python-readelf)
+
 endef
 
 $(eval $(call Py3Package,python3-pyelftools))
