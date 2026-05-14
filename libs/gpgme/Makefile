@@ -1,12 +1,12 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=gpgme
-PKG_VERSION:=1.24.2
+PKG_VERSION:=2.0.1
 PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.bz2
 PKG_SOURCE_URL:=https://gnupg.org/ftp/gcrypt/$(PKG_NAME)
-PKG_HASH:=e11b1a0e361777e9e55f48a03d89096e2abf08c63d84b7017cfe1dce06639581
+PKG_HASH:=821ab0695c842eab51752a81980c92b0410c7eadd04103f791d5d2a526784966
 
 PKG_MAINTAINER:=Daniel Golle <daniel@makrotopia.org>
 PKG_LICENSE:=LGPL-2.1-or-later
@@ -25,14 +25,6 @@ define Package/libgpgme
   TITLE:=GnuPG Made Easy (GPGME) library
   URL:=https://gnupg.org/software/gpgme/index.html
   DEPENDS:=+libassuan +libgpg-error
-endef
-
-define Package/libgpgmepp
-  SECTION:=libs
-  CATEGORY:=Libraries
-  TITLE:=GnuPG Made Easy (GPGME) library (C++)
-  URL:=https://gnupg.org/software/gpgme/index.html
-  DEPENDS:=+libgpgme +libstdcpp
 endef
 
 define Package/libgpgme/description
@@ -58,13 +50,10 @@ ifneq ($(CONFIG_USE_MUSL),)
 endif
 
 define Build/InstallDev
-	$(INSTALL_DIR) $(1)/opt/include/gpgme++
+	$(INSTALL_DIR) $(1)/opt/include
 	$(INSTALL_DATA) \
 		$(PKG_INSTALL_DIR)/opt/include/gpgme.h \
 		$(1)/opt/include/
-	$(INSTALL_DATA) \
-		$(PKG_INSTALL_DIR)/opt/include/gpgme++/*.h \
-		$(1)/opt/include/gpgme++/
 
 	$(INSTALL_DIR) $(1)/opt/lib
 	$(CP) \
@@ -84,11 +73,6 @@ define Build/InstallDev
 		$(PKG_INSTALL_DIR)/opt/lib/pkgconfig/gpgme-glib.pc \
 		$(1)/opt/lib/pkgconfig
 
-	$(INSTALL_DIR) $(1)/opt/lib/cmake/Gpgmepp
-	$(INSTALL_DATA) \
-		$(PKG_INSTALL_DIR)/opt/lib/cmake/Gpgmepp/*.cmake \
-		$(1)/opt/lib/cmake/Gpgmepp
-
 	$(INSTALL_DIR) $(2)/bin $(1)/opt/bin
 	$(INSTALL_BIN) \
 		$(PKG_INSTALL_DIR)/opt/bin/gpgme-config \
@@ -104,10 +88,4 @@ define Package/libgpgme/install
 	$(CP) $(PKG_INSTALL_DIR)/opt/lib/libgpgme.so.* $(1)/opt/lib/
 endef
 
-define Package/libgpgmepp/install
-	$(INSTALL_DIR) $(1)/opt/lib
-	$(CP) $(PKG_INSTALL_DIR)/opt/lib/libgpgmepp.so.* $(1)/opt/lib/
-endef
-
 $(eval $(call BuildPackage,libgpgme))
-$(eval $(call BuildPackage,libgpgmepp))
