@@ -1,21 +1,9 @@
-kcommit 594c400781eaa53b86a204591b4d7141bd62f34e (HEAD -> master, origin/master, origin/HEAD)
-Author: Daniel Golle <daniel@makrotopia.org>
-Date:   Fri May 8 18:21:34 2026 +0100
+commit 021d62d58ffbb770e92faeb9c82df4bbcbc39d60 (HEAD -> master, origin/master, origin/HEAD)
+Author: George Sapkin <george@sapk.in>
+Date:   Sat May 9 12:57:30 2026 +0300
 
-    libinput: update to 1.31.1
+    golang: add version check override script
     
-    Update from 1.28.1, spanning the 1.29.x, 1.30.x and 1.31.x release
-    series.
+    Only check versin for the compielr package.
     
-    Highlights:
-     * 1.31.0: New 'high-resolution scroll' API and per-device button
-       debouncing improvements; tablet pad mode support reworked.
-     * 1.30.0: Added support for new touchpad and tablet device quirks;
-       improved gesture detection on multi-touch devices.
-     * 1.29.0: New configuration knobs for trackpoint acceleration and
-       improved palm detection.
-     * Continuous bug fixes and updated device quirks throughout.
-    
-    Link: https://gitlab.freedesktop.org/libinput/libinput/-/tags/1.31.1
-    Link: https://wayland.freedesktop.org/libinput/doc/latest/
-    Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+    Signed-off-by: George Sapkin <george@sapk.in>
