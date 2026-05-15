@@ -1,12 +1,22 @@
-commit 024b8ee60e08fe2f1705e59129850f33dc99bd80 (HEAD -> master, origin/master, origin/HEAD)
-Author: Alexandru Ardelean <alex@shruggie.ro>
-Date:   Wed May 13 09:22:24 2026 +0300
+commit 22cf551ffd58daf4bddfb5c4c046dfca9ae9a217 (HEAD -> master, origin/master, origin/HEAD)
+Author: Daniel Golle <daniel@makrotopia.org>
+Date:   Fri May 8 18:07:22 2026 +0100
 
-    perl: add test-version.sh to skip version check
+    cni-plugins: update to 1.9.1
     
-    perlbase-archive, perlbase-pod, and perlbase-test install Perl script
-    wrappers (ptar, pod2man, prove, etc.) that do not output the OpenWrt
-    package version string (5.40.0), causing generic version check failures
-    in CI.
+    Major version jump from 1.1.1 covering the 1.2.x - 1.9.x series.
+    Highlights:
+     - portmap: implement netfilter (nft) backend; bandwidth: optimization
+     - bridge: support "vlanTrunk" property and DAD/PVID support
+     - macvlan: support "linkInContainer" mode
+     - ipvlan: support "linkInContainer" mode
+     - dhcp: support DHCP option 121 classless static routes
+     - host-local: handle ranges with single IP
+     - firewall: support "ingressPolicy" with iptables and nftables
+     - tuning: allow specifying tx queue length
+     - Go module bumps including security fixes
+     - Minimum Go version: 1.23
     
-    Signed-off-by: Alexandru Ardelean <alex@shruggie.ro>
+    Link: https://github.com/containernetworking/plugins/releases/tag/v1.9.1
+    Link: https://github.com/containernetworking/plugins/blob/v1.9.1/CHANGELOG.md
+    Signed-off-by: Daniel Golle <daniel@makrotopia.org>
