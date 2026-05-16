@@ -1,22 +1,9 @@
-commit 22cf551ffd58daf4bddfb5c4c046dfca9ae9a217 (HEAD -> master, origin/master, origin/HEAD)
-Author: Daniel Golle <daniel@makrotopia.org>
-Date:   Fri May 8 18:07:22 2026 +0100
+commit 94c808d1460bff44e08d2d5f23dfcb9790d9e4f7 (HEAD -> master, origin/master, origin/HEAD)
+Author: George Sapkin <george@sapk.in>
+Date:   Mon May 11 16:39:59 2026 +0200
 
-    cni-plugins: update to 1.9.1
+    dbus: add version check override
     
-    Major version jump from 1.1.1 covering the 1.2.x - 1.9.x series.
-    Highlights:
-     - portmap: implement netfilter (nft) backend; bandwidth: optimization
-     - bridge: support "vlanTrunk" property and DAD/PVID support
-     - macvlan: support "linkInContainer" mode
-     - ipvlan: support "linkInContainer" mode
-     - dhcp: support DHCP option 121 classless static routes
-     - host-local: handle ranges with single IP
-     - firewall: support "ingressPolicy" with iptables and nftables
-     - tuning: allow specifying tx queue length
-     - Go module bumps including security fixes
-     - Minimum Go version: 1.23
+    Add manual version checks and skip version checks for dbus-utils.
     
-    Link: https://github.com/containernetworking/plugins/releases/tag/v1.9.1
-    Link: https://github.com/containernetworking/plugins/blob/v1.9.1/CHANGELOG.md
-    Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+    Signed-off-by: George Sapkin <george@sapk.in>
