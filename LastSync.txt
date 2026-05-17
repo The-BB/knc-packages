@@ -1,9 +1,15 @@
-commit 94c808d1460bff44e08d2d5f23dfcb9790d9e4f7 (HEAD -> master, origin/master, origin/HEAD)
-Author: George Sapkin <george@sapk.in>
-Date:   Mon May 11 16:39:59 2026 +0200
+commit 5adf844b2b3266cabb01220a27f0320bac10bd75 (HEAD -> master, origin/master, origin/HEAD)
+Author: Daniel Golle <daniel@makrotopia.org>
+Date:   Fri May 8 18:20:04 2026 +0100
 
-    dbus: add version check override
+    inotify-tools: update to 4.25.9.0
     
-    Add manual version checks and skip version checks for dbus-utils.
+    Update from 4.23.9.0.
     
-    Signed-off-by: George Sapkin <george@sapk.in>
+    The 4.25.9.0 release brings various fixes and updates accumulated
+    since 4.23 including build system fixes, smaller bug fixes and
+    maintenance updates.
+    
+    Link: https://github.com/inotify-tools/inotify-tools/releases/tag/4.25.9.0
+    Link: https://github.com/inotify-tools/inotify-tools/blob/4.25.9.0/ChangeLog
+    Signed-off-by: Daniel Golle <daniel@makrotopia.org>
