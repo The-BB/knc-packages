@@ -43,7 +43,7 @@ CONFIGURE_ARGS += \
 	--disable-gpg-test \
 	--disable-gpgsm-test \
 	--disable-g13-test \
-	--enable-languages="cpp"
+	--enable-languages=""
 
 ifneq ($(CONFIG_USE_MUSL),)
   TARGET_CFLAGS += -D_LARGEFILE64_SOURCE
