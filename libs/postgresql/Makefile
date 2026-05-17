@@ -243,7 +243,6 @@ define Build/InstallDev
 	$(CP) $(PKG_INSTALL_DIR)/opt/include/pg_config.h $(1)/opt/include/
 	$(CP) $(PKG_INSTALL_DIR)/opt/include/pg_config_manual.h $(1)/opt/include/
 	$(CP) $(PKG_INSTALL_DIR)/opt/include/postgres_ext.h $(1)/opt/include/
-	$(CP) $(PKG_INSTALL_DIR)/opt/include/pg_config_ext.h $(1)/opt/include/
 	$(CP) $(PKG_INSTALL_DIR)/opt/include/postgresql $(1)/opt/include/
 	$(INSTALL_DIR) $(1)/opt/lib
 	$(CP) $(PKG_INSTALL_DIR)/opt/lib/libpq.{a,so*} $(1)/opt/lib/
