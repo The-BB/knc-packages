@@ -11,7 +11,8 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=i2pd
 PKG_VERSION:=2.59.0
-PKG_RELEASE:=1
+# boost bumped
+PKG_RELEASE:=2
 PKG_BUILD_PARALLEL:=1
 
 PKG_SOURCE_PROTO:=git
