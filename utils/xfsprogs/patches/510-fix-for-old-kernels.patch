@@ -1,0 +1,82 @@
+### FSCRYPT_KEY_IDENTIFIER_SIZE since Linux 5.4
+
+encrypt.c:53:36: error: 'FSCRYPT_KEY_IDENTIFIER_SIZE' undeclared here (not in a function)
+   53 |         __u8 master_key_identifier[FSCRYPT_KEY_IDENTIFIER_SIZE];
+      |                                    ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+encrypt.c:61:42: error: field 'v1' has incomplete type
+   61 |                 struct fscrypt_policy_v1 v1;
+      |                                          ^~
+---
+
+--- a/io/encrypt.c
++++ b/io/encrypt.c
+@@ -7,10 +7,6 @@
+ #ifdef OVERRIDE_SYSTEM_FSCRYPT_ADD_KEY_ARG
+ #  define fscrypt_add_key_arg sys_fscrypt_add_key_arg
+ #endif
+-#ifdef OVERRIDE_SYSTEM_FSCRYPT_POLICY_V2
+-#  define fscrypt_policy_v2 sys_fscrypt_policy_v2
+-#  define fscrypt_get_policy_ex_arg sys_fscrypt_get_policy_ex_arg
+-#endif
+ #include "platform_defs.h"
+ #include "command.h"
+ #include "init.h"
+@@ -40,29 +36,7 @@
+  * itself, we may need to override the system definition to get that field.
+  * And also fscrypt_get_policy_ex_arg since it contains fscrypt_policy_v2.
+  */
+-#if !defined(FS_IOC_GET_ENCRYPTION_POLICY_EX) || \
+-	defined(OVERRIDE_SYSTEM_FSCRYPT_POLICY_V2)
+-#undef fscrypt_policy_v2
+-struct fscrypt_policy_v2 {
+-	__u8 version;
+-	__u8 contents_encryption_mode;
+-	__u8 filenames_encryption_mode;
+-	__u8 flags;
+-	__u8 log2_data_unit_size;
+-	__u8 __reserved[3];
+-	__u8 master_key_identifier[FSCRYPT_KEY_IDENTIFIER_SIZE];
+-};
+ 
+-#undef fscrypt_get_policy_ex_arg
+-struct fscrypt_get_policy_ex_arg {
+-	__u64 policy_size; /* input/output */
+-	union {
+-		__u8 version;
+-		struct fscrypt_policy_v1 v1;
+-		struct fscrypt_policy_v2 v2;
+-	} policy; /* output */
+-};
+-#endif
+ 
+ /*
+  * Second batch of ioctls (Linux headers v5.4+), plus some renamings from FS_ to
+@@ -103,11 +77,28 @@ struct fscrypt_policy_v1 {
+ #define FSCRYPT_POLICY_V2		2
+ #define FSCRYPT_KEY_IDENTIFIER_SIZE	16
+ /* struct fscrypt_policy_v2 was defined earlier */
++struct fscrypt_policy_v2 {
++	__u8 version;
++	__u8 contents_encryption_mode;
++	__u8 filenames_encryption_mode;
++	__u8 flags;
++	__u8 log2_data_unit_size;
++	__u8 __reserved[3];
++	__u8 master_key_identifier[FSCRYPT_KEY_IDENTIFIER_SIZE];
++};
+ 
+ #define FSCRYPT_MAX_KEY_SIZE		64
+ 
+ #define FS_IOC_GET_ENCRYPTION_POLICY_EX		_IOWR('f', 22, __u8[9]) /* size + version */
+ /* struct fscrypt_get_policy_ex_arg was defined earlier */
++struct fscrypt_get_policy_ex_arg {
++	__u64 policy_size; /* input/output */
++	union {
++		__u8 version;
++		struct fscrypt_policy_v1 v1;
++		struct fscrypt_policy_v2 v2;
++	} policy; /* output */
++};
+ 
+ #define FSCRYPT_KEY_SPEC_TYPE_DESCRIPTOR	1
+ #define FSCRYPT_KEY_SPEC_TYPE_IDENTIFIER	2
