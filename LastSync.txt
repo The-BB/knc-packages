@@ -1,9 +1,12 @@
-commit d096c3d7060637ac2a5c5453d40a0ff3964e5207 (HEAD -> master, origin/master, origin/HEAD)
-Author: Tianling Shen <cnsztl@immortalwrt.org>
-Date:   Tue May 19 10:59:49 2026 +0800
+commit 5823a0fb6c4436a4a9beb6132c1fde6c43605467 (HEAD -> master, origin/master, origin/HEAD)
+Author: Qingfang Deng <dqfext@gmail.com>
+Date:   Thu May 14 09:35:06 2026 +0800
 
-    v2ray-core: Update to 5.49.0
+    openvpn: use mbedtls by default
     
-    Release note: https://github.com/v2fly/v2ray-core/releases/tag/v5.49.0
+    When luci-proto-openvpn is selected in `make menuconfig`,
+    openvpn-openssl is picked up automatically. As mbedTLS is the default
+    TLS package, set DEFAULT_VARIANT on openvpn-mbedtls so that it is used
+    by default.
     
-    Signed-off-by: Tianling Shen <cnsztl@immortalwrt.org>
+    Signed-off-by: Qingfang Deng <dqfext@gmail.com>
