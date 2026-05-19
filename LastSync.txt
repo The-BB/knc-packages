@@ -1,15 +1,9 @@
-commit 5adf844b2b3266cabb01220a27f0320bac10bd75 (HEAD -> master, origin/master, origin/HEAD)
-Author: Daniel Golle <daniel@makrotopia.org>
-Date:   Fri May 8 18:20:04 2026 +0100
+commit d096c3d7060637ac2a5c5453d40a0ff3964e5207 (HEAD -> master, origin/master, origin/HEAD)
+Author: Tianling Shen <cnsztl@immortalwrt.org>
+Date:   Tue May 19 10:59:49 2026 +0800
 
-    inotify-tools: update to 4.25.9.0
+    v2ray-core: Update to 5.49.0
     
-    Update from 4.23.9.0.
+    Release note: https://github.com/v2fly/v2ray-core/releases/tag/v5.49.0
     
-    The 4.25.9.0 release brings various fixes and updates accumulated
-    since 4.23 including build system fixes, smaller bug fixes and
-    maintenance updates.
-    
-    Link: https://github.com/inotify-tools/inotify-tools/releases/tag/4.25.9.0
-    Link: https://github.com/inotify-tools/inotify-tools/blob/4.25.9.0/ChangeLog
-    Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+    Signed-off-by: Tianling Shen <cnsztl@immortalwrt.org>
