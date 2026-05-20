@@ -1,12 +1,20 @@
-commit 5823a0fb6c4436a4a9beb6132c1fde6c43605467 (HEAD -> master, origin/master, origin/HEAD)
-Author: Qingfang Deng <dqfext@gmail.com>
-Date:   Thu May 14 09:35:06 2026 +0800
+commit 8c62419cd8d6011e3de0e33aa03a1709357dd06e (HEAD -> master, origin/master, origin/HEAD)
+Author: Jens Wagner <jens@wagner2013.de>
+Date:   Fri May 15 18:01:35 2026 +0200
 
-    openvpn: use mbedtls by default
+    perl: fix dependency issues in archive, pod and test
     
-    When luci-proto-openvpn is selected in `make menuconfig`,
-    openvpn-openssl is picked up automatically. As mbedTLS is the default
-    TLS package, set DEFAULT_VARIANT on openvpn-mbedtls so that it is used
-    by default.
+    perlbase-archive, perlbase-pod and perlbase-test
+    had executable utilities with missing dependencies.
     
-    Signed-off-by: Qingfang Deng <dqfext@gmail.com>
+    Fixes: https://github.com/openwrt/packages/issues/29425
+    Fixes: https://github.com/openwrt/packages/issues/29426
+    Fixes: https://github.com/openwrt/packages/issues/29427
+    
+    As discussed in PR 29463
+    https://github.com/openwrt/packages/pull/29463
+    
+    those are either non-working or useless on OpenWrt,
+    therefore they have been removed.
+    
+    Signed-off-by: Jens Wagner <jens@wagner2013.de>
