@@ -1,11 +1,10 @@
-commit 4d4e34eb13e7920406685d0e9cbf68e3634a5d63 (HEAD -> master, origin/master, origin/HEAD)
-Author: Dirk Brenken <dev@brenken.org>
-Date:   Wed May 20 22:51:35 2026 +0200
+commit 29a46353fc16529c5007244e158e6a65386d3fa4 (HEAD -> master, origin/master, origin/HEAD)
+Author: Andy Voigt <a.voigt@mailbox.org>
+Date:   Sun May 10 21:37:09 2026 +0200
 
-    adblock: update 4.5.5-5
+    vzlogger: add new package
     
-    - f_etag performance optimization: single-pass awk consolidating count+match
-    - f_report: minor performance optimization
-    - LuCI: prevent possible report refresh timeouts
+    vzlogger is a tool to read and log measurements of a wide variety of smart
+    meters and sensors to the volkszaehler.org middleware.
     
-    Signed-off-by: Dirk Brenken <dev@brenken.org>
+    Signed-off-by: Andy Voigt <a.voigt@mailbox.org>
