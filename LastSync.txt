@@ -1,10 +1,20 @@
-commit 29a46353fc16529c5007244e158e6a65386d3fa4 (HEAD -> master, origin/master, origin/HEAD)
-Author: Andy Voigt <a.voigt@mailbox.org>
-Date:   Sun May 10 21:37:09 2026 +0200
+commit e161cf1dde1d7863fa0f90f5048fedf3ad34ff0b (HEAD -> master, origin/master, origin/HEAD)
+Author: Andy Chiang <AndyChiang_git@outlook.com>
+Date:   Mon May 18 23:56:53 2026 +0700
 
-    vzlogger: add new package
+    qemu-ga: skip starting on bare metal device
     
-    vzlogger is a tool to read and log measurements of a wide variety of smart
-    meters and sensors to the volkszaehler.org middleware.
+    The same firmware image may be deployed on either bare metal device or
+    virtualized platforms (e.g., Proxmox VE).
     
-    Signed-off-by: Andy Voigt <a.voigt@mailbox.org>
+    On bare metal device, `qemu-ga` may still be started even though no
+    virtio-serial channel is available, resulting in repeated attempts to
+    access /dev/virtio-ports/org.qemu.guest_agent.0.
+    
+    This causes continuous service respawning by procd and unnecessary log
+    spam.
+    
+    This commit adds a pre-check for /dev/virtio-ports to avoid starting
+    `qemu-ga` when virtio-serial support is not present.
+    
+    Signed-off-by: Andy Chiang <AndyChiang_git@outlook.com>
