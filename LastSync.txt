@@ -1,20 +1,18 @@
-commit e161cf1dde1d7863fa0f90f5048fedf3ad34ff0b (HEAD -> master, origin/master, origin/HEAD)
-Author: Andy Chiang <AndyChiang_git@outlook.com>
-Date:   Mon May 18 23:56:53 2026 +0700
+commit 1b18489df87f5b511875bba5fee2b2dd1097ac79 (HEAD -> master, origin/master, origin/HEAD)
+Author: Jean-Laurent Girod <jeanlaurent.girod@icloud.com>
+Date:   Wed May 6 16:32:17 2026 +0000
 
-    qemu-ga: skip starting on bare metal device
+    prometheus-node-exporter-lua: add modemmanager exporter
     
-    The same firmware image may be deployed on either bare metal device or
-    virtualized platforms (e.g., Proxmox VE).
+    Add a Prometheus collector for ModemManager that exports cellular modem
+    signal metrics via mmcli. Supports multiple modems (labeled by D-Bus
+    object path), exports overall signal quality and detailed per-technology
+    signal parameters (LTE, NR5G, UMTS, GSM, CDMA, ...).
     
-    On bare metal device, `qemu-ga` may still be started even though no
-    virtio-serial channel is available, resulting in repeated attempts to
-    access /dev/virtio-ports/org.qemu.guest_agent.0.
+    Requires signal refresh to be enabled on the modem:
+      mmcli -m <id> --signal-setup=<interval_seconds>
     
-    This causes continuous service respawning by procd and unnecessary log
-    spam.
+    Tested on: ath79/generic, GL.inet GL-X300B, OpenWrt 23.05.5
     
-    This commit adds a pre-check for /dev/virtio-ports to avoid starting
-    `qemu-ga` when virtio-serial support is not present.
-    
-    Signed-off-by: Andy Chiang <AndyChiang_git@outlook.com>
+    Co-authored-by: Claude <noreply@anthropic.com>
+    Signed-off-by: Jean-Laurent Girod <jeanlaurent.girod@icloud.com>
