@@ -1,10 +1,17 @@
-commit 1774542dcf32066b09414093c20065f5d9ff031f (HEAD -> master, origin/master, origin/HEAD)
-Author: Sandro Jäckel <sandro.jaeckel@gmail.com>
-Date:   Sun May 24 23:21:03 2026 +0200
+commit 6d7f1f2446b1ebd1ecdcdd96cff0c7c958b19136 (HEAD -> master, origin/master, origin/HEAD)
+Author: Alexandru Ardelean <alex@shruggie.ro>
+Date:   Sun May 24 17:20:08 2026 +0300
 
-    tailscale: update to 1.98.3
+    rtklib: add test.sh and test-version.sh for CI
     
-    Changelog: https://tailscale.com/changelog#2026-05-13
-    Changelog: https://tailscale.com/changelog#2026-05-15
-    Changelog: https://tailscale.com/changelog#2026-05-21
-    Signed-off-by: Sandro Jäckel <sandro.jaeckel@gmail.com>
+    The RTKLIB command-line tools (convbin, pos2kml, rnx2rtkp, rtkrcv,
+    str2str) don't accept a --version flag; passing any unrecognized option
+    triggers printhelp()/printusage() which only emits a synopsis block. The
+    generic CI version probe therefore can't find PKG_VERSION and marks the
+    package as missing a version match.
+    
+    Add a test-version.sh that exit-0's for all five subpackages to skip the
+    generic version check, and a test.sh that exercises each binary's
+    synopsis output as a basic functional smoke test.
+    
+    Signed-off-by: Alexandru Ardelean <alex@shruggie.ro>
