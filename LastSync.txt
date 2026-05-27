@@ -1,17 +1,14 @@
-commit 6d7f1f2446b1ebd1ecdcdd96cff0c7c958b19136 (HEAD -> master, origin/master, origin/HEAD)
-Author: Alexandru Ardelean <alex@shruggie.ro>
-Date:   Sun May 24 17:20:08 2026 +0300
+commit 5e7db72445a0d27999b62f4ff7544bec8c972185 (HEAD -> master, origin/master, origin/HEAD)
+Author: Dirk Brenken <dev@brenken.org>
+Date:   Tue May 26 17:16:35 2026 +0200
 
-    rtklib: add test.sh and test-version.sh for CI
+    adblock: update 4.5.5-6
     
-    The RTKLIB command-line tools (convbin, pos2kml, rnx2rtkp, rtkrcv,
-    str2str) don't accept a --version flag; passing any unrecognized option
-    triggers printhelp()/printusage() which only emits a synopsis block. The
-    generic CI version probe therefore can't find PKG_VERSION and marks the
-    package as missing a version match.
+    - f_search: refactored backup and local block-/allowlist scan to run in parallel
+    - f_search: raise the search timeout in backups to max. 90 seconds
+    - f_load: skip f_fetch for search action, no remote download is needed for local lookups
+    - f_dns: skip destructive paths (file wipe, f_dnsup) for search and report actions
+    - LuCI: adapt search backend changes in the frontend
+    - LuCI: minor frontend fixes & improvements
     
-    Add a test-version.sh that exit-0's for all five subpackages to skip the
-    generic version check, and a test.sh that exercises each binary's
-    synopsis output as a basic functional smoke test.
-    
-    Signed-off-by: Alexandru Ardelean <alex@shruggie.ro>
+    Signed-off-by: Dirk Brenken <dev@brenken.org>
