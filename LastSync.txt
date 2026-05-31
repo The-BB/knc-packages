@@ -1,41 +1,32 @@
-commit 775c87e364fe93758bdee8d68a5f8f43f8ff1df7 (HEAD -> master, origin/master, origin/HEAD)
-Author: Daniel Golle <daniel@makrotopia.org>
-Date:   Tue May 26 16:56:14 2026 +0100
+commit 785e7ee30687a9fd9180611171e5290d02adf8dd (HEAD -> master, origin/master, origin/HEAD)
+Author: Alexandru Ardelean <alex@shruggie.ro>
+Date:   Fri May 29 15:35:01 2026 +0300
 
-    libx264: update to git HEAD of 2025-09-10
+    kea: depend on the concrete log4cplus, not the -any virtual
     
-    Changes since 2024-05-13:
-     c24e06c2 configure: Check for SVE support in MS armasm64 via as_check
-     3a8b5be2 aarch64: Use elf_aux_info() for CPU feature detection on FreeBSD/OpenBSD
-     1243d9ff Provide x264_getauxval() wrapper for getauxvaul() and elf_aux_info()
-     80c1c47c configure: Add DragonFly support
-     3a21e97b Fix build with Android NDK and API < 24 for 32-bit targets
-     b1d2de88 Use getauxval() on Linux and elf_aux_info() on FreeBSD/OpenBSD on arm/ppc
-     da14df55 Make use of sysconf(3) _SC_NPROCESSORS_ONLN and _SC_NPROCESSORS_CONF
-     023112c6 aarch64: defines involving bit shifts should be unsigned
-     938601b9 Use sysctlbyname(3) hw.logicalcpu on macOS
-     a64111b1 Enable use of __sync_fetch_and_add() wherever detected instead of just X86
-     450946f9 ci: Test compiling for Android
-     52f7694d Use sched_getaffinity on Android
-     373697b4 Bump dates to 2025
-     c80f8a28 msvsdepend: Allow using the script for .S sources too
-     27d83708 Makefile: Generate dependency information implicitly while compiling
-     a0191bd8 configure: Use as_check for checking for aarch64 features
-     72ce1cde configure: Use as_check for the main check for whether NEON is supported
-     f87ca183 configure: Check for .arch and .arch_extension for enabling aarch64 extensions
-     87044b21 aarch64: Use configure detected directives for enabling SVE/SVE2
-     fc4012fb configure: Check for the dotprod and i8mm aarch64 extensions
-     0e48d072 aarch64: Add flags for runtime detection of dotprod and i8mm
-     570f6c70 aarch64: Add runtime detection of extensions on Windows and macOS
-     fe9e4a7f Provide implementations for functions using the instructions SDOT/UDOT in the DotProd Armv8 extension.
-     32c3b801 lavf: Update the code to work with the latest libavutil API
-     4360ac37 ci: Fix ffmpeg build
-     40617ddb ci: Remove vlc-contrib dependency
-     85b5ccea Update gas-preprocessor.pl to the latest upstream version
-     ff620d0c configure: Use MSYSTEM_CARCH for default arch on msys2
-     714e07b4 arm: Don't test x264_cpu_fast_neon_mrc_test on Windows
-     291476d7 windows: Fix named pipes detection
-     b35605ac i8mm & neon hpel_filter optimization
-     0480cb05 riscv64: add compile support
+    Commit 1ea43c352 ("kea: fix kea-libs dependencies") replaced the
+    direct +log4cplus dependency on kea-libs with the virtual name
+    +log4cplus-any. With only one log4cplus implementation in the feed,
+    nothing actually PROVIDES log4cplus-any other than the auto-generated
+    "package name + -any" alias on log4cplus itself.
     
-    Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+    apk treats `-any`-suffixed names as ambiguous virtuals that the
+    admin must resolve explicitly, even when only one provider exists,
+    and refuses to install:
+    
+      ERROR: unable to select packages:
+        log4cplus-any (virtual):
+          note: please select one of the 'provided by'
+                packages explicitly
+          provided by: log4cplus
+          required by: kea-libs-3.0.2-r7[log4cplus-any]
+    
+    That bubbles up to every kea subpackage runtime test in CI
+    (kea-admin, kea-ctrl, every kea-dhcp* and kea-hook-*) and fails
+    the multi-arch test build with exit code 3.
+    
+    Switch back to +log4cplus directly; the +libstdcpp addition from
+    that earlier commit stays — it was the genuinely useful part of
+    the change. Bump PKG_RELEASE for the redo.
+    
+    Signed-off-by: Alexandru Ardelean <alex@shruggie.ro>
