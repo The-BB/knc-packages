@@ -1,32 +1,9 @@
-commit 785e7ee30687a9fd9180611171e5290d02adf8dd (HEAD -> master, origin/master, origin/HEAD)
-Author: Alexandru Ardelean <alex@shruggie.ro>
-Date:   Fri May 29 15:35:01 2026 +0300
+commit 858ec4093deeea8e63ea08cd4f41f7c034ea4b39 (HEAD -> master, origin/master, origin/HEAD)
+Author: Hannu Nyman <hannu.nyman@iki.fi>
+Date:   Sun May 31 12:56:24 2026 +0300
 
-    kea: depend on the concrete log4cplus, not the -any virtual
+    haveged: update to 1.9.22
     
-    Commit 1ea43c352 ("kea: fix kea-libs dependencies") replaced the
-    direct +log4cplus dependency on kea-libs with the virtual name
-    +log4cplus-any. With only one log4cplus implementation in the feed,
-    nothing actually PROVIDES log4cplus-any other than the auto-generated
-    "package name + -any" alias on log4cplus itself.
+    Update to version 1.9.22.
     
-    apk treats `-any`-suffixed names as ambiguous virtuals that the
-    admin must resolve explicitly, even when only one provider exists,
-    and refuses to install:
-    
-      ERROR: unable to select packages:
-        log4cplus-any (virtual):
-          note: please select one of the 'provided by'
-                packages explicitly
-          provided by: log4cplus
-          required by: kea-libs-3.0.2-r7[log4cplus-any]
-    
-    That bubbles up to every kea subpackage runtime test in CI
-    (kea-admin, kea-ctrl, every kea-dhcp* and kea-hook-*) and fails
-    the multi-arch test build with exit code 3.
-    
-    Switch back to +log4cplus directly; the +libstdcpp addition from
-    that earlier commit stays — it was the genuinely useful part of
-    the change. Bump PKG_RELEASE for the redo.
-    
-    Signed-off-by: Alexandru Ardelean <alex@shruggie.ro>
+    Signed-off-by: Hannu Nyman <hannu.nyman@iki.fi>
