@@ -15,10 +15,13 @@ PKG_MAINTAINER:=Austin Lane <vidplace7@gmail.com>
 PKG_LICENSE:=Unlicense
 PKG_LICENSE_FILES:=LICENSE
 
+PKG_BUILD_DEPENDS:=python-setuptools/host
+
 HOST_BUILD_DEPENDS:= \
 	python3/host \
 	python-build/host \
 	python-installer/host \
+	python-setuptools/host \
 	python-wheel/host
 
 include ../pypi.mk
@@ -33,8 +36,7 @@ define Package/python3-pyelftools
   SUBMENU:=Python
   TITLE:=Library for analyzing ELF files and DWARF debugging information
   URL:=https://pypi.org/project/pyelftools
-  DEPENDS:=+python3-light +python3-logging
-  ALTERNATIVES:=100:/opt/bin/readelf.py:/opt/libexec/python-readelf
+  DEPENDS:=+python3-light +python3-logging +python3-asyncio +python3-codecs
 endef
 
 define Package/python3-pyelftools/description
@@ -42,10 +44,9 @@ Library for analyzing ELF files and DWARF debugging information
 endef
 
 define Py3Package/python3-pyelftools/install
-	$(INSTALL_DIR) $(1)/opt/libexec
-	$(CP) $(PKG_INSTALL_DIR)/opt/bin/readelf.py $(1)/opt/libexec/python-readelf
-	$(call Python3/FixShebang,$(1)/opt/libexec/python-readelf)
-
+	$(INSTALL_DIR) $(1)/opt/bin
+	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/opt/bin/readelf.py $(1)/opt/bin/pyreadelf
+	$(call Python3/FixShebang,$(1)/opt/bin/pyreadelf)
 endef
 
 $(eval $(call Py3Package,python3-pyelftools))
