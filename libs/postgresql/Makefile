@@ -120,6 +120,13 @@ PGSQL_CONFIG_VARS:= \
 	pgac_cv_prog_cc_LDFLAGS_EX_BE__Wl___export_dynamic=yes \
 	pgac_cv_prog_cc_LDFLAGS__Wl___as_needed=yes
 
+# FIXME armv7: HWCAP2_CRC32 since Linux 3.15
+ifeq ($(CONFIG_arm),y)
+PGSQL_CONFIG_VARS += \
+	pgac_cv_armv8_crc32c_intrinsics__march_armv8_apcrc=no \
+	pgac_cv_armv8_crc32c_intrinsics__march_armv8_apcrcpsimd=no
+endif
+
 TARGET_CONFIGURE_OPTS+=$(PGSQL_CONFIG_VARS)
 
 HOST_CONFIGURE_ARGS += \
