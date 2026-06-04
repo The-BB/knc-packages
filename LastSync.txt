@@ -1,16 +1,9 @@
-commit 56964f89910d36250467b1706c5476908410b9bd (HEAD -> master, origin/master, origin/HEAD)
-Author: W. Michael Petullo <mike@flyn.org>
-Date:   Tue Jun 2 12:41:04 2026 -0500
+commit 879887f3d8312f2172fa4d36e9cef086f71db5c5 (HEAD -> master, origin/master, origin/HEAD)
+Author: Alexandru Ardelean <alex@shruggie.ro>
+Date:   Tue Jun 2 21:03:31 2026 +0300
 
-    gcc: synchronize with toolchain
+    python-socketio: bump to 5.16.2
     
-    Modify the gcc package to support building 13.4.0, 14.3.0, and 15.2.0,
-    which are the same versions supported by the current toolchain.
+    Refresh sha256 from PyPI sdist.
     
-    Upstream list of changes can be found at:
-    
-            https://gcc.gnu.org/gcc-13/changes.html
-            https://gcc.gnu.org/gcc-14/changes.html
-            https://gcc.gnu.org/gcc-15/changes.html
-    
-    Signed-off-by: W. Michael Petullo <mike@flyn.org>
+    Signed-off-by: Alexandru Ardelean <alex@shruggie.ro>
