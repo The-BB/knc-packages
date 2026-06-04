@@ -1,9 +1,9 @@
-commit 879887f3d8312f2172fa4d36e9cef086f71db5c5 (HEAD -> master, origin/master, origin/HEAD)
-Author: Alexandru Ardelean <alex@shruggie.ro>
-Date:   Tue Jun 2 21:03:31 2026 +0300
+commit f5f2433dfe4852e691fac50157ac837d4e993b8e (HEAD -> master, origin/master, origin/HEAD)
+Author: Olivier Poitrey <rs@nextdns.io>
+Date:   Wed Jun 3 18:48:28 2026 +0000
 
-    python-socketio: bump to 5.16.2
+    nextdns: update to version 1.47.3
     
-    Refresh sha256 from PyPI sdist.
+    Update nextdns package to upstream version 1.47.3
     
-    Signed-off-by: Alexandru Ardelean <alex@shruggie.ro>
+    Signed-off-by: Olivier Poitrey <rs@nextdns.io>
