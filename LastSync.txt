@@ -1,9 +1,9 @@
-commit f5f2433dfe4852e691fac50157ac837d4e993b8e (HEAD -> master, origin/master, origin/HEAD)
-Author: Olivier Poitrey <rs@nextdns.io>
-Date:   Wed Jun 3 18:48:28 2026 +0000
+commit a788a7bec0520335033ac830f6ea28ac13da4bd4 (HEAD -> master, origin/master, origin/HEAD)
+Author: Alexandru Ardelean <alex@shruggie.ro>
+Date:   Tue Jun 2 21:22:04 2026 +0300
 
-    nextdns: update to version 1.47.3
+    python-trove-classifiers: bump to 2026.6.1.19
     
-    Update nextdns package to upstream version 1.47.3
+    Refresh sha256 from PyPI sdist.
     
-    Signed-off-by: Olivier Poitrey <rs@nextdns.io>
+    Signed-off-by: Alexandru Ardelean <alex@shruggie.ro>
