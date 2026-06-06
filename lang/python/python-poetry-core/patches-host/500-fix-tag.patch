@@ -4,7 +4,7 @@ after:	Tag: cp314-cp314-manylinux_2_27_aarch64
 
 --- a/src/poetry/core/_vendor/packaging/_manylinux.py
 +++ b/src/poetry/core/_vendor/packaging/_manylinux.py
-@@ -92,7 +92,7 @@ def _glibc_version_string_confstr() -> s
+@@ -93,7 +93,7 @@ def _glibc_version_string_confstr() -> s
      # https://github.com/python/cpython/blob/fcf1d003bf4f0100c/Lib/platform.py#L175-L183
      try:
          # Should be a string like "glibc 2.17".
