@@ -1,9 +1,9 @@
-commit a788a7bec0520335033ac830f6ea28ac13da4bd4 (HEAD -> master, origin/master, origin/HEAD)
-Author: Alexandru Ardelean <alex@shruggie.ro>
-Date:   Tue Jun 2 21:22:04 2026 +0300
+commit d357f023463c1d06d7d9bdba8c37a1e159ac9758 (HEAD -> master, origin/master, origin/HEAD)
+Author: Aleksander Jan Bajkowski <olek2@wp.pl>
+Date:   Mon May 4 13:12:41 2026 +0200
 
-    python-trove-classifiers: bump to 2026.6.1.19
+    iperf3: backport GSO/GRO fix for small packets
     
-    Refresh sha256 from PyPI sdist.
+    Backport GSO/GRO fix for packets smaller than 508 bytes.
     
-    Signed-off-by: Alexandru Ardelean <alex@shruggie.ro>
+    Signed-off-by: Aleksander Jan Bajkowski <olek2@wp.pl>
