@@ -1,11 +1,32 @@
-commit d08ac509fa1471bdb65b09a0db8667a6bd0220f5 (HEAD -> master, origin/master, origin/HEAD)
+commit b6d2070fc82996d78ada8a6638639a285c0edcfb (HEAD -> master, origin/master, origin/HEAD)
 Author: Josef Schlehofer <pepe.schlehofer@gmail.com>
-Date:   Sun Jun 7 22:06:31 2026 +0200
+Date:   Sun Jun 7 23:01:07 2026 +0200
 
-    perl: fix version check in test-version.sh
+    perl: install libperl.so using $(INSTALL_BIN) to enable stripping
     
-    Enable version checking for the main perl package.
-    Previously, the version check for perl was skipped. Add a check
-    that runs perl -v and verifies that the output matches PKG_VERSION.
+    Install libperl.so with executable permissions (0755) instead of copying
+    it as-is.
+    
+    This allows the OpenWrt build system to recognize the library as a binary and
+    automatically run the "strip" utility on it. Stripping removes unnecessary
+    debugging metadata and helper symbols that are only needed for development but
+    not for running Perl on the router.
+    
+    This change reduces the installed size of libperl.so on the device:
+    - Before (not stripped): 3.7 MB (3,929,652 bytes)
+    
+    ```
+    root@turris:~# file /usr/lib/perl5/5.40/CORE/libperl.so
+    /usr/lib/perl5/5.40/CORE/libperl.so: ELF 32-bit MSB shared object, PowerPC or cisco 4500, version 1 (SYSV), dynamically linked, with debug_info, not stripped
+    ```
+    
+    - After (stripped):     3.5 MB (3,674,081 bytes)
+    
+    ```
+    root@turris:~# file /usr/lib/perl5/5.40/CORE/libperl.so
+    /usr/lib/perl5/5.40/CORE/libperl.so: ELF 32-bit MSB shared object, PowerPC or cisco 4500, version 1 (SYSV), dynamically linked, no section header
+    ```
+    
+    Saving ~255 KB of flash storage space on target devices.
     
     Signed-off-by: Josef Schlehofer <pepe.schlehofer@gmail.com>
