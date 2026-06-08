@@ -14,7 +14,7 @@ include perlver.mk
 
 PKG_NAME:=perl
 PKG_VERSION:=$(PERL_VERSION)
-PKG_RELEASE:=5
+PKG_RELEASE:=6
 
 PKG_SOURCE_URL:=https://www.cpan.org/src/5.0
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
@@ -155,7 +155,7 @@ define Package/perl/install
 	ln -nsf perl$(PKG_VERSION) $(1)/opt/bin/perl
 	
 	$(INSTALL_DIR) $(1)/opt/lib/perl5/$(PERL_VERSION)/CORE
-	$(CP) $(PKG_INSTALL_DIR)/opt/lib/perl5/$(PERL_VERSION)/CORE/libperl.so $(1)/opt/lib/perl5/$(PERL_VERSION)/CORE/
+	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/opt/lib/perl5/$(PERL_VERSION)/CORE/libperl.so $(1)/opt/lib/perl5/$(PERL_VERSION)/CORE/
 endef
 
 
