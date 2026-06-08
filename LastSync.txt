@@ -1,9 +1,11 @@
-commit d357f023463c1d06d7d9bdba8c37a1e159ac9758 (HEAD -> master, origin/master, origin/HEAD)
-Author: Aleksander Jan Bajkowski <olek2@wp.pl>
-Date:   Mon May 4 13:12:41 2026 +0200
+commit d08ac509fa1471bdb65b09a0db8667a6bd0220f5 (HEAD -> master, origin/master, origin/HEAD)
+Author: Josef Schlehofer <pepe.schlehofer@gmail.com>
+Date:   Sun Jun 7 22:06:31 2026 +0200
 
-    iperf3: backport GSO/GRO fix for small packets
+    perl: fix version check in test-version.sh
     
-    Backport GSO/GRO fix for packets smaller than 508 bytes.
+    Enable version checking for the main perl package.
+    Previously, the version check for perl was skipped. Add a check
+    that runs perl -v and verifies that the output matches PKG_VERSION.
     
-    Signed-off-by: Aleksander Jan Bajkowski <olek2@wp.pl>
+    Signed-off-by: Josef Schlehofer <pepe.schlehofer@gmail.com>
