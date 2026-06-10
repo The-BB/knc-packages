@@ -1,9 +1,12 @@
-commit e38f41afe3950d362816deda441d02c6ba6d6070 (HEAD -> master, origin/master, origin/HEAD)
-Author: George Sapkin <george@sapk.in>
-Date:   Mon Jun 8 16:24:37 2026 +0300
+commit f71b5731902114cd6569e6c008d3084f756952af (HEAD -> master, origin/master, origin/HEAD)
+Author: Daniel Golle <daniel@makrotopia.org>
+Date:   Tue Jun 9 05:04:49 2026 +0100
 
-    quickjs: add basic evaluation test
+    hiredis: update to version 1.4.0
     
-    Add basic JS evaluation test and move version check to override.
+    Improvements include applying FD_CLOEXEC on sockets, a pure-C99 RESP3
+    double parser, C++ compatibility for sds.h, and a NULL check fix in
+    redisReconnect. Now requires CMake 3.15.
     
-    Signed-off-by: George Sapkin <george@sapk.in>
+    https://github.com/redis/hiredis/releases/tag/v1.4.0
+    Signed-off-by: Daniel Golle <daniel@makrotopia.org>
