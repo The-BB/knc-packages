@@ -1,13 +1,9 @@
-commit 6d339c9cd0e36ba6f851d6edcf55de08db80cf46 (HEAD -> master, origin/master, origin/HEAD)
+commit 8802f0cfa80ab4c7f1eb65549fbf0be5b409e29b (HEAD -> master, origin/master, origin/HEAD)
 Author: Dirk Brenken <dev@brenken.org>
-Date:   Fri Jun 12 22:28:10 2026 +0200
+Date:   Sat Jun 13 16:54:53 2026 +0200
 
-    banip: release 1.8.9-1
+    adblock: readme update
     
-    * f_conf: ignore empty UCI option values so they don't override sane defaults
-    * f_etag: strip CR in ETag header extraction (gsub(/[\r"]/,…)) — fixes empty-but-present etag
-    * f_fetch: validate ban_fetchretry
-    * fix feed padding in allowlistonly mode
-    * readme update
+    * just a readme update without version bump
     
     Signed-off-by: Dirk Brenken <dev@brenken.org>
