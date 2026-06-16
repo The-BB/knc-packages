@@ -1,9 +1,8 @@
-commit 8802f0cfa80ab4c7f1eb65549fbf0be5b409e29b (HEAD -> master, origin/master, origin/HEAD)
-Author: Dirk Brenken <dev@brenken.org>
-Date:   Sat Jun 13 16:54:53 2026 +0200
+commit 8783231a03aad5e7b116da78726174dc6aa4487a (HEAD -> master, origin/master, origin/HEAD)
+Author: Glenn Strauss <gstrauss@gluelogic.com>
+Date:   Sun Jun 14 22:30:43 2026 -0400
 
-    adblock: readme update
+    lighttpd: update to lighttpd 1.4.83 release hash
     
-    * just a readme update without version bump
-    
-    Signed-off-by: Dirk Brenken <dev@brenken.org>
+    Ref: https://www.lighttpd.net/2026/6/14/1.4.83/
+    Signed-off-by: Glenn Strauss <gstrauss@gluelogic.com>
