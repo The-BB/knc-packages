@@ -11,7 +11,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=ocserv
 PKG_VERSION:=1.4.1
-PKG_RELEASE:=1
+PKG_RELEASE:=2
 PKG_BUILD_FLAGS:=no-mips16
 
 PKG_BUILD_DIR :=$(BUILD_DIR)/$(PKG_NAME)-$(PKG_VERSION)
@@ -113,7 +113,7 @@ define Package/ocserv/install
 	$(INSTALL_DIR) $(1)/opt/etc/ocserv
 	$(INSTALL_CONF) ./files/ocserv.conf.template $(1)/opt/etc/ocserv/ocserv.conf.template
 #	$(INSTALL_DIR) $(1)/etc/config
-	$(INSTALL_CONF) ./files/ocserv.conf $(1)/opt/etc/ocserv/ocserv.conf
+	$(INSTALL_CONF) ./files/ocserv.conf $(1)/opt/etc/ocserv
 	$(INSTALL_DIR) $(1)/opt/lib/upgrade/keep.d
 	$(INSTALL_DATA) ./files/ocserv.upgrade $(1)/opt/lib/upgrade/keep.d/ocserv
 endef
