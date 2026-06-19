@@ -1,14 +1,19 @@
-commit 1fe6ecf9a2cf63c9fb93d6974c40e85c37239483 (HEAD -> master, origin/master, origin/HEAD)
-Author: Christian Korber <ckorber@tdt.de>
-Date:   Wed Jun 17 09:16:30 2026 +0200
+commit 0627b412ee3a760cc4bca9fc8a5b73de8f33ac10 (HEAD -> master, origin/master, origin/HEAD)
+Author: Dirk Brenken <dev@brenken.org>
+Date:   Wed Jun 17 20:58:27 2026 +0200
 
-    net-snmp: enable blumenthal-aes for SNMPv3 encryption
+    travelmate: update 2.4.6-2
     
-    In order to use AES-192 and the like, it is necessary to enable
-    blumenthal-aes.
+    harden captive portal auto-login script handling:
+    * enforce the login-script allowlist in the backend instead of the
+      LuCI frontend only: canonicalize the configured path via 'readlink -f'
+      (defeats ../ traversal and symlink-to-interpreter tricks) and require a
+      regular, executable /etc/travelmate/*.login file before running it
+    * run the script in a noglob subshell ('set -f') so attacker-influenceable
+      script_args can no longer expand globs into the trusted script; field
+      splitting (multiple args) is preserved
+    * writing into /etc/travelmate/ is not covered by the luci-app-travelmate
+      ACL, so this limits the root-executed script to admin-placed login scripts
+      and closes a delegated-ACL to root command execution path.
     
-    Blumenthal AES draft was not formalized in RFC but is
-    widely implemented by many vendors. It has strong encryption in
-    connection with SNMPv3.
-    
-    Signed-off-by: Christian Korber <ckorber@tdt.de>
+    Signed-off-by: Dirk Brenken <dev@brenken.org>
