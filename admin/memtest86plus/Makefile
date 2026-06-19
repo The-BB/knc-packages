@@ -107,5 +107,5 @@ define Package/memtest86plus-efi/postrm
 exit 0
 endef
 
-$(eval $(call BuildPackage,memtest86plus))
-$(eval $(call BuildPackage,memtest86plus-efi))
+#$(eval $(call BuildPackage,memtest86plus))
+#$(eval $(call BuildPackage,memtest86plus-efi))
