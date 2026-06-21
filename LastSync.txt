@@ -1,9 +1,12 @@
-commit 8522406a1cf7467f565084d47689263e40f90ba4 (HEAD -> master, origin/master, origin/HEAD)
+commit 8262543989592b205210176eb91c4dcd935f336f (HEAD -> master, origin/master, origin/HEAD)
 Author: Chester A. Unal <chester.a.unal@arinc9.com>
-Date:   Thu Jun 18 15:35:43 2026 +0100
+Date:   Sun Jun 21 09:44:20 2026 +0100
 
-    bsbf-openwrt-resources: do not reload firewall
+    bsbf-bonding: fix final wan interface check and delete wan quietly
     
-    Firewall will be reloaded when there's ifup so don't reload it.
+    The exit command was running unconditionally which broke the system
+    configuration. Fix that and simplify the wan interface check.
+    
+    Run network.wan deletion quietly in case it doesn't exist.
     
     Signed-off-by: Chester A. Unal <chester.a.unal@arinc9.com>
