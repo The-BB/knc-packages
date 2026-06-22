@@ -1,12 +1,20 @@
-commit 8262543989592b205210176eb91c4dcd935f336f (HEAD -> master, origin/master, origin/HEAD)
-Author: Chester A. Unal <chester.a.unal@arinc9.com>
-Date:   Sun Jun 21 09:44:20 2026 +0100
+commit f5160c8aa17b9373f1260edd17752fba39995569 (HEAD -> master, origin/master, origin/HEAD)
+Author: Dirk Brenken <dev@brenken.org>
+Date:   Sun Jun 21 18:43:35 2026 +0200
 
-    bsbf-bonding: fix final wan interface check and delete wan quietly
+    banip: update 1.8.9-2
     
-    The exit command was running unconditionally which broke the system
-    configuration. Fix that and simplify the wan interface check.
+    default feed updates:
+    - urlhaus, urlvir, webclient: switched from in to out
+      and added a tcp udp 80 443 port limit (destination feeds for LAN-initiated traffic)
+    - feodo, spamhaus, threat, threatview, proxy, tor, vpn, vpndc: switched from in to inout
+    - threatview: added url_6, as the source ships IPv4 and IPv6 in a single file
+    - country / asn: intentionally left on in; documented how to switch them to outbound/both
+      for the recurring "block connections to country X" case
+    - readme update:
+      - corrected the feed table to match the above,
+      - removed the stale drop row (replaced by spamhaus),
+      - and reworked the chain explanation to clarify the inbound-vs-outbound (source-IP vs destination-IP) model
+      - significantly expanded the custom-feeds section (all JSON fields, rule parameters, etc.
     
-    Run network.wan deletion quietly in case it doesn't exist.
-    
-    Signed-off-by: Chester A. Unal <chester.a.unal@arinc9.com>
+    Signed-off-by: Dirk Brenken <dev@brenken.org>
