@@ -1,9 +1,12 @@
-commit 5976698ef4973432d8496209db8d54077939ef72 (HEAD -> master, origin/master, origin/HEAD)
-Author: Lucian CRISTIAN <lucian.cristian@gmail.com>
-Date:   Mon Jun 22 13:21:14 2026 +0300
+commit 8256f356a9a111707202bed11bcd0b797e922ea4 (HEAD -> master, origin/master, origin/HEAD)
+Author: Daniel F. Dickinson <dfdpublic@wildtechgarden.ca>
+Date:   Wed Jun 24 19:57:06 2026 -0400
 
-    nspr: update to 4.39
+    radicale3: tweak description for modern clients
     
-    update to latest version
+    Update package description to reflect modern reality (support for
+    Thunderbird -- Lightning extension has not been a separate entity for
+    quite some time, and support for iOS clients -- iPhone and iPad, not
+    only iPhone).
     
-    Signed-off-by: Lucian CRISTIAN <lucian.cristian@gmail.com>
+    Signed-off-by: Daniel F. Dickinson <dfdpublic@wildtechgarden.ca>
