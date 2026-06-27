@@ -46,4 +46,3 @@ In file included from mibgroup/iwlib.h:33,
  #include <sys/time.h>		/* struct timeval */
  #include <unistd.h>
  
-
