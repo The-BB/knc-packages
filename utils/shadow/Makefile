@@ -139,9 +139,11 @@ define Package/shadow-common/conffiles
 endef
 
 
-#Entware specific: ENCRYPT_METHOD MD5 for comatiblity reasons
+#Entware specific: ENCRYPT_METHOD MD5 for comatiblity reasons; libintl
 #hack to get libxcrypt working
 TARGET_LDFLAGS:=-L$(STAGING_DIR)/opt/lib/libxcrypt $(TARGET_LDFLAGS)
+
+TARGET_LDFLAGS += $(if $(INTL_FULL),-lintl)
 
 define Package/shadow-common/install
 	$(INSTALL_DIR) $(1)/opt/etc
