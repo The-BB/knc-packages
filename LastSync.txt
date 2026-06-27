@@ -1,12 +1,11 @@
-commit 8256f356a9a111707202bed11bcd0b797e922ea4 (HEAD -> master, origin/master, origin/HEAD)
-Author: Daniel F. Dickinson <dfdpublic@wildtechgarden.ca>
-Date:   Wed Jun 24 19:57:06 2026 -0400
+commit 1d7afc40f3176d545184207d26a1e0814fa7f4cc (HEAD -> master, origin/master, origin/HEAD)
+Author: Thibaut VARÈNE <hacks@slashdirt.org>
+Date:   Mon Jun 22 20:06:01 2026 +0200
 
-    radicale3: tweak description for modern clients
+    uspot: update to Git HEAD (2026-06-22)
     
-    Update package description to reflect modern reality (support for
-    Thunderbird -- Lightning extension has not been a separate entity for
-    quite some time, and support for iOS clients -- iPhone and iPad, not
-    only iPhone).
+    f5be8d0ee836 radius-client: fix printf format warning for uint64_t
+    815a28c49293 CMakeLists: set minimum required version to 3.10 for cmake 4.x
+    913980c0249f uspotfilter: switch to an RTNL active poll system
     
-    Signed-off-by: Daniel F. Dickinson <dfdpublic@wildtechgarden.ca>
+    Signed-off-by: Thibaut VARÈNE <hacks@slashdirt.org>
