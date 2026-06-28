@@ -1,11 +1,13 @@
-commit 1d7afc40f3176d545184207d26a1e0814fa7f4cc (HEAD -> master, origin/master, origin/HEAD)
-Author: Thibaut VARÈNE <hacks@slashdirt.org>
-Date:   Mon Jun 22 20:06:01 2026 +0200
+commit 5d1eefd130f402cdef7264f49edc1e227e0728fc (HEAD -> master, origin/master, origin/HEAD)
+Author: Yaroslav Petrov <info@lank.me>
+Date:   Sat Jun 27 17:45:34 2026 +0200
 
-    uspot: update to Git HEAD (2026-06-22)
+    monit: update to 6.0.0
     
-    f5be8d0ee836 radius-client: fix printf format warning for uint64_t
-    815a28c49293 CMakeLists: set minimum required version to 3.10 for cmake 4.x
-    913980c0249f uspotfilter: switch to an RTNL active poll system
+    * New release, see the changelog [1] for what's new.
     
-    Signed-off-by: Thibaut VARÈNE <hacks@slashdirt.org>
+    * Switch the download source from Bitbucket to the official release page (https://mmonit.com/monit/dist/). The source code archives on Bitbucket no longer use clear naming conventions like "monit-x.y.z". The Monit team has confirmed that downloading directly from their official distribution site is the recommended approach going forward.
+    
+    [1] https://mmonit.com/monit/changes/
+    
+    Signed-off-by: Yaroslav Petrov <info@lank.me>
