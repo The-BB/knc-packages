@@ -1,13 +1,10 @@
-commit 5d1eefd130f402cdef7264f49edc1e227e0728fc (HEAD -> master, origin/master, origin/HEAD)
-Author: Yaroslav Petrov <info@lank.me>
-Date:   Sat Jun 27 17:45:34 2026 +0200
+commit f03d40454ecdbe232aec8fb3238214e0b5157bb1 (HEAD -> master, origin/master, origin/HEAD)
+Author: Hauke Mehrtens <hauke@hauke-m.de>
+Date:   Sun Jun 28 01:02:21 2026 +0200
 
-    monit: update to 6.0.0
+    cgi-io: update to Git HEAD (2026-06-28)
     
-    * New release, see the changelog [1] for what's new.
+    72990b748987 main: canonicalize download path before ACL check
+    7314451cb996 main: canonicalize exec path before ACL check
     
-    * Switch the download source from Bitbucket to the official release page (https://mmonit.com/monit/dist/). The source code archives on Bitbucket no longer use clear naming conventions like "monit-x.y.z". The Monit team has confirmed that downloading directly from their official distribution site is the recommended approach going forward.
-    
-    [1] https://mmonit.com/monit/changes/
-    
-    Signed-off-by: Yaroslav Petrov <info@lank.me>
+    Signed-off-by: Hauke Mehrtens <hauke@hauke-m.de>
