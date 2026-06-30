@@ -1,11 +1,15 @@
-commit 74c4d930b30e601cd5839308d6c11777dd1b5ee6 (HEAD -> master, origin/master, origin/HEAD)
+commit d3dd4cb9fb8c8a90d887010dac8f2a5ebfc28b3c (HEAD -> master, origin/master, origin/HEAD)
 Author: Josef Schlehofer <pepe.schlehofer@gmail.com>
-Date:   Mon Jun 29 12:39:43 2026 +0200
+Date:   Tue Jun 30 14:36:24 2026 +0200
 
-    kea: remove deprecated kea-ctrl-agent from test.sh
+    uspot: add version check override
     
-    The kea-ctrl-agent utility was deprecated in Kea 3.0 and removed in 3.2.
-    Adopt test.sh to not use the removed command and its config/password
-    stubs.
+    None of the uspot executables (radius-client, uspot, uspot-das) expose
+    the package version via --version or --help flags. This causes the
+    generic CI tests to fail with "No executables in the package provided
+    version".
+    
+    Add a test-version.sh to skip the version probe for the uspot,
+    uspotfilter and uspot-www subpackages.
     
     Signed-off-by: Josef Schlehofer <pepe.schlehofer@gmail.com>
