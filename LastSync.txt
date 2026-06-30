@@ -1,10 +1,11 @@
-commit f03d40454ecdbe232aec8fb3238214e0b5157bb1 (HEAD -> master, origin/master, origin/HEAD)
-Author: Hauke Mehrtens <hauke@hauke-m.de>
-Date:   Sun Jun 28 01:02:21 2026 +0200
+commit 74c4d930b30e601cd5839308d6c11777dd1b5ee6 (HEAD -> master, origin/master, origin/HEAD)
+Author: Josef Schlehofer <pepe.schlehofer@gmail.com>
+Date:   Mon Jun 29 12:39:43 2026 +0200
 
-    cgi-io: update to Git HEAD (2026-06-28)
+    kea: remove deprecated kea-ctrl-agent from test.sh
     
-    72990b748987 main: canonicalize download path before ACL check
-    7314451cb996 main: canonicalize exec path before ACL check
+    The kea-ctrl-agent utility was deprecated in Kea 3.0 and removed in 3.2.
+    Adopt test.sh to not use the removed command and its config/password
+    stubs.
     
-    Signed-off-by: Hauke Mehrtens <hauke@hauke-m.de>
+    Signed-off-by: Josef Schlehofer <pepe.schlehofer@gmail.com>
