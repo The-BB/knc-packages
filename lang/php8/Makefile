@@ -7,7 +7,8 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=php
 PKG_VERSION:=8.4.16
-PKG_RELEASE:=4
+# net-snmp (libnetsnmp) bumped
+PKG_RELEASE:=5
 
 PKG_MAINTAINER:=Michael Heimpold <mhei@heimpold.de>
 PKG_LICENSE:=PHP-3.01
