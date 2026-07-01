@@ -254,7 +254,7 @@ SNMP_TRANSPORTS_INCLUDED = Callback UDP Unix
 
 SNMP_TRANSPORTS_EXCLUDED = TCP TCPIPv6
 
-TARGET_CFLAGS += $(FPIC)
+TARGET_CFLAGS += $(FPIC) -Wno-error=declaration-after-statement
 #TARGET_CPPFLAGS += -I$(STAGING_DIR)/usr/include/libnl-tiny
 
 CONFIGURE_ARGS += \
