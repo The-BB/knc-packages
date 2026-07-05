@@ -9,12 +9,12 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=nano
-PKG_VERSION:=9.0
+PKG_VERSION:=9.1
 PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.xz
 PKG_SOURCE_URL:=@GNU/nano
-PKG_HASH:=9f384374b496110a25b73ad5a5febb384783c6e3188b37063f677ac908013fde
+PKG_HASH:=5f47764274cb7532349ce0aa20ec10f1e8e851a6e9fa3eb66812c43d196db042
 
 PKG_LICENSE:=GPL-3.0-or-later
 PKG_LICENSE_FILES:=COPYING
@@ -140,12 +140,13 @@ endef
 
 define Package/nano-plus/install
 	$(call Package/nano/install,$1)
-#	$(INSTALL_DIR) $(1)/etc/profile.d
+	$(INSTALL_DIR) $(1)/opt/etc/profile.d
 #	$(INSTALL_DATA) ./files/nano-default-editor.sh $(1)/etc/profile.d
+	echo "export EDITOR=\"/opt/bin/nano\"" > $(1)/opt/etc/profile.d/nano.sh
 endef
 
 define Package/nano-full/install
-	$(call Package/nano/install,$1)
+	$(call Package/nano-plus/install,$1)
 	$(INSTALL_DIR) $(1)/opt/etc $(1)/opt/share/nano
 	$(CP) $(PKG_BUILD_DIR)/doc/sample.nanorc $(1)/opt/etc/nanorc
 	$(SED) 's,# include "/opt,include "/opt,g' $(1)/opt/etc/nanorc
@@ -156,8 +157,6 @@ define Package/nano-full/install
 		$(SED) 's/\\</\\b/g' $$$$f; \
 		$(SED) 's/\\>/\\b/g' $$$$f; \
 	done;
-	$(INSTALL_DIR) $(1)/opt/etc/profile.d
-	echo "export EDITOR=\"/opt/bin/nano\"" > $(1)/opt/etc/profile.d/nano.sh
 endef
 
 $(eval $(call BuildPackage,nano))
