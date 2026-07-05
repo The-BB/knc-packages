@@ -1,5 +1,5 @@
 
-# Copyright (C) 2006-2016 OpenWrt.org
+# Copyright (C) 2006-2026 OpenWrt.org
 #
 # This is free software, licensed under the GNU General Public License v2.
 # See /LICENSE for more information.
@@ -8,13 +8,12 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=nut
-PKG_VERSION:=2.8.4
-# net-snmp (libnetsnmp) bumped
-PKG_RELEASE:=4
+PKG_VERSION:=2.8.5
+PKG_RELEASE:=2
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
-PKG_SOURCE_URL:=https://networkupstools.org/source/2.8/
-PKG_HASH:=a2fe55bc2d90b4a848d6ff8bac361e6d1c97f899a545219cad707d17a27ff127
+PKG_SOURCE_URL:=https://www.networkupstools.org/source/2.8/
+PKG_HASH:=18bf32e59eb764b13da3c4fa70384926d7fa584cb31d2fe7f137a570633eeec1
 PKG_LICENSE:=GPL-2.0-or-later GPL-3.0-or-later GPL-1.0-or-later Artistic-1.0-Perl
 PKG_LICENSE_FILES:=LICENSE-GPL2 LICENSE-GPL3 COPYING
 PKG_FIXUP:=autoreconf
@@ -148,9 +147,10 @@ process. Every UPS that is defined in the upsmon.conf configuration file
 is assigned a power value and a type (secondary or primary).
 endef
 
-define Package/nut-upsmon/conffiles
-/opt/etc/nut/upsmon.conf
-endef
+#define Package/nut-upsmon/conffiles
+#/etc/config/nut_monitor
+#/etc/nut/upsmon.conf
+#endef
 
 define Package/nut-upsmon/install
 	$(INSTALL_DIR) $(1)/opt/etc/nut
@@ -160,6 +160,10 @@ define Package/nut-upsmon/install
 	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/opt/sbin/upsmon $(1)/opt/sbin/
 #	$(INSTALL_DIR) $(1)/etc/config
 	$(INSTALL_CONF) $(PKG_INSTALL_DIR)/opt/etc/nut/upsmon.conf.sample $(1)/opt/etc/nut/upsmon.conf
+endef
+
+define Package/nut-upsmon/conffiles
+/opt/etc/nut/upsmon.conf
 endef
 
 define Package/nut-upsmon-sendmail-notify
@@ -284,6 +288,10 @@ define Package/nut-upssched/install
 	$(INSTALL_CONF) $(PKG_INSTALL_DIR)/opt/etc/nut/upssched.conf.sample $(1)/opt/etc/nut/upssched.conf
 endef
 
+define Package/nut-upssched/conffiles
+/etc/nut/upssched.conf
+endef
+
 define Package/nut-web-cgi
 	$(call Package/nut/Default)
 	TITLE+= Web CGI interface
@@ -326,13 +334,13 @@ This package contains the service definition for announcing the
 attached UPS via mDNS/DNS-SD.
 endef
 
-define Package/nut-avahi-service/conffiles
-/opt/etc/avahi/services/nut.service
-endef
-
 define Package/nut-avahi-service/install
 	$(INSTALL_DIR) $(1)/opt/etc/avahi/services
 	$(INSTALL_CONF) ./files/nut.service $(1)/opt/etc/avahi/services/
+endef
+
+define Package/nut-avahi-service/conffiles
+/opt/etc/avahi/services/nut.service
 endef
 
 # Dealing with all of the drivers is very repetitive, but the previous
@@ -345,7 +353,7 @@ define DriverPackage
 		$(if $(filter $(1),snmp),DEPENDS+= @NUT_DRIVER_SNMP)
 		$(if $(filter $(1),usb),DEPENDS+= @NUT_DRIVER_USB)
 		$(if $(filter $(1),serial),DEPENDS+= @NUT_DRIVER_SERIAL)
-                $(if $(filter $(1),neon),DEPENDS+= @NUT_DRIVER_NEON)
+		$(if $(filter $(1),neon),DEPENDS+= @NUT_DRIVER_NEON)
         endef
 	# Deliberately empty description in order to trigger a build failure.
 	# It should be overridden by the list below, and when updating to a
@@ -355,9 +363,9 @@ define DriverPackage
 
         endef
         define Package/nut-driver-$(2)/install
-		$(INSTALL_DIR) $$(1)/opt/lib/nut
-		$(CP) $$(PKG_INSTALL_DIR)/opt/lib/nut/$(2) $$(1)/opt/lib/nut/
-		$(if $(filter $(2),clone),$(CP) $$(PKG_INSTALL_DIR)/opt/lib/nut/$(2)-outlet $$(1)/opt/lib/nut/)
+		$(INSTALL_DIR) $$(1)/opt/libexec/nut
+		$(CP) $$(PKG_INSTALL_DIR)/opt/libexec/nut/$(2) $$(1)/opt/libexec/nut/
+		$(if $(filter $(2),clone),$(CP) $$(PKG_INSTALL_DIR)/opt/libexec/nut/$(2)-outlet $$(1)/opt/libexec/nut/)
         endef
 endef
 define DriverDescription
@@ -378,7 +386,7 @@ SERIAL_DRIVERLIST = al175 bcmxcp belkin belkinunv bestfcom	\
  gamatronic genericups isbmex liebert liebert-esp2 liebert-gxe masterguard metasys	\
  mge-utalk microdowell microsol-apc mge-shut nutdrv_hashx oneac optiups powercom powervar_cx_ser rhino	\
  safenet nutdrv_siemens-sitop solis tripplite tripplitesu upscode2 victronups powerpanel \
- blazer_ser ivtscd apcsmart apcsmart-old riello_ser sms_ser bicker_ser ve-direct \
+ blazer_ser ivtscd apcsmart apcsmart-old riello_ser sms_ser bicker_ser ve-direct meanwell_ntu \
  nutdrv_qx
 SERIAL_DRIVERLIST += nhs_ser
 SNMP_DRIVERLIST = snmp-ups
@@ -499,8 +507,10 @@ $(eval $(call DriverDescription,serial,bicker_ser,\
 	Driver for Bicker DC UPS via serial port connections))
 $(eval $(call DriverDescription,serial,ve-direct,\
 	Driver for Victron UPS unit running on VE.Direct serial protocol))
+$(eval $(call DriverDescription,serial,meanwell_ntu,\
+	Driver for Mean Well NTU series equipment with serial port))
 $(eval $(call DriverDescription,serial,nhs_ser,\
-	Driver for NHS Nobreaks, senoidal line, with serial port))
+	Driver for NHS Nobreaks - senoidal line - with serial port))
 $(eval $(call DriverDescription,snmp,snmp-ups,\
 	Multi-MIB Driver for SNMP UPS equipment))
 $(eval $(call DriverDescription,usb,usbhid-ups,\
@@ -529,6 +539,7 @@ CONFIGURE_VARS += \
 
 CONFIGURE_ARGS += \
 	--sysconfdir=/opt/etc/nut \
+	--with-confdir-suffix=/nut \
 	--datadir=/opt/share/nut \
 	--with-dev \
 	--$(if $(CONFIG_NUT_DRIVER_USB),with,without)-usb \
@@ -549,9 +560,9 @@ CONFIGURE_ARGS += \
 	--enable-docs-changelog=no \
 	--without-macosx_ups \
 	--without-nut_monitor \
-	--with-statepath=/opt/var/run \
+	--with-statepath=/opt/var/run/nut \
 	--with-pidpath=/opt/var/run \
-	--with-drvpath=/opt/lib/nut \
+	--with-drvpath=/opt/libexec/nut \
 	--with-user=root \
 	--with-group=root \
 	$(if $(CONFIG_PACKAGE_nut-web-cgi),--with-gd-includes="-I$(STAGING_DIR)/opt/include") \
