@@ -4,7 +4,7 @@
 
 --- a/lib/curl_trc.h
 +++ b/lib/curl_trc.h
-@@ -126,6 +126,12 @@ extern struct curl_trc_feat Curl_trc_fea
+@@ -130,6 +130,12 @@ extern struct curl_trc_feat Curl_trc_fea
  void Curl_trc_ws(struct Curl_easy *data,
                   const char *fmt, ...) CURL_PRINTF(2, 3);
  #endif
