@@ -1,15 +1,9 @@
-commit d3dd4cb9fb8c8a90d887010dac8f2a5ebfc28b3c (HEAD -> master, origin/master, origin/HEAD)
-Author: Josef Schlehofer <pepe.schlehofer@gmail.com>
-Date:   Tue Jun 30 14:36:24 2026 +0200
+commit cc886eb9908dc2685bf0851c63a806fe42f75393 (HEAD -> master, origin/master, origin/HEAD)
+Author: Etienne Champetier <champetier.etienne@gmail.com>
+Date:   Sun Jul 5 05:52:51 2026 -0400
 
-    uspot: add version check override
+    ubnt-manager: skip ci version check
     
-    None of the uspot executables (radius-client, uspot, uspot-das) expose
-    the package version via --version or --help flags. This causes the
-    generic CI tests to fail with "No executables in the package provided
-    version".
+    No version to test here.
     
-    Add a test-version.sh to skip the version probe for the uspot,
-    uspotfilter and uspot-www subpackages.
-    
-    Signed-off-by: Josef Schlehofer <pepe.schlehofer@gmail.com>
+    Signed-off-by: Etienne Champetier <champetier.etienne@gmail.com>
