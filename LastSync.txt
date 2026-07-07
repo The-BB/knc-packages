@@ -1,11 +1,15 @@
-commit c08761bfcc75cf991437273090f0101779ba22ab (HEAD -> master, origin/master, origin/HEAD)
-Author: Philip A. Prindeville <philipp@redfish-solutions.com>
-Date:   Sun Jun 21 15:55:19 2026 -0600
+commit ec5fcd69e8f63b422258d11046ffb73c8fa52e92 (HEAD -> master, origin/master, origin/HEAD)
+Author: Angus Young <me@angusyoung.nl>
+Date:   Thu Jul 2 03:05:56 2026 +0200
 
-    treewide: homogenize references to libfts for MUSL
+    ddns-scripts: add EuroDNS provider
+    Add EuroDNS provider for IPv4 and IPv6
     
-    The way we use -lfts isn't particularly consistent.  There's no reason
-    it shouldn't be.  glibc users shouldn't have to deal with someone else's
-    lack of rigor.
+    Howto:
     
-    Signed-off-by: Philip A. Prindeville <philipp@redfish-solutions.com>
+        set [USERNAME] to username
+        set [PASSWORD] to password
+        set [DOMAIN] to domain
+    
+    https://help.eurodns.com/s/article/How-do-I-configure-DYNDNS?language=en_US
+    Signed-off-by: Angus Young <me@angusyoung.nl>
