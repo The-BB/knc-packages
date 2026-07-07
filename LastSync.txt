@@ -1,11 +1,15 @@
-commit 4b136c0bcbd6f725dccd5a9af60629275b6bcad4 (HEAD -> master, origin/master, origin/HEAD)
-Author: Philip Prindeville <philipp@redfish-solutions.com>
-Date:   Mon Jul 6 19:51:24 2026 -0600
+commit 4d88f35c8d60487c5907c3a377df7815aa95058d (HEAD -> master, origin/master, origin/HEAD)
+Author: Hauke Mehrtens <hauke@hauke-m.de>
+Date:   Sun Jul 5 16:07:52 2026 +0200
 
-    clixon: update to 7.8.0
+    gcc: synchronize with toolchain
     
-    Features optimized datastore YANG validation including incremental
-    validation, a reduced XML config footprint, configurable datastore
-    cache, many bugfixes and a prototype gRPC/gNMI implementation.
+    This fixes the build of the gcc package.
     
-    Signed-off-by: Philip Prindeville <philipp@redfish-solutions.com>
+    Add the toolchain changes from these commits:
+    https://github.com/openwrt/openwrt/commit/f93228427aa98324b97bac1defd9a8a39e47c29a
+    https://github.com/openwrt/openwrt/commit/97424f9c860593ad524aff84a2f982b97abfed5f
+    https://github.com/openwrt/openwrt/commit/ab40696d6134c842a93112a7a0325a148b3b1a2b
+    
+    Fixes: https://github.com/openwrt/openwrt/issues/24084
+    Signed-off-by: Hauke Mehrtens <hauke@hauke-m.de>
