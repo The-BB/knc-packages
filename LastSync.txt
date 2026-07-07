@@ -1,15 +1,11 @@
-commit ec5fcd69e8f63b422258d11046ffb73c8fa52e92 (HEAD -> master, origin/master, origin/HEAD)
-Author: Angus Young <me@angusyoung.nl>
-Date:   Thu Jul 2 03:05:56 2026 +0200
+commit 4b136c0bcbd6f725dccd5a9af60629275b6bcad4 (HEAD -> master, origin/master, origin/HEAD)
+Author: Philip Prindeville <philipp@redfish-solutions.com>
+Date:   Mon Jul 6 19:51:24 2026 -0600
 
-    ddns-scripts: add EuroDNS provider
-    Add EuroDNS provider for IPv4 and IPv6
+    clixon: update to 7.8.0
     
-    Howto:
+    Features optimized datastore YANG validation including incremental
+    validation, a reduced XML config footprint, configurable datastore
+    cache, many bugfixes and a prototype gRPC/gNMI implementation.
     
-        set [USERNAME] to username
-        set [PASSWORD] to password
-        set [DOMAIN] to domain
-    
-    https://help.eurodns.com/s/article/How-do-I-configure-DYNDNS?language=en_US
-    Signed-off-by: Angus Young <me@angusyoung.nl>
+    Signed-off-by: Philip Prindeville <philipp@redfish-solutions.com>
