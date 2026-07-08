@@ -1,15 +1,15 @@
-commit 4d88f35c8d60487c5907c3a377df7815aa95058d (HEAD -> master, origin/master, origin/HEAD)
-Author: Hauke Mehrtens <hauke@hauke-m.de>
-Date:   Sun Jul 5 16:07:52 2026 +0200
+commit f31a9bf838353e12c7a14ee40de4eee22322015e (HEAD -> master, origin/master, origin/HEAD)
+Author: Maxim Storchak <m.storchak@gmail.com>
+Date:   Sun Jul 5 16:27:18 2026 +0300
 
-    gcc: synchronize with toolchain
+    lsof: update to 4.99.7
     
-    This fixes the build of the gcc package.
+    - convert the patch to a make option
+    - Add -J/-j options for JSON and JSON Lines output format.
+    - lsof_free_result(): handle result == NULL
+    - Fix missing parenthesis in lstat error message format
+    - Fix use-after-free in lsof_select_process_regex
+    - Fix truncated fd numbers in -F field output
+    - Display connection state for UDP sockets with -T option
     
-    Add the toolchain changes from these commits:
-    https://github.com/openwrt/openwrt/commit/f93228427aa98324b97bac1defd9a8a39e47c29a
-    https://github.com/openwrt/openwrt/commit/97424f9c860593ad524aff84a2f982b97abfed5f
-    https://github.com/openwrt/openwrt/commit/ab40696d6134c842a93112a7a0325a148b3b1a2b
-    
-    Fixes: https://github.com/openwrt/openwrt/issues/24084
-    Signed-off-by: Hauke Mehrtens <hauke@hauke-m.de>
+    Signed-off-by: Maxim Storchak <m.storchak@gmail.com>
