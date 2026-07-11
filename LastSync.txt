@@ -1,13 +1,14 @@
-commit 82ab16b8829d2d201c54b5163cc64b70dda18397 (HEAD -> master, origin/master, origin/HEAD)
-Author: Alexandru Ardelean <alex@shruggie.ro>
-Date:   Mon Jul 6 09:14:58 2026 +0300
+commit 527c1f1183c9522b58d892989406a0c75f6105ca (HEAD -> master, origin/master, origin/HEAD)
+Author: Dharmik Parmar <dharmikparmar2004@yahoo.com>
+Date:   Fri Jun 19 19:20:32 2026 +0530
 
-    libdrm: skip the generic version check for the whole package
+    libreswan: fix default subnet matching
     
-    libdrm-tests ships DRM tools (modetest, proptest, ...) with no --version flag,
-    so the generic probe aborts with "No executables in the package provided
-    version" and fails CI. test-version.sh is shared by every subpackage built from
-    this directory and a non-zero exit fails it, so it must accept the whole family
-    (the libraries ship no executables either) -- hence libdrm*, not just libdrm-tests.
+    Match only explicit default-route subnet tokens when normalizing leftsubnets and rightsubnets.
     
-    Signed-off-by: Alexandru Ardelean <alex@shruggie.ro>
+    The previous regex treated dots as wildcards.
+    
+    Values such as 10.250.0.0/16 and 10.0.0.0/8 were rewritten to 0.0.0.0/0.
+    
+    Fixes: https://github.com/openwrt/openwrt/issues/23795
+    Signed-off-by: Dharmik Parmar <dharmikparmar2004@yahoo.com>
