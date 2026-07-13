@@ -1,10 +1,13 @@
-commit 5544edf33aa7d422bf66340d0b9c88c107874e47 (HEAD -> master, origin/master, origin/HEAD)
-Author: Philip A. Prindeville <philipp@redfish-solutions.com>
-Date:   Sat Jul 11 21:09:05 2026 -0600
+commit 627044ab21c4e2888da27cb244cb0a2a580ec487 (HEAD -> master, origin/master, origin/HEAD)
+Author: Daniel Golle <daniel@makrotopia.org>
+Date:   Mon Jul 13 12:45:18 2026 +0100
 
-    python-pexpect: add package
+    fwupd: allow enabling the devlink plugin
     
-    Useful for provisioning devices like modems that present themselves
-    via a serial device.
+    The devlink plugin allows updating firmware of network devices
+    implementing the kernel devlink interface. It is gated on libmnl,
+    which was hard-disabled so far. Wire the libmnl meson option to a
+    new FWUPD_PLUGIN_DEVLINK config symbol, enabled by default, and add
+    the corresponding libmnl runtime dependency to fwupd-libs.
     
-    Signed-off-by: Philip A. Prindeville <philipp@redfish-solutions.com>
+    Signed-off-by: Daniel Golle <daniel@makrotopia.org>
