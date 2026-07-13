@@ -1,14 +1,10 @@
-commit 527c1f1183c9522b58d892989406a0c75f6105ca (HEAD -> master, origin/master, origin/HEAD)
-Author: Dharmik Parmar <dharmikparmar2004@yahoo.com>
-Date:   Fri Jun 19 19:20:32 2026 +0530
+commit 5544edf33aa7d422bf66340d0b9c88c107874e47 (HEAD -> master, origin/master, origin/HEAD)
+Author: Philip A. Prindeville <philipp@redfish-solutions.com>
+Date:   Sat Jul 11 21:09:05 2026 -0600
 
-    libreswan: fix default subnet matching
+    python-pexpect: add package
     
-    Match only explicit default-route subnet tokens when normalizing leftsubnets and rightsubnets.
+    Useful for provisioning devices like modems that present themselves
+    via a serial device.
     
-    The previous regex treated dots as wildcards.
-    
-    Values such as 10.250.0.0/16 and 10.0.0.0/8 were rewritten to 0.0.0.0/0.
-    
-    Fixes: https://github.com/openwrt/openwrt/issues/23795
-    Signed-off-by: Dharmik Parmar <dharmikparmar2004@yahoo.com>
+    Signed-off-by: Philip A. Prindeville <philipp@redfish-solutions.com>
