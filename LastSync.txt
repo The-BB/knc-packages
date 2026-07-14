@@ -1,13 +1,13 @@
-commit 627044ab21c4e2888da27cb244cb0a2a580ec487 (HEAD -> master, origin/master, origin/HEAD)
-Author: Daniel Golle <daniel@makrotopia.org>
-Date:   Mon Jul 13 12:45:18 2026 +0100
+commit a01cb8a3f9d8a532029555609d309d8329beac07 (HEAD -> master, origin/master, origin/HEAD)
+Author: Dharmik Parmar <dharmikparmar2004@yahoo.com>
+Date:   Thu Jun 18 22:07:41 2026 +0530
 
-    fwupd: allow enabling the devlink plugin
+    arp-scan: fix maintainer script interpreters
     
-    The devlink plugin allows updating firmware of network devices
-    implementing the kernel devlink interface. It is gated on libmnl,
-    which was hard-disabled so far. Wire the libmnl meson option to a
-    new FWUPD_PLUGIN_DEVLINK config symbol, enabled by default, and add
-    the corresponding libmnl runtime dependency to fwupd-libs.
+    Add missing shell interpreter lines to the arp-scan maintainer scripts.
     
-    Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+    This lets apk execute the generated install and removal hooks directly.
+    
+    Use IPKG_INSTROOT in the database postrm cleanup and bump PKG_RELEASE.
+    
+    Signed-off-by: Dharmik Parmar <dharmikparmar2004@yahoo.com>
