@@ -1,13 +1,8 @@
-commit a01cb8a3f9d8a532029555609d309d8329beac07 (HEAD -> master, origin/master, origin/HEAD)
-Author: Dharmik Parmar <dharmikparmar2004@yahoo.com>
-Date:   Thu Jun 18 22:07:41 2026 +0530
+commit 8deb2ac9caa55d8dc93e1b8d43a5ef35c642befa (HEAD -> master, origin/master, origin/HEAD)
+Author: Roc Lai <laipeng668@qq.com>
+Date:   Sun Jul 12 07:07:28 2026 +0800
 
-    arp-scan: fix maintainer script interpreters
+    frp: bump to 0.70.0
+    Changes: https://github.com/fatedier/frp/releases/tag/v0.70.0
     
-    Add missing shell interpreter lines to the arp-scan maintainer scripts.
-    
-    This lets apk execute the generated install and removal hooks directly.
-    
-    Use IPKG_INSTROOT in the database postrm cleanup and bump PKG_RELEASE.
-    
-    Signed-off-by: Dharmik Parmar <dharmikparmar2004@yahoo.com>
+    Signed-off-by: Roc Lai <laipeng668@qq.com>
