@@ -1,8 +1,9 @@
-commit 8deb2ac9caa55d8dc93e1b8d43a5ef35c642befa (HEAD -> master, origin/master, origin/HEAD)
-Author: Roc Lai <laipeng668@qq.com>
-Date:   Sun Jul 12 07:07:28 2026 +0800
+commit ebb7c18a5d50fee8e79b0ee3e604da1e7339914b (HEAD -> master, origin/master, origin/HEAD)
+Author: Christian Korber <ckorber@tdt.de>
+Date:   Fri Jul 10 07:03:09 2026 +0200
 
-    frp: bump to 0.70.0
-    Changes: https://github.com/fatedier/frp/releases/tag/v0.70.0
+    modemmanager: bump PKG_RELEASE
     
-    Signed-off-by: Roc Lai <laipeng668@qq.com>
+    Bump PKG_RELEASE number. This is due because of earlier changes.
+    
+    Signed-off-by: Christian Korber <ckorber@tdt.de>
