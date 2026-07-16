@@ -1,9 +1,8 @@
-commit ebb7c18a5d50fee8e79b0ee3e604da1e7339914b (HEAD -> master, origin/master, origin/HEAD)
-Author: Christian Korber <ckorber@tdt.de>
-Date:   Fri Jul 10 07:03:09 2026 +0200
+commit 498af613ec9b3692b43492cee798aa8d007bd037 (HEAD -> master, origin/master, origin/HEAD)
+Author: Jon Henrik Bjørnstad <jonhenrik@qbee.io>
+Date:   Tue Jul 14 15:44:58 2026 +0200
 
-    modemmanager: bump PKG_RELEASE
+    qbee-agent: bump version to 2026.27
+    Upgrade qbee-agent to the newest version
     
-    Bump PKG_RELEASE number. This is due because of earlier changes.
-    
-    Signed-off-by: Christian Korber <ckorber@tdt.de>
+    Signed-off-by: Jon Henrik Bjørnstad <jonhenrik@qbee.io>
