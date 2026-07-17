@@ -1,8 +1,11 @@
-commit 498af613ec9b3692b43492cee798aa8d007bd037 (HEAD -> master, origin/master, origin/HEAD)
-Author: Jon Henrik Bjørnstad <jonhenrik@qbee.io>
-Date:   Tue Jul 14 15:44:58 2026 +0200
+commit 35d5fe4a0558846aea0055e79018d3b8b6868975 (HEAD -> master, origin/master, origin/HEAD)
+Author: Qingfang Deng <dqfext@gmail.com>
+Date:   Fri Jul 17 09:52:47 2026 +0800
 
-    qbee-agent: bump version to 2026.27
-    Upgrade qbee-agent to the newest version
+    ovpn-dco: update to version 7.1.0.2026070800
     
-    Signed-off-by: Jon Henrik Bjørnstad <jonhenrik@qbee.io>
+    Update to the latest version.
+    
+    Upstreamed patch: 0002-undef-kmalloc_obj.patch
+    
+    Signed-off-by: Qingfang Deng <dqfext@gmail.com>
