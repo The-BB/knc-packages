@@ -1,11 +1,10 @@
-commit 35d5fe4a0558846aea0055e79018d3b8b6868975 (HEAD -> master, origin/master, origin/HEAD)
-Author: Qingfang Deng <dqfext@gmail.com>
-Date:   Fri Jul 17 09:52:47 2026 +0800
+commit 69b555d22a04703a6564009011f320d289c09c64 (HEAD -> master, origin/master, origin/HEAD)
+Author: Daniel F. Dickinson <dfdpublic@wildtechgarden.ca>
+Date:   Wed Jul 15 21:41:38 2026 -0400
 
-    ovpn-dco: update to version 7.1.0.2026070800
+    zabbix: bump version to 7.0.28
     
-    Update to the latest version.
+    Update to latest LTS. See release notes:
+    https://www.zabbix.com/rn/rn7.0.28
     
-    Upstreamed patch: 0002-undef-kmalloc_obj.patch
-    
-    Signed-off-by: Qingfang Deng <dqfext@gmail.com>
+    Signed-off-by: Daniel F. Dickinson <dfdpublic@wildtechgarden.ca>
