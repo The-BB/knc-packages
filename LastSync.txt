@@ -1,10 +1,9 @@
-commit 69b555d22a04703a6564009011f320d289c09c64 (HEAD -> master, origin/master, origin/HEAD)
+commit a9f0e9fae4c33094a51a190ff06f6ea26acfbd92 (HEAD -> master, origin/master, origin/HEAD)
 Author: Daniel F. Dickinson <dfdpublic@wildtechgarden.ca>
-Date:   Wed Jul 15 21:41:38 2026 -0400
+Date:   Sat Jul 18 18:51:35 2026 -0400
 
-    zabbix: bump version to 7.0.28
+    nut: use common log functions instead of direct logger calls
     
-    Update to latest LTS. See release notes:
-    https://www.zabbix.com/rn/rn7.0.28
+    Where possible prefer the log wrappers to direct logger calls.
     
     Signed-off-by: Daniel F. Dickinson <dfdpublic@wildtechgarden.ca>
