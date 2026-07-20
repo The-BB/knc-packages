@@ -1,9 +1,11 @@
-commit a9f0e9fae4c33094a51a190ff06f6ea26acfbd92 (HEAD -> master, origin/master, origin/HEAD)
-Author: Daniel F. Dickinson <dfdpublic@wildtechgarden.ca>
-Date:   Sat Jul 18 18:51:35 2026 -0400
+commit 2e945de232bd84ad74ec2b0625e16b0ce9f40131 (HEAD -> master, origin/master, origin/HEAD)
+Author: Dharmik Parmar <dharmikparmar2004@yahoo.com>
+Date:   Mon Jun 22 22:23:18 2026 +0530
 
-    nut: use common log functions instead of direct logger calls
+    trafficshaper: add nftables firewall backend
     
-    Where possible prefer the log wrappers to direct logger calls.
+    Add an nftables firewall backend while keeping the existing iptables backend available.
     
-    Signed-off-by: Daniel F. Dickinson <dfdpublic@wildtechgarden.ca>
+    Use nftables on fw4 systems and fall back to iptables otherwise.
+    
+    Signed-off-by: Dharmik Parmar <dharmikparmar2004@yahoo.com>
