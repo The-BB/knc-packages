@@ -1,11 +1,9 @@
-commit 2e945de232bd84ad74ec2b0625e16b0ce9f40131 (HEAD -> master, origin/master, origin/HEAD)
-Author: Dharmik Parmar <dharmikparmar2004@yahoo.com>
-Date:   Mon Jun 22 22:23:18 2026 +0530
+commit b442c043a723f7909299cfc8953d6b7a0e0e51e0 (HEAD -> master, origin/master, origin/HEAD)
+Author: Sebastian Hamann <code@ares-macrotechnology.com>
+Date:   Mon Jul 20 10:25:41 2026 +0200
 
-    trafficshaper: add nftables firewall backend
+    fluent-bit: add init script
     
-    Add an nftables firewall backend while keeping the existing iptables backend available.
+    A init script allows running fluent-bit as a system service.
     
-    Use nftables on fw4 systems and fall back to iptables otherwise.
-    
-    Signed-off-by: Dharmik Parmar <dharmikparmar2004@yahoo.com>
+    Signed-off-by: Sebastian Hamann <code@ares-macrotechnology.com>
