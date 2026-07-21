@@ -1,9 +1,9 @@
-commit b442c043a723f7909299cfc8953d6b7a0e0e51e0 (HEAD -> master, origin/master, origin/HEAD)
-Author: Sebastian Hamann <code@ares-macrotechnology.com>
-Date:   Mon Jul 20 10:25:41 2026 +0200
+commit ddd6bb919af9e31ac5807d0a4c52b27c1acc7c7e (HEAD -> master, origin/master, origin/HEAD)
+Author: Daniel F. Dickinson <dfdpublic@wildtechgarden.ca>
+Date:   Mon Jul 20 23:47:45 2026 -0400
 
-    fluent-bit: add init script
+    radicale3: bump version to v3.7.7
     
-    A init script allows running fluent-bit as a system service.
+    This is a bug fix release: https://github.com/Kozea/Radicale/releases/tag/v3.7.7
     
-    Signed-off-by: Sebastian Hamann <code@ares-macrotechnology.com>
+    Signed-off-by: Daniel F. Dickinson <dfdpublic@wildtechgarden.ca>
