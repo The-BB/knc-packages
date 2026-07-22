@@ -1,9 +1,11 @@
-commit ddd6bb919af9e31ac5807d0a4c52b27c1acc7c7e (HEAD -> master, origin/master, origin/HEAD)
-Author: Daniel F. Dickinson <dfdpublic@wildtechgarden.ca>
-Date:   Mon Jul 20 23:47:45 2026 -0400
+kcommit c7e6d5ce4252fe3ebe7268cfea1e935cd5f52339 (HEAD -> master, origin/master, origin/HEAD)
+Author: Tianling Shen <cnsztl@immortalwrt.org>
+Date:   Wed Jul 22 12:03:08 2026 +0800
 
-    radicale3: bump version to v3.7.7
+    cloudreve: update to 4.18.0
     
-    This is a bug fix release: https://github.com/Kozea/Radicale/releases/tag/v3.7.7
+    Changelog:
+    - https://github.com/cloudreve/cloudreve/releases/tag/4.17.0
+    - https://github.com/cloudreve/cloudreve/releases/tag/4.18.0
     
-    Signed-off-by: Daniel F. Dickinson <dfdpublic@wildtechgarden.ca>
+    Signed-off-by: Tianling Shen <cnsztl@immortalwrt.org>
