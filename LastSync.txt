@@ -1,11 +1,10 @@
-kcommit c7e6d5ce4252fe3ebe7268cfea1e935cd5f52339 (HEAD -> master, origin/master, origin/HEAD)
-Author: Tianling Shen <cnsztl@immortalwrt.org>
-Date:   Wed Jul 22 12:03:08 2026 +0800
+commit 198e8cce3392647d6f0f13c33c4d0434322f3bbe (HEAD -> master, origin/master, origin/HEAD)
+Author: Florian Eckert <fe@dev.tdt.de>
+Date:   Mon Jul 20 15:50:04 2026 +0200
 
-    cloudreve: update to 4.18.0
+    zoneinfo: use SPDX valid identifier Unlicense instead of Public-Domain
     
-    Changelog:
-    - https://github.com/cloudreve/cloudreve/releases/tag/4.17.0
-    - https://github.com/cloudreve/cloudreve/releases/tag/4.18.0
+    Replace the 'Public-Domain' not SPDX valid license identifier with the
+    valied SPDX 'Unlicense' indentifiert.
     
-    Signed-off-by: Tianling Shen <cnsztl@immortalwrt.org>
+    Signed-off-by: Florian Eckert <fe@dev.tdt.de>
