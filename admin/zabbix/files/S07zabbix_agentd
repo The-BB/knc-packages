@@ -8,12 +8,12 @@ PROG="/opt/sbin/$PROCS"
 
 start_pre() {
   . /opt/lib/functions.sh
-  user_exists zabbix || user_add zabbix 53
-  group_exists zabbix || group_add zabbix 53
+  user_exists zabbix-agent || user_add zabbix-agent 53
+  group_exists zabbix-agent || group_add zabbix-agent 53
   {
     { [ -d "/opt/var/log/zabbix" ] || \
     mkdir -pm 0750 /opt/var/log/zabbix ; }
-    chown -R zabbix:zabbix /opt/var/log/zabbix ;
+    chown -R zabbix-agent:zabbix-agent /opt/var/log/zabbix ;
   }
 }
 

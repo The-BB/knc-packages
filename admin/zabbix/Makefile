@@ -540,7 +540,7 @@ define Package/zabbix-agentd/install
 	$(INSTALL_DIR) $(1)/opt/share/zabbix_agentd.openwrt-params.d
 	$(call Package/zabbix/install/sbin,$(1),agentd)
 	$(call Package/zabbix/install/etc,$(1),agentd)
-	$(call Package/zabbix/install/init.d,$(1),agentd)
+	$(call Package/zabbix/install/init.d,$(1),agentd,S07)
 endef
 
 # zabbix_agent2
@@ -567,7 +567,7 @@ define Package/zabbix-agentd-basic/install
 	$(INSTALL_DIR) $(1)/opt/share/zabbix_agentd.openwrt-params.d
 	$(call Package/zabbix/install/sbin,$(1),agentd)
 	$(call Package/zabbix/install/etc,$(1),agentd)
-	$(call Package/zabbix/install/init.d,$(1),agentd)
+	$(call Package/zabbix/install/init.d,$(1),agentd,S07)
 endef
 
 define Package/zabbix-proxy/conffiles
@@ -601,7 +601,7 @@ define Package/zabbix-server/install
 	$(INSTALL_DIR) $(1)/opt/etc/zabbix_server.conf.d
 	$(call Package/zabbix/install/sbin,$(1),server)
 	$(call Package/zabbix/install/etc,$(1),server)
-	$(call Package/zabbix/install/init.d,$(1),server)
+	$(call Package/zabbix/install/init.d,$(1),server,S06)
 #	$(INSTALL_DIR) $(1)/etc/config
 #	$(INSTALL_CONF) ./files/zabbix_server.config $(1)/etc/config/zabbix_server
 #	$(INSTALL_DIR) $(1)/etc/uci-defaults
