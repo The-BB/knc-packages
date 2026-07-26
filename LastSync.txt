@@ -1,20 +1,12 @@
-commit 81d81033e6a278663c6e0414f0ec07d37b1141bd (HEAD -> master, origin/master, origin/HEAD)
-Author: Noah Meyerhans <frodo@morgul.net>
-Date:   Thu Jul 23 09:18:15 2026 -0400
+commit b036203cbc27ef37c03ed1f8419d8d2b65e481f1 (HEAD -> master, origin/master, origin/HEAD)
+Author: Dirk Brenken <dev@brenken.org>
+Date:   Sun Jul 26 06:48:30 2026 +0200
 
-    bind: bump to 9.20.26
+    travelmate: fix loss of configured uplink mac address
     
-    Fixes several security issues:
-     - CVE-2026-11331 Fix handling of rpz CNAME expansion that returns name too long.
-     - CVE-2026-11721 Invalid signed wildcard records were being accepted.
-     - CVE-2026-13321 Fix DNSSEC validation bypass via out-of-zone NSEC Next Field.
-     - CVE-2026-10723 Correct verification of NSEC3 signer name.
-     - CVE-2026-12617 Do no assert for some specifics CNAME and DNAME queries.
-     - CVE-2026-10822 Malformed DNSKEY records could trigger an assertion.
-     - CVE-2026-11605 Prevent excessive validation work from crafted negative responses.
-     - CVE-2026-11622 Prevent cache exhaustion under sustained attack.
+    - pass the station details to the "rev" call so the uplink section
+      stays resolved, fixes #30099
+    - the same empty trm_uplinkcfg also silently skipped disabling the uplink
+      after trm_maxretry was reached - fixed that too with this oneliner
     
-    Full release notes are available upstream at
-    https://ftp.isc.org/isc/bind9/9.20.26/doc/arm/html/changelog.html
-    
-    Signed-off-by: Noah Meyerhans <frodo@morgul.net>
+    Signed-off-by: Dirk Brenken <dev@brenken.org>
