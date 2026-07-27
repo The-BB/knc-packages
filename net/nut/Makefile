@@ -31,6 +31,8 @@ PKG_CONFIG_DEPENDS:= \
 	CONFIG_PACKAGE_nut-web-cgi
 
 include $(INCLUDE_DIR)/package.mk
+# .../bin/ld.bfd: cannot find -lintl: No such file or directory
+include $(INCLUDE_DIR)/nls.mk
 
 define Package/nut/Default
 	SECTION:=net
@@ -329,7 +331,7 @@ endef
 define Package/nut-web-cgi
 	$(call Package/nut/Default)
 	TITLE+= Web CGI interface
-	DEPENDS:=nut +nut-common +PACKAGE_nut-web-cgi:libgd +PACKAGE_nut-web-cgi:libtiff
+	DEPENDS:=nut +nut-common +PACKAGE_nut-web-cgi:libgd
 endef
 
 define Package/nut-web-cgi/description
@@ -580,13 +582,13 @@ CONFIGURE_VARS += \
 	ac_cv_path_AR=$(TARGET_AR)
 
 CONFIGURE_ARGS += \
-	--sysconfdir=/opt/etc/nut \
+	--sysconfdir=/opt/etc \
 	--with-confdir-suffix=/nut \
 	--datadir=/opt/share/nut \
 	--with-dev \
 	--$(if $(CONFIG_NUT_DRIVER_USB),with,without)-usb \
 	--without-avahi \
-	--$(if $(CONFIG_NUT_DRIVER_SNMP),with,without)-snmp $(if $(CONFIG_NUT_DRIVER_SNMP),--with-snmp-libs="$(TARGET_LDFLAGS) -lnetsnmp") \
+	--$(if $(CONFIG_NUT_DRIVER_SNMP),with,without)-snmp \
 	--$(if $(CONFIG_NUT_DRIVER_SERIAL),with,without)-serial \
 	--without-doc \
         --$(if $(CONFIG_NUT_DRIVER_NEON),with,without)-neon \
@@ -607,8 +609,9 @@ CONFIGURE_ARGS += \
 	--with-drvpath=/opt/libexec/nut \
 	--with-user=root \
 	--with-group=root \
-	$(if $(CONFIG_PACKAGE_nut-web-cgi),--with-gd-includes="-I$(STAGING_DIR)/opt/include") \
-	$(if $(CONFIG_PACKAGE_nut-web-cgi),--with-gd-libs="-L$(STAGING_DIR)/opt/lib -lgd -lfreetype -ljpeg -lpng16 -ltiff -lwebp -lz")
+	--with-udev-dir=/opt/lib/udev \
+	$(if $(CONFIG_PACKAGE_nut-web-cgi),--with-gd-includes="`pkg-config --cflags gdlib`") \
+	$(if $(CONFIG_PACKAGE_nut-web-cgi),--with-gd-libs="`pkg-config --libs gdlib`")
 
 TARGET_CXXFLAGS += -std=c++98
 
