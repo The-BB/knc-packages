@@ -9,7 +9,8 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=ifstat
 PKG_VERSION:=1.1
-PKG_RELEASE:=5
+# net-snmp (libnetsnmp) bumped
+PKG_RELEASE:=6
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=http://gael.roualland.free.fr/ifstat/
