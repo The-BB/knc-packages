@@ -1,12 +1,9 @@
-commit b036203cbc27ef37c03ed1f8419d8d2b65e481f1 (HEAD -> master, origin/master, origin/HEAD)
-Author: Dirk Brenken <dev@brenken.org>
-Date:   Sun Jul 26 06:48:30 2026 +0200
+commit 649dff397166ee773c334553c43b111337132548 (HEAD -> master, origin/master, origin/HEAD)
+Author: Tianling Shen <cnsztl@immortalwrt.org>
+Date:   Mon Jul 27 12:00:52 2026 +0800
 
-    travelmate: fix loss of configured uplink mac address
+    geoipupdate: update to 8.0.0
     
-    - pass the station details to the "rev" call so the uplink section
-      stays resolved, fixes #30099
-    - the same empty trm_uplinkcfg also silently skipped disabling the uplink
-      after trm_maxretry was reached - fixed that too with this oneliner
+    Release note: https://github.com/maxmind/geoipupdate/releases/tag/v8.0.0
     
-    Signed-off-by: Dirk Brenken <dev@brenken.org>
+    Signed-off-by: Tianling Shen <cnsztl@immortalwrt.org>
