@@ -1,15 +1,13 @@
-commit bd08229d5e93b7753a384a49fa0258847988fc53 (HEAD -> master, origin/master, origin/HEAD)
-Author: Jan-Frederik Rieckers <rieckers@dfn.de>
-Date:   Sun Jul 19 10:41:03 2026 +0200
+commit 7933a6fe8e85ea0bd9bfe33126e0858962eb5128 (HEAD -> master, origin/master, origin/HEAD)
+Author: Alexandru Ardelean <alex@shruggie.ro>
+Date:   Tue Jul 28 11:43:36 2026 +0300
 
-    radsecproxy: add config options for UCI, fix escaping
+    freeradius3: fix recursive dependency from libopenssl-legacy
     
-    This adds more config options for use in UCI, esp. new configuration
-    options that were introduced in newer radsecproxy versions and it fixes
-    an escaping issue in the init script where a string containing single
-    quotes would still be escaped using single quotes, causing radsecproxy
-    to reject the config.
+    The 3.2.10 update made freeradius3-common select libopenssl-legacy, which
+    hard-depends on libopenssl; the generator propagates that onto common's
+    selectors (freeradius3, freeradius3-utils) as a FREERADIUS3_OPENSSL depends,
+    looping with the SSL choice. Declare the OpenSSL deps there too to break it.
     
-    This also bumps the PKG_RELEASE in the Makefile
-    
-    Signed-off-by: Jan-Frederik Rieckers <rieckers@dfn.de>
+    Fixes: https://github.com/openwrt/packages/pull/30081#issuecomment-5100951400
+    Signed-off-by: Alexandru Ardelean <alex@shruggie.ro>
