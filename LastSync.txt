@@ -1,9 +1,15 @@
-commit 649dff397166ee773c334553c43b111337132548 (HEAD -> master, origin/master, origin/HEAD)
-Author: Tianling Shen <cnsztl@immortalwrt.org>
-Date:   Mon Jul 27 12:00:52 2026 +0800
+commit bd08229d5e93b7753a384a49fa0258847988fc53 (HEAD -> master, origin/master, origin/HEAD)
+Author: Jan-Frederik Rieckers <rieckers@dfn.de>
+Date:   Sun Jul 19 10:41:03 2026 +0200
 
-    geoipupdate: update to 8.0.0
+    radsecproxy: add config options for UCI, fix escaping
     
-    Release note: https://github.com/maxmind/geoipupdate/releases/tag/v8.0.0
+    This adds more config options for use in UCI, esp. new configuration
+    options that were introduced in newer radsecproxy versions and it fixes
+    an escaping issue in the init script where a string containing single
+    quotes would still be escaped using single quotes, causing radsecproxy
+    to reject the config.
     
-    Signed-off-by: Tianling Shen <cnsztl@immortalwrt.org>
+    This also bumps the PKG_RELEASE in the Makefile
+    
+    Signed-off-by: Jan-Frederik Rieckers <rieckers@dfn.de>
