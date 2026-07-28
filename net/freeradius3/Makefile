@@ -10,7 +10,7 @@ include $(TOPDIR)/rules.mk
 PKG_NAME:=freeradius3
 PKG_VERSION:=3.2.10
 PKG_VERSION_UNDERSCORE:=$(subst .,_,${PKG_VERSION})
-PKG_RELEASE:=1
+PKG_RELEASE:=2
 
 PKG_SOURCE:=freeradius-server-$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=https://github.com/FreeRADIUS/freeradius-server/releases/download/release_$(PKG_VERSION_UNDERSCORE)/
@@ -48,7 +48,7 @@ endef
 
 define Package/freeradius3
   $(call Package/freeradius3/Default)
-  DEPENDS:=+freeradius3-common
+  DEPENDS:=+freeradius3-common +FREERADIUS3_OPENSSL:libopenssl +FREERADIUS3_OPENSSL:libopenssl-legacy
   TITLE:=A flexible RADIUS server (version 3)
 endef
 
@@ -65,7 +65,7 @@ endef
 define Package/freeradius3-common
   $(call Package/freeradius3/Default)
   TITLE:=common files
-  DEPENDS:= +USE_GLIBC:libpthread +USE_GLIBC:libbsd +FREERADIUS3_OPENSSL:libopenssl +libcap +libpcap +libncurses +libreadline +libtalloc +libatomic #+USE_GLIBC:libcrypt-compat
+  DEPENDS:=+USE_GLIBC:libpthread +USE_GLIBC:libbsd +FREERADIUS3_OPENSSL:libopenssl +FREERADIUS3_OPENSSL:libopenssl-legacy +libcap +libpcap +libncurses +libreadline +libtalloc +libatomic
 endef
 
 define Package/freeradius3-default
