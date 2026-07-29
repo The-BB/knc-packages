@@ -1,13 +1,11 @@
-commit efbd9b9820ac17b6e2f76ad696d7a1665f87dc49 (HEAD -> master, origin/master, origin/HEAD)
-Author: Josef Schlehofer <pepe.schlehofer@gmail.com>
-Date:   Wed Sep 24 11:56:25 2025 +0200
+commit 81a26b8d4214ff0d50465ef6c6623b758bf73909 (HEAD -> master, origin/master, origin/HEAD)
+Author: Alexandru Ardelean <alex@shruggie.ro>
+Date:   Tue Jul 28 15:12:25 2026 +0300
 
-    gperftools: allow building for powerpc
+    taglib: update to 2.3.1
     
-    Add pending patches submitted upstream, which fix the build failures
-    discovered on powerpc with musl, and drop the powerpc exclusion from
-    DEPENDS.
+    Update to the latest upstream stable release.
     
-    Patches are from https://github.com/gperftools/gperftools/pull/1616
+    Also, add backslash for CMake options, so that they get activated.
     
-    Signed-off-by: Josef Schlehofer <pepe.schlehofer@gmail.com>
+    Signed-off-by: Alexandru Ardelean <alex@shruggie.ro>
