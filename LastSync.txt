@@ -1,13 +1,13 @@
-commit 7933a6fe8e85ea0bd9bfe33126e0858962eb5128 (HEAD -> master, origin/master, origin/HEAD)
-Author: Alexandru Ardelean <alex@shruggie.ro>
-Date:   Tue Jul 28 11:43:36 2026 +0300
+commit efbd9b9820ac17b6e2f76ad696d7a1665f87dc49 (HEAD -> master, origin/master, origin/HEAD)
+Author: Josef Schlehofer <pepe.schlehofer@gmail.com>
+Date:   Wed Sep 24 11:56:25 2025 +0200
 
-    freeradius3: fix recursive dependency from libopenssl-legacy
+    gperftools: allow building for powerpc
     
-    The 3.2.10 update made freeradius3-common select libopenssl-legacy, which
-    hard-depends on libopenssl; the generator propagates that onto common's
-    selectors (freeradius3, freeradius3-utils) as a FREERADIUS3_OPENSSL depends,
-    looping with the SSL choice. Declare the OpenSSL deps there too to break it.
+    Add pending patches submitted upstream, which fix the build failures
+    discovered on powerpc with musl, and drop the powerpc exclusion from
+    DEPENDS.
     
-    Fixes: https://github.com/openwrt/packages/pull/30081#issuecomment-5100951400
-    Signed-off-by: Alexandru Ardelean <alex@shruggie.ro>
+    Patches are from https://github.com/gperftools/gperftools/pull/1616
+    
+    Signed-off-by: Josef Schlehofer <pepe.schlehofer@gmail.com>
