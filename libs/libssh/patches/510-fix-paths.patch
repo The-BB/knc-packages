@@ -44,7 +44,7 @@
              return NULL;
 --- a/src/dh-gex.c
 +++ b/src/dh-gex.c
-@@ -314,7 +314,7 @@ error:
+@@ -315,7 +315,7 @@ error:
  
  #ifdef WITH_SERVER
  
