@@ -1,11 +1,9 @@
-commit 81a26b8d4214ff0d50465ef6c6623b758bf73909 (HEAD -> master, origin/master, origin/HEAD)
-Author: Alexandru Ardelean <alex@shruggie.ro>
-Date:   Tue Jul 28 15:12:25 2026 +0300
+commit 12bb8b9cf936b5c72065b37e051c581692fb6230 (HEAD -> master, origin/master, origin/HEAD)
+Author: Michel Promonet <michel.promonet@free.fr>
+Date:   Sat Jul 25 17:40:32 2026 +0200
 
-    taglib: update to 2.3.1
+    v4l2camera: update to v0.3.2
+    - Sync with upstream release 0.3.2
+    - Fix indentation in v4l2camera.init
     
-    Update to the latest upstream stable release.
-    
-    Also, add backslash for CMake options, so that they get activated.
-    
-    Signed-off-by: Alexandru Ardelean <alex@shruggie.ro>
+    Signed-off-by: Michel Promonet <michel.promonet@free.fr>
