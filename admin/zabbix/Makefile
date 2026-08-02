@@ -566,9 +566,8 @@ endef
 define Package/zabbix-agent2/install
 	$(INSTALL_DIR) $(1)/opt/etc
 	$(CP) $(PKG_INSTALL_DIR)/opt/etc/zabbix_agent2.d $(1)/opt/etc/
-	$(INSTALL_CONF) $(PKG_INSTALL_DIR)/opt/etc/zabbix_agent2.conf $(1)/opt/etc/
-	$(INSTALL_DIR) $(1)/opt/sbin
-	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/opt/sbin/zabbix_agent2 $(1)/opt/sbin/
+	$(call Package/zabbix/install/etc,$(1),agent2)
+	$(call Package/zabbix/install/sbin,$(1),agent2)
 endef
 
 define Package/zabbix-agentd-basic/install
@@ -587,10 +586,10 @@ endef
 #endef
 
 define Package/zabbix-proxy/install
-	$(INSTALL_DIR) $(1)/etc/zabbix_proxy.conf.d
+	$(INSTALL_DIR) $(1)/opt/etc/zabbix_proxy.conf.d
 	$(call Package/zabbix/install/sbin,$(1),proxy)
 	$(call Package/zabbix/install/etc,$(1),proxy)
-	$(call Package/zabbix/install/init.d,$(1),proxy)
+#	$$(call Package/zabbix/install/init.d,$(1),proxy)
 #	$(INSTALL_DIR) $(1)/etc/config
 #	$(INSTALL_CONF) ./files/zabbix_proxy.config $(1)/etc/config/zabbix_proxy
 #	$(INSTALL_DIR) $(1)/etc/uci-defaults
