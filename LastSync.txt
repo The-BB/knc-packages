@@ -1,9 +1,17 @@
-commit 93f8e8cf7b56901aa331b47b88a78f45cb9d5ea5 (HEAD -> master, origin/master, origin/HEAD)
-Author: Lukas Voegl <lvoegl@tdt.de>
-Date:   Fri Jul 31 15:21:21 2026 +0200
+commit 927fc5ea54e81e1f2c472a40db6a1db9908bbe5e (HEAD -> master, origin/master, origin/HEAD)
+Author: Alexandru Ardelean <alex@shruggie.ro>
+Date:   Fri Jul 31 12:38:33 2026 +0300
 
-    libxmlb: update to 0.3.29
+    fluent-bit: fix HTTP output SIGSEGV on too-small coroutine stack
     
-    Release notes: https://github.com/hughsie/libxmlb/releases/tag/0.3.29
+    Each output flush runs in a coroutine whose stack was forced to 4096 (one
+    page). The HTTP output plugin overflows it and crashes with SIGSEGV after
+    the flush (issue #30113). Pin FLB_CORO_STACK_SIZE to upstream's own 64K
+    floor (FLB_CORO_STACK_SIZE_MIN_BYTE), which the musl-shrunk default undercuts.
     
-    Signed-off-by: Lukas Voegl <lvoegl@tdt.de>
+    Also add a regression test: drive the dummy input into the http output and
+    assert fluent-bit survives a few flush cycles instead of dying from a signal
+    (no listener needed -- the overflow happens while composing the request).
+    
+    Fixes: https://github.com/openwrt/packages/issues/30113
+    Signed-off-by: Alexandru Ardelean <alex@shruggie.ro>
