@@ -1,17 +1,28 @@
-commit 927fc5ea54e81e1f2c472a40db6a1db9908bbe5e (HEAD -> master, origin/master, origin/HEAD)
-Author: Alexandru Ardelean <alex@shruggie.ro>
-Date:   Fri Jul 31 12:38:33 2026 +0300
+commit 7885dff933e78a36108e277654df5accad953cdf (HEAD -> master, origin/master, origin/HEAD)
+Author: Michael Pfeifroth <micpf@westermo.com>
+Date:   Mon Aug 3 11:13:18 2026 +0200
 
-    fluent-bit: fix HTTP output SIGSEGV on too-small coroutine stack
+    modemmanager: skip virtual net devices in hotplug script
     
-    Each output flush runs in a coroutine whose stack was forced to 4096 (one
-    page). The HTTP output plugin overflows it and crashes with SIGSEGV after
-    the flush (issue #30113). Pin FLB_CORO_STACK_SIZE to upstream's own 64K
-    floor (FLB_CORO_STACK_SIZE_MIN_BYTE), which the musl-shrunk default undercuts.
+    Every net uevent - eth ports, USB hubs, bridges, taps, SQM IFB,
+    GRE tunnels, veth, tun/tap - is handed to mmcli via
+    25-modemmanager-net's mm_report_event call, so ModemManager logs a
+    'not supported by any plugin' notice per device on every boot and
+    hotplug replay:
     
-    Also add a regression test: drive the dummy input into the http output and
-    assert fluent-bit survives a few flush cycles instead of dying from a signal
-    (no listener needed -- the overflow happens while composing the request).
+      ModemManager[15132]: <msg> [base-manager] couldn't check support
+        for device '.../fsl-ehci.0/usb1/1-1/1-1.1':
+        not supported by any plugin
     
-    Fixes: https://github.com/openwrt/packages/issues/30113
-    Signed-off-by: Alexandru Ardelean <alex@shruggie.ro>
+    mm_report_event() already discards virtual devices internally, but
+    only after mm_log "info" has written a "hotplug: add network
+    interface XXX: event processed" line to daemon.info for every one
+    of them.
+    
+    Mirror the same guard in the hotplug script by exiting early when
+    DEVPATH points under /devices/virtual/*, which covers SQM IFB, GRE,
+    bridges, veth, tun/tap.  This never rejects a physical modem port
+    (kernel wwan, MHI, USB CDC/RNDIS/QMI/MBIM are all under real bus
+    subtrees).
+    
+    Signed-off-by: Michael Pfeifroth <micpf@westermo.com>
