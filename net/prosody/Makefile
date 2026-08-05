@@ -9,7 +9,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=prosody
 PKG_VERSION:=13.0.6
-PKG_RELEASE:=1
+PKG_RELEASE:=2
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=https://prosody.im/downloads/source
@@ -58,7 +58,7 @@ define Build/Configure
 		--ostype=linux \
 		--lua-version=5.4 \
 		--with-lua-bin="$(STAGING_DIR_HOSTPKG)/bin" \
-		--with-lua-include="$(STAGING_DIR)/opt/include" \
+		--with-lua-include="$(STAGING_DIR)/opt/include/lua5.4" \
 		--with-lua-lib="$(STAGING_DIR)/opt/lib" \
 		--runwith=lua5.4 \
 		--idn-library=idn \
