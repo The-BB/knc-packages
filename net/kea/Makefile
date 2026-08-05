@@ -216,10 +216,8 @@ ifeq ($(CONFIG_USE_GLIBC),y)
   TARGET_LDFLAGS += -lbsd
 endif
 
-# XXX musl: Error: branch out of range
-ifeq ($(CONFIG_USE_MUSL),y)
-  TARGET_CXXFLAGS:=$(filter-out -O%,$(TARGET_CXXFLAGS)) -Os
-endif
+# XXX Error: branch out of range
+TARGET_CXXFLAGS:=$(filter-out -O%,$(TARGET_CXXFLAGS)) -Os
 
 # XXX mips: .../cpp_int.hpp:836:7: error: statement is not a constant expression
 TARGET_CXXFLAGS += -std=c++17
