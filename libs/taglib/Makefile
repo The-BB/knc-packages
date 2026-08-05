@@ -7,7 +7,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=taglib
 PKG_VERSION:=2.3.1
-PKG_RELEASE:=1
+PKG_RELEASE:=2
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=https://github.com/taglib/taglib/releases/download/v$(PKG_VERSION)/
@@ -28,7 +28,7 @@ define Package/taglib
   CATEGORY:=Libraries
   TITLE:=taglib
   URL:=https://github.com/taglib/taglib
-  DEPENDS:=+zlib +libstdcpp
+  DEPENDS:=+zlib +libstdcpp +libatomic
 endef
 
 define Package/taglib/description
@@ -44,6 +44,8 @@ CMAKE_OPTIONS += \
 	-DBUILD_EXAMPLES=OFF \
 	-DBUILD_BINDINGS=OFF \
 	-DNO_ITUNES_HACKS=ON
+
+TARGET_LDFLAGS += -latomic
 
 define Build/InstallDev
 	$(call Build/InstallDev/cmake,$(1))
