@@ -1,28 +1,25 @@
-commit 7885dff933e78a36108e277654df5accad953cdf (HEAD -> master, origin/master, origin/HEAD)
-Author: Michael Pfeifroth <micpf@westermo.com>
-Date:   Mon Aug 3 11:13:18 2026 +0200
+commit 5c6578a8b37a68263aafa600a9d193d9ac8f27cc (HEAD -> master, origin/master, origin/HEAD)
+Author: Florian Eckert <fe@dev.tdt.de>
+Date:   Tue Aug 4 13:47:33 2026 +0200
 
-    modemmanager: skip virtual net devices in hotplug script
+    strongswan: swanctl.init: remove invalid privkeys option
     
-    Every net uevent - eth ports, USB hubs, bridges, taps, SQM IFB,
-    GRE tunnels, veth, tun/tap - is handed to mmcli via
-    25-modemmanager-net's mm_report_event call, so ModemManager logs a
-    'not supported by any plugin' notice per device on every boot and
-    hotplug replay:
+    The 'swanctl.conf' has no 'privkeys' option in
+    'connections.<conn>.local<suffix>'. The only local-round keys documented
+    for authentication are 'certs', 'cert<suffix>' and 'pubkeys'. Strongswan
+    does not let a connection reference a private key by name at all - swanctl
+    auto-selects the matching private key from '/etc/swanctl/private'
+    (or rsa/ecdsa/pkcs8) by comparing it against the certificate configured
+    via 'certs' when credentials are loaded.
     
-      ModemManager[15132]: <msg> [base-manager] couldn't check support
-        for device '.../fsl-ehci.0/usb1/1-1/1-1.1':
-        not supported by any plugin
+    Writing 'privkeys = $local_key' into the generated swanctl.conf is
+    therefore a no-op at best: the option is unknown to the parser and
+    gets silently dropped, so it never had any effect on which key was
+    used.
     
-    mm_report_event() already discards virtual devices internally, but
-    only after mm_log "info" has written a "hotplug: add network
-    interface XXX: event processed" line to daemon.info for every one
-    of them.
+    Drop the bogus assignment. The existing local_key validation making
+    sure the referenced file exists under '/etc/swanctl/private'. Since that's
+    still useful to catch misconfiguration early, and add a comment explaining
+    why nothing is written to swanctl.conf for it.
     
-    Mirror the same guard in the hotplug script by exiting early when
-    DEVPATH points under /devices/virtual/*, which covers SQM IFB, GRE,
-    bridges, veth, tun/tap.  This never rejects a physical modem port
-    (kernel wwan, MHI, USB CDC/RNDIS/QMI/MBIM are all under real bus
-    subtrees).
-    
-    Signed-off-by: Michael Pfeifroth <micpf@westermo.com>
+    Signed-off-by: Florian Eckert <fe@dev.tdt.de>
