@@ -1,25 +1,14 @@
-commit 5c6578a8b37a68263aafa600a9d193d9ac8f27cc (HEAD -> master, origin/master, origin/HEAD)
-Author: Florian Eckert <fe@dev.tdt.de>
-Date:   Tue Aug 4 13:47:33 2026 +0200
+commit 28da48b9cb2e0cbd6f904e08dc3aa42297c16e20 (HEAD -> master, origin/master, origin/HEAD)
+Author: Dirk Brenken <dev@brenken.org>
+Date:   Thu Aug 6 15:56:40 2026 +0200
 
-    strongswan: swanctl.init: remove invalid privkeys option
+    travelmate: release 2.4.7-1
     
-    The 'swanctl.conf' has no 'privkeys' option in
-    'connections.<conn>.local<suffix>'. The only local-round keys documented
-    for authentication are 'certs', 'cert<suffix>' and 'pubkeys'. Strongswan
-    does not let a connection reference a private key by name at all - swanctl
-    auto-selects the matching private key from '/etc/swanctl/private'
-    (or rsa/ecdsa/pkcs8) by comparing it against the certificate configured
-    via 'certs' when credentials are loaded.
+    * harden the connectivity check in f_net()
+    * drop the ineffective 'trm_netcheck' term from the minimum signal
+      quality branch in f_check()
+    * reset 'trm_connection' explicitly in the netcheck exit path
+    * log the affected uplink in the netcheck messages
+    * update and restructure the readme
     
-    Writing 'privkeys = $local_key' into the generated swanctl.conf is
-    therefore a no-op at best: the option is unknown to the parser and
-    gets silently dropped, so it never had any effect on which key was
-    used.
-    
-    Drop the bogus assignment. The existing local_key validation making
-    sure the referenced file exists under '/etc/swanctl/private'. Since that's
-    still useful to catch misconfiguration early, and add a comment explaining
-    why nothing is written to swanctl.conf for it.
-    
-    Signed-off-by: Florian Eckert <fe@dev.tdt.de>
+    Signed-off-by: Dirk Brenken <dev@brenken.org>
