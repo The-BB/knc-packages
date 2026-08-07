@@ -1,14 +1,16 @@
-commit 28da48b9cb2e0cbd6f904e08dc3aa42297c16e20 (HEAD -> master, origin/master, origin/HEAD)
-Author: Dirk Brenken <dev@brenken.org>
-Date:   Thu Aug 6 15:56:40 2026 +0200
+commit 0aba856a263c72969be0735987c83ce911974923 (HEAD -> master, origin/master, origin/HEAD)
+Author: Michael Pfeifroth <micpf@westermo.com>
+Date:   Fri Aug 7 13:28:22 2026 +0200
 
-    travelmate: release 2.4.7-1
+    openssh: reindent Package/<name> metadata blocks to 2 spaces
     
-    * harden the connectivity check in f_net()
-    * drop the ineffective 'trm_netcheck' term from the minimum signal
-      quality branch in f_check()
-    * reset 'trm_connection' explicitly in the netcheck exit path
-    * log the affected uplink in the netcheck messages
-    * update and restructure the readme
+    FormalityCheck expects package metadata lines inside 'define Package/<name>'
+    blocks to be indented with exactly 2 spaces. Historically this file used
+    tabs, which triggers the audit on any newly-touched line. Convert all
+    metadata lines in the plain 'define Package/<name>' blocks to 2 spaces so
+    future edits don't repeatedly trip the check.
     
-    Signed-off-by: Dirk Brenken <dev@brenken.org>
+    No functional change: recipe blocks (/install, /conffiles, /description)
+    retain their tab indentation as required by make.
+    
+    Signed-off-by: Michael Pfeifroth <micpf@westermo.com>
