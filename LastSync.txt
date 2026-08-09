@@ -1,16 +1,11 @@
-commit 0aba856a263c72969be0735987c83ce911974923 (HEAD -> master, origin/master, origin/HEAD)
-Author: Michael Pfeifroth <micpf@westermo.com>
-Date:   Fri Aug 7 13:28:22 2026 +0200
+commit 261d062ea9b3bc2cf6582f70f9bc7d1e45848dba (HEAD -> master, origin/master, origin/HEAD)
+Author: Daniel F. Dickinson <dfdpublic@wildtechgarden.ca>
+Date:   Sat Aug 8 18:09:46 2026 -0400
 
-    openssh: reindent Package/<name> metadata blocks to 2 spaces
+    radicale3: bump to v3.7.8
     
-    FormalityCheck expects package metadata lines inside 'define Package/<name>'
-    blocks to be indented with exactly 2 spaces. Historically this file used
-    tabs, which triggers the audit on any newly-touched line. Convert all
-    metadata lines in the plain 'define Package/<name>' blocks to 2 spaces so
-    future edits don't repeatedly trip the check.
+    This is a bugfix and enhancement release: https://github.com/Kozea/Radicale/releases/tag/v3.7.8
     
-    No functional change: recipe blocks (/install, /conffiles, /description)
-    retain their tab indentation as required by make.
+    It is intended to be the last of the 3.7.x series.
     
-    Signed-off-by: Michael Pfeifroth <micpf@westermo.com>
+    Signed-off-by: Daniel F. Dickinson <dfdpublic@wildtechgarden.ca>
