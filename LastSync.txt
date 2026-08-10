@@ -1,13 +1,12 @@
-commit d04b36bbba607e65072ecd0abfae5a89af468607 (HEAD -> master, origin/master, origin/HEAD)
-Author: Sergei S. <it4notice@proton.me>
-Date:   Sun Aug 2 19:56:02 2026 +0400
+commit 99a2de54f592faef7caa56c80e86510d51d1dd11 (HEAD -> master, origin/master, origin/HEAD)
+Author: Alexandru Ardelean <alex@shruggie.ro>
+Date:   Mon Aug 10 15:13:35 2026 +0300
 
-    hev-socks5-tunnel: allow multiple instances
+    python-typing-extensions: allow flit_core 4.x as the build backend
     
-    Add support for running multiple service instances.
-    - switch UCI config from a single named section to "instance" sections
-    - update the procd init script to start multiple instances
-    - migrate existing single-instance configurations during package upgrade (uci-defaults script)
-    - bump PKG_RELEASE
+    Like python-wheel, typing-extensions caps its build backend at
+    "flit_core >=3.11,<4", so python-typing-extensions/host fails with
+    "Missing dependencies: flit_core<4,>=3.11" now that the feed ships
+    flit-core 4.0.2. flit_core 4 builds it unchanged; relax the upper bound.
     
-    Signed-off-by: Sergei S. <it4notice@proton.me>
+    Signed-off-by: Alexandru Ardelean <alex@shruggie.ro>
