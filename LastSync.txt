@@ -1,9 +1,11 @@
-commit f46fc0fed089402718fe5b637007bd10eacfb1ba (HEAD -> master, origin/master, origin/HEAD)
+commit 06dd60f40e8553bf0e9cecdba8bf5769305b50c3 (HEAD -> master, origin/master, origin/HEAD)
 Author: Alexandru Ardelean <alex@shruggie.ro>
-Date:   Sun Aug 9 12:40:50 2026 +0300
+Date:   Sun Aug 9 21:07:30 2026 +0300
 
-    python-msgpack: add test script
+    bc: drop disable-doc patch for PKG_SUBDIRS
     
-    Add a CI test.sh exercising basic package functionality.
+    001-disable-doc.patch dropped the doc subdir (which needs makeinfo) from
+    SUBDIRS in Makefile.in. Use PKG_SUBDIRS:=lib bc dc, OpenWrt's wired-in knob
+    for restricting the build, to skip doc without patching.
     
     Signed-off-by: Alexandru Ardelean <alex@shruggie.ro>
