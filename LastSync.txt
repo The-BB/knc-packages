@@ -1,12 +1,9 @@
-commit 99a2de54f592faef7caa56c80e86510d51d1dd11 (HEAD -> master, origin/master, origin/HEAD)
+commit f46fc0fed089402718fe5b637007bd10eacfb1ba (HEAD -> master, origin/master, origin/HEAD)
 Author: Alexandru Ardelean <alex@shruggie.ro>
-Date:   Mon Aug 10 15:13:35 2026 +0300
+Date:   Sun Aug 9 12:40:50 2026 +0300
 
-    python-typing-extensions: allow flit_core 4.x as the build backend
+    python-msgpack: add test script
     
-    Like python-wheel, typing-extensions caps its build backend at
-    "flit_core >=3.11,<4", so python-typing-extensions/host fails with
-    "Missing dependencies: flit_core<4,>=3.11" now that the feed ships
-    flit-core 4.0.2. flit_core 4 builds it unchanged; relax the upper bound.
+    Add a CI test.sh exercising basic package functionality.
     
     Signed-off-by: Alexandru Ardelean <alex@shruggie.ro>
