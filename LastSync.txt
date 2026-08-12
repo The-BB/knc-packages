@@ -1,11 +1,13 @@
-commit 06dd60f40e8553bf0e9cecdba8bf5769305b50c3 (HEAD -> master, origin/master, origin/HEAD)
-Author: Alexandru Ardelean <alex@shruggie.ro>
-Date:   Sun Aug 9 21:07:30 2026 +0300
+commit 95875218de25e6340251910a8c996e5a811c69b8 (HEAD -> master, origin/master, origin/HEAD)
+Author: Josef Schlehofer <pepe.schlehofer@gmail.com>
+Date:   Wed Aug 12 08:00:03 2026 +0200
 
-    bc: drop disable-doc patch for PKG_SUBDIRS
+    librespeed-cli-rust: update to 0.1.1
     
-    001-disable-doc.patch dropped the doc subdir (which needs makeinfo) from
-    SUBDIRS in Makefile.in. Use PKG_SUBDIRS:=lib bc dc, OpenWrt's wired-in knob
-    for restricting the build, to skip doc without patching.
+    Brings the client in line with the fixes merged into the Go client: --json and
+    --csv end with a newline, --debug names the address each ICMP ping reached and
+    the spread of the samples, and the User-Agent carries the operating system and
+    architecture. Also tolerates a backend that answers getIP.php with an empty
+    rawIspInfo, which previously discarded the whole response.
     
-    Signed-off-by: Alexandru Ardelean <alex@shruggie.ro>
+    Signed-off-by: Josef Schlehofer <pepe.schlehofer@gmail.com>
