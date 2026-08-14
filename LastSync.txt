@@ -1,13 +1,17 @@
-commit 95875218de25e6340251910a8c996e5a811c69b8 (HEAD -> master, origin/master, origin/HEAD)
+commit 61972dae3af03f5f8ac757b9520eb6f2ebe2eb21 (HEAD -> master, origin/master, origin/HEAD)
 Author: Josef Schlehofer <pepe.schlehofer@gmail.com>
-Date:   Wed Aug 12 08:00:03 2026 +0200
+Date:   Mon Aug 10 09:56:58 2026 +0200
 
-    librespeed-cli-rust: update to 0.1.1
+    olsrd: record why the version check logs "Terminated"
     
-    Brings the client in line with the fixes merged into the Go client: --json and
-    --csv end with a newline, --debug names the address each ICMP ping reached and
-    the spread of the samples, and the User-Agent carries the operating system and
-    architecture. Also tolerates a backend that answers getIP.php with an empty
-    rawIspInfo, which previously discarded the whole response.
+    olsrd leaves through olsr_exit(), which ends the process with
+    raise(SIGTERM) rather than returning from main, so the shell reports
+    "Terminated" right after the version banner even for a plain
+    `olsrd -v`. The pipeline status comes from grep, so the check itself
+    is unaffected, but the line in the CI log looks like a failure to
+    anyone reading it.
+    
+    Note it in the script so the next reader does not go hunting.
     
     Signed-off-by: Josef Schlehofer <pepe.schlehofer@gmail.com>
+    Co-authored-by: Claude Fable 5 <noreply@anthropic.com>
