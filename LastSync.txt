@@ -1,17 +1,21 @@
-commit 61972dae3af03f5f8ac757b9520eb6f2ebe2eb21 (HEAD -> master, origin/master, origin/HEAD)
-Author: Josef Schlehofer <pepe.schlehofer@gmail.com>
-Date:   Mon Aug 10 09:56:58 2026 +0200
+commit 388c3b6ad460779406989575711686f81f17f332 (HEAD -> master, origin/master, origin/HEAD)
+Author: Josef Schlehofer <pepe@bloodkings.eu>
+Date:   Sat Aug 8 00:21:50 2026 +0200
 
-    olsrd: record why the version check logs "Terminated"
+    rust: build soft-float on soft-float PowerPC subtargets
     
-    olsrd leaves through olsr_exit(), which ends the process with
-    raise(SIGTERM) rather than returning from main, so the shell reports
-    "Terminated" right after the version banner even for a plain
-    `olsrd -v`. The pipeline status comes from grep, so the check itself
-    is unaffected, but the line in the CI log looks like a failure to
-    anyone reading it.
+    RUSTC_TARGET_ARCH comes from the GNU triple, so every 32-bit PowerPC
+    subtarget gets powerpc-unknown-linux-musl. That triple is hard-float and
+    mpc85xx is not: its e500v2 has no floating-point unit, and the toolchain
+    reports _SOFT_FLOAT and calls __divdf3 for a division.
     
-    Note it in the script so the next reader does not go hunting.
+    So rustc emits lfd, stfd and fdiv for a core with no floating-point
+    registers, and passes doubles in a way nothing else in the image does. It
+    does not fail outright — a speed test reported negative throughput, and
+    formatting one of those values tripped an assertion inside core.
     
-    Signed-off-by: Josef Schlehofer <pepe.schlehofer@gmail.com>
-    Co-authored-by: Claude Fable 5 <noreply@anthropic.com>
+    Pass -Ctarget-feature=-hard-float where CONFIG_SOFT_FLOAT says so. The same
+    flag has to reach the std that rust/host builds, or std and the packages
+    linked against it disagree about how a double is passed.
+    
+    Signed-off-by: Josef Schlehofer <pepe@bloodkings.eu>
