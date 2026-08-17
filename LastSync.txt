@@ -1,21 +1,10 @@
-commit 388c3b6ad460779406989575711686f81f17f332 (HEAD -> master, origin/master, origin/HEAD)
-Author: Josef Schlehofer <pepe@bloodkings.eu>
-Date:   Sat Aug 8 00:21:50 2026 +0200
+commit 77879deb5a4b5cc6bf3cc99dac8fd3037a1aa4a2 (HEAD -> master, origin/master, origin/HEAD)
+Author: Josef Schlehofer <pepe.schlehofer@gmail.com>
+Date:   Mon Aug 17 09:12:36 2026 +0200
 
-    rust: build soft-float on soft-float PowerPC subtargets
+    librespeed-cli: update to 1.0.14
     
-    RUSTC_TARGET_ARCH comes from the GNU triple, so every 32-bit PowerPC
-    subtarget gets powerpc-unknown-linux-musl. That triple is hard-float and
-    mpc85xx is not: its e500v2 has no floating-point unit, and the toolchain
-    reports _SOFT_FLOAT and calls __divdf3 for a division.
+    All twelve backported patches are part of this release, so dropping them.
+    Release notes: https://github.com/librespeed/speedtest-cli/releases/tag/v1.0.14
     
-    So rustc emits lfd, stfd and fdiv for a core with no floating-point
-    registers, and passes doubles in a way nothing else in the image does. It
-    does not fail outright — a speed test reported negative throughput, and
-    formatting one of those values tripped an assertion inside core.
-    
-    Pass -Ctarget-feature=-hard-float where CONFIG_SOFT_FLOAT says so. The same
-    flag has to reach the std that rust/host builds, or std and the packages
-    linked against it disagree about how a double is passed.
-    
-    Signed-off-by: Josef Schlehofer <pepe@bloodkings.eu>
+    Signed-off-by: Josef Schlehofer <pepe.schlehofer@gmail.com>
