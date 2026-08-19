@@ -1,10 +1,16 @@
-commit 77879deb5a4b5cc6bf3cc99dac8fd3037a1aa4a2 (HEAD -> master, origin/master, origin/HEAD)
-Author: Josef Schlehofer <pepe.schlehofer@gmail.com>
-Date:   Mon Aug 17 09:12:36 2026 +0200
+commit b11f5f2495c8a8eba49b8db27b43eefb42b0c76c (HEAD -> master, origin/master, origin/HEAD)
+Author: Daniel Golle <daniel@makrotopia.org>
+Date:   Sat Aug 15 05:45:18 2026 +0100
 
-    librespeed-cli: update to 1.0.14
+    comrade: add package
     
-    All twelve backported patches are part of this release, so dropping them.
-    Release notes: https://github.com/librespeed/speedtest-cli/releases/tag/v1.0.14
+    Serverless peer-to-peer terminal sharing: a host shares a tmux session
+    that a client joins with a token, over a hole-punched link discovered on
+    the mainline DHT or link-local multicast, wrapped in an end-to-end SSH
+    session with the host key pinned in the token.
     
-    Signed-off-by: Josef Schlehofer <pepe.schlehofer@gmail.com>
+    comrade adds no crypto of its own and follows whatever backend libssh
+    already links; OpenWrt's libssh uses mbedTLS, so this resolves to
+    monocypher.
+    
+    Signed-off-by: Daniel Golle <daniel@makrotopia.org>
