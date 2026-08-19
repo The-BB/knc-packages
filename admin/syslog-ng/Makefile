@@ -1,8 +1,8 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=syslog-ng
-PKG_VERSION:=4.11.0
-PKG_RELEASE:=1
+PKG_VERSION:=4.12.0
+PKG_RELEASE:=3
 
 PKG_MAINTAINER:=Josef Schlehofer <pepe.schlehofer@gmail.com>
 PKG_LICENSE:=LGPL-2.1-or-later GPL-2.0-or-later
@@ -11,7 +11,7 @@ PKG_CPE_ID:=cpe:/a:oneidentity:syslog-ng
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=https://github.com/syslog-ng/syslog-ng/releases/download/$(PKG_NAME)-$(PKG_VERSION)/
-PKG_HASH:=37ea0d4588533316de122df4e1b249867b0a0575f646c7478d0cc4d747462943
+PKG_HASH:=03a03d19ac203dca53c7ec79a7005c8a850665a95ff4cd0f1e7bb4c497c64d46
 
 PKG_BUILD_PARALLEL:=1
 PKG_INSTALL:=1
@@ -122,13 +122,14 @@ define Package/syslog-ng/install
 	rm -rf $(1)/opt/lib/pkgconfig \
 	$(1)/opt/lib/*.a \
 	$(1)/opt/include \
+	$(1)/opt/bin/syslog-ng-update-virtualenv \
 	$(1)/opt/man \
 	$(1)/opt/var
 
 	$(INSTALL_DIR) $(1)/opt/etc/init.d
 	$(INSTALL_BIN) ./files/S01syslog-ng $(1)/opt/etc/init.d
 	$(INSTALL_DIR) $(1)/opt/etc/syslog-ng.d
-	$(INSTALL_DATA) ./files/syslog-ng.conf $(1)/opt/etc
+	$(INSTALL_CONF) ./files/syslog-ng.conf $(1)/opt/etc
 	touch $(1)/opt/etc/syslog-ng.d/.keep
 
 	$(INSTALL_DIR) $(1)/opt/libexec
