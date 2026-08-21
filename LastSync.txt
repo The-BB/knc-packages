@@ -1,9 +1,11 @@
-commit 112e8576d6449f0b85bd87096dc47267f29ad246 (HEAD -> master, origin/master, origin/HEAD)
-Author: Vladimir Ermakov <vooon341@gmail.com>
-Date:   Wed Aug 19 10:33:02 2026 +0200
+commit b785b5c631d4a100fabe0fba1c34146be3275246 (HEAD -> master, origin/master, origin/HEAD)
+Author: Alexandru Ardelean <alex@shruggie.ro>
+Date:   Thu Aug 20 15:28:05 2026 +0300
 
-    coredns: update to 1.14.7
+    python-userpath: remove package
     
-    Changelog: https://github.com/coredns/coredns/releases/tag/v1.14.7
+    userpath adds to and removes from the user's PATH. Its only consumer in
+    the feed was pipx, which has just been removed, so python-userpath now
+    has no users. Remove it as well.
     
-    Signed-off-by: Vladimir Ermakov <vooon341@gmail.com>
+    Signed-off-by: Alexandru Ardelean <alex@shruggie.ro>
