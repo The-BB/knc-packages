@@ -207,7 +207,7 @@ define Package/nut-upsmon/install
 #	$(INSTALL_DIR) $(1)/etc/config
 #	$(INSTALL_CONF) ./files/nut_monitor $(1)/etc/config/nut_monitor
 #	ln -sf /var/etc/nut/upsmon.conf $(1)/etc/nut/upsmon.conf
-	$(INSTALL_DATA) ./files/nut-upsmon.default $(1)/etc/uci-defaults/90_nut-upsmon	$(INSTALL_DATA) ./files/nut-upsmon.default $(1)/etc/uci-defaults/90_nut-upsmon
+#	$(INSTALL_DATA) ./files/nut-upsmon.default $(1)/etc/uci-defaults/90_nut-upsmon	$(INSTALL_DATA) ./files/nut-upsmon.default $(1)/etc/uci-defaults/90_nut-upsmon
 	$(INSTALL_CONF) $(PKG_INSTALL_DIR)/opt/etc/nut/upsmon.conf.sample $(1)/opt/etc/nut/upsmon.conf
 endef
 
