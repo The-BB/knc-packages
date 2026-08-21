@@ -1,16 +1,9 @@
-commit 94deb2a1a9cb5ae61c42f017ba2838e9bd8ae96b (HEAD -> master, origin/master, origin/HEAD)
-Author: Dirk Brenken <dev@brenken.org>
-Date:   Tue Aug 18 20:49:20 2026 +0200
+commit 112e8576d6449f0b85bd87096dc47267f29ad246 (HEAD -> master, origin/master, origin/HEAD)
+Author: Vladimir Ermakov <vooon341@gmail.com>
+Date:   Wed Aug 19 10:33:02 2026 +0200
 
-    travelmate: release 2.4.8-1
+    coredns: update to 1.14.7
     
-    * distinguish an active run cycle from an idle daemon in the
-      runtime status: 'processing' is now only reported while f_main
-      is actually running, an idle daemon without uplink reports
-      'not connected' instead
-    * settle the status file at the end of f_main, so a leftover
-      'processing' does not survive into the sleep phase
-    * README: document the travelmate_status values and the LuCI
-      button behaviour
+    Changelog: https://github.com/coredns/coredns/releases/tag/v1.14.7
     
-    Signed-off-by: Dirk Brenken <dev@brenken.org>
+    Signed-off-by: Vladimir Ermakov <vooon341@gmail.com>
