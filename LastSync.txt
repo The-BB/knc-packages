@@ -1,11 +1,16 @@
-commit b785b5c631d4a100fabe0fba1c34146be3275246 (HEAD -> master, origin/master, origin/HEAD)
-Author: Alexandru Ardelean <alex@shruggie.ro>
-Date:   Thu Aug 20 15:28:05 2026 +0300
+commit 0521bb56793387788798e4a69b84d96766ed54e2 (HEAD -> master, origin/master, origin/HEAD)
+Author: Daniel Golle <daniel@makrotopia.org>
+Date:   Thu Aug 20 13:53:36 2026 +0100
 
-    python-userpath: remove package
+    ccid: update to 1.8.2
     
-    userpath adds to and removes from the user's PATH. Its only consumer in
-    the feed was pipx, which has just been removed, so python-userpath now
-    has no users. Remove it as well.
+    1.8.1:
+    - Correctly close the slots of a multi-slots reader
+    - Fix 3 minor issues found by AISLE in partnership with Red Hat
+    - Correctly report IFD_NO_SUCH_DEVICE in InterruptRead
     
-    Signed-off-by: Alexandru Ardelean <alex@shruggie.ro>
+    1.8.2:
+    - Fix initialisation of composite devices (like Yubico tokens)
+    - Correctly close the slots of a multi-slots reader (serial)
+    
+    Signed-off-by: Daniel Golle <daniel@makrotopia.org>
