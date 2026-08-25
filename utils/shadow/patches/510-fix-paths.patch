@@ -11,7 +11,7 @@
   * expire - force password change if password expired
 --- a/lib/getdef.c
 +++ b/lib/getdef.c
-@@ -173,7 +173,7 @@ static const char* vendordir = VENDORDIR
+@@ -178,7 +178,7 @@ static const char* vendordir = VENDORDIR
  #else
  static const char* vendordir = NULL;
  #endif
@@ -22,7 +22,7 @@
  #define LOGINDEFS "/opt/etc/login.defs"
 --- a/lib/limits.c
 +++ b/lib/limits.c
-@@ -39,7 +39,7 @@
+@@ -40,7 +40,7 @@
  
  
  #ifndef LIMITS_FILE
@@ -66,7 +66,7 @@
  #define	PORT_TIMES	24
 --- a/lib/setupenv.c
 +++ b/lib/setupenv.c
-@@ -235,7 +235,7 @@ void setup_env (struct passwd *info)
+@@ -157,7 +157,7 @@ void setup_env (struct passwd *info)
  
  	if (NULL == cp) {
  		/* not specified, use a minimal default */
@@ -88,7 +88,7 @@
  
 --- a/lib/sssd.c
 +++ b/lib/sssd.c
-@@ -27,7 +27,7 @@ sssd_flush_cache(int dbflags)
+@@ -26,7 +26,7 @@ sssd_flush_cache(int dbflags)
  	int          status, code, rv;
  	char         *p;
  	char         *sss_cache_args = NULL;
@@ -99,7 +99,7 @@
  	struct stat  sb;
 --- a/src/chsh.c
 +++ b/src/chsh.c
-@@ -38,7 +38,7 @@
+@@ -39,7 +39,7 @@
  
  
  #ifndef SHELLS_FILE
@@ -110,16 +110,16 @@
  #ifdef HAVE_VENDORDIR
 --- a/src/groupadd.c
 +++ b/src/groupadd.c
-@@ -636,7 +636,7 @@ int main (int argc, char **argv)
- 
- 	check_perms ();
+@@ -564,7 +564,7 @@ int main (int argc, char **argv)
+ 	 */
+ 	process_flags (argc, argv, &flags);
  
 -	if (run_parts ("/etc/shadow-maint/groupadd-pre.d", group_name,
 +	if (run_parts ("/opt/etc/shadow-maint/groupadd-pre.d", group_name,
  			Prog)) {
  		exit(1);
  	}
-@@ -659,7 +659,7 @@ int main (int argc, char **argv)
+@@ -587,7 +587,7 @@ int main (int argc, char **argv)
  
  	grp_update ();
  	close_files (&flags);
@@ -130,7 +130,7 @@
  	}
 --- a/src/groupdel.c
 +++ b/src/groupdel.c
-@@ -457,7 +457,7 @@ int main (int argc, char **argv)
+@@ -395,7 +395,7 @@ int main (int argc, char **argv)
  		group_busy (group_id);
  	}
  
@@ -139,7 +139,7 @@
  			Prog)) {
  		exit(1);
  	}
-@@ -472,7 +472,7 @@ int main (int argc, char **argv)
+@@ -410,7 +410,7 @@ int main (int argc, char **argv)
  
  	close_files (&flags);
  
@@ -150,7 +150,7 @@
  	}
 --- a/src/login_nopam.c
 +++ b/src/login_nopam.c
-@@ -69,7 +69,7 @@
+@@ -72,7 +72,7 @@
  
   /* Path name of the access control file. */
  #ifndef	TABLE
@@ -159,20 +159,9 @@
  #endif
  
  static bool list_match (char *list, const char *item, bool (*match_fn) (char *, const char *));
---- a/src/logoutd.c
-+++ b/src/logoutd.c
-@@ -37,7 +37,7 @@ static const char Prog[] = "logoutd";
- #endif
- 
- #ifndef HUP_MESG_FILE
--#define HUP_MESG_FILE "/etc/logoutd.mesg"
-+#define HUP_MESG_FILE "/opt/etc/logoutd.mesg"
- #endif
- 
- 
 --- a/src/su.c
 +++ b/src/su.c
-@@ -951,7 +951,7 @@ static void set_environment (struct pass
+@@ -928,7 +928,7 @@ static void set_environment (struct pass
  
  	cp = getdef_str ((pw->pw_uid == 0) ? "ENV_SUPATH" : "ENV_PATH");
  	if (NULL == cp) {
@@ -183,7 +172,7 @@
  	} else {
 --- a/src/suauth.c
 +++ b/src/suauth.c
-@@ -27,7 +27,7 @@
+@@ -29,7 +29,7 @@
  
  
  #ifndef SUAUTHFILE
@@ -232,16 +221,16 @@
  				     && !streq(optarg, "/sbin/nologin")
  				     && !streq(optarg, "/usr/sbin/nologin")
  				     && (   stat(optarg, &st) != 0
-@@ -2495,7 +2496,7 @@ int main (int argc, char **argv)
- 	    (!user_id || (user_id <= uid_max && user_id >= uid_min));
- #endif				/* ENABLE_SUBIDS */
+@@ -2504,7 +2505,7 @@ int main (int argc, char **argv)
+ 	process_flags (argc, argv, &flags);
+ 	process_selinux = !flags.chroot && !flags.prefix;
  
 -	if (run_parts ("/etc/shadow-maint/useradd-pre.d", user_name,
 +	if (run_parts ("/opt/etc/shadow-maint/useradd-pre.d", user_name,
  			"useradd")) {
  		exit(1);
  	}
-@@ -2702,7 +2703,7 @@ int main (int argc, char **argv)
+@@ -2675,7 +2676,7 @@ int main (int argc, char **argv)
  		create_mail (&flags);
  	}
  
@@ -252,7 +241,7 @@
  	}
 --- a/src/userdel.c
 +++ b/src/userdel.c
-@@ -1053,7 +1053,7 @@ int main (int argc, char **argv)
+@@ -965,7 +965,7 @@ int main (int argc, char **argv)
  	{
  		const struct passwd *pwd;
  
@@ -261,7 +250,7 @@
  				"userdel")) {
  			exit(1);
  		}
-@@ -1230,7 +1230,7 @@ int main (int argc, char **argv)
+@@ -1136,7 +1136,7 @@ int main (int argc, char **argv)
  		user_cancel (user_name);
  	close_files (&flags);
  
@@ -272,7 +261,7 @@
  
 --- a/src/usermod.c
 +++ b/src/usermod.c
-@@ -1185,6 +1185,7 @@ process_flags(int argc, char **argv, str
+@@ -1189,6 +1189,7 @@ process_flags(int argc, char **argv, str
  				}
  				if (!streq(optarg, "")
  				     && '*'  != optarg[0]

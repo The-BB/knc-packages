@@ -1,6 +1,6 @@
 --- a/lib/defines.h
 +++ b/lib/defines.h
-@@ -137,19 +137,19 @@
+@@ -84,19 +84,19 @@
  #define WEEK (7*DAY)
  
  #ifndef PASSWD_FILE
