@@ -1,20 +1,12 @@
-commit 89f358cf36f4b45a0ed5d1411184a5de8be936c6 (HEAD -> master, origin/master, origin/HEAD)
-Author: Alexandru Ardelean <alex@shruggie.ro>
-Date:   Thu Aug 20 21:01:43 2026 +0300
+commit a583d91170c55c0cedc1d41cb46037992e11eecb (HEAD -> master, origin/master, origin/HEAD)
+Author: Dharmik Parmar <dharmikparmar2004@yahoo.com>
+Date:   Tue Aug 25 23:59:40 2026 +0530
 
-    tcpreplay: fix CI tests for the QEMU runtime
+    sqm-scripts: update to 1.8.0
     
-    The generic per-executable version probe and the old test.sh both invoke
-    tcpreplay --version. Under the QEMU test runtime tcpreplay and
-    tcpreplay-edit abort at startup on the interface link probe
-    ("eth0: SIOCETHTOOL(ETHTOOL_GLINK) ioctl failed: Not a tty") before
-    autoopts can print the version, which fails the tcpreplay-all test and
-    warns on the standalone tcpreplay/tcpreplay-edit packages.
+    Update sqm-scripts to the 1.8.0 release.
     
-    Add a test-version.sh that disables the flaky generic probe and asserts
-    each tool's version without needing an interface, and rewrite test.sh to
-    exercise the file-processing core (tcpcapinfo dissect, tcprewrite edit,
-    tcpprep cache) on a small synthesized capture instead of shelling out to
-    --version, which the CI infrastructure already covers.
+    This release replaces the iptables-based marking rules with native
+    nftables rules. Replace the iptables dependencies with nftables to match.
     
-    Signed-off-by: Alexandru Ardelean <alex@shruggie.ro>
+    Signed-off-by: Dharmik Parmar <dharmikparmar2004@yahoo.com>
