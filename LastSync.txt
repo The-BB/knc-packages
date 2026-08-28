@@ -1,12 +1,18 @@
-commit a583d91170c55c0cedc1d41cb46037992e11eecb (HEAD -> master, origin/master, origin/HEAD)
-Author: Dharmik Parmar <dharmikparmar2004@yahoo.com>
-Date:   Tue Aug 25 23:59:40 2026 +0530
+commit bdcd738a1b9d99f311f6af376a820ce139393523 (HEAD -> master, origin/master, origin/HEAD)
+Author: Daniel Golle <daniel@makrotopia.org>
+Date:   Fri Aug 28 09:19:13 2026 +0100
 
-    sqm-scripts: update to 1.8.0
+    libssh: fix big-endian -R forwarding and crash without entropy source
     
-    Update sqm-scripts to the 1.8.0 release.
+    On big-endian hosts the server parsed every tcpip-forward bind port as
+    zero and bound an ephemeral port, so -R remote forwarding never carried
+    a connection. With no usable entropy source the library crashed inside
+    mbedtls instead of failing cleanly.
     
-    This release replaces the iptables-based marking rules with native
-    nftables rules. Replace the iptables dependencies with nftables to match.
+    Patches 2-4 were sent upstream to the libssh mailing list:
+    https://archive.libssh.org/libssh/2026-08/0000000.html
+    https://archive.libssh.org/libssh/2026-08/0000001.html
+    Patch 1 backports the seed-failure error path they depend on from
+    upstream master commit ac4b723c.
     
-    Signed-off-by: Dharmik Parmar <dharmikparmar2004@yahoo.com>
+    Signed-off-by: Daniel Golle <daniel@makrotopia.org>
