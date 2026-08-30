@@ -1,18 +1,12 @@
-commit bdcd738a1b9d99f311f6af376a820ce139393523 (HEAD -> master, origin/master, origin/HEAD)
-Author: Daniel Golle <daniel@makrotopia.org>
-Date:   Fri Aug 28 09:19:13 2026 +0100
+commit dee7db4e60378bed611083f87258a86b1b4d4406 (HEAD -> master, origin/master, origin/HEAD)
+Author: Chester A. Unal <chester.a.unal@arinc9.com>
+Date:   Sat Aug 29 19:05:25 2026 +0100
 
-    libssh: fix big-endian -R forwarding and crash without entropy source
+    bsbf-resources: update to GIT HEAD of 2026-08-29
     
-    On big-endian hosts the server parsed every tcpip-forward bind port as
-    zero and bound an ephemeral port, so -R remote forwarding never carried
-    a connection. With no usable entropy source the library crashed inside
-    mbedtls instead of failing cleanly.
+    Update bsbf-resources to the GIT HEAD of 2026-08-29.
     
-    Patches 2-4 were sent upstream to the libssh mailing list:
-    https://archive.libssh.org/libssh/2026-08/0000000.html
-    https://archive.libssh.org/libssh/2026-08/0000001.html
-    Patch 1 backports the seed-failure error path they depend on from
-    upstream master commit ac4b723c.
+    - files/usr/sbin/bsbf-bonding:
+      - Adjust to new xray configuration.
     
-    Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+    Signed-off-by: Chester A. Unal <chester.a.unal@arinc9.com>
