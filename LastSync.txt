@@ -1,20 +1,28 @@
-commit 5f54a2b916cfc13b80ff094c98f43aa40f3769af (HEAD -> master, origin/master, origin/HEAD)
-Author: Toke Høiland-Jørgensen <toke@toke.dk>
-Date:   Mon Aug 31 10:55:12 2026 +0200
+commit fbde5d1e31608aa13ad779f97da793e841bc214f (HEAD -> master, origin/master, origin/HEAD)
+Author: Daniel Golle <daniel@makrotopia.org>
+Date:   Wed Sep 2 15:15:02 2026 +0100
 
-    net/acme-acmesh: prevent concurrent execution of acme.sh instances
+    libdht: update to 2026-09-01
     
-    After switching ACME to being run through procd, individual ACME
-    instances are now executed in parallel instead of sequentially. This
-    causes acme.sh to become confused in certain cases. Petr reported that
-    certificate files ended up with the wrong contents after updating to
-    OpenWrt 25.12.
+    Two fixes to the maintenance and search timers, both of which cost a
+    node contacts it should have had.
     
-    Fix this by wrapping the acme.sh execution in a global `flock` keyed on
-    a file in the state directory. The procd instances will still run in
-    parallel, but they'll all serialise on the same lock, so only one
-    acme.sh instance will run at a time.
+    Neighbourhood maintenance for both address families was gated on a
+    single flag that either family's bucket maintenance could set.  Bucket
+    maintenance only confirms nodes that are already known, while
+    neighbourhood maintenance is what grows the table, so a family whose
+    nodes never answer held back table growth for the other family too.  A
+    node with no route for one family still holds addresses of that family,
+    because they arrive in the replies of the other, so this reaches any
+    single-stack node on a dual-stack build.  Each family is now gated on
+    its own bucket maintenance, and the number of queries per round is
+    unchanged.
     
-    Fixes: 76b676e4ebbb ("acme.sh: move to procd to ensure logging gets to syslog")
-    Reported-by: Petr Novák <petrn@me.com>
-    Signed-off-by: Toke Høiland-Jørgensen <toke@toke.dk>
+    A search step scheduled for exactly its due second returned without
+    sending anything, because the comparison required the second to have
+    passed rather than arrived.  The early return left the step time alone,
+    so the search then waited another full interval having sent nothing.
+    
+    Reset PKG_RELEASE, since the source version changed.
+    
+    Signed-off-by: Daniel Golle <daniel@makrotopia.org>
