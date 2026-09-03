@@ -1,28 +1,13 @@
-commit fbde5d1e31608aa13ad779f97da793e841bc214f (HEAD -> master, origin/master, origin/HEAD)
-Author: Daniel Golle <daniel@makrotopia.org>
-Date:   Wed Sep 2 15:15:02 2026 +0100
+commit 4335f00bdd790b8bc89b1e5c3dd4b9f225d131b0 (HEAD -> master, origin/master, origin/HEAD)
+Author: George Sapkin <george@sapk.in>
+Date:   Wed Sep 2 15:30:14 2026 +0300
 
-    libdht: update to 2026-09-01
+    golang: add support for host-only version series
     
-    Two fixes to the maintenance and search timers, both of which cost a
-    node contacts it should have had.
+    Support configuring major version series as host-only (i.e. no target
+    packages) to reduce strain on buildbots in release branches. The goal is to
+    have one major target series and multiple host-only ones. E.g. 25.12 uses
+    1.26 as the default host/target series and 1.27 and beyond as host-only for
+    packages that require these.
     
-    Neighbourhood maintenance for both address families was gated on a
-    single flag that either family's bucket maintenance could set.  Bucket
-    maintenance only confirms nodes that are already known, while
-    neighbourhood maintenance is what grows the table, so a family whose
-    nodes never answer held back table growth for the other family too.  A
-    node with no route for one family still holds addresses of that family,
-    because they arrive in the replies of the other, so this reaches any
-    single-stack node on a dual-stack build.  Each family is now gated on
-    its own bucket maintenance, and the number of queries per round is
-    unchanged.
-    
-    A search step scheduled for exactly its due second returned without
-    sending anything, because the comparison required the second to have
-    passed rather than arrived.  The early return left the step time alone,
-    so the search then waited another full interval having sent nothing.
-    
-    Reset PKG_RELEASE, since the source version changed.
-    
-    Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+    Signed-off-by: George Sapkin <george@sapk.in>
