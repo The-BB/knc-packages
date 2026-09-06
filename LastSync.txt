@@ -1,13 +1,9 @@
-commit 4335f00bdd790b8bc89b1e5c3dd4b9f225d131b0 (HEAD -> master, origin/master, origin/HEAD)
-Author: George Sapkin <george@sapk.in>
-Date:   Wed Sep 2 15:30:14 2026 +0300
+commit 90a18faa071228fd7e2697d61449d210cc2eeb13 (HEAD -> master, origin/master, origin/HEAD)
+Author: Romain Isnel <ri@frmg.eu>
+Date:   Wed Sep 2 13:11:46 2026 +0200
 
-    golang: add support for host-only version series
+    msmtp: update to 1.8.34
     
-    Support configuring major version series as host-only (i.e. no target
-    packages) to reduce strain on buildbots in release branches. The goal is to
-    have one major target series and multiple host-only ones. E.g. 25.12 uses
-    1.26 as the default host/target series and 1.27 and beyond as host-only for
-    packages that require these.
+    Release note: https://marlam.de/msmtp/news/msmtp-1-8-34/
     
-    Signed-off-by: George Sapkin <george@sapk.in>
+    Signed-off-by: Romain Isnel <ri@frmg.eu>
