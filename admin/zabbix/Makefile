@@ -11,7 +11,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=zabbix
 PKG_VERSION:=7.0.30
-PKG_RELEASE:=1
+PKG_RELEASE:=2
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=https://cdn.zabbix.com/zabbix/sources/stable/$(basename $(PKG_VERSION))/ \
@@ -536,12 +536,6 @@ define Package/zabbix-agentd/conffiles
 /opt/etc/zabbix_agentd.conf.d/
 endef
 
-#define Package/zabbix-agentd/postinst
-##!/bin/sh
-#[ -n "$${IPKG_INSTROOT}" ] || (. /etc/uci-defaults/90_zabbix_agentd) && rm -f /etc/uci-defaults/90_zabbix_agentd
-#exit 0
-#endef
-
 define Package/zabbix-agentd/install
 	$(INSTALL_DIR) $(1)/opt/etc/zabbix_agentd.conf.d
 	$(INSTALL_DIR) $(1)/opt/share/zabbix_agentd.openwrt-params.d
@@ -555,7 +549,6 @@ define Package/zabbix-agentd/install
 endef
 
 Package/zabbix-agentd-basic/conffiles=$(call Package/zabbix-agentd/conffiles)
-Package/zabbix-agentd-basic/postinst=$(call Package/zabbix-agentd/postinst)
 
 # zabbix_agent2
 define Package/zabbix-agent2/conffiles
@@ -579,12 +572,6 @@ define Package/zabbix-proxy/conffiles
 /opt/etc/zabbix_proxy.conf.d/
 endef
 
-#define Package/zabbix-proxy/postinst
-##!/bin/sh
-#[ -n "$${IPKG_INSTROOT}" ] || (. /etc/uci-defaults/90_zabbix_proxy) && rm -f /etc/uci-defaults/90_zabbix_proxy
-#exit 0
-#endef
-
 define Package/zabbix-proxy/install
 	$(INSTALL_DIR) $(1)/opt/etc/zabbix_proxy.conf.d
 	$(call Package/zabbix/install/sbin,$(1),proxy)
@@ -597,7 +584,6 @@ define Package/zabbix-proxy/install
 endef
 
 Package/zabbix-proxy-basic-sqlite/conffiles=$(call Package/zabbix-proxy/conffiles)
-Package/zabbix-proxy-basic-sqlite/postinst=$(call Package/zabbix-proxy/postinst)
 
 define Package/zabbix-proxy-basic-sqlite/install
 	$(call Package/zabbix-proxy/install,$(1))
@@ -618,12 +604,6 @@ define Package/zabbix-server/install
 #	$(INSTALL_DIR) $(1)/etc/uci-defaults
 #	$(INSTALL_BIN) ./files/zabbix_server.defaults $(1)/etc/uci-defaults/90_zabbix_server
 endef
-
-#define Package/zabbix-server/postinst
-##!/bin/sh
-#[ -n "$${IPKG_INSTROOT}" ] || (. /etc/uci-defaults/90_zabbix_server) && rm -f /etc/uci-defaults/90_zabbix_server
-#exit 0
-#endef
 
 define Package/zabbix-get/install
 	$(call Package/zabbix/install/bin,$(1),get)
