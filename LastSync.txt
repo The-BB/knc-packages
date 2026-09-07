@@ -1,9 +1,23 @@
-commit 90a18faa071228fd7e2697d61449d210cc2eeb13 (HEAD -> master, origin/master, origin/HEAD)
-Author: Romain Isnel <ri@frmg.eu>
-Date:   Wed Sep 2 13:11:46 2026 +0200
+commit 1056fa0f705e8ccdfed3ac252d4fe5e119871a70 (HEAD -> master, origin/master, origin/HEAD)
+Author: Dengfeng Liu <liudf0716@gmail.com>
+Date:   Sun Sep 6 12:17:53 2026 +0800
 
-    msmtp: update to 1.8.34
+    apfree-wifidog: update to 9.09.2938
     
-    Release note: https://marlam.de/msmtp/news/msmtp-1-8-34/
+    Highlights of this release:
     
-    Signed-off-by: Romain Isnel <ri@frmg.eu>
+    - eBPF captive DNS fast-answer: LAN DNS queries for captive detection
+      domains are answered at wire speed from a pinned BPF map (default
+      1.1.1.1) while the query still reaches dnsmasq, so captive portal
+      detection works when the router is offline
+    - Real IPs are learned back into the map from snooped upstream DNS
+      responses; the dnsmasq aw-captive-domains-hosts mechanism and its
+      restart dance are removed (one-time migration at startup)
+    - Always start HTTP/HTTPS service threads (fix dangling gencb arg);
+      sync trusted MACs into eBPF mac_map; portal DNS consumer
+      auto-reconnects when aw-bpf reloads
+    
+    Maintainer: me
+    Compile tested: aarch64_cortex-a53 (chawrt 25.12 / OpenWrt snapshot)
+    
+    Signed-off-by: Dengfeng Liu <liudf0716@gmail.com>
