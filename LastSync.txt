@@ -1,23 +1,13 @@
-commit 1056fa0f705e8ccdfed3ac252d4fe5e119871a70 (HEAD -> master, origin/master, origin/HEAD)
-Author: Dengfeng Liu <liudf0716@gmail.com>
-Date:   Sun Sep 6 12:17:53 2026 +0800
+commit 00ea9414cab3161e41ec4f7957357a06272f1a31 (HEAD -> master, origin/master, origin/HEAD)
+Author: Florian Eckert <fe@dev.tdt.de>
+Date:   Wed Jun 24 17:00:01 2026 +0200
 
-    apfree-wifidog: update to 9.09.2938
+    curl: add krb5 support
     
-    Highlights of this release:
+    Enable Kerberos authentication support in curl by including krb5-libs.
+    This allows curl to handle GSSAPI/Kerberos authentication protocols,
+    enhancing compatibility with enterprise environments.
     
-    - eBPF captive DNS fast-answer: LAN DNS queries for captive detection
-      domains are answered at wire speed from a pinned BPF map (default
-      1.1.1.1) while the query still reaches dnsmasq, so captive portal
-      detection works when the router is offline
-    - Real IPs are learned back into the map from snooped upstream DNS
-      responses; the dnsmasq aw-captive-domains-hosts mechanism and its
-      restart dance are removed (one-time migration at startup)
-    - Always start HTTP/HTTPS service threads (fix dangling gencb arg);
-      sync trusted MACs into eBPF mac_map; portal DNS consumer
-      auto-reconnects when aw-bpf reloads
+    The feature is disabled by default to avoid unnecessary dependencies.
     
-    Maintainer: me
-    Compile tested: aarch64_cortex-a53 (chawrt 25.12 / OpenWrt snapshot)
-    
-    Signed-off-by: Dengfeng Liu <liudf0716@gmail.com>
+    Signed-off-by: Florian Eckert <fe@dev.tdt.de>
