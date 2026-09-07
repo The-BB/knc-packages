@@ -75,4 +75,4 @@ define Package/librespeed-common/install
 	$(INSTALL_BIN) ./files/librespeed.init $(1)/etc/init.d/librespeed
 endef
 
-$(eval $(call BuildPackage,librespeed-common))
+#$(eval $(call BuildPackage,librespeed-common))
