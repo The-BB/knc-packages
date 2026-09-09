@@ -1,13 +1,17 @@
-commit 00ea9414cab3161e41ec4f7957357a06272f1a31 (HEAD -> master, origin/master, origin/HEAD)
-Author: Florian Eckert <fe@dev.tdt.de>
-Date:   Wed Jun 24 17:00:01 2026 +0200
+commit aca7007595f4a5d468938cf8e1fea889ba7b5067 (HEAD -> master, origin/master, origin/HEAD)
+Author: Dirk Brenken <dev@brenken.org>
+Date:   Tue Sep 8 17:58:17 2026 +0200
 
-    curl: add krb5 support
+    banip: release 1.8.13
     
-    Enable Kerberos authentication support in curl by including krb5-libs.
-    This allows curl to handle GSSAPI/Kerberos authentication protocols,
-    enhancing compatibility with enterprise environments.
+    - f_getup() collects the wan state in one pass and diffs the uplink against
+      the local allowlist
+    - new f_refresh() patches only the changed allowlist Set elements
+       in a single atomic nft transaction, without touching the running instance
+    - the procd trigger calls start refresh, start_service() picks the path, a manual start is unaffected
+    - wan6 in ban_trigger is supported now
+    - updatted the README and moved to the package root
+    - LuCI: reworked the feed editor, get rid of custom css
     
-    The feature is disabled by default to avoid unnecessary dependencies.
-    
-    Signed-off-by: Florian Eckert <fe@dev.tdt.de>
+    Signed-off-by: Dirk Brenken dev@brenken.org
+    Signed-off-by: Dirk Brenken <dev@brenken.org>
