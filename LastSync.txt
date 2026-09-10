@@ -1,17 +1,10 @@
-commit aca7007595f4a5d468938cf8e1fea889ba7b5067 (HEAD -> master, origin/master, origin/HEAD)
+commit ba4e7795e6fa17001cc26b17dd3da5b2115b4fab (HEAD -> master, origin/master, origin/HEAD)
 Author: Dirk Brenken <dev@brenken.org>
-Date:   Tue Sep 8 17:58:17 2026 +0200
+Date:   Wed Sep 9 22:54:49 2026 +0200
 
-    banip: release 1.8.13
+    travelmate: update 2.4.9-2
     
-    - f_getup() collects the wan state in one pass and diffs the uplink against
-      the local allowlist
-    - new f_refresh() patches only the changed allowlist Set elements
-       in a single atomic nft transaction, without touching the running instance
-    - the procd trigger calls start refresh, start_service() picks the path, a manual start is unaffected
-    - wan6 in ban_trigger is supported now
     - updatted the README and moved to the package root
-    - LuCI: reworked the feed editor, get rid of custom css
+    - LuCI: fix blank pages on footstrap theme navigation
     
-    Signed-off-by: Dirk Brenken dev@brenken.org
     Signed-off-by: Dirk Brenken <dev@brenken.org>
