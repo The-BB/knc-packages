@@ -1,10 +1,16 @@
-commit ba4e7795e6fa17001cc26b17dd3da5b2115b4fab (HEAD -> master, origin/master, origin/HEAD)
-Author: Dirk Brenken <dev@brenken.org>
-Date:   Wed Sep 9 22:54:49 2026 +0200
+commit bd5899b75a6fa756e6b5d21190d436cc3bd1bbdb (HEAD -> master, origin/master, origin/HEAD)
+Author: Daniel Golle <daniel@makrotopia.org>
+Date:   Thu Sep 10 15:45:16 2026 +0100
 
-    travelmate: update 2.4.9-2
+    cryptsetup: update to 2.8.8
     
-    - updatted the README and moved to the package root
-    - LuCI: fix blank pages on footstrap theme navigation
+    Stable bug-fix release. It avoids a TOCTOU issue in LUKS header restore
+    by opening the header file only once, hardens BITLK metadata validation
+    against crafted images, fixes an integer overflow in the anti-forensic
+    data size calculation on 32-bit systems and a memory corruption in
+    reencrypt init with more than 16 active LUKS2 keyslots or tokens, and
+    adds keyed discards to integritysetup (--allow-discards-keyed, Linux
+    7.3 or later).
     
-    Signed-off-by: Dirk Brenken <dev@brenken.org>
+    Link: https://gitlab.com/cryptsetup/cryptsetup/-/blob/v2.8.8/docs/v2.8.8-ReleaseNotes
+    Signed-off-by: Daniel Golle <daniel@makrotopia.org>
