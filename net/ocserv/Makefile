@@ -1,34 +1,36 @@
 #
-# Copyright (C) 2007-2011 OpenWrt.org
+# Copyright (C) 2007-2026 OpenWrt.org
 #
 # This is free software, licensed under the GNU General Public License v2.
 # See /LICENSE for more information.
 #
 
-# Entware specific: remove deps USE_GLIBC:libcrypt-compat
+# Entware specific: remove deps USE_GLIBC:libcrypt-compat;
+# -Dfirewall-script=iptables
 
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=ocserv
-PKG_VERSION:=1.4.1
-PKG_RELEASE:=2
+PKG_VERSION:=1.5.0
+PKG_RELEASE:=1
 PKG_BUILD_FLAGS:=no-mips16
 
-PKG_BUILD_DIR :=$(BUILD_DIR)/$(PKG_NAME)-$(PKG_VERSION)
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.xz
 PKG_SOURCE_URL:=https://www.infradead.org/ocserv/download/
-PKG_HASH:=54a0e036421ef81556d5a573f13e123166e8fa9679e9a0877f5ef0c472128553
+PKG_HASH:=42ced08958b9576ab134fcb7bdc7f8df5e13214fd147855f99021fedcf0eedbe
 
 PKG_LICENSE:=GPL-2.0-or-later
 PKG_LICENSE_FILES:=COPYING
-#PKG_FIXUP:=autoreconf
 
 PKG_CONFIG_DEPENDS:= \
 	CONFIG_OCSERV_PAM \
 	CONFIG_OCSERV_SECCOMP \
-	CONFIG_OCSERV_PROTOBUF
+	CONFIG_OCSERV_PROTOBUF \
+	CONFIG_OCSERV_RADIUS \
+	CONFIG_OCSERV_LIBOATH
 
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/meson.mk
 
 define Package/ocserv/config
 	source "$(SOURCE)/Config.in"
@@ -54,47 +56,26 @@ define Package/ocserv/description
  as TLS 1.2, and Datagram TLS to provide the secure VPN service.
 endef
 
-EXTRA_CPPFLAGS+=-I$(STAGING_DIR)/opt/include/readline/
-EXTRA_LDFLAGS+=-lncurses
+MESON_ARGS += \
+	-Dpager='' \
+	-Dlibnl=disabled \
+	-Dgssapi=disabled \
+	-Dmaxmind=disabled \
+	-Dlz4=disabled \
+	-Dfirewall-script=iptables \
+	-Dlocal-talloc=true \
+	-Dsock-diag=disabled
 
-CONFIGURE_VARS += \
-	ac_cv_file__proc_self_exe=yes \
-	ac_cv_prog_IPCALC=/bin/true
+# Conditional features derived from Config.in
+MESON_ARGS += -Dpam=$(if $(CONFIG_OCSERV_PAM),enabled,disabled)
+MESON_ARGS += -Dradius=$(if $(CONFIG_OCSERV_RADIUS),enabled,disabled)
+MESON_ARGS += -Dseccomp=$(if $(CONFIG_OCSERV_SECCOMP),enabled,disabled)
+MESON_ARGS += -Dlocal-protobuf=$(if $(CONFIG_OCSERV_PROTOBUF),false,true)
+MESON_ARGS += -Dliboath=$(if $(CONFIG_OCSERV_LIBOATH),enabled,disabled)
 
-CONFIGURE_ARGS+= \
-	--with-pager="" \
-	--with-libreadline-prefix="$(STAGING_DIR)/" \
-	--without-libnl \
-	--without-gssapi \
-	--without-maxmind \
-	--with-libcrypt-prefix="$(STAGING_DIR)/" \
-	--with-libev-prefix="$(STAGING_DIR)/" \
-	--without-lz4 \
-	--with-local-talloc
-
-ifneq ($(CONFIG_OCSERV_PAM),y)
-CONFIGURE_ARGS += --without-pam
-endif
-
-ifneq ($(CONFIG_OCSERV_RADIUS),y)
-CONFIGURE_ARGS += --without-radius
-endif
-
-ifneq ($(CONFIG_OCSERV_SECCOMP),y)
-CONFIGURE_ARGS += --disable-seccomp
-endif
-
-ifneq ($(CONFIG_OCSERV_PROTOBUF),y)
-CONFIGURE_ARGS += --without-protobuf
-endif
-
-ifndef CONFIG_OCSERV_LIBOATH
-CONFIGURE_ARGS += --without-liboath
-endif
-
-ifeq ($(ARCH),arm)                                              
-TARGET_CFLAGS += -flax-vector-conversions
-endif
+# main.c:(.text.startup+0x3a8): undefined reference to `allow_severity'
+MESON_ARGS += \
+	-Dlibwrap=disabled
 
 define Package/ocserv/conffiles
 /opt/etc/ocserv
@@ -102,18 +83,25 @@ endef
 
 define Package/ocserv/install
 	$(INSTALL_DIR) $(1)/opt/sbin
-	$(INSTALL_BIN) $(PKG_BUILD_DIR)/src/ocserv $(1)/opt/sbin/
-	$(INSTALL_BIN) $(PKG_BUILD_DIR)/src/ocserv-worker $(1)/opt/sbin/
-	$(INSTALL_DIR) $(1)/opt/{bin,libexec}
-	$(INSTALL_BIN) $(PKG_BUILD_DIR)/src/ocserv-fw $(1)/opt/libexec/
-	$(INSTALL_BIN) $(PKG_BUILD_DIR)/src/ocpasswd/ocpasswd $(1)/opt/bin/
-	$(INSTALL_BIN) $(PKG_BUILD_DIR)/src/occtl/occtl $(1)/opt/bin/
+	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/opt/sbin/ocserv $(1)/opt/sbin/
+	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/opt/sbin/ocserv-worker $(1)/opt/sbin/
+
+	$(INSTALL_DIR) $(1)/opt/bin
+	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/opt/bin/ocpasswd $(1)/opt/bin/
+	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/opt/bin/occtl $(1)/opt/bin/
+
+	$(INSTALL_DIR) $(1)/opt/libexec
+	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/opt/libexec/ocserv-fw $(1)/opt/libexec/
+
 	$(INSTALL_DIR) $(1)/opt/etc/init.d
 	$(INSTALL_BIN) ./files/S79ocserv $(1)/opt/etc/init.d
+
 	$(INSTALL_DIR) $(1)/opt/etc/ocserv
 	$(INSTALL_CONF) ./files/ocserv.conf.template $(1)/opt/etc/ocserv/ocserv.conf.template
+
 #	$(INSTALL_DIR) $(1)/etc/config
 	$(INSTALL_CONF) ./files/ocserv.conf $(1)/opt/etc/ocserv
+
 	$(INSTALL_DIR) $(1)/opt/lib/upgrade/keep.d
 	$(INSTALL_DATA) ./files/ocserv.upgrade $(1)/opt/lib/upgrade/keep.d/ocserv
 endef

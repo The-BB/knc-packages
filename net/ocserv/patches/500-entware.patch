@@ -1,6 +1,6 @@
 --- a/src/config.c
 +++ b/src/config.c
-@@ -58,8 +58,8 @@
+@@ -59,8 +59,8 @@
  #include <getopt.h>
  #include <snapshot.h>
  
@@ -9,8 +9,8 @@
 +#define OLD_DEFAULT_CFG_FILE "/opt/etc/ocserv.conf"
 +#define DEFAULT_CFG_FILE "/opt/etc/ocserv/ocserv.conf"
  
- static void print_version(void);
- 
+ static int parse_syslog_facility(const char *name)
+ {
 --- a/src/main-user.c
 +++ b/src/main-user.c
 @@ -48,7 +48,7 @@
@@ -21,7 +21,7 @@
 +#define OCSERV_FW_SCRIPT "/opt/libexec/ocserv-fw"
  #endif
  
- #define APPEND_TO_STR(str, val)                                           \
+ static const char *ocserv_fw_script(void)
 --- a/src/occtl/ctl.h
 +++ b/src/occtl/ctl.h
 @@ -1,7 +1,7 @@
