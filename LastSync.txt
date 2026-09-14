@@ -1,22 +1,11 @@
-commit 5a193ef051c938a3ca434a16f988ceae4bc21455 (HEAD -> master, origin/master, origin/HEAD)
-Author: Maksym Vasylchenko <nahual15@gmail.com>
-Date:   Tue Sep 8 22:22:38 2026 +0200
+commit fecb5f2cbad1821296cab1019cabc001d328dfd6 (HEAD -> master, origin/master, origin/HEAD)
+Author: Atanas Vladimirov <vladimirov.atanas@gmail.com>
+Date:   Mon Sep 7 11:04:22 2026 +0300
 
-    netbird: update to 0.78.1
+    hcxdumptool: pass TARGET_LDFLAGS and restore -std=gnu99
     
-    Maintainer: Wesley Gimenes <wehagy@proton.me>
+    Command-line CFLAGS overrides upstream's CFLAGS += -std=gnu99.
+    Pass TARGET_LDFLAGS for OpenWrt PIE/RELRO, and keep -lpcap which that
+    override would otherwise drop.
     
-    Changelog: https://github.com/netbirdio/netbird/compare/v0.73.2...v0.78.1
-    
-    Compile tested: x86_64, OpenWrt packages master (Go 1.27)
-    Run tested: x86_64, OpenWrt 25.12.4 (Hyper-V VM)
-    
-    Notable upstream changes:
-    - fix local privilege escalation via unauthenticated IPC socket
-      (GHSA-qcpp-8vwj-hhwr), affects all versions < 0.76.0
-    - fix nftables route rule expression ordering
-    - fallback to per-IP ACL rules when ipset is unavailable
-    - client ICEBind / route / fwmark fixes (v0.78.0)
-    - Go 1.26 toolchain (compatible with OpenWrt golang 1.26/1.27)
-    
-    Signed-off-by: Maksym Vasylchenko <nahual15@gmail.com>
+    Signed-off-by: Atanas Vladimirov <vladimirov.atanas@gmail.com>
