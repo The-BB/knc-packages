@@ -1,11 +1,12 @@
-commit fecb5f2cbad1821296cab1019cabc001d328dfd6 (HEAD -> master, origin/master, origin/HEAD)
-Author: Atanas Vladimirov <vladimirov.atanas@gmail.com>
-Date:   Mon Sep 7 11:04:22 2026 +0300
+commit 87456bddf4e98e3522cc22ecf66a325b44eb6a88 (HEAD -> master, origin/master, origin/HEAD)
+Author: Mirko Vogt <mirko-openwrt@nanl.de>
+Date:   Wed Sep 9 16:28:37 2026 +0000
 
-    hcxdumptool: pass TARGET_LDFLAGS and restore -std=gnu99
+    ffmpeg: change PKG_MAINTAINER
     
-    Command-line CFLAGS overrides upstream's CFLAGS += -std=gnu99.
-    Pass TARGET_LDFLAGS for OpenWrt PIE/RELRO, and keep -lpcap which that
-    override would otherwise drop.
+     - removing Ted Hess as maintainer per request by himself
+     - removing Ian Leonard as maintainer per request by himself
+     - adding myself (Mirko Vogt) as maintainer
+     - adding Daniel Golle as maintainer
     
-    Signed-off-by: Atanas Vladimirov <vladimirov.atanas@gmail.com>
+    Signed-off-by: Mirko Vogt <mirko-openwrt@nanl.de>
