@@ -1,12 +1,18 @@
-commit 87456bddf4e98e3522cc22ecf66a325b44eb6a88 (HEAD -> master, origin/master, origin/HEAD)
-Author: Mirko Vogt <mirko-openwrt@nanl.de>
-Date:   Wed Sep 9 16:28:37 2026 +0000
+commit 6990c0a844c5bdb6afc57f07b3e0bc01d3c56dac (HEAD -> master, origin/master, origin/HEAD)
+Author: Dirk Brenken <dev@brenken.org>
+Date:   Fri Sep 18 16:06:24 2026 +0200
 
-    ffmpeg: change PKG_MAINTAINER
+    shunt: update 0.1.10
     
-     - removing Ted Hess as maintainer per request by himself
-     - removing Ian Leonard as maintainer per request by himself
-     - adding myself (Mirko Vogt) as maintainer
-     - adding Daniel Golle as maintainer
+    * snooped elements expire with the TTL of the DNS answer,
+      clamped to 60..entry_ttl; entry_ttl is now the ceiling, polled elements still use it
+    * write cache tracks the expiry it last wrote per element and rewrites
+      when the new expiry moves by at least half of the answer's lifetime, in either direction
+    * a flow's route is decided on its first packet and kept on the conntrack entry:
+      route statements set ct mark, one restore rule per policy marks later packets
+      of the original direction, settled flows skip the lookups
+    * LuCI: change the entry_ttl option text
+    * update the README
     
-    Signed-off-by: Mirko Vogt <mirko-openwrt@nanl.de>
+    Co-authored-by: Claude <noreply@anthropic.com>
+    Signed-off-by: Dirk Brenken <dev@brenken.org>
