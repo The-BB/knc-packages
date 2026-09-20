@@ -1,18 +1,19 @@
-commit 6990c0a844c5bdb6afc57f07b3e0bc01d3c56dac (HEAD -> master, origin/master, origin/HEAD)
+commit 72e4f90d756b0cf9da01e7b955ad48279df0578c (HEAD -> master, origin/master, origin/HEAD)
 Author: Dirk Brenken <dev@brenken.org>
-Date:   Fri Sep 18 16:06:24 2026 +0200
+Date:   Sat Sep 19 19:50:03 2026 +0200
 
-    shunt: update 0.1.10
+    banip: release 1.9.0
     
-    * snooped elements expire with the TTL of the DNS answer,
-      clamped to 60..entry_ttl; entry_ttl is now the ceiling, polled elements still use it
-    * write cache tracks the expiry it last wrote per element and rewrites
-      when the new expiry moves by at least half of the answer's lifetime, in either direction
-    * a flow's route is decided on its first packet and kept on the conntrack entry:
-      route statements set ct mark, one restore rule per policy marks later packets
-      of the original direction, settled flows skip the lookups
-    * LuCI: change the entry_ttl option text
-    * update the README
+    - add the trigger interfaces to the runtime status
+    - support url templates for the country and asn feeds;
+      the readme contains an example of how to use an alternative
+      MaxMind source as country feed
+    - fix the fallback handling of the custom feed file
+    - disable the curl url globbing
+    - drop the unsupported 'w' nft expiry unit
+    - LuCI: show the trigger interfaces, label the board model
+    - LuCI: drop the unsupported 'w' expiry unit
+    - LuCI: fix the custom feed file handling
+    - readme update
     
-    Co-authored-by: Claude <noreply@anthropic.com>
     Signed-off-by: Dirk Brenken <dev@brenken.org>
