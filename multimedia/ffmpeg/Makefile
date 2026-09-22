@@ -20,6 +20,8 @@
 # defaults give a full-featured build), libffmpeg-mini a fixed small set of
 # decoders for playback-only consumers. They conflict at install time.
 #
+# Entware:
+# * delete 140-vf-deinterlace-v4l2m2m.patch
 
 include $(TOPDIR)/rules.mk
 
