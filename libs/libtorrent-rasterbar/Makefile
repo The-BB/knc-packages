@@ -63,6 +63,7 @@ TARGET_LDFLAGS += -latomic -pthread
 
 #ifneq ($(CONFIG_PACKAGE_python3-libtorrent),)
 CMAKE_OPTIONS += \
+	-DPython3_EXECUTABLE=$(STAGING_DIR_HOSTPKG)/bin/python3 \
 	-Dpython-bindings=ON \
 	-Dpython-egg-info=ON
 #endif
