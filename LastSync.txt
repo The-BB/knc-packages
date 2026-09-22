@@ -1,19 +1,10 @@
-commit 72e4f90d756b0cf9da01e7b955ad48279df0578c (HEAD -> master, origin/master, origin/HEAD)
-Author: Dirk Brenken <dev@brenken.org>
-Date:   Sat Sep 19 19:50:03 2026 +0200
+commit 6e46ddbe2ddaee2b4381dbf1a5046ef942b8265b (HEAD -> master, origin/master, origin/HEAD)
+Author: Javier Marcet <javier@marcet.info>
+Date:   Sat Sep 19 17:13:33 2026 +0200
 
-    banip: release 1.9.0
+    docker-compose: update to version 5.5.1
     
-    - add the trigger interfaces to the runtime status
-    - support url templates for the country and asn feeds;
-      the readme contains an example of how to use an alternative
-      MaxMind source as country feed
-    - fix the fallback handling of the custom feed file
-    - disable the curl url globbing
-    - drop the unsupported 'w' nft expiry unit
-    - LuCI: show the trigger interfaces, label the board model
-    - LuCI: drop the unsupported 'w' expiry unit
-    - LuCI: fix the custom feed file handling
-    - readme update
+    Release notes:
+    https://github.com/docker/compose/releases/tag/v5.5.1
     
-    Signed-off-by: Dirk Brenken <dev@brenken.org>
+    Signed-off-by: Javier Marcet <javier@marcet.info>
