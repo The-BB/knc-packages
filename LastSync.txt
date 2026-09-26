@@ -1,10 +1,15 @@
-commit 6e46ddbe2ddaee2b4381dbf1a5046ef942b8265b (HEAD -> master, origin/master, origin/HEAD)
-Author: Javier Marcet <javier@marcet.info>
-Date:   Sat Sep 19 17:13:33 2026 +0200
+commit 4a69a0b76759dcd6e2164c81d7260b5280d833c1 (HEAD -> master, origin/master, origin/HEAD)
+Author: Dirk Brenken <dev@brenken.org>
+Date:   Fri Sep 25 23:11:19 2026 +0200
 
-    docker-compose: update to version 5.5.1
+    banip: update 1.9.0-2
     
-    Release notes:
-    https://github.com/docker/compose/releases/tag/v5.5.1
+    * use RDAP startAddress/endAddress as a single interval element (one nft call per lookup)
+    * validate RDAP ranges, block nft command and log line injection
+    * always restart the procd instance (unique nonce via env)
+    * restart the log monitor if the log reader terminates (e.g. logd restart)
+    * f_rmpid clears the pidfile before killing child processes
+    * EXIT trap: route unexpected service exits through f_log "err"
+    * readme update
     
-    Signed-off-by: Javier Marcet <javier@marcet.info>
+    Signed-off-by: Dirk Brenken <dev@brenken.org>
