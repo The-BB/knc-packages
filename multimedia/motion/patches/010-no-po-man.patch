@@ -3,19 +3,18 @@
 @@ -1,6 +1,6 @@
  ACLOCAL_AMFLAGS = -I m4
  
--SUBDIRS = src po man
+-SUBDIRS = src po
 +SUBDIRS = src
  
- sysconfdir = @sysconfdir@/$(PACKAGE)
- sysconf_DATA = \
+ pkgsysconfdir = $(sysconfdir)/@PACKAGE@
+ dist_pkgsysconf_DATA = \
 --- a/configure.ac
 +++ b/configure.ac
-@@ -492,8 +492,6 @@ AC_SUBST(AM_LDFLAGS, "$TEMP_LDFLAGS")
+@@ -448,7 +448,6 @@ AC_SUBST(AM_LDFLAGS, "$TEMP_LDFLAGS")
  AC_CONFIG_FILES([
  	Makefile
  	src/Makefile
 -  po/Makefile.in
--  man/Makefile
    data/camera1-dist.conf
    data/camera2-dist.conf
    data/camera3-dist.conf
