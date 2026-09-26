@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=tvheadend
-PKG_RELEASE:=1
+PKG_RELEASE:=2
 
 PKG_SOURCE_PROTO:=git
 PKG_SOURCE_URL:=https://github.com/tvheadend/tvheadend
@@ -281,8 +281,8 @@ define Package/tvheadend/install
 	$(INSTALL_BIN) ./files/S71tvheadend $(1)/opt/etc/init.d/
 #	$(INSTALL_DIR) $(1)/etc/config
 #	$(INSTALL_CONF) ./files/tvheadend.config $(1)/etc/config/tvheadend
-#	$(INSTALL_DIR) $(1)/etc/hotplug.d/usb
-#	$(INSTALL_BIN) ./files/dvb.hotplug $(1)/etc/hotplug.d/usb/50-dvb
+#	$(INSTALL_DIR) $(1)/etc/hotplug.d/dvb
+#	$(INSTALL_BIN) ./files/dvb.hotplug $(1)/etc/hotplug.d/dvb/50-dvb
 	$(INSTALL_DIR) $(1)/opt/bin
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/build.linux/tvheadend $(1)/opt/bin/
 	$(INSTALL_BIN) ./files/tv_grab_wl500g_info{,_toffset} $(1)/opt/bin/
