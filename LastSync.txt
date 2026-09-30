@@ -1,15 +1,14 @@
-commit 4a69a0b76759dcd6e2164c81d7260b5280d833c1 (HEAD -> master, origin/master, origin/HEAD)
-Author: Dirk Brenken <dev@brenken.org>
-Date:   Fri Sep 25 23:11:19 2026 +0200
+commit 6e7270bc8e23481084818ece6e93107f9d6fae5e (HEAD -> master, origin/master, origin/HEAD)
+Author: Daniel Golle <daniel@makrotopia.org>
+Date:   Tue Sep 29 15:50:05 2026 +0100
 
-    banip: update 1.9.0-2
+    libevdev: depend on input-support for the evdev nodes
     
-    * use RDAP startAddress/endAddress as a single interval element (one nft call per lookup)
-    * validate RDAP ranges, block nft command and log line injection
-    * always restart the procd instance (unique nonce via env)
-    * restart the log monitor if the log reader terminates (e.g. logd restart)
-    * f_rmpid clears the pidfile before killing child processes
-    * EXIT trap: route unexpected service exits through f_log "err"
-    * readme update
+    /dev/input/* is 0600 root:root unless input-support is installed to
+    allocate the input group and ship the hotplug rule, so a program reading
+    evdev has to run as root without it.
     
-    Signed-off-by: Dirk Brenken <dev@brenken.org>
+    libinput depends on libevdev and inherits this, so both sides of the
+    evdev stack are covered by saying it once here.
+    
+    Signed-off-by: Daniel Golle <daniel@makrotopia.org>
