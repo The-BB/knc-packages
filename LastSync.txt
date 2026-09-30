@@ -1,14 +1,9 @@
-commit 6e7270bc8e23481084818ece6e93107f9d6fae5e (HEAD -> master, origin/master, origin/HEAD)
-Author: Daniel Golle <daniel@makrotopia.org>
-Date:   Tue Sep 29 15:50:05 2026 +0100
+commit 95d73ebcc95ade2ea78b0a281898cf8b6ec7b7f9 (HEAD -> master, origin/master, origin/HEAD)
+Author: Florian Eckert <fe@dev.tdt.de>
+Date:   Wed Sep 30 11:57:34 2026 +0200
 
-    libevdev: depend on input-support for the evdev nodes
+    strongswan: bump PKG_RELEASE by one
     
-    /dev/input/* is 0600 root:root unless input-support is installed to
-    allocate the input group and ship the hotplug rule, so a program reading
-    evdev has to run as root without it.
+    Update 'PKG_RELEASE'.
     
-    libinput depends on libevdev and inherits this, so both sides of the
-    evdev stack are covered by saying it once here.
-    
-    Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+    Signed-off-by: Florian Eckert <fe@dev.tdt.de>
