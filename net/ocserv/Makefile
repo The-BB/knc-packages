@@ -12,7 +12,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=ocserv
 PKG_VERSION:=1.5.0
-PKG_RELEASE:=1
+PKG_RELEASE:=2
 PKG_BUILD_FLAGS:=no-mips16
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.xz
@@ -64,7 +64,8 @@ MESON_ARGS += \
 	-Dlz4=disabled \
 	-Dfirewall-script=iptables \
 	-Dlocal-talloc=true \
-	-Dsock-diag=disabled
+	-Dsock-diag=disabled \
+	-Dlibwrap=disabled
 
 # Conditional features derived from Config.in
 MESON_ARGS += -Dpam=$(if $(CONFIG_OCSERV_PAM),enabled,disabled)
@@ -72,10 +73,6 @@ MESON_ARGS += -Dradius=$(if $(CONFIG_OCSERV_RADIUS),enabled,disabled)
 MESON_ARGS += -Dseccomp=$(if $(CONFIG_OCSERV_SECCOMP),enabled,disabled)
 MESON_ARGS += -Dlocal-protobuf=$(if $(CONFIG_OCSERV_PROTOBUF),false,true)
 MESON_ARGS += -Dliboath=$(if $(CONFIG_OCSERV_LIBOATH),enabled,disabled)
-
-# main.c:(.text.startup+0x3a8): undefined reference to `allow_severity'
-MESON_ARGS += \
-	-Dlibwrap=disabled
 
 define Package/ocserv/conffiles
 /opt/etc/ocserv
