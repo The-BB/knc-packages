@@ -21,7 +21,7 @@ PKG_LICENSE:=GPL-2.0-or-later
 PKG_LICENSE_FILES:=COPYING
 PKG_CPE_ID:=cpe:/a:motion_project:motion
 
-PKG_FIXUP:=autoreconf
+PKG_FIXUP:=gettext-version
 PKG_INSTALL:=1
 PKG_BUILD_PARALLEL:=1
 PKG_BUILD_DEPENDS:=gettext-full/host
@@ -79,7 +79,6 @@ Package/motion-ffmpeg/conffiles = $(Package/motion/conffiles)
 CONFIGURE_ARGS += \
 	--without-bktr \
 	--without-webp \
-	--without-mmal \
 	--without-mariadb \
 	--without-mysql \
 	--without-pgsql \
