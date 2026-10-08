@@ -150,7 +150,7 @@
    }
  
    ifi = if_find_by_index(i->ifi_index);
-@@ -1562,9 +1591,11 @@ nl_send_route(struct krt_proto *p, rte *
+@@ -1566,9 +1595,11 @@ nl_send_route(struct krt_proto *p, rte *
      int id = ea->id - EA_KRT_METRICS;
      metrics[0] |= 1 << id;
  
@@ -162,7 +162,7 @@
        metrics[id] = ea->u.data;
    }
  
-@@ -2012,6 +2043,7 @@ nl_parse_route(struct nl_parse_state *s,
+@@ -2016,6 +2047,7 @@ nl_parse_route(struct nl_parse_state *s,
  		.u.data = metrics[t],
  	      };
  	    }
@@ -170,7 +170,7 @@
            else if (t == RTAX_CC_ALGO)
  	    {
  	      struct adata *ad = lp_alloc_adata(s->pool, strlen(cc_algo) + 1);
-@@ -2023,6 +2055,7 @@ nl_parse_route(struct nl_parse_state *s,
+@@ -2027,6 +2059,7 @@ nl_parse_route(struct nl_parse_state *s,
  		.u.ptr = ad,
  	      };
  	    }
