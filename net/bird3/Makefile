@@ -10,12 +10,12 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=bird3
-PKG_VERSION:=3.3.2
-PKG_RELEASE:=2
+PKG_VERSION:=3.3.3
+PKG_RELEASE:=1
 
 PKG_SOURCE:=bird-$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=https://bird.nic.cz/download/
-PKG_HASH:=21297d7a02edd700ae82de5a630055a9cb88a99e2e7e45551bc7d6c1e5b4de2c
+PKG_HASH:=7e8b28a17dd619eb73eba959ef6a944dd9c11cf5c1700a2ecbb8eb13bd4a8a57
 
 PKG_MAINTAINER:=Toke Høiland-Jørgensen <toke@toke.dk>, Nick Hainke <vincent@systemli.org>
 PKG_LICENSE:=GPL-2.0-or-later
@@ -33,7 +33,7 @@ define Package/bird3
   SECTION:=net
   CATEGORY:=Network
   SUBMENU:=Routing and Redirection
-  DEPENDS:=+libpthread +libatomic
+  DEPENDS:=+libpthread $(ATOMIC64_DEPENDS)
   CONFLICTS:=bird2
 endef
 
@@ -104,7 +104,7 @@ CONFIGURE_ARGS += \
 	--disable-libssh \
 	--with-iproutedir=/opt/etc/iproute2
 
-TARGET_LDFLAGS += -latomic
+TARGET_LDFLAGS += -Wl,--as-needed
 
 define Package/bird3/conffiles
 /opt/etc/bird.conf
