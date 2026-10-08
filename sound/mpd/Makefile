@@ -7,12 +7,12 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=mpd
-PKG_VERSION:=0.23.17
-PKG_RELEASE:=2
+PKG_VERSION:=0.24.15
+PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.xz
-PKG_SOURCE_URL:=https://www.musicpd.org/download/mpd/0.23
-PKG_HASH:=a86f4fe811695743b08db82a9f1a840b8918bb4f46b06f48aa1d8d1b5386dff2
+PKG_SOURCE_URL:=https://www.musicpd.org/download/mpd/0.24
+PKG_HASH:=524c70bce3fcd268016156bdc97abcf5be1904f0c6fd622688999123e3c4c457
 
 PKG_MAINTAINER:=Alexandru Ardelean <ardeleanalex@gmail.com>
 PKG_LICENSE:=GPL-2.0-or-later
@@ -34,7 +34,7 @@ define Package/mpd/Default
   CATEGORY:=Sound
   TITLE:=Music Player Daemon
   URL:=https://www.musicpd.org/
-  DEPENDS:= +zlib +libcurl +libpthread +libmpdclient +boost $(ICONV_DEPENDS) +libfmt \
+  DEPENDS:=+zlib +libcurl +libpthread +libmpdclient $(ICONV_DEPENDS) +libfmt \
             +PACKAGE_audio-support:alsa-lib +libexpat +libflac +libid3tag +libfaad2 +libopus
   USERID:=mpd:mpd
 endef
@@ -49,7 +49,7 @@ endef
 define Package/mpd-full
 $(call Package/mpd/Default)
   TITLE+= (full)
-  DEPENDS+= +PACKAGE_audio-support:pulseaudio +libvorbis +libmms +libnpupnp +libshout +yajl \
+  DEPENDS+= +PACKAGE_audio-support:pulseaudio +libvorbis +libmms +libnpupnp +libshout \
             +libffmpeg +lame-lib +libsoxr +!BUILD_PATENTED:libmad
   PROVIDES:=mpd
   VARIANT:=full
@@ -132,6 +132,7 @@ MESON_ARGS += \
 	-Dnfs=disabled \
 	-Dsmbclient=disabled \
 	-Dqobuz=disabled \
+	-Dnlohmann_json=disabled \
 	-Dbzip2=disabled \
 	-Diso9660=disabled \
 	-Dzzip=disabled \
@@ -184,7 +185,6 @@ ifeq ($(BUILD_VARIANT),full)
 	-Dupnp=npupnp \
 	-Dmms=enabled \
 	-Ddsd=true \
-	-Dsoundcloud=enabled \
 	-Dffmpeg=enabled \
 	-Dmad=$(if $(CONFIG_BUILD_PATENTED),dis,en)abled \
 	-Dtremor=disabled \
@@ -194,12 +194,11 @@ ifeq ($(BUILD_VARIANT),full)
 	-Dpulse=$(if $(CONFIG_PACKAGE_audio-support),en,dis)abled \
 	-Drecorder=true \
 	-Dshout=enabled \
-	-Dyajl=enabled \
 	-Dvorbisenc=enabled \
 	-Dlame=enabled \
 	-Dsoxr=enabled
 
-ifeq ($(CONFIG_PACKAGE_audio-support),y)
+ifneq ($(CONFIG_PACKAGE_audio-support),)
 	TARGET_LDFLAGS += -Wl,-rpath-link=$(STAGING_DIR)/opt/lib/pulseaudio
 endif
 endif
@@ -211,7 +210,6 @@ ifeq ($(BUILD_VARIANT),mini)
 	-Dupnp=disabled \
 	-Dmms=disabled \
 	-Ddsd=false \
-	-Dsoundcloud=disabled \
 	-Dffmpeg=disabled \
 	-Dmad=enabled \
 	-Dtremor=enabled \
@@ -221,7 +219,6 @@ ifeq ($(BUILD_VARIANT),mini)
 	-Dpulse=disabled \
 	-Drecorder=false \
 	-Dshout=disabled \
-	-Dyajl=disabled \
 	-Dsoxr=disabled
 endif
 
