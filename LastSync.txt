@@ -1,14 +1,11 @@
-commit 88019052fa25d86bfed3106edb3ba3022d8611c1 (HEAD -> master, origin/master, origin/HEAD)
-Author: Daniel F. Dickinson <dfdpublic@wildtechgarden.ca>
-Date:   Sun Sep 6 23:13:56 2026 -0400
+commit db09fc6eebf41ba0498c73e8c9c6df9088d79435 (HEAD -> master, origin/master, origin/HEAD)
+Author: Alexandru Ardelean <alex@shruggie.ro>
+Date:   Tue Oct 6 22:43:31 2026 +0300
 
-    watchcat: resolve interface resolution race
+    frr: update to 10.7.1
     
-    - Add interface trigger handling in watchcat.init
-    - Log when raw interface trigger is activated by any interface coming up
-    - Move helper functions to separate file
-    - Update Makefile to install new functions file
+    10.7.1 accepts libyang v3, so frr keeps building against libyang-legacy.
+    Refresh 997-reverse_python_test.patch, which otherwise applies with an
+    offset of one line; the other two patches are unchanged.
     
-    Closes: #30463
-    
-    Signed-off-by: Daniel F. Dickinson <dfdpublic@wildtechgarden.ca>
+    Signed-off-by: Alexandru Ardelean <alex@shruggie.ro>
