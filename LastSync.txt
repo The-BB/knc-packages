@@ -1,11 +1,12 @@
-commit db09fc6eebf41ba0498c73e8c9c6df9088d79435 (HEAD -> master, origin/master, origin/HEAD)
-Author: Alexandru Ardelean <alex@shruggie.ro>
-Date:   Tue Oct 6 22:43:31 2026 +0300
+commit 607b3dd1b5bb9c4f01f724eb3788fd21517f2250 (HEAD -> master, origin/master, origin/HEAD)
+Author: Dirk Brenken <dev@brenken.org>
+Date:   Thu Oct 8 16:35:55 2026 +0200
 
-    frr: update to 10.7.1
+    travelmate: update 2.4.9-4
     
-    10.7.1 accepts libyang v3, so frr keeps building against libyang-legacy.
-    Refresh 997-reverse_python_test.patch, which otherwise applies with an
-    offset of one line; the other two patches are unchanged.
+    * fix false-positive ntp time sync, e.g. at boot with the
+      sysfixtime clock, no uplink
+    * ntp hotplug: reject events with an invalid stratum
+    * remove the synthetic hotplug trigger from f_system
     
-    Signed-off-by: Alexandru Ardelean <alex@shruggie.ro>
+    Signed-off-by: Dirk Brenken <dev@brenken.org>
