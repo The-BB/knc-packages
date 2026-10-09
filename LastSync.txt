@@ -1,12 +1,9 @@
-commit 607b3dd1b5bb9c4f01f724eb3788fd21517f2250 (HEAD -> master, origin/master, origin/HEAD)
-Author: Dirk Brenken <dev@brenken.org>
-Date:   Thu Oct 8 16:35:55 2026 +0200
+commit dbd1a89a059fb3a92cbfebc66bd2f1c0f084fe22 (HEAD -> master, origin/master, origin/HEAD)
+Author: Daniel F. Dickinson <dfdpublic@wildtechgarden.ca>
+Date:   Mon Oct 5 01:48:46 2026 -0400
 
-    travelmate: update 2.4.9-4
+    zabbix: bump version to 7.0.31
     
-    * fix false-positive ntp time sync, e.g. at boot with the
-      sysfixtime clock, no uplink
-    * ntp hotplug: reject events with an invalid stratum
-    * remove the synthetic hotplug trigger from f_system
+    Bug fix release. See release notes: https://www.zabbix.com/rn/rn7.0.31
     
-    Signed-off-by: Dirk Brenken <dev@brenken.org>
+    Signed-off-by: Daniel F. Dickinson <dfdpublic@wildtechgarden.ca>
