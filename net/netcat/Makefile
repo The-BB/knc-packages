@@ -34,6 +34,8 @@ define Package/netcat/description
 	It is designed to be a reliable "back-end" tool that can be used directly or easily driven by other programs and scripts. At the same time, it is a feature-rich network debugging and exploration tool, since it can create almost any kind of connection you would need and has several interesting built-in capabilities.
 endef
 
+TARGET_CFLAGS += -std=gnu17
+
 define Build/Configure
 	$(call Build/Configure/Default, \
 		--disable-rpath \
