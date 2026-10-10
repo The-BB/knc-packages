@@ -1,9 +1,9 @@
-commit dbd1a89a059fb3a92cbfebc66bd2f1c0f084fe22 (HEAD -> master, origin/master, origin/HEAD)
-Author: Daniel F. Dickinson <dfdpublic@wildtechgarden.ca>
-Date:   Mon Oct 5 01:48:46 2026 -0400
+commit 05a5b4be8d95dd8239350da0a8ef1befe8ed2e4b (HEAD -> master, origin/master, origin/HEAD)
+Author: Tianling Shen <cnsztl@immortalwrt.org>
+Date:   Sat Oct 10 11:07:01 2026 +0800
 
-    zabbix: bump version to 7.0.31
+    v2ray-geodata: update to latest version
     
-    Bug fix release. See release notes: https://www.zabbix.com/rn/rn7.0.31
+    Update all geodata.
     
-    Signed-off-by: Daniel F. Dickinson <dfdpublic@wildtechgarden.ca>
+    Signed-off-by: Tianling Shen <cnsztl@immortalwrt.org>
