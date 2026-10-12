@@ -1,11 +1,15 @@
-commit 0526d6d9cad0a9052fc9d49572e2f8968a1bf8dd (HEAD -> master, origin/master, origin/HEAD)
-Author: John Audia <therealgraysky@proton.me>
-Date:   Fri Oct 9 15:47:05 2026 -0400
+commit 6fb711fed018a04030ffae4976030b7079c9a489 (HEAD -> master, origin/master, origin/HEAD)
+Author: Andrey Brusnik <dev@shdwchn.io>
+Date:   Tue Aug 11 18:56:44 2026 +0200
 
-    openssh: update to 10.6_p1
+    unbound: add DNSSEC KSK-2024 and remove KSK-2010
     
-    Update to 10.6p-1 and add myself as MAINTAINER
+    Remove the revoked KSK-2010 [1] trust anchor.
+    Add KSK-2024 [2]  ahead of the root zone KSK rollover on October 11, 2026.
     
-    Changelog: https://www.openssh.com/txt/release-10.6
+    [1] https://www.icann.org/en/blogs/details/icann-is-revoking-the-old-key-signing-key-this-week-7-1-2019-en
+    [2] https://www.icann.org/resources/pages/ksk-rollover-en
     
-    Signed-off-by: John Audia <therealgraysky@proton.me>
+    Signed-off-by: Andrey Brusnik <dev@shdwchn.io>
+    Signed-off-by: Josef Schlehofer <pepe.schlehofer@gmail.com>
+    [reworded commit subject and commit description]
