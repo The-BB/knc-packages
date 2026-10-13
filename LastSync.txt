@@ -1,22 +1,12 @@
-commit a855effe82552e22cefc973cdd5af175c9364414 (HEAD -> master, origin/master, origin/HEAD)
-Author: Daniel Golle <daniel@makrotopia.org>
-Date:   Sun Oct 11 18:53:48 2026 +0100
+commit f310e9a09f9477974c387518dc7c255192fafdb4 (HEAD -> master, origin/master, origin/HEAD)
+Author: Alexandru Ardelean <alex@shruggie.ro>
+Date:   Fri Oct 9 22:13:53 2026 +0300
 
-    fwupd: update to version 2.1.8
+    python-hatchling: update to 1.32.4
     
-    See https://github.com/fwupd/fwupd/releases/tag/2.1.8
+    1.32 declares a tomlkit dependency, which the host build rejects as
+    unmet. It is only reached by the "hatchling version" CLI, not by the
+    PEP 517 backend the feed uses, so patch it out rather than package
+    tomlkit for an unreachable code path.
     
-    Remove backported patches which were adding support for
-    the MaxLinear MxL862xx switch family to 2.1.7 downstream.
-    
-    Restore the glib2 host build dependency
-    
-    src/meson.build calls gnome.compile_resources(), which resolves
-    glib_compile_resources from the staged gio-2.0.pc. glib2 rewrites that
-    variable to point into staging_dir/hostpkg, as a cross-built generator
-    cannot run on the build host, so fwupd has to build glib2/host. With
-    the dependency gone, meson only configures when an unrelated package
-    stages the host tools first, and otherwise fails with "tool variable
-    'glib_compile_resources' contains erroneous value".
-    
-    Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+    Signed-off-by: Alexandru Ardelean <alex@shruggie.ro>
