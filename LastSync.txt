@@ -1,15 +1,22 @@
-commit 6fb711fed018a04030ffae4976030b7079c9a489 (HEAD -> master, origin/master, origin/HEAD)
-Author: Andrey Brusnik <dev@shdwchn.io>
-Date:   Tue Aug 11 18:56:44 2026 +0200
+commit a855effe82552e22cefc973cdd5af175c9364414 (HEAD -> master, origin/master, origin/HEAD)
+Author: Daniel Golle <daniel@makrotopia.org>
+Date:   Sun Oct 11 18:53:48 2026 +0100
 
-    unbound: add DNSSEC KSK-2024 and remove KSK-2010
+    fwupd: update to version 2.1.8
     
-    Remove the revoked KSK-2010 [1] trust anchor.
-    Add KSK-2024 [2]  ahead of the root zone KSK rollover on October 11, 2026.
+    See https://github.com/fwupd/fwupd/releases/tag/2.1.8
     
-    [1] https://www.icann.org/en/blogs/details/icann-is-revoking-the-old-key-signing-key-this-week-7-1-2019-en
-    [2] https://www.icann.org/resources/pages/ksk-rollover-en
+    Remove backported patches which were adding support for
+    the MaxLinear MxL862xx switch family to 2.1.7 downstream.
     
-    Signed-off-by: Andrey Brusnik <dev@shdwchn.io>
-    Signed-off-by: Josef Schlehofer <pepe.schlehofer@gmail.com>
-    [reworded commit subject and commit description]
+    Restore the glib2 host build dependency
+    
+    src/meson.build calls gnome.compile_resources(), which resolves
+    glib_compile_resources from the staged gio-2.0.pc. glib2 rewrites that
+    variable to point into staging_dir/hostpkg, as a cross-built generator
+    cannot run on the build host, so fwupd has to build glib2/host. With
+    the dependency gone, meson only configures when an unrelated package
+    stages the host tools first, and otherwise fails with "tool variable
+    'glib_compile_resources' contains erroneous value".
+    
+    Signed-off-by: Daniel Golle <daniel@makrotopia.org>
