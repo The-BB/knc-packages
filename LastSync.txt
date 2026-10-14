@@ -1,12 +1,13 @@
-commit d4a141e3f71aba1bbc4258bb5346541b13e16569 (HEAD -> master, origin/master, origin/HEAD)
-Author: Josef Schlehofer <pepe.schlehofer@gmail.com>
-Date:   Mon Sep 28 03:14:05 2026 +0200
+commit 8fca16cd8a9165d34971a9643822b847955659d8 (HEAD -> master, origin/master, origin/HEAD)
+Author: Jean Thomas <jean.thomas@wifirst.fr>
+Date:   Tue Oct 13 13:52:36 2026 +0200
 
-    ffmpeg: disable dcbzl and ppc4xx on e500 cores
+    rsyslog: add an option to enable periodic statistics module support
     
-    e500 cores trap on dcbzl, maclhw and mullhw, but configure enables
-    dcbzl for --cpu=8548, and ppc4xx too with CONFIG_USE_LTO, so ffmpeg
-    dies with SIGILL (seen on a Turris 1.1). Pass --disable-dcbzl and
-    --disable-ppc4xx for 8540 and 8548 and make configure honour them.
+    The periodic statistics module allows to generate periodic output of
+    rsyslog internal counters in a file. See rsyslog configuration [1]
+    for further details.
     
-    Signed-off-by: Josef Schlehofer <pepe.schlehofer@gmail.com>
+    [1]: https://docs.rsyslog.com/doc/configuration/modules/impstats.html
+    
+    Signed-off-by: Jean Thomas <jean.thomas@wifirst.fr>
