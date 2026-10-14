@@ -1,12 +1,12 @@
-commit f310e9a09f9477974c387518dc7c255192fafdb4 (HEAD -> master, origin/master, origin/HEAD)
-Author: Alexandru Ardelean <alex@shruggie.ro>
-Date:   Fri Oct 9 22:13:53 2026 +0300
+commit d4a141e3f71aba1bbc4258bb5346541b13e16569 (HEAD -> master, origin/master, origin/HEAD)
+Author: Josef Schlehofer <pepe.schlehofer@gmail.com>
+Date:   Mon Sep 28 03:14:05 2026 +0200
 
-    python-hatchling: update to 1.32.4
+    ffmpeg: disable dcbzl and ppc4xx on e500 cores
     
-    1.32 declares a tomlkit dependency, which the host build rejects as
-    unmet. It is only reached by the "hatchling version" CLI, not by the
-    PEP 517 backend the feed uses, so patch it out rather than package
-    tomlkit for an unreachable code path.
+    e500 cores trap on dcbzl, maclhw and mullhw, but configure enables
+    dcbzl for --cpu=8548, and ppc4xx too with CONFIG_USE_LTO, so ffmpeg
+    dies with SIGILL (seen on a Turris 1.1). Pass --disable-dcbzl and
+    --disable-ppc4xx for 8540 and 8548 and make configure honour them.
     
-    Signed-off-by: Alexandru Ardelean <alex@shruggie.ro>
+    Signed-off-by: Josef Schlehofer <pepe.schlehofer@gmail.com>
