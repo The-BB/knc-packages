@@ -1,13 +1,10 @@
-commit 8fca16cd8a9165d34971a9643822b847955659d8 (HEAD -> master, origin/master, origin/HEAD)
-Author: Jean Thomas <jean.thomas@wifirst.fr>
-Date:   Tue Oct 13 13:52:36 2026 +0200
+commit 4d422317390e07e0c6b8ea2d154276cb4cc4453f (HEAD -> master, origin/master, origin/HEAD)
+Author: Javier Marcet <javier@marcet.info>
+Date:   Sun Oct 11 13:09:44 2026 +0200
 
-    rsyslog: add an option to enable periodic statistics module support
+    docker-compose: update to version 5.6.0
     
-    The periodic statistics module allows to generate periodic output of
-    rsyslog internal counters in a file. See rsyslog configuration [1]
-    for further details.
+    Release notes:
+    https://github.com/docker/compose/releases/tag/v5.6.0
     
-    [1]: https://docs.rsyslog.com/doc/configuration/modules/impstats.html
-    
-    Signed-off-by: Jean Thomas <jean.thomas@wifirst.fr>
+    Signed-off-by: Javier Marcet <javier@marcet.info>
