@@ -1,10 +1,13 @@
-commit 4d422317390e07e0c6b8ea2d154276cb4cc4453f (HEAD -> master, origin/master, origin/HEAD)
-Author: Javier Marcet <javier@marcet.info>
-Date:   Sun Oct 11 13:09:44 2026 +0200
+commit 3d6229131a40fc3417ad2d8bd9d4050458c4fd95 (HEAD -> master, origin/master, origin/HEAD)
+Author: Ivan Pavlov <AuthorReflex@gmail.com>
+Date:   Sat Oct 17 08:02:05 2026 +0300
 
-    docker-compose: update to version 5.6.0
+    curl: update to 8.23.0
     
-    Release notes:
-    https://github.com/docker/compose/releases/tag/v5.6.0
+    changelog: https://curl.se/ch/8.23.0.html
     
-    Signed-off-by: Javier Marcet <javier@marcet.info>
+    curl 8.23.0 removes SMB support, so the obsolete LIBCURL_SMB
+    and LIBCURL_NO_SMB configuration option and configure argument
+    are removed.
+    
+    Signed-off-by: Ivan Pavlov <AuthorReflex@gmail.com>
