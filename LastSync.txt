@@ -1,13 +1,33 @@
-commit 3d6229131a40fc3417ad2d8bd9d4050458c4fd95 (HEAD -> master, origin/master, origin/HEAD)
-Author: Ivan Pavlov <AuthorReflex@gmail.com>
-Date:   Sat Oct 17 08:02:05 2026 +0300
+commit 7dac3ce6a6b227671cc492a712af7430453bd0df (HEAD -> master, origin/master, origin/HEAD)
+Author: Michael Heimpold <mhei@heimpold.de>
+Date:   Sat Oct 3 13:31:02 2026 +0200
 
-    curl: update to 8.23.0
+    php8: update to 8.4.26
     
-    changelog: https://curl.se/ch/8.23.0.html
+    This fixes:
+      - CVE-2025-1218
+      - CVE-2025-14181
+      - CVE-2026-17543
+      - CVE-2026-17544
+      - CVE-2026-17545
+      - CVE-2026-7260
+      - CVE-2026-9672
+      - CVE-2026-91765
+      - CVE-2026-91766
+      - CVE-2026-91767
+      - CVE-2026-91768
+      - CVE-2026-91769
+      - CVE-2026-92842
     
-    curl 8.23.0 removes SMB support, so the obsolete LIBCURL_SMB
-    and LIBCURL_NO_SMB configuration option and configure argument
-    are removed.
+    Upstream changelogs:
+    https://www.php.net/ChangeLog-8.php#8.4.24
+    https://www.php.net/ChangeLog-8.php#8.4.25
+    https://www.php.net/ChangeLog-8.php#8.4.26
     
-    Signed-off-by: Ivan Pavlov <AuthorReflex@gmail.com>
+    The new patch is required to successfully build riscv64 packages:
+    the dropped line unconditionally pulls in -latomic, even when
+    there are no references in the binaries. This would in turn
+    force us here to model the +libatomic dependency also when
+    not needed. Upstreaming the patch is on my todo list.
+    
+    Signed-off-by: Michael Heimpold <mhei@heimpold.de>
