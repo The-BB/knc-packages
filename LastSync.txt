@@ -1,23 +1,15 @@
-commit 5035328d8dca877ce789d90783f399aba6490402 (HEAD -> master, origin/master, origin/HEAD)
-Author: Daniel Golle <daniel@makrotopia.org>
-Date:   Tue Oct 20 16:41:30 2026 +0100
+commit 7719f2336a585ba03c2370916e94ec0b8debc795 (HEAD -> master, origin/master, origin/HEAD)
+Author: Tyrel M. McQueen <tmcqueen.materials@gmail.com>
+Date:   Wed Oct 21 21:41:30 2026 -0400
 
-    oci-runtime-tools: carry the pending validation fixes
+    unbound: update to 1.26.2
     
-    Most cgroup tests fail on OpenWrt because the test suite can only read
-    cgroup v1, and several assertions contradict the runtime-spec or depend
-    on the test host. Carry the fixes pending upstream in
-    opencontainers/runtime-tools until they are merged: #812 (cgroup v2
-    reader), #813 (lifecycle assertions), #814 (pids limit by value), #816
-    (device rules checked from inside the container), #820 (misc_props
-    process), #821 (blkio rules on an existing block device) and #822
-    (RLIMIT_NOFILE read from a child process).
+    From upstream: This release consolidates security fixes for issues reported over
+    a period of time. There are fixes for CVE-2026-35501, CVE-2026-50106,
+    CVE-2026-96405, CVE-2026-97206 and CVE-2026-109125.
     
-    The default seccomp profile of the test configurations lists only the
-    32-bit time syscalls. On 32-bit targets the Go runtime of runtimetest
-    uses futex_time64 on Linux 5.1 and later, which the profile denies, so
-    runtimetest crashes inside every container and most tests report
-    nothing on i386. Add a patch allowing the time64 variant of every
-    syscall the profile already allows.
+    Full details at
     
-    Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+    https://github.com/NLnetLabs/unbound/releases/tag/release-1.26.2
+    
+    Signed-off-by: Tyrel M. McQueen <tmcqueen.materials@gmail.com>
