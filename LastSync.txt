@@ -1,15 +1,27 @@
-commit 7719f2336a585ba03c2370916e94ec0b8debc795 (HEAD -> master, origin/master, origin/HEAD)
-Author: Tyrel M. McQueen <tmcqueen.materials@gmail.com>
-Date:   Wed Oct 21 21:41:30 2026 -0400
+commit 863db0e14c586317eaf831ec3f4700098c51936c (HEAD -> master, origin/master, origin/HEAD)
+Author: Erik Conijn <egc112@msn.com>
+Date:   Wed Oct 7 17:31:47 2026 +0200
 
-    unbound: update to 1.26.2
+    openvpn: make host route depend only on nohostroute
     
-    From upstream: This release consolidates security fixes for issues reported over
-    a period of time. There are fixes for CVE-2026-35501, CVE-2026-50106,
-    CVE-2026-96405, CVE-2026-97206 and CVE-2026-109125.
+    The host dependency for the server endpoint was guarded by
+    route_net_gateway (IPv4) and net_gateway_ipv6 (IPv6). Neither is a
+    reliable signal:
     
-    Full details at
+    - OpenVPN only exports route_net_gateway when it builds a route list,
+      i.e. when route, redirect-gateway/redirect-private or pushed routes
+      are present. A client using route-nopull, or one that filters out
+      the pushed redirect-gateway, gets no host route at all. When another
+      VPN then holds the default route, the server endpoint is routed
+      through that VPN and the tunnel breaks.
     
-    https://github.com/NLnetLabs/unbound/releases/tag/release-1.26.2
+    - OpenVPN looks up net_gateway_ipv6 for the default destination
+      without a source address, which fails when source routing is enabled
+      on wan6 (the default), so the IPv6 host route was rarely added.
     
-    Signed-off-by: Tyrel M. McQueen <tmcqueen.materials@gmail.com>
+    netifd resolves the gateway for a host dependency itself, so the guards
+    are not needed. Add the host dependency whenever trusted_ip or
+    trusted_ip6 is set, unless nohostroute is set, as WireGuard does.
+    
+    Assisted-by: Claude:claude-opus-5-5
+    Signed-off-by: Erik Conijn <egc112@msn.com>
