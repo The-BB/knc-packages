@@ -2,7 +2,7 @@
 +++ b/src/config.c
 @@ -59,8 +59,8 @@
  #include <getopt.h>
- #include <snapshot.h>
+ #include "common/snapshot.h"
  
 -#define OLD_DEFAULT_CFG_FILE "/etc/ocserv.conf"
 -#define DEFAULT_CFG_FILE "/etc/ocserv/ocserv.conf"
@@ -14,7 +14,7 @@
 --- a/src/main-user.c
 +++ b/src/main-user.c
 @@ -48,7 +48,7 @@
- #include <ccan/list/list.h>
+ #include "ccan/list/list.h"
  
  #ifndef OCSERV_FW_SCRIPT
 -#define OCSERV_FW_SCRIPT "/usr/libexec/ocserv-fw"
@@ -25,8 +25,8 @@
 --- a/src/occtl/ctl.h
 +++ b/src/occtl/ctl.h
 @@ -1,7 +1,7 @@
- #ifndef CTL_H
- #define CTL_H
+ #ifndef OC_OCCTL_CTL_H
+ #define OC_OCCTL_CTL_H
  
 -#define OCCTL_UNIX_SOCKET "/var/run/occtl.socket"
 +#define OCCTL_UNIX_SOCKET "/opt/var/run/occtl.socket"
