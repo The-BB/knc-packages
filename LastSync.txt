@@ -1,27 +1,12 @@
-commit 863db0e14c586317eaf831ec3f4700098c51936c (HEAD -> master, origin/master, origin/HEAD)
-Author: Erik Conijn <egc112@msn.com>
-Date:   Wed Oct 7 17:31:47 2026 +0200
+commit 881683c06807d4da661205d15b934c2677e2caf5 (HEAD -> master, origin/master, origin/HEAD)
+Author: Aleks Mariusz <a+git-commit@alek.cx>
+Date:   Thu Aug 20 11:28:40 2026 +0100
 
-    openvpn: make host route depend only on nohostroute
+    linuxptp: fix stale comment and tighten interface pre-check
     
-    The host dependency for the server endpoint was guarded by
-    route_net_gateway (IPv4) and net_gateway_ipv6 (IPv6). Neither is a
-    reliable signal:
+    Update comment to describe the actual check (non-empty interface option,
+    not section existence). Switch from 'uci -q get ... >/dev/null' to
+    testing the value non-empty so 'option interface ''' also fails fast
+    before the clock-sync wait, matching what handle_interface enforces.
     
-    - OpenVPN only exports route_net_gateway when it builds a route list,
-      i.e. when route, redirect-gateway/redirect-private or pushed routes
-      are present. A client using route-nopull, or one that filters out
-      the pushed redirect-gateway, gets no host route at all. When another
-      VPN then holds the default route, the server endpoint is routed
-      through that VPN and the tunnel breaks.
-    
-    - OpenVPN looks up net_gateway_ipv6 for the default destination
-      without a source address, which fails when source routing is enabled
-      on wan6 (the default), so the IPv6 host route was rarely added.
-    
-    netifd resolves the gateway for a host dependency itself, so the guards
-    are not needed. Add the host dependency whenever trusted_ip or
-    trusted_ip6 is set, unless nohostroute is set, as WireGuard does.
-    
-    Assisted-by: Claude:claude-opus-5-5
-    Signed-off-by: Erik Conijn <egc112@msn.com>
+    Signed-off-by: Aleks Mariusz <a+git-commit@alek.cx>
