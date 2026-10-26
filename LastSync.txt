@@ -1,12 +1,20 @@
-commit 881683c06807d4da661205d15b934c2677e2caf5 (HEAD -> master, origin/master, origin/HEAD)
-Author: Aleks Mariusz <a+git-commit@alek.cx>
-Date:   Thu Aug 20 11:28:40 2026 +0100
+commit 55a2c45d8b6d3c0c1695c1bdb5c87ffc3119e2f0 (HEAD -> master, origin/master, origin/HEAD)
+Author: Hannu Nyman <hannu.nyman@iki.fi>
+Date:   Sun Oct 25 10:37:24 2026 +0200
 
-    linuxptp: fix stale comment and tighten interface pre-check
+    nano: enable uci syntax highlighting by default
     
-    Update comment to describe the actual check (non-empty interface option,
-    not section existence). Switch from 'uci -q get ... >/dev/null' to
-    testing the value non-empty so 'option interface ''' also fails fast
-    before the clock-sync wait, matching what handle_interface enforces.
+    As uci config file editing is an essential functionality for editors
+    in OpenWrt context, change nano packaging:
     
-    Signed-off-by: Aleks Mariusz <a+git-commit@alek.cx>
+    * make the old 'plus' variant to be the new default 'nano' package,
+      with syntax highlighting enabled for uci, ucode, sh, javascript and
+      patch files.
+    
+    * define a new minimal nano-tiny variant for the minimal size.
+    
+    * adjust nanorc by removing the old 'extra' dir include,
+      copy all nanorc files to the same dir. (Still create 'extra' dir
+      to avoid problem with old nanorc files.)
+    
+    Signed-off-by: Hannu Nyman <hannu.nyman@iki.fi>
