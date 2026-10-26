@@ -1,20 +1,15 @@
-commit 55a2c45d8b6d3c0c1695c1bdb5c87ffc3119e2f0 (HEAD -> master, origin/master, origin/HEAD)
-Author: Hannu Nyman <hannu.nyman@iki.fi>
-Date:   Sun Oct 25 10:37:24 2026 +0200
+commit f9faf3fc2826ee55616ddffa59ecc170561d25a4 (HEAD -> master, origin/master, origin/HEAD)
+Author: Josef Schlehofer <pepe.schlehofer@gmail.com>
+Date:   Mon Oct 26 12:50:04 2026 +0100
 
-    nano: enable uci syntax highlighting by default
+    htop: update to 3.5.3
     
-    As uci config file editing is an essential functionality for editors
-    in OpenWrt context, change nano packaging:
+    3.5.3 hardens the htoprc parser, which upstream lists as the fix for
+    CVE-2024-37676. 3.5.2 also fixes terminal escape injection through the
+    process name and a stack underflow on very narrow terminals.
     
-    * make the old 'plus' variant to be the new default 'nano' package,
-      with syntax highlighting enabled for uci, ucode, sh, javascript and
-      patch files.
+    Fixes: CVE-2024-37676
     
-    * define a new minimal nano-tiny variant for the minimal size.
+    Changelog: https://github.com/htop-dev/htop/compare/3.5.1...3.5.3
     
-    * adjust nanorc by removing the old 'extra' dir include,
-      copy all nanorc files to the same dir. (Still create 'extra' dir
-      to avoid problem with old nanorc files.)
-    
-    Signed-off-by: Hannu Nyman <hannu.nyman@iki.fi>
+    Signed-off-by: Josef Schlehofer <pepe.schlehofer@gmail.com>
