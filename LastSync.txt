@@ -1,16 +1,15 @@
-commit 3a4f118a016af8a250fc77bb51b92aa2daf91f0a (HEAD -> master, origin/master, origin/HEAD)
-Author: Christian Marangi <ansuelsmth@gmail.com>
-Date:   Sun Oct 25 12:31:55 2026 +0100
+commit bed49df0bc611df9cf8f4fc05169a8393699448a (HEAD -> master, origin/master, origin/HEAD)
+Author: Josef Schlehofer <pepe.schlehofer@gmail.com>
+Date:   Wed Oct 28 11:12:23 2026 +0100
 
-    shairport-sync: support new libavcodec version
+    perl-mail-spamassassin: add missing CONFLICTS between variants
     
-    New libavcodedc version dropped sample_fmts. This was used for AirPlay v2
-    and new API are supported by shairport-sync 5+
+    spamc and spamc-ssl both install /usr/bin/spamc, but nothing marks them
+    as conflicting, so they can be selected and installed together.
     
-    Pick the specific changes for the new libavcodedc support from new
-    shairport-sync and put it in a downstream patch.
+    Declare the conflict so that they cannot be selected or installed
+    together.
     
-    Change is already present in upstream code and is just a simple backport of
-    specific change in the relevant commit.
+    Checked the Conflicts field in the generated package metadata.
     
-    Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
+    Signed-off-by: Josef Schlehofer <pepe.schlehofer@gmail.com>
