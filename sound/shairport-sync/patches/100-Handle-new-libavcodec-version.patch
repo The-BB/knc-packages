@@ -1,10 +1,24 @@
+From d8734148cda1d53885429d8a40ded2cc8e21112d Mon Sep 17 00:00:00 2001
+From: Christian Marangi <ansuelsmth@gmail.com>
+Date: Sun, 25 Oct 2026 12:09:50 +0100
+Subject: [PATCH] Handle new libavcodec version
+
+New libavcodec version dropped sample_fmts with new API.
+
+Support for new library was added with commit d043f9833050 that also
+updated other stuff included in version 5.0+.
+
+Pick that specific change and backport it.
+
+Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
+---
+ shairport.c | 27 ++++++++++++++++++++++-----
+ 1 file changed, 22 insertions(+), 5 deletions(-)
+
 --- a/shairport.c
 +++ b/shairport.c
-@@ -154,20 +154,36 @@ void print_version(void) {
+@@ -157,17 +157,34 @@ int has_fltp_capable_aac_decoder(void) {
  
- #ifdef CONFIG_AIRPLAY_2
- int has_fltp_capable_aac_decoder(void) {
--
    // return 1 if the AAC decoder advertises fltp decoding capability, which
    // is needed for decoding Buffered Audio streams
 +  debug(3, "checking availability of an  fltp-capable aac decoder");
