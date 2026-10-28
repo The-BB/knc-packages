@@ -1,15 +1,16 @@
-commit f9faf3fc2826ee55616ddffa59ecc170561d25a4 (HEAD -> master, origin/master, origin/HEAD)
-Author: Josef Schlehofer <pepe.schlehofer@gmail.com>
-Date:   Mon Oct 26 12:50:04 2026 +0100
+commit 3a4f118a016af8a250fc77bb51b92aa2daf91f0a (HEAD -> master, origin/master, origin/HEAD)
+Author: Christian Marangi <ansuelsmth@gmail.com>
+Date:   Sun Oct 25 12:31:55 2026 +0100
 
-    htop: update to 3.5.3
+    shairport-sync: support new libavcodec version
     
-    3.5.3 hardens the htoprc parser, which upstream lists as the fix for
-    CVE-2024-37676. 3.5.2 also fixes terminal escape injection through the
-    process name and a stack underflow on very narrow terminals.
+    New libavcodedc version dropped sample_fmts. This was used for AirPlay v2
+    and new API are supported by shairport-sync 5+
     
-    Fixes: CVE-2024-37676
+    Pick the specific changes for the new libavcodedc support from new
+    shairport-sync and put it in a downstream patch.
     
-    Changelog: https://github.com/htop-dev/htop/compare/3.5.1...3.5.3
+    Change is already present in upstream code and is just a simple backport of
+    specific change in the relevant commit.
     
-    Signed-off-by: Josef Schlehofer <pepe.schlehofer@gmail.com>
+    Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
